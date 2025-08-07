@@ -95,6 +95,12 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.ssh = {
+    extraConfig = ''
+    IdentityAgent none
+    '';
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
