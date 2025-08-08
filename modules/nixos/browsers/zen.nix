@@ -1,6 +1,6 @@
 {pkgs, config, inputs, ...}:
 {
-  environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".twilight
+  environment.systemPackages = [
+    inputs.zen-browser.packages.x86_64-linux.twilight
   ];  
 }
