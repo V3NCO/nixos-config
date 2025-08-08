@@ -83,7 +83,7 @@
   };
 
   imports = [
-    ../../modules/nixos/browsers
-    ../../modules/nixos/tailscale
+    ../modules/nixos/browsers
+    ../modules/nixos/tailscale.nix
   ];
 }
