@@ -3,7 +3,7 @@
   imports = [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/nixos/basic
-      ../../modules/nixos/gnome.nix
+      ../../modules/nixos/desktop
       ../../modules/nixos/printing.nix
       ../../modules/nixos/ssh.nix
       ../../modules/nixos/xserver.nix

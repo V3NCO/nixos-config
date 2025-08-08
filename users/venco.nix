@@ -16,6 +16,7 @@
 
       thunderbird
       discord
+      vesktop
       slack
       signal-desktop-bin
       spotify
