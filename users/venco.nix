@@ -80,6 +80,8 @@
       ethtool
       pciutils # lspci
       usbutils # lsusb
+
+      playerctl
     ];
   };
 
