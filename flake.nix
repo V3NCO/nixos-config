@@ -3,6 +3,7 @@
 
   # Inputs
   # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
+  
 
   inputs = {
     # Nixpkgs Repo on github at version 25.05
@@ -19,7 +20,7 @@
     nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./systems/quasar {inherit inputs};
         home-manager.nixosModules.home-manager
         {
           home-manager = {

@@ -5,6 +5,9 @@
   home.homeDirectory = "/home/venco";
   imports = [inputs.zen-browser.homeModules.twilight];
   programs.zen-browser.enable = true;
+
+  services.pcscd.enable = true;
+  hardware.gpgSmartcards.enable = true;
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
