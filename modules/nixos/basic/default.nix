@@ -7,5 +7,6 @@
     ./locale.nix
     ./networking.nix
     ./smartcards.nix
+    ./bluetooth.nix
   ];
 }
