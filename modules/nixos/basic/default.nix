@@ -6,5 +6,6 @@
     ./bootloader.nix
     ./locale.nix
     ./networking.nix
-  ]
+    ./smartcards.nix
+  ];
 }

@@ -19,8 +19,9 @@
   outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs: {
     nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
       modules = [
-        ./systems/quasar {inherit inputs};
+        ./systems/quasar
         home-manager.nixosModules.home-manager
         {
           home-manager = {
