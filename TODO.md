@@ -1,7 +1,10 @@
 # TODO
 - [ ] Media player buttons
 - [ ] Shell
-- [ ] Auto focus by hovering
+- [x] Auto focus by hovering
 - [ ] Polkit > fuzzel ?
-- [ ] Wallpaper
+- [x] Wallpaper
 - [ ] fuzzel theme
+- [ ] Hotkeys
+  - [ ] Fuzzel
+- [ ] Monitors

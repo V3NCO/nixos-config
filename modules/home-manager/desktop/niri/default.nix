@@ -21,10 +21,6 @@ let
 
 in {
   home.packages = with pkgs; [
-    wl-mirror
-    swaybg
-    swww
-    imagemagick   # (Only needed if you later want runtime tweaks; can remove)
     wallpaperPkg  # (So you can manually inspect outputs if desired)
   ];
 

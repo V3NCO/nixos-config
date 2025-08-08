@@ -7,6 +7,12 @@
     wlr-randr # Output management
     xwayland-satellite # X11 app support (non-native on niri)
     dragon-drop # Drag and drop support
+
+    wl-mirror
+    swaybg
+    swww
+    imagemagick
+    swaylock
   ];
 
 
