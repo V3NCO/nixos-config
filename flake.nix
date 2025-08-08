@@ -28,7 +28,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             users = {
-              venco = import ./home.nix;
+              venco = import ./users/venco-home.nix;
             };
             extraSpecialArgs = {
               inherit inputs;

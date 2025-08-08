@@ -9,5 +9,6 @@
     alacritty
     fuzzel
     git
+    alacritty
   ];
 }
