@@ -5,7 +5,7 @@
     wayland-utils # Wayland debugging tools
     wev # Key event viewer (useful for finding key names)
     wlr-randr # Output management
-    pkgs-unstable.xwayland-satellite # X11 app support (non-native on niri)
+    xwayland-satellite # X11 app support (non-native on niri)
     dragon-drop # Drag and drop support
   ];
 
@@ -24,7 +24,6 @@
 
   xdg.portal = {
     enable = true;
-    gnome.enable = true;
     config = {
       common = {
         default = "gnome";
@@ -40,5 +39,5 @@
       pkgs.xdg-desktop-portal-gnome
       pkgs.xdg-desktop-portal-termfilechooser
     ];
-  }
+  };
 }
