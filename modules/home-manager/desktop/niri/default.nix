@@ -1,9 +1,60 @@
-{ pkgs, ...  }:
-{
+{ pkgs, ... }:
+let
+  # Derivation that contains original + blurred/darkened version
+  wallpaperPkg = pkgs.stdenv.mkDerivation {
+    pname = "custom-wallpaper";
+    version = "1.0";
+    src = ../wallpapers/wall.jpg;   # Adjust path if you move the image
+    dontUnpack = true;
+    nativeBuildInputs = [ pkgs.imagemagick ];
+    installPhase = ''
+      mkdir -p $out
+      cp $src $out/wall.jpg
+      # Blur + darken (tweak values to taste):
+      # -blur 0x18  (radius 0, sigma 18 ~ fairly strong)
+      # -brightness-contrast -15x-5  (slightly darker, lower contrast)
+      convert "$src" -blur 0x35 -brightness-contrast -20x-5 "$out/wall-blur.png"
+    '';
+  };
+
+  HOME = "/home/venco";
+
+in {
   home.packages = with pkgs; [
-    wl-mirror # Mirror client for wayland (Niri does not support mirroring)
+    wl-mirror
     swaybg
+    swww
+    imagemagick   # (Only needed if you later want runtime tweaks; can remove)
+    wallpaperPkg  # (So you can manually inspect outputs if desired)
   ];
+
+  # Install (symlink) the generated images into the user's home dir.
+  home.file.".local/share/wallpapers/wall.jpg".source = "${wallpaperPkg}/wall.jpg";
+  home.file.".local/share/wallpapers/wall-blur.png".source = "${wallpaperPkg}/wall-blur.png";
+
+  # Simple startup script (no on-the-fly convert needed now).
+  home.file.".local/bin/wallpaper-start" = {
+    text = ''
+      #!/usr/bin/env bash
+      set -euo pipefail
+
+      WALL="${HOME}/.local/share/wallpapers/wall.jpg"
+      BLUR="${HOME}/.local/share/wallpapers/wall-blur.png"
+
+      # Start swww daemon if not already running
+      if ! pgrep -x swww-daemon >/dev/null 2>&1; then
+        swww init
+        sleep 0.15
+      fi
+
+      swww img "$WALL" --transition-type fade --transition-duration 1 || true
+
+      # Restart swaybg with blurred backdrop
+      pkill -x swaybg 2>/dev/null || true
+      (swaybg -m fill -i "$BLUR" >/dev/null 2>&1 & disown)
+    '';
+    executable = true;
+  };
 
   xdg.configFile."niri/config.kdl" = {
     source = ./config.kdl;
