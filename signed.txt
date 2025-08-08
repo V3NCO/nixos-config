@@ -1,4 +1,0 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
-
-test message string
