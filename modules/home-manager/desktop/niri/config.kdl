@@ -26,26 +26,6 @@ input {
     trackpoint { }
 }
 
-// Outputs
-output "HDMI-A-2" {
-    mode "1920x1080@143.996002"
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
-output "DP-1" {
-    mode "1920x1080@60.000000"
-    scale 1
-    transform "normal"
-    position x=1920 y=0
-}
-output "DP-2" {
-    mode "1920x1080@60.000000"
-    scale 1
-    transform "90"
-    position x=-1080 y=-480
-}
-
 cursor {
     xcursor-theme "macOS"
     xcursor-size 28
@@ -93,7 +73,7 @@ layout {
 }
 
 // Startup
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 // NEW: start the combined wallpaper script
 spawn-at-startup "~/.local/bin/wallpaper-start"
 

@@ -1,6 +1,18 @@
 { pkgs, ... }:
 let
   # Derivation that contains original + blurred/darkened version
+  hostname = config.networking.hostName;
+
+  common = builtins.readFile ./config.kdl;
+  hostsFile = {
+    comet = ../../../systems/quasar/niri.kdl;
+    quasar  = ../../../systems/quasar/niri.kdl;
+  };
+
+  hostFile = attrByPath [ hostname ] null hostsFile;
+  hostExtra = if hostFile == null then "" else builtins.readFile hostFile;
+
+  
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     pname = "custom-wallpaper";
     version = "1.0";
@@ -53,8 +65,9 @@ in {
     executable = true;
   };
 
-  xdg.configFile."niri/config.kdl" = {
-    source = ./config.kdl;
-    force = true;
+  xdg.configFile."niri/config.kdl".text = concatStringsSep "\n\n\n" [
+    common
+    hostExtra
+  ]
   };
 }
