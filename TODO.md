@@ -1,12 +1,12 @@
 # TODO
-- [ ] Media player buttons
+- [x] Media player buttons
 - [ ] Shell
 - [x] Auto focus by hovering
 - [ ] Polkit > fuzzel ?
 - [x] Wallpaper
 - [ ] fuzzel theme
-- [ ] Hotkeys
-  - [ ] Fuzzel
-- [ ] Monitors -- not possible to have vertical
-- [ ] Nvidia
-- [ ] Cool cursor
+- [x] Hotkeys
+  - [x] Fuzzel
+- [x] Monitors -- not possible to have vertical
+- [x] Nvidia
+- [x] Cool cursor

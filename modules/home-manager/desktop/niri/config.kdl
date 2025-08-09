@@ -125,7 +125,7 @@ layer-rule {
 binds {
     Mod+Shift+KP_Divide { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+Less hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
