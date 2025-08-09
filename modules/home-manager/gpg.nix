@@ -8,7 +8,7 @@
   };
   programs.gpg = {
     enable = true;
-    publicKeys = [{source = "/etc/nixos/public-keys/6FAA8732F6512AAD6EDC522AE5E0FA4E59297845.asc"; trust = 5;}];
+    publicKeys = [{source = "/home/venco/nixos-config/public-keys/6FAA8732F6512AAD6EDC522AE5E0FA4E59297845.asc"; trust = 5;}];
     settings = {
       personal-cipher-preferences = "AES256 AES192 AES";
       personal-digest-preferences = "SHA512 SHA384 SHA256";
