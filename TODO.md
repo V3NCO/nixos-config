@@ -7,4 +7,6 @@
 - [ ] fuzzel theme
 - [ ] Hotkeys
   - [ ] Fuzzel
-- [ ] Monitors
+- [ ] Monitors -- not possible to have vertical
+- [ ] Nvidia
+- [ ] Cool cursor

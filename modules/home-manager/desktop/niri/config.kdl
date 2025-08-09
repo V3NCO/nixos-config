@@ -46,6 +46,12 @@ output "DP-2" {
     position x=-1080 y=-480
 }
 
+cursor {
+    xcursor-theme "macOS"
+    xcursor-size 28
+    hide-after-inactive-ms 3000
+}
+
 layout {
     gaps 16
     center-focused-column "never"

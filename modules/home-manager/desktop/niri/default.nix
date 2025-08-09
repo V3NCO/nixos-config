@@ -21,7 +21,8 @@ let
 
 in {
   home.packages = with pkgs; [
-    wallpaperPkg  # (So you can manually inspect outputs if desired)
+    wallpaperPkg
+    apple-cursor  # (So you can manually inspect outputs if desired)
   ];
 
   # Install (symlink) the generated images into the user's home dir.
