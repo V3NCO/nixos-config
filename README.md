@@ -5,7 +5,7 @@
 > because you are gonna need to modify a bunch of stuff that is 
 > probably written very badly.
 
-Uses Niri and uuh thats about it I just started getting into nix 3 days ago
+Uses Niri and uuh thats about it I just started getting into nix and nixos so i dont have anything cool to show you (maybe later ?)
 
 Used some things from:
 https://github.com/pabloagn/rhodium/
