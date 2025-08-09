@@ -1,12 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, hostname, ... }:
 let
-  # Derivation that contains original + blurred/darkened version
-  hostname = config.networking.hostName;
+  inherit (lib) attrByPath concatStringsSep optional;
 
+  # Derivation that contains original + blurred/darkened version
   common = builtins.readFile ./config.kdl;
   hostsFile = {
-    comet = ../../../systems/quasar/niri.kdl;
-    quasar  = ../../../systems/quasar/niri.kdl;
+    comet = ../../../../systems/comet/niri.kdl;
+    quasar  = ../../../../systems/quasar/niri.kdl;
   };
 
   hostFile = attrByPath [ hostname ] null hostsFile;
@@ -68,6 +68,5 @@ in {
   xdg.configFile."niri/config.kdl".text = concatStringsSep "\n\n\n" [
     common
     hostExtra
-  ]
-  };
+  ];
 }
