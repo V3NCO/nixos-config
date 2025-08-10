@@ -1,6 +1,6 @@
 # TODO
 - [x] Media player buttons
-- [ ] Shell
+- [ ] Shell (bar)
 - [x] Auto focus by hovering
 - [ ] Polkit > fuzzel ?
 - [x] Wallpaper
@@ -9,4 +9,10 @@
   - [x] Fuzzel
 - [x] Monitors -- not possible to have vertical
 - [x] Nvidia
-- [x] Cool cursor
+- [x] Cool 
+- [ ] Gnome theme cause it impacts the rest
+- [ ] Clipboard history
+- [ ] Better shell (terminal)
+- [ ] Zen browser customization :fire:
+- [ ] Zed
+- [ ] Wakatime
