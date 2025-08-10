@@ -11,7 +11,6 @@
   
   imports = [
     ../modules/home-manager/gpg.nix
-    ../modules/home-manager/vscode.nix
     ../modules/home-manager/git.nix
     ../modules/home-manager/desktop/niri
   ];
