@@ -16,3 +16,4 @@
 - [ ] Zen browser customization :fire:
 - [ ] Zed
 - [ ] Wakatime
+- [ ] Clipping
