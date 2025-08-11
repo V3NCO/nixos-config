@@ -83,6 +83,8 @@
 
       playerctl
       killall
+      clipse
+      kitty
     ];
   };
 

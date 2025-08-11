@@ -78,10 +78,10 @@ layout {
 
 // Startup
 // spawn-at-startup "waybar"
-// NEW: start the combined wallpaper script
 spawn-at-startup "~/.local/bin/wallpaper-start"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "soteria"
+spawn-at-startup "clipse" "-listen"
 
 environment {
     DISPLAY ":0"
@@ -90,6 +90,8 @@ environment {
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 animations { }
+
+prefer-no-csd
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -106,6 +108,14 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match app-id="clipse"
+    open-floating true
+    open-focused true
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.5; }
+}
+
 // LAYER RULE: place swaybg (blurred) inside backdrop (overview & between workspaces)
 layer-rule {
     match namespace="^wallpaper$"
@@ -117,6 +127,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+C hotkey-overlay-title="Open Clipboard History" { spawn "kitty" "--class" "clipse" "clipse" "'clipse'"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
