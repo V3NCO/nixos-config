@@ -9,8 +9,9 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    package = pkgs.bluez;
   };
-
+  hardware.xone.enable = true;
   services = {
     blueman.enable = true;
   };

@@ -5,7 +5,7 @@
     description = "Venco";
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "password";
-    packages = with pkgs; [ 
+    packages = with pkgs; [
       # Yubikey and Tor
       tor-browser
       yubikey-personalization
@@ -82,6 +82,7 @@
       usbutils # lsusb
 
       playerctl
+      killall
     ];
   };
 
@@ -89,5 +90,6 @@
     ../modules/nixos/browsers
     ../modules/nixos/tailscale.nix
     ../modules/nixos/editors
+    ../modules/nixos/steam.nix
   ];
 }
