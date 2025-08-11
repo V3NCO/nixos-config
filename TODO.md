@@ -2,18 +2,22 @@
 - [x] Media player buttons
 - [ ] Shell (bar)
 - [x] Auto focus by hovering
-- [ ] Polkit > fuzzel ?
+- [ ] Polkit > fuzzel ? - Currently using Soteria, switch later.
 - [x] Wallpaper
 - [ ] fuzzel theme
 - [x] Hotkeys
   - [x] Fuzzel
 - [x] Monitors -- not possible to have vertical
 - [x] Nvidia
-- [x] Cool 
+- [x] Cool
 - [ ] Gnome theme cause it impacts the rest
 - [ ] Clipboard history
 - [ ] Better shell (terminal)
 - [ ] Zen browser customization :fire:
-- [ ] Zed
+- [x] Zed
 - [x] Wakatime
 - [ ] Clipping
+
+
+
+FOR FRAMEWORK USE     hardware.inputmodule.enable
