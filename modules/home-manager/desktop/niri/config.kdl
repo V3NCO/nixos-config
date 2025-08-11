@@ -26,6 +26,10 @@ input {
     trackpoint { }
 }
 
+debug {
+    wait-for-frame-completion-in-pipewire
+}
+
 cursor {
     xcursor-theme "macOS"
     xcursor-size 28
@@ -76,6 +80,12 @@ layout {
 // spawn-at-startup "waybar"
 // NEW: start the combined wallpaper script
 spawn-at-startup "~/.local/bin/wallpaper-start"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "soteria"
+
+environment {
+    DISPLAY ":0"
+}
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
