@@ -88,5 +88,6 @@
   imports = [
     ../modules/nixos/browsers
     ../modules/nixos/tailscale.nix
+    ../modules/nixos/editors
   ];
 }

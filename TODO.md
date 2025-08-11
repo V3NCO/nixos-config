@@ -15,5 +15,5 @@
 - [ ] Better shell (terminal)
 - [ ] Zen browser customization :fire:
 - [ ] Zed
-- [ ] Wakatime
+- [x] Wakatime
 - [ ] Clipping
