@@ -84,9 +84,10 @@
       playerctl
       killall
       clipse
-      kitty
     ];
   };
+
+  programs.gpu-screen-recorder.enable = true;
 
   imports = [
     ../modules/nixos/browsers

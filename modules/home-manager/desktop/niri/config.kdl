@@ -124,7 +124,7 @@ layer-rule {
 
 binds {
     Mod+Shift+KP_Divide { show-hotkey-overlay; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+C hotkey-overlay-title="Open Clipboard History" { spawn "kitty" "--class" "clipse" "clipse" "'clipse'"; }
