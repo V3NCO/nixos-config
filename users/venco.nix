@@ -38,6 +38,7 @@
       yq-go # yaml processor https://github.com/mikefarah/yq
       eza # A modern replacement for ‘ls’
       fzf # A command-line fuzzy finder
+      nodejs_24
 
       # networking tools
       mtr # A network diagnostic tool
