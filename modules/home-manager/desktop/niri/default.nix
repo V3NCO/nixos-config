@@ -12,7 +12,7 @@ let
   hostFile = attrByPath [ hostname ] null hostsFile;
   hostExtra = if hostFile == null then "" else builtins.readFile hostFile;
 
-  
+
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     pname = "custom-wallpaper";
     version = "1.0";
@@ -25,7 +25,7 @@ let
       # Blur + darken (tweak values to taste):
       # -blur 0x18  (radius 0, sigma 18 ~ fairly strong)
       # -brightness-contrast -15x-5  (slightly darker, lower contrast)
-      convert "$src" -blur 0x35 -brightness-contrast -20x-5 "$out/wall-blur.png"
+      convert "$src" -blur 0x35 -brightness-contrast -20x-5 "$out/wall-blur.jpg"
     '';
   };
 
@@ -38,8 +38,8 @@ in {
   ];
 
   # Install (symlink) the generated images into the user's home dir.
-  home.file.".local/share/wallpapers/wall.jpg".source = "${wallpaperPkg}/wall.jpg";
-  home.file.".local/share/wallpapers/wall-blur.png".source = "${wallpaperPkg}/wall-blur.png";
+  home.file.".local/share/wallpapers/wall.gif".source = "${wallpaperPkg}/wall.gif";
+  home.file.".local/share/wallpapers/wall-blur.jpg".source = "${wallpaperPkg}/wall-blur.jpg";
 
   # Simple startup script (no on-the-fly convert needed now).
   home.file.".local/bin/wallpaper-start" = {

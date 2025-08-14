@@ -11,7 +11,7 @@
 - [x] Nvidia
 - [x] Cool
 - [ ] Gnome theme cause it impacts the rest
-- [ ] Clipboard history
+- [x] Clipboard history
 - [ ] Better shell (terminal)
 - [ ] Zen browser customization :fire:
 - [x] Zed

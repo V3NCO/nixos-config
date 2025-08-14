@@ -29,7 +29,6 @@
             useUserPackages = true;
             users = {
               venco = import ./users/venco-home.nix;
-              gdm = import ./systems/quasar/gdm-home.nix;
             };
             extraSpecialArgs = {
               inherit inputs;
