@@ -27,6 +27,7 @@
       self,
       nixpkgs,
       home-manager,
+      hm-unstable,
       zen-browser,
       ...
     }@inputs:
