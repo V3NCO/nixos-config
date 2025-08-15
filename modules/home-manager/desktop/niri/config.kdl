@@ -110,16 +110,16 @@ window-rule {
 
 
 // Transparency and blur
-window-rule {
-    match is-active=true
+//window-rule {
+//    match is-active=true
     // Apply to all windows
-    opacity 0.98
-}
-window-rule {
-    match is-active=false
+//    opacity 0.98
+//}
+//window-rule {
+//    match is-active=false
     // Apply to all windows
-    opacity 0.98
-}
+//    opacity 0.98
+//}
 
 window-rule {
     match app-id="clipse"
@@ -127,6 +127,11 @@ window-rule {
     open-focused true
     default-window-height { proportion 0.5; }
     default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id="signal"
+    block-out-from "screen-capture"
 }
 
 // LAYER RULE: place swaybg (blurred) inside backdrop (overview & between workspaces)

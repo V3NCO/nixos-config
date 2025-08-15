@@ -16,16 +16,17 @@ let
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     pname = "custom-wallpaper";
     version = "1.0";
-    src = ../wallpapers/wall.jpg;   # Adjust path if you move the image
+    src = ../wallpapers/wall.gif;   # Adjust path if you move the image
     dontUnpack = true;
     nativeBuildInputs = [ pkgs.imagemagick ];
     installPhase = ''
       mkdir -p $out
-      cp $src $out/wall.jpg
+      cp $src $out/wall.gif
       # Blur + darken (tweak values to taste):
       # -blur 0x18  (radius 0, sigma 18 ~ fairly strong)
       # -brightness-contrast -15x-5  (slightly darker, lower contrast)
-      convert "$src" -blur 0x35 -brightness-contrast -20x-5 "$out/wall-blur.jpg"
+      # For GIFs, take the first frame and convert to JPG for the blurred version
+      convert "$src[0]" -blur 0x35 -brightness-contrast -20x-5 "$out/wall-blur.jpg"
     '';
   };
 
@@ -47,8 +48,8 @@ in {
       #!/usr/bin/env bash
       set -euo pipefail
 
-      WALL="${HOME}/.local/share/wallpapers/wall.jpg"
-      BLUR="${HOME}/.local/share/wallpapers/wall-blur.png"
+      WALL="${HOME}/.local/share/wallpapers/wall.gif"
+      BLUR="${HOME}/.local/share/wallpapers/wall-blur.jpg"
 
       # Start swww daemon if not already running
       if ! pgrep -x swww-daemon >/dev/null 2>&1; then
