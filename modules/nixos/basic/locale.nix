@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{...}:
 {
   # Timezone, duh
   time.timeZone = "Europe/Paris";
