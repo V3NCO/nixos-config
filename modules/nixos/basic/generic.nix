@@ -10,5 +10,6 @@
     fuzzel
     git
     alacritty
+    nixd
   ];
 }
