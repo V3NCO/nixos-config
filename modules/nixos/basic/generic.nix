@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   nix.settings.experimental-features = "nix-command flakes";
 
@@ -13,5 +13,6 @@
     nixd
     nil
     nixfmt-rfc-style
+    kdePackages.full
   ];
 }
