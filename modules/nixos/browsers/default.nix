@@ -1,4 +1,4 @@
-{pkgs, config, ...}:
+{...}:
 {
   imports = [
     ./firefox.nix

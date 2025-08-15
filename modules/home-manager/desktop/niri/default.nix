@@ -1,6 +1,6 @@
-{ pkgs, config, lib, hostname, ... }:
+{ pkgs, lib, hostname, ... }:
 let
-  inherit (lib) attrByPath concatStringsSep optional;
+  inherit (lib) attrByPath concatStringsSep;
 
   # Derivation that contains original + blurred/darkened version
   common = builtins.readFile ./config.kdl;
