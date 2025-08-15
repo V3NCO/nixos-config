@@ -10,13 +10,14 @@
 - [x] Monitors -- not possible to have vertical
 - [x] Nvidia
 - [x] Cool
-- [ ] Gnome theme cause it impacts the rest
+- [x] Gnome theme cause it impacts the rest
 - [x] Clipboard history
 - [ ] Better shell (terminal)
 - [ ] Zen browser customization :fire:
 - [x] Zed
 - [x] Wakatime
 - [ ] Clipping
+- [ ] Lock screen
 
 
 

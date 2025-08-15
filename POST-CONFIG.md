@@ -8,3 +8,4 @@
     - install wakatime extension
     - install nix extension
     - install svelte extension
+4. Import SSH folder and ssh-add your keys
