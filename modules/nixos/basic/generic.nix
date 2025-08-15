@@ -12,5 +12,6 @@
     alacritty
     nixd
     nil
+    nixfmt-rfc-style
   ];
 }
