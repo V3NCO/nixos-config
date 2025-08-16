@@ -1,7 +1,7 @@
 import Quickshell // for PanelWindow
 import QtQuick // for Text
 
-PanelWindow {
+PanelWindow { // qmllint disable
   anchors {
     top: true
     left: true
