@@ -7,6 +7,7 @@
   inputs = {
     # Nixpkgs Repo on github at version 25.05
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -20,7 +21,7 @@
     };
 
     quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,15 +34,17 @@
       nixpkgs,
       home-manager,
       hm-unstable,
+      quickshell,
       zen-browser,
       ...
     }@inputs:
     {
       nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/quasar
+          ./modules/quickshell.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -52,6 +55,7 @@
               };
               extraSpecialArgs = {
                 inherit inputs;
+                inherit quickshell;
                 hostname = "quasar";
               };
             };
@@ -61,7 +65,7 @@
 
       nixosConfigurations.comet = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/comet
           home-manager.nixosModules.home-manager
@@ -75,6 +79,7 @@
               };
               extraSpecialArgs = {
                 inherit inputs;
+                inherit quickshell;
                 hostname = "comet";
               };
             };
