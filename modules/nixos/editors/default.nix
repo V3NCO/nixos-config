@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
   environment.systemPackages = with pkgs; [
-    vscode
+    vscode-fhs
     zed-editor-fhs
   ];
 }
