@@ -10,6 +10,18 @@
     - install nix extension
     - install svelte extension
     - install QML extension
+    - add this in `settings.json`:
+      ```json
+      "lsp": {
+        "nil": {
+          "initialization_options": {
+            "formatting": {
+              "command": ["nixfmt"]
+            }
+          }
+        }
+      }
+      ```
 4. Import SSH folder and ssh-add your keys
 5. Import Thunderbird profiles
 6. Zen :
