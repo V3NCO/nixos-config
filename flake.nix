@@ -26,6 +26,9 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -36,6 +39,7 @@
       hm-unstable,
       quickshell,
       zen-browser,
+      apple-fonts,
       ...
     }@inputs:
     {

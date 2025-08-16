@@ -1,9 +1,12 @@
-{pkgs, ...}:
+{ pkgs, inputs, ... }:
 {
   users.users.venco = {
     isNormalUser = true;
     description = "Venco";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     initialPassword = "password";
     packages = with pkgs; [
       # Yubikey and Tor
@@ -43,12 +46,12 @@
       # networking tools
       mtr # A network diagnostic tool
       iperf3
-      dnsutils  # `dig` + `nslookup`
+      dnsutils # `dig` + `nslookup`
       ldns # replacement of `dig`, it provide the command `drill`
       aria2 # A lightweight multi-protocol & multi-source command-line download utility
       socat # replacement of openbsd-netcat
       nmap # A utility for network discovery and security auditing
-      ipcalc  # it is a calculator for the IPv4/v6 addresses
+      ipcalc # it is a calculator for the IPv4/v6 addresses
 
       # misc
       file
@@ -66,7 +69,7 @@
       nix-output-monitor
       glow # markdown previewer in terminal
 
-      btop  # replacement of htop/nmon
+      btop # replacement of htop/nmon
       iotop # io monitoring
       iftop # network monitoring
 
@@ -91,9 +94,28 @@
 
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GUI
 
-    environment.systemPackages = with pkgs; [
-      gpu-screen-recorder-gtk # GUI app
-    ];
+  environment.systemPackages = with pkgs; [
+    gpu-screen-recorder-gtk # GUI app
+  ];
+
+  fonts.packages = [
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-compact
+    inputs.apple-fonts.packages.${pkgs.system}.sf-compact-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-mono
+    inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-arabic
+    inputs.apple-fonts.packages.${pkgs.system}.sf-arabic-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-armenian
+    inputs.apple-fonts.packages.${pkgs.system}.sf-armenian-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-georgian
+    inputs.apple-fonts.packages.${pkgs.system}.sf-georgian-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.sf-hebrew
+    inputs.apple-fonts.packages.${pkgs.system}.sf-hebrew-nerd
+    inputs.apple-fonts.packages.${pkgs.system}.ny
+    inputs.apple-fonts.packages.${pkgs.system}.ny-nerd
+  ];
 
   imports = [
     ../modules/nixos/browsers
