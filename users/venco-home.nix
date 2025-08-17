@@ -13,5 +13,6 @@
     ../modules/home-manager/desktop/niri
     ../modules/home-manager/direnv.nix
     ../modules/home-manager/quickshell
+    ../modules/home-manager/vicinae.nix
   ];
 }

@@ -88,6 +88,7 @@
       killall
       clipse
       bash
+      godot
     ];
   };
 
