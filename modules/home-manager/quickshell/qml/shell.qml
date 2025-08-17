@@ -6,7 +6,12 @@ PanelWindow {
     color: "transparent"
     Rectangle {
         anchors.fill: parent
-        anchors.margins: 6
+        anchors.topMargin: 4
+        anchors.leftMargin: 12
+        anchors.rightMargin: 12
+        anchors.bottomMargin: 0
+        topLeftRadius: 0
+        bottomRightRadius: 0
         radius: 12
         color: "#F502000F"
         border.width: 2
@@ -18,5 +23,5 @@ PanelWindow {
         right: true
     }
 
-    implicitHeight: 0
+    implicitHeight: 48
 }

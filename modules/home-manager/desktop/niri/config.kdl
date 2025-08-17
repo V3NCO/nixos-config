@@ -82,8 +82,8 @@ spawn-at-startup "~/.local/bin/wallpaper-start"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "soteria"
 spawn-at-startup "clipse" "-listen"
-spawn-at-startup "quickshell"
-
+// spawn-at-startup "quickshell"
+spawn-at-startup "caelestia-shell -d"
 environment {
     DISPLAY ":0"
 }
