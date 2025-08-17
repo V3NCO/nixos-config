@@ -1,4 +1,9 @@
-{ pkgs, lib, hostname, ... }:
+{
+  pkgs,
+  lib,
+  hostname,
+  ...
+}:
 let
   inherit (lib) attrByPath concatStringsSep;
 
@@ -6,17 +11,16 @@ let
   common = builtins.readFile ./config.kdl;
   hostsFile = {
     comet = ../../../../systems/comet/niri.kdl;
-    quasar  = ../../../../systems/quasar/niri.kdl;
+    quasar = ../../../../systems/quasar/niri.kdl;
   };
 
   hostFile = attrByPath [ hostname ] null hostsFile;
   hostExtra = if hostFile == null then "" else builtins.readFile hostFile;
 
-
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     pname = "custom-wallpaper";
     version = "1.0";
-    src = ../wallpapers/wall.gif;   # Adjust path if you move the image
+    src = ../wallpapers/wall.gif; # Adjust path if you move the image
     dontUnpack = true;
     nativeBuildInputs = [ pkgs.imagemagick ];
     installPhase = ''
@@ -32,10 +36,11 @@ let
 
   HOME = "/home/venco";
 
-in {
+in
+{
   home.packages = with pkgs; [
     wallpaperPkg
-    apple-cursor  # (So you can manually inspect outputs if desired)
+    apple-cursor # (So you can manually inspect outputs if desired)
   ];
 
   # Install (symlink) the generated images into the user's home dir.
@@ -51,9 +56,10 @@ in {
       WALL="${HOME}/.local/share/wallpapers/wall.gif"
       BLUR="${HOME}/.local/share/wallpapers/wall-blur.jpg"
 
-      # Start swww daemon if not already running
+      # Start swww daemon if not already running (launch directly instead of 'swww init')
       if ! pgrep -x swww-daemon >/dev/null 2>&1; then
-        swww init
+        swww-daemon >/dev/null 2>&1 &
+        disown
         sleep 0.15
       fi
 
