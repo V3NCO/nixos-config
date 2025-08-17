@@ -15,7 +15,6 @@
       yubikey-manager
       yubikey-touch-detector
       yubioath-flutter
-      yubikey-personalization-gui
 
       thunderbird
       discord

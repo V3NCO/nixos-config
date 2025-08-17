@@ -3,7 +3,7 @@
 {
   home.username = "venco";
   home.homeDirectory = "/home/venco";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
   # home.packages = with pkgs; [];
 
   imports = [
