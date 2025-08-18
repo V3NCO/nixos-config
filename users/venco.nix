@@ -89,6 +89,7 @@
       clipse
       bash
       godot
+      bitwarden-cli
     ];
   };
 
