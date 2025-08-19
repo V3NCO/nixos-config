@@ -15,5 +15,5 @@
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.05";
 }

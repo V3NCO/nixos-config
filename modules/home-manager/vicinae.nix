@@ -2,12 +2,13 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 let
   cfg = config.services.vicinae;
-
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
   vicinae = pkgs.stdenv.mkDerivation rec {
     pname = "vicinae";
     version = "0.2.1";
@@ -35,8 +36,6 @@ let
       libqalculate
       minizip
       stdenv.cc.cc.lib
-      abseil-cpp
-      protobuf
       nodejs
       wayland
       libxml2
@@ -49,6 +48,9 @@ let
       xorg.libXext
       mesa
       vulkan-loader
+    ] ++ [
+      unstable.abseil-cpp
+      unstable.protobuf
     ];
 
     unpackPhase = ''

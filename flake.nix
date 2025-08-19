@@ -5,12 +5,12 @@
   # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
 
   inputs = {
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Home Manager
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -41,6 +41,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixpkgs-unstable,
       hm-unstable,
       quickshell,
       zen-browser,
@@ -53,7 +54,6 @@
         specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/quasar
-          ./modules/quickshell.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {

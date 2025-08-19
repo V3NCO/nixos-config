@@ -3,7 +3,7 @@
 {
   home.username = "venco";
   home.homeDirectory = "/home/venco";
-  home.stateVersion = "25.11";
+  home.stateVersion = "25.05";
   # home.packages = with pkgs; [];
 
   imports = [
@@ -14,6 +14,6 @@
     ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
     ../modules/home-manager/vicinae.nix
-    ../modules/home-manager/caelestia.nix
+    # ../modules/home-manager/caelestia.nix
   ];
 }
