@@ -91,6 +91,7 @@
       godot
       aseprite # I bought it on steam anyways its just convinient to have as a package
       bitwarden-cli
+      sc-controller
     ];
   };
 
