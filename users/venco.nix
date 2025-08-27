@@ -97,6 +97,7 @@
       vlc
       yt-dlp
       ffmpeg
+      krita
     ];
   };
 
