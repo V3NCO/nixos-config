@@ -89,6 +89,7 @@
       clipse
       bash
       godot
+      godot-mono
       aseprite # I bought it on steam anyways its just convinient to have as a package
       bitwarden-cli
       sc-controller
@@ -98,6 +99,10 @@
       yt-dlp
       ffmpeg
       krita
+
+      heroic-unwrapped
+      itch
+      itch-dl
     ];
   };
 

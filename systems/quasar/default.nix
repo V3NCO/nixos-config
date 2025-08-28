@@ -9,6 +9,7 @@
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
+    ../../modules/nixos/drawing_tablets.nix
     ../../users
   ];
 
