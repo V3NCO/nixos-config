@@ -103,6 +103,7 @@
       heroic-unwrapped
       itch
       itch-dl
+      android-tools
     ];
   };
 
