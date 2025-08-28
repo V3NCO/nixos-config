@@ -104,6 +104,7 @@
       itch
       itch-dl
       android-tools
+      zrythm
     ];
   };
 
