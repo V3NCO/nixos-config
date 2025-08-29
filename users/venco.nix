@@ -107,6 +107,8 @@
 
       zrythm
       openutau
+
+      affine-bin
     ];
   };
 
