@@ -137,6 +137,8 @@
     inputs.apple-fonts.packages.${pkgs.system}.ny-nerd
   ];
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   imports = [
     ../modules/nixos/browsers
     ../modules/nixos/tailscale.nix
