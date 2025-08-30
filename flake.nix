@@ -36,6 +36,8 @@
       url = "github:Lyndeno/apple-fonts.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     vicinae.url = "github:tomromeo/vicinae-nix";
   };
 
@@ -50,6 +52,7 @@
       zen-browser,
       apple-fonts,
       vicinae,
+      catppuccin,
       ...
     }@inputs:
     {
@@ -58,13 +61,19 @@
         specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/quasar
+          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               users = {
-                venco = import ./users/venco-home.nix;
+                venco = {
+                  imports = [
+                    ./users/venco-home.nix
+                    catppuccin.nixosModules.catppuccin
+                  ];
+                };
               };
               extraSpecialArgs = {
                 inherit inputs;
@@ -81,6 +90,7 @@
         specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/comet
+          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -88,7 +98,12 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users = {
-                venco = import ./users/venco-home.nix;
+                venco = {
+                  imports = [
+                    ./users/venco-home.nix
+                    catppuccin.nixosModules.catppuccin
+                  ];
+                };
               };
               extraSpecialArgs = {
                 inherit inputs;
