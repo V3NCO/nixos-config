@@ -71,7 +71,7 @@
                 venco = {
                   imports = [
                     ./users/venco-home.nix
-                    catppuccin.nixosModules.catppuccin
+                    catppuccin.homeModules.catppuccin
                   ];
                 };
               };
@@ -101,7 +101,7 @@
                 venco = {
                   imports = [
                     ./users/venco-home.nix
-                    catppuccin.nixosModules.catppuccin
+                    catppuccin.homeModules.catppuccin
                   ];
                 };
               };
