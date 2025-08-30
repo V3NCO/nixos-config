@@ -1,17 +1,17 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
-  environment.systemPackages = [(
-    pkgs.catppuccin-sddm.override {
+  environment.systemPackages = [
+    (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
-      font  = "Noto Sans";
+      font = "Noto Sans";
       fontSize = "9";
-      background = "${./wallpaper.gif}";
+      # background = "${./wallpaper.gif}";
       loginBackground = true;
-    }
-  )];
+    })
+  ];
   services.displayManager.sddm = {
     enable = true;
-    theme = "catppuccin-mocha";
+    #theme = "catppuccin-mocha";
     wayland.enable = true;
     autoNumlock = true;
     package = pkgs.kdePackages.sddm;
