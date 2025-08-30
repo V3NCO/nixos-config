@@ -10,7 +10,7 @@
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
     ../../modules/nixos/drawing_tablets.nix
-    ../modules/nixos/theming/catpuccin.nix
+    ../../modules/nixos/theming/catppuccin.nix
     ../../users
   ];
 
