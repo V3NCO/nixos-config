@@ -108,6 +108,7 @@
       itch
       itch-dl
       android-tools
+      android-studio-full
 
       zrythm
       openutau
