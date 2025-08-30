@@ -16,16 +16,17 @@ let
 
   hostFile = attrByPath [ hostname ] null hostsFile;
   hostExtra = if hostFile == null then "" else builtins.readFile hostFile;
+  wallext = "jpg";
 
   wallpaperPkg = pkgs.stdenv.mkDerivation {
     pname = "custom-wallpaper";
     version = "1.0";
-    src = ../wallpapers/wall.gif; # Adjust path if you move the image
+    src = ../wallpapers/wall.${wallext}; # Adjust path if you move the image
     dontUnpack = true;
     nativeBuildInputs = [ pkgs.imagemagick ];
     installPhase = ''
       mkdir -p $out
-      cp $src $out/wall.gif
+      cp $src $out/wall.${wallext}
       # Blur + darken (tweak values to taste):
       # -blur 0x18  (radius 0, sigma 18 ~ fairly strong)
       # -brightness-contrast -15x-5  (slightly darker, lower contrast)
@@ -44,7 +45,7 @@ in
   ];
 
   # Install (symlink) the generated images into the user's home dir.
-  home.file.".local/share/wallpapers/wall.gif".source = "${wallpaperPkg}/wall.gif";
+  home.file.".local/share/wallpapers/wall.${wallext}".source = "${wallpaperPkg}/wall.${wallext}";
   home.file.".local/share/wallpapers/wall-blur.jpg".source = "${wallpaperPkg}/wall-blur.jpg";
 
   # Simple startup script (no on-the-fly convert needed now).
@@ -53,7 +54,7 @@ in
       #!/usr/bin/env bash
       set -euo pipefail
 
-      WALL="${HOME}/.local/share/wallpapers/wall.gif"
+      WALL="${HOME}/.local/share/wallpapers/wall.${wallext}"
       BLUR="${HOME}/.local/share/wallpapers/wall-blur.jpg"
 
       # Start swww daemon if not already running (launch directly instead of 'swww init')
