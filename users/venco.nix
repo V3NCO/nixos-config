@@ -107,8 +107,6 @@
       heroic-unwrapped
       itch
       itch-dl
-      android-tools
-      android-studio-full
 
       zrythm
       openutau
@@ -149,5 +147,6 @@
     ../modules/nixos/tailscale.nix
     ../modules/nixos/editors
     ../modules/nixos/steam.nix
+    ../modules/nixos/android-dev.nix
   ];
 }
