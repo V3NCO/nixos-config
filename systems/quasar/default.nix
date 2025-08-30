@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -14,8 +14,13 @@
     ../../users
   ];
 
+  environment.systemPackages = with pkgs; [
+    android-studio-full
+  ];
+
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
   system.stateVersion = "25.05";
 }
