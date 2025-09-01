@@ -16,5 +16,5 @@
     kdePackages.full
   ];
 
-  programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
+  # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
 }

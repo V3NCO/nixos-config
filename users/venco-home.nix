@@ -11,7 +11,7 @@
     ../modules/home-manager/git.nix
     ../modules/home-manager/kitty.nix
     ../modules/home-manager/desktop/niri
-    ../modules/home-manager/direnv.nix
+    # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
     ../modules/home-manager/vicinae.nix
     ../modules/home-manager/theming/catppuccin.nix

@@ -149,5 +149,6 @@
     ../modules/nixos/tailscale.nix
     ../modules/nixos/editors
     ../modules/nixos/steam.nix
+    # ../modules/nixos/direnv.nix
   ];
 }

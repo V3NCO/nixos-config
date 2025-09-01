@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 {
   imports = [
     ./generic.nix
@@ -8,5 +8,7 @@
     ./networking.nix
     ./smartcards.nix
     ./bluetooth.nix
+    ./direnv.nix
+    ./terminal.nix
   ];
 }
