@@ -1,9 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.spaceship-prompt ];
   programs.zsh = {
     enable = true;
     ohMyZsh = {
       enable = true;
+      theme = "spaceship";
+      custom = "${pkgs.spaceship-prompt}/share/zsh/themes";
     };
     autosuggestions = {
       enable = true;
@@ -13,6 +16,10 @@
     shellAliases = {
       "nixconf" = "sudo nixos-rebuild switch --flake ~/nixos-config";
     };
+    shellInit = ''
+      SPACESHIP_TIME_SHOW=true
+      SPACESHIP_USER_SHOW=always
+    '';
     syntaxHighlighting.enable = true;
     histSize = 10000;
     vteIntegration = true;
