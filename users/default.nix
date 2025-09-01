@@ -22,5 +22,6 @@
     inputs.apple-fonts.packages.${pkgs.system}.sf-hebrew-nerd
     inputs.apple-fonts.packages.${pkgs.system}.ny
     inputs.apple-fonts.packages.${pkgs.system}.ny-nerd
+    pkgs.nerd-fonts.lilex
   ];
 }
