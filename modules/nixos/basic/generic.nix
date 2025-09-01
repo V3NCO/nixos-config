@@ -15,4 +15,6 @@
     nixfmt-rfc-style
     kdePackages.full
   ];
+
+  programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
 }
