@@ -14,6 +14,7 @@
     ../../users
   ];
 
+  programs.light.enable = true;
   programs.nix-ld.enable = true;
   networking.hostName = "comet";
   nixpkgs.config.allowUnfree = true;
