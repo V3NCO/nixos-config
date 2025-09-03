@@ -111,6 +111,8 @@
       openutau
 
       affine-bin
+      obsidian
+      anytype
 
       android-tools
       swappy
