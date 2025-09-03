@@ -15,6 +15,6 @@
     nixfmt-rfc-style
     kdePackages.full
   ];
-
+  services.printing.enable = true;
   # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
 }
