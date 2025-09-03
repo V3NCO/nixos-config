@@ -113,6 +113,7 @@
       affine-bin
 
       android-tools
+      swappy
     ];
   };
 
