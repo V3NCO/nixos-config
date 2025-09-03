@@ -114,6 +114,7 @@
 
       android-tools
       swappy
+      ledger-live-desktop
     ];
   };
 
