@@ -11,6 +11,7 @@
     ../../modules/nixos/polkit.nix
     ../../modules/nixos/drawing_tablets.nix
     ../../modules/nixos/theming/catppuccin.nix
+    ../../modules/nixos/music-making.nix
     ../../users
   ];
 

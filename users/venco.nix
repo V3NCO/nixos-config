@@ -107,9 +107,6 @@
       itch
       itch-dl
 
-      zrythm
-      openutau
-
       affine-bin
       obsidian
       anytype
