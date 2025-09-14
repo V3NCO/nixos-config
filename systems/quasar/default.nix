@@ -13,10 +13,12 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/music-making.nix
     ../../users
+    ../../modules/nixos/flipperzero.nix
   ];
 
   environment.systemPackages = with pkgs; [
     android-studio-full
+    python313
   ];
 
   programs.nix-ld.enable = true;
