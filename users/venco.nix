@@ -114,6 +114,8 @@
       android-tools
       swappy
       ledger-live-desktop
+
+      osu-lazer-bin
     ];
   };
 
