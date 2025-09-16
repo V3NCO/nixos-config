@@ -145,7 +145,7 @@ binds {
     Mod+Shift+KP_Divide { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "kitty"; }
     Super+Alt+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Space hotkey-overlay-title="Open Launcher : Vicinae (Raycast)" { spawn "vicinae"; }
+    // Mod+Space hotkey-overlay-title="Open Launcher : Vicinae (Raycast)" { spawn "vicinae"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+C hotkey-overlay-title="Open Clipboard History" { spawn "kitty" "--class" "clipse" "clipse" "'clipse'"; }
 

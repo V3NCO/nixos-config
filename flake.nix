@@ -38,7 +38,6 @@
     };
 
     catppuccin.url = "github:catppuccin/nix/release-25.05";
-    vicinae.url = "github:tomromeo/vicinae-nix";
   };
 
   outputs =
@@ -51,7 +50,6 @@
       quickshell,
       zen-browser,
       apple-fonts,
-      vicinae,
       catppuccin,
       ...
     }@inputs:

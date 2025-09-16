@@ -19,6 +19,7 @@
   environment.systemPackages = with pkgs; [
     android-studio-full
     python313
+    python313Packages.pip
   ];
 
   programs.nix-ld.enable = true;
