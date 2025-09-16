@@ -104,8 +104,8 @@
       krita
 
       heroic-unwrapped
-      itch
-      itch-dl
+      # itch
+      # itch-dl
 
       affine-bin
       obsidian
