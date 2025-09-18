@@ -24,6 +24,7 @@
       vesktop
       slack
       signal-desktop-bin
+      mattermost
       spotify
 
       neofetch
