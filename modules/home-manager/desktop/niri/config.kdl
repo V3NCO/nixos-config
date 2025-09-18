@@ -26,9 +26,9 @@ input {
     trackpoint { }
 }
 
-debug {
-    wait-for-frame-completion-in-pipewire
-}
+// debug {
+//     wait-for-frame-completion-in-pipewire
+// }
 
 cursor {
     xcursor-theme "macOS"
