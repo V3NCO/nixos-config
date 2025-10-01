@@ -15,6 +15,7 @@
     ../../users
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
+    ../../modules/nixos/maccam.nix
   ];
 
   environment.systemPackages = [
