@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixpkgs-unstable, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -14,14 +14,14 @@
     ../../modules/nixos/music-making.nix
     ../../users
     ../../modules/nixos/flipperzero.nix
+    ../../modules/nixos/cider.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    android-studio-full
-    python313
-    python313Packages.pip
+  environment.systemPackages = [
+    pkgs.android-studio-full
+    pkgs.python313
+    pkgs.python313Packages.pip
   ];
-
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
   nixpkgs.config.allowUnfree = true;
