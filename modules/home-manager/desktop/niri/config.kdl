@@ -20,7 +20,9 @@ input {
         tap
         natural-scroll
     }
-    mouse { }
+    mouse {
+        accel-speed -0.5
+    }
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="30%"
     trackpoint { }

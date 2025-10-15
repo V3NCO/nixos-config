@@ -23,6 +23,10 @@
     pkgs.python313
     pkgs.python313Packages.pip
   ];
+
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+  networking.firewall.allowedUDPPorts = [ 8000 ];
+
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
   nixpkgs.config.allowUnfree = true;

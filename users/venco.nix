@@ -117,6 +117,8 @@
       ledger-live-desktop
 
       osu-lazer-bin
+      prismlauncher
+      remmina
     ];
   };
 
