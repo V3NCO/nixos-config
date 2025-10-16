@@ -16,7 +16,7 @@
     services.openssh = {
       enable = true;
       settings = {
-          PasswordAuthentication = false;
+          PasswordAuthentication = true;
           AllowUsers = ["venco" "root"]; # Allows all users by default. Can be [ "user1" "user2" ]
           UseDns = true;
           X11Forwarding = false;
