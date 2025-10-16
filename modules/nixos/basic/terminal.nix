@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   environment.systemPackages = [ pkgs.spaceship-prompt pkgs.alacritty ];
   programs.zsh = {
@@ -21,7 +21,7 @@
       SPACESHIP_USER_SHOW=always
     '';
     syntaxHighlighting.enable = true;
-    histSize = mkDefault 10000;
+    histSize = lib.mkDefault 10000;
     vteIntegration = true;
     enableLsColors = true;
     enableBashCompletion = true;
