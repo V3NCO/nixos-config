@@ -4,6 +4,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/nixos/basic
+    ../../modules/nixos/basic/networking.nix
+    ../../modules/nixos/basic/bluetooth.nix
     ../../modules/nixos/desktop
     ../../modules/nixos/printing.nix
     ../../modules/nixos/ssh.nix

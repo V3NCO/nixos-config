@@ -6,14 +6,11 @@
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     btop
-    alacritty
     fuzzel
     git
-    alacritty
     nixd
     nil
     nixfmt-rfc-style
-    kdePackages.full
   ];
   services.printing.enable = true;
   # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';

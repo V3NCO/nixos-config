@@ -5,4 +5,5 @@
     ./niri.nix
     ./greet.nix
   ];
+  environment.systemPackages = [ pkgs.kdePackages.full ];
 }

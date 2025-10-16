@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.spaceship-prompt ];
+  environment.systemPackages = [ pkgs.spaceship-prompt, pkgs.alacritty ];
   programs.zsh = {
     enable = true;
     ohMyZsh = {
@@ -21,7 +21,7 @@
       SPACESHIP_USER_SHOW=always
     '';
     syntaxHighlighting.enable = true;
-    histSize = 10000;
+    histSize = mkDefault 10000;
     vteIntegration = true;
     enableLsColors = true;
     enableBashCompletion = true;
