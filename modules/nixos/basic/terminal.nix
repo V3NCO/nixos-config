@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.spaceship-prompt, pkgs.alacritty ];
+  environment.systemPackages = [ pkgs.spaceship-prompt pkgs.alacritty ];
   programs.zsh = {
     enable = true;
     ohMyZsh = {
