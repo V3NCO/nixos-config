@@ -1,4 +1,4 @@
-{...}:
+{ pkgs, lib, ... }:
 {
   users.users.venco = {
     isNormalUser = true;
