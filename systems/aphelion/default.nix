@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ./networking.nix
       ../../modules/nixos/basic
+      ../../users/venco-server.nix
     ];
 
     programs.gnupg.agent = {
