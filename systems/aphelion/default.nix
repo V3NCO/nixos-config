@@ -5,6 +5,9 @@
       ./hardware-configuration.nix
       ./networking.nix
       ../../modules/nixos/basic
+      ../../modules/server/tailscale.nix
+      ../../modules/server/traefik.nix
+      ../../modules/server/fail2ban.nix
       ../../users/venco-server.nix
     ];
 
@@ -12,7 +15,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-    services.fail2ban.enable = true;
     services.openssh = {
       enable = true;
       settings = {
