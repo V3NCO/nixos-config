@@ -1,41 +1,40 @@
 { config, ... }:
 {
     services.traefik = {
-        enable = true;
-
+      enable = true;
         staticConfigOptions = {
-            entryPoints = {
-                web = {
-                address = ":80";
-                asDefault = true;
-                http.redirections.entrypoint = {
-                    to = "websecure";
-                    scheme = "https";
-                };
+          entryPoints = {
+            web = {
+              address = ":80";
+              asDefault = true;
+              http.redirections.entrypoint = {
+                  to = "websecure";
+                  scheme = "https";
+              };
             };
 
             websecure = {
-                address = ":443";
-                asDefault = true;
-                http.tls.certResolver = "letsencrypt";
+              address = ":443";
+              asDefault = true;
+              http.tls.certResolver = "letsencrypt";
             };
-        };
+          };
 
-        log = {
+          log = {
             level = "INFO";
             filePath = "${config.services.traefik.dataDir}/traefik.log";
             format = "json";
-        };
+          };
 
-        certificatesResolvers.letsencrypt.acme = {
-            email = "postmaster@YOUR.DOMAIN";
+          certificatesResolvers.letsencrypt.acme = {
+            email = "certificates@v3nco.dev";
             storage = "${config.services.traefik.dataDir}/acme.json";
             httpChallenge.entryPoint = "web";
-        };
+          };
 
-        api.dashboard = true;
-            # Access the Traefik dashboard on <Traefik IP>:8080 of your server
-            # api.insecure = true;
+          api.dashboard = true;
+          # Access the Traefik dashboard on <Traefik IP>:8080 of your server
+          # api.insecure = true;
         };
 
         dynamicConfigOptions = {
