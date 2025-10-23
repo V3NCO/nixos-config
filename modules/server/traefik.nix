@@ -16,7 +16,15 @@
             websecure = {
               address = ":443";
               asDefault = true;
-              http.tls.certResolver = "letsencrypt";
+              http.tls = {
+                certResolver = "cfacme";
+                domains = [
+                  {
+                    main = "v3nco.dev";
+                    sans = [ "*.v3nco.dev" ];
+                  }
+                ];
+              };
             };
           };
 
@@ -26,10 +34,13 @@
             format = "json";
           };
 
-          certificatesResolvers.letsencrypt.acme = {
+          certificatesResolvers.cfacme.acme = {
             email = "certificates@v3nco.dev";
             storage = "${config.services.traefik.dataDir}/acme.json";
-            httpChallenge.entryPoint = "web";
+            dnsChallenge = {
+              provider = "cloudflare";
+              resolvers = [ "1.1.1.1:53" "1.0.0.1:53" ];
+            };
           };
 
           api.dashboard = true;
