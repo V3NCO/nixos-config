@@ -28,7 +28,7 @@
                   }
                   {
                     main = "amber.dog";
-                    sans = [ "*.amber.dog" ]
+                    sans = [ "*.amber.dog" ];
                   }
                 ];
               };
