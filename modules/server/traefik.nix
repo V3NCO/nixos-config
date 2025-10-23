@@ -23,6 +23,10 @@
                     main = "v3nco.dev";
                     sans = [ "*.v3nco.dev" ];
                   }
+                  {
+                    main = "amber.dog";
+                    sans = [ "*.amber.dog" ]
+                  }
                 ];
               };
             };
