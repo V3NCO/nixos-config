@@ -1,5 +1,8 @@
 { config, ... }:
 {
+    environment.variables = {
+      CF_DNS_API_TOKEN_FILE = "${config.services.traefik.dataDir}/CF_API_TOKEN";
+    }
     services.traefik = {
       enable = true;
         staticConfigOptions = {
