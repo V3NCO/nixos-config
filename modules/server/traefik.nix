@@ -89,7 +89,7 @@
                 sslProxyHeaders = {
                   X-Forwarded-Proto = "https";
                 };
-                hostsProxyHeaders = [ "X-Forwarded-For" ]
+                hostsProxyHeaders = [ "X-Forwarded-For" ];
                 contentTypeNosniff = true;
                 customFrameOptionsValue = "SAMEORIGIN";
                 browserXssFilter = false;
