@@ -75,6 +75,9 @@
         dynamicConfigOptions = {
             http.routers = {};
             http.services = {};
+            http.serversTransports = {
+              insecureTransport.insecureSkipVerify = true;
+            };
             http.middlewares = {
               local-ipwhitelist.ipAllowList.sourceRange = [ "192.168.0.0/16" "10.0.0.0/8" "127.0.0.1/32" "172.16.0.0/12" "100.0.0.0/8" ];
               security-headers.headers = {
