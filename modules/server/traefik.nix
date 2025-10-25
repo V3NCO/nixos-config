@@ -93,7 +93,7 @@
                 contentTypeNosniff = true;
                 customFrameOptionsValue = "SAMEORIGIN";
                 browserXssFilter = false;
-                referrerPolicy = "strict-origin-when-cross-origin"
+                referrerPolicy = "strict-origin-when-cross-origin";
                 forceSTSHeader = true;
                 stsIncludeSubdomains = true;
                 stsSeconds = 63072000;
