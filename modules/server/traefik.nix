@@ -84,7 +84,7 @@
                 customResponseHeaders = {
                   Server = "";
                   X-Powered-By = "";
-                  X-Forwarded-Proto = "https"
+                  X-Forwarded-Proto = "https";
                 };
                 sslProxyHeaders = {
                   X-Forwarded-Proto = "https";
