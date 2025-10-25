@@ -73,7 +73,15 @@
         };
 
         dynamicConfigOptions = {
-            http.routers = {};
+            http.routers = {
+              traefik = {
+                entryPoints = [ "websecure" ];
+                rule = "Host(`traefik.amber.dog`)";
+                service = "api@internal";
+                tls = true;
+                middlewares = [ "security-headers" "basic-auth" ];
+              };
+            };
             http.services = {};
             http.serversTransports = {
               insecureTransport.insecureSkipVerify = true;
