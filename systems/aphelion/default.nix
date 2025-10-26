@@ -5,7 +5,7 @@
     ./networking.nix
     ../../modules/nixos/basic
     ../../modules/server/tailscale.nix
-    ../../modules/server/traefik.nix
+    ../../modules/server/nginx.nix
     ../../modules/server/fail2ban.nix
     ../../users/venco-server.nix
   ];
