@@ -8,7 +8,6 @@
         enableACME = true;
         locations."/" = {
             proxyPass = "http://sentinel";
-          };
         };
       };
     };
