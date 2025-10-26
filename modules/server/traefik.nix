@@ -1,6 +1,7 @@
 { config, ... }:
 {
-  systemd.services.traefik.serviceConfig.EnvironmentFile = "/etc/traefik/cloudflare.env";
+  systemd.services.traefik.serviceConfig.EnvironmentFile =
+    "${config.services.traefik.dataDir}/cloudflare.env";
 
   services.traefik = {
     enable = true;
