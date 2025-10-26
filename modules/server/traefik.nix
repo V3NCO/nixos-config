@@ -77,8 +77,6 @@
       };
 
       api.dashboard = true;
-      # Access the Traefik dashboard on <Traefik IP>:8080 of your server
-      # api.insecure = true;
     };
 
     dynamicConfigOptions = {
@@ -88,15 +86,23 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`traefik.amber.dog`)";
             service = "api@internal";
-            tls = true;
+
+            tls = {
+              certResolver = "cfacme";
+              domains = [
+                {
+                  main = "amber.dog";
+                  sans = [ "*.amber.dog" ];
+                }
+              ];
+            };
+
             middlewares = [
               "security-headers"
               "basic-auth"
             ];
           };
         };
-
-        # services = { };
 
         serversTransports = {
           insecureTransport.insecureSkipVerify = true;
