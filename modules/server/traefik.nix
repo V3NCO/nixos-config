@@ -147,7 +147,7 @@
       tls = {
         options = {
           default = {
-            sniStrict = true;
+            sniStrict = false;
             minVersion = "VersionTLS12";
             cipherSuites = [
               "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"
