@@ -23,7 +23,7 @@
           address = ":443";
           asDefault = true;
           http.tls = {
-            certResolver = "cfacme";
+            certResolver = "cfacme.acme";
             domains = [
               {
                 main = "v3nco.dev";
