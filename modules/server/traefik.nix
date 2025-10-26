@@ -63,15 +63,17 @@
         };
       };
 
-      certificatesResolvers.cfacme.acme = {
-        email = "certificates@v3nco.dev";
-        storage = "${config.services.traefik.dataDir}/acme.json";
-        dnsChallenge = {
-          provider = "cloudflare";
-          resolvers = [
-            "1.1.1.1:53"
-            "1.0.0.1:53"
-          ];
+      certificatesResolvers.cfacme = {
+        acme = {
+          email = "certificates@v3nco.dev";
+          storage = "${config.services.traefik.dataDir}/acme.json";
+          dnsChallenge = {
+            provider = "cloudflare";
+            resolvers = [
+              "1.1.1.1:53"
+              "1.0.0.1:53"
+            ];
+          };
         };
       };
 
@@ -128,12 +130,18 @@
             stsSeconds = 63072000;
             stsPreload = true;
           };
-          rate-limit.rateLimit = {
-            average = 100;
-            burst = 100;
-            period = 1;
+          rate-limit = {
+            rateLimit = {
+              average = 100;
+              burst = 100;
+              period = 1;
+            };
           };
-          basic-auth.basicAuth.usersFile = "${config.services.traefik.dataDir}/admindash.htpasswd";
+          basic-auth = {
+            basicAuth = {
+              usersFile = "${config.services.traefik.dataDir}/admindash.htpasswd";
+            };
+          };
         };
       };
 
