@@ -9,7 +9,8 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-            proxyPass = "http://sentinel";
+          recommendedProxySettings = true;
+          proxyPass = "http://100.93.234.76";
         };
       };
     };
