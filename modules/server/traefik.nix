@@ -1,8 +1,6 @@
 { config, ... }:
 {
-  systemd.services.traefik.environment = {
-    CF_DNS_API_TOKEN_FILE = "${config.services.traefik.dataDir}/CF_API_TOKEN";
-  };
+  systemd.services.traefik.serviceConfig.EnvironmentFile = "/etc/traefik/cloudflare.env";
 
   services.traefik = {
     enable = true;
@@ -97,7 +95,7 @@
           };
         };
 
-        services = { };
+        # services = { };
 
         serversTransports = {
           insecureTransport.insecureSkipVerify = true;
