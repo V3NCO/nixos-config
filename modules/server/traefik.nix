@@ -76,7 +76,7 @@
             http.routers = {
               traefik = {
                 entryPoints = [ "websecure" ];
-                rule = "Host(`traefik.amber.dog`)";
+                rule = "Host(`traefik.v3nco.dev`)";
                 service = "api@internal";
                 tls = true;
                 middlewares = [ "security-headers" "basic-auth" ];
