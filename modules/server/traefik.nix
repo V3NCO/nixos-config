@@ -49,7 +49,10 @@
         filePath = "${config.services.traefik.dataDir}/access.log";
         format = "json";
         filters = {
-          statusCodes = [ "200-299" "400-599" ];
+          statusCodes = [
+            "200-299"
+            "400-599"
+          ];
         };
         bufferingSize = 0;
         fields.headers = {
@@ -65,7 +68,10 @@
         storage = "${config.services.traefik.dataDir}/acme.json";
         dnsChallenge = {
           provider = "cloudflare";
-          resolvers = [ "1.1.1.1:53" "1.0.0.1:53" ];
+          resolvers = [
+            "1.1.1.1:53"
+            "1.0.0.1:53"
+          ];
         };
       };
 
@@ -82,7 +88,10 @@
             rule = "Host(`traefik.v3nco.dev`)";
             service = "api@internal";
             tls = true;
-            middlewares = [ "security-headers" "basic-auth" ];
+            middlewares = [
+              "security-headers"
+              "basic-auth"
+            ];
           };
         };
 
@@ -124,8 +133,7 @@
             burst = 100;
             period = 1;
           };
-          basic-auth.basicAuth.usersFile =
-            "${config.services.traefik.dataDir}/admindash.htpasswd";
+          basic-auth.basicAuth.usersFile = "${config.services.traefik.dataDir}/admindash.htpasswd";
         };
       };
 
