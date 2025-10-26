@@ -1,5 +1,7 @@
 { ... }:
 {
+  security.acme.defaults.email = "certificates@v3nco.dev";
+  security.acme.acceptTerms = true;
   services.nginx = {
     enable = true;
     virtualHosts = {
