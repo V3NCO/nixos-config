@@ -119,6 +119,8 @@
       osu-lazer-bin
       prismlauncher
       remmina
+      owmods-cli
+      owmods-gui
     ];
   };
 
