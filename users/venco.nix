@@ -121,6 +121,7 @@
       remmina
       owmods-cli
       owmods-gui
+      ryubing
     ];
   };
 
