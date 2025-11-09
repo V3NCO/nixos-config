@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hyperland Upstream
+    hyperland = {
+      url = "github:hyprwm/Hyprland";
+    };
+
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -112,11 +117,11 @@
           }
         ];
       };
-    nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./systems/aphelion
-      ];
+      nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./systems/aphelion
+        ];
+      };
     };
-  };
 }
