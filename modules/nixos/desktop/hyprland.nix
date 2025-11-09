@@ -5,13 +5,13 @@ in
 {
   imports = [ inputs.hyprland.nixosModules.default ];
 
-  hardware.graphics = {
-    package = pkgs-unstable.mesa;
+  #hardware.graphics = {
+  #  package = pkgs-unstable.mesa;
 
     # if you also want 32-bit support (e.g for Steam)
-    enable32Bit = true;
-    package32 = pkgs-unstable.pkgsi686Linux.mesa;
-  };
+  #  enable32Bit = true;
+  #  package32 = pkgs-unstable.pkgsi686Linux.mesa;
+  #};
 
   programs.hyprland = {
     enable = true;
