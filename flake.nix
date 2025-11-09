@@ -15,7 +15,7 @@
     };
 
     # Hyperland Upstream
-    hyperland = {
+    hyprland = {
       url = "github:hyprwm/Hyprland";
     };
 
