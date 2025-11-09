@@ -1,14 +1,14 @@
 { inputs, pkgs, ... }:
-let
-  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
+# let
+#   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+# in
 {
   imports = [ inputs.hyprland.nixosModules.default ];
 
   #hardware.graphics = {
   #  package = pkgs-unstable.mesa;
 
-    # if you also want 32-bit support (e.g for Steam)
+  # if you also want 32-bit support (e.g for Steam)
   #  enable32Bit = true;
   #  package32 = pkgs-unstable.pkgsi686Linux.mesa;
   #};
@@ -25,7 +25,11 @@ in
       pkgs.hyprlandPlugins.hyprgrass # Touch grass :p
     ];
     settings = {
-      # ...
+      "$mod" = "SUPER";
+      bind = [
+        "$mod, T, exec, kitty"
+        "$mod, L, exit"
+      ];
     };
   };
 }
