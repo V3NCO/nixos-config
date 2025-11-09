@@ -31,19 +31,19 @@
     "aquamarine": {
       "inputs": {
         "hyprutils": [
-          "hyperland",
+          "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "hyperland",
+          "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -145,7 +145,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "pre-commit-hooks",
           "nixpkgs"
         ]
@@ -227,7 +227,65 @@
         "type": "github"
       }
     },
-    "hyperland": {
+    "hyprcursor": {
+      "inputs": {
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753964049,
+        "narHash": "sha256-lIqabfBY7z/OANxHoPeIrDJrFyYy9jAM4GQLzZ2feCM=",
+        "owner": "hyprwm",
+        "repo": "hyprcursor",
+        "rev": "44e91d467bdad8dcf8bbd2ac7cf49972540980a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprcursor",
+        "type": "github"
+      }
+    },
+    "hyprgraphics": {
+      "inputs": {
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "hyprland",
+          "nixpkgs"
+        ],
+        "systems": [
+          "hyprland",
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762462052,
+        "narHash": "sha256-6roLYzcDf4V38RUMSqycsOwAnqfodL6BmhRkUtwIgdA=",
+        "owner": "hyprwm",
+        "repo": "hyprgraphics",
+        "rev": "ffc999d980c7b3bca85d3ebd0a9fbadf984a8162",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprgraphics",
+        "type": "github"
+      }
+    },
+    "hyprland": {
       "inputs": {
         "aquamarine": "aquamarine",
         "hyprcursor": "hyprcursor",
@@ -256,89 +314,31 @@
         "type": "github"
       }
     },
-    "hyprcursor": {
-      "inputs": {
-        "hyprlang": [
-          "hyperland",
-          "hyprlang"
-        ],
-        "nixpkgs": [
-          "hyperland",
-          "nixpkgs"
-        ],
-        "systems": [
-          "hyperland",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1753964049,
-        "narHash": "sha256-lIqabfBY7z/OANxHoPeIrDJrFyYy9jAM4GQLzZ2feCM=",
-        "owner": "hyprwm",
-        "repo": "hyprcursor",
-        "rev": "44e91d467bdad8dcf8bbd2ac7cf49972540980a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "hyprcursor",
-        "type": "github"
-      }
-    },
-    "hyprgraphics": {
-      "inputs": {
-        "hyprutils": [
-          "hyperland",
-          "hyprutils"
-        ],
-        "nixpkgs": [
-          "hyperland",
-          "nixpkgs"
-        ],
-        "systems": [
-          "hyperland",
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762462052,
-        "narHash": "sha256-6roLYzcDf4V38RUMSqycsOwAnqfodL6BmhRkUtwIgdA=",
-        "owner": "hyprwm",
-        "repo": "hyprgraphics",
-        "rev": "ffc999d980c7b3bca85d3ebd0a9fbadf984a8162",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "hyprgraphics",
-        "type": "github"
-      }
-    },
     "hyprland-guiutils": {
       "inputs": {
         "aquamarine": [
-          "hyperland",
+          "hyprland",
           "aquamarine"
         ],
         "hyprgraphics": [
-          "hyperland",
+          "hyprland",
           "hyprgraphics"
         ],
         "hyprlang": [
-          "hyperland",
+          "hyprland",
           "hyprlang"
         ],
         "hyprtoolkit": "hyprtoolkit",
         "hyprutils": [
-          "hyperland",
+          "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -359,11 +359,11 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -384,15 +384,15 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
-          "hyperland",
+          "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -413,33 +413,33 @@
     "hyprtoolkit": {
       "inputs": {
         "aquamarine": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "aquamarine"
         ],
         "hyprgraphics": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "hyprgraphics"
         ],
         "hyprlang": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "hyprlang"
         ],
         "hyprutils": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "hyprutils"
         ],
         "hyprwayland-scanner": "hyprwayland-scanner",
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "systems"
         ]
@@ -461,11 +461,11 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -486,13 +486,13 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "hyprtoolkit",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "hyprland-guiutils",
           "hyprtoolkit",
           "systems"
@@ -515,11 +515,11 @@
     "hyprwayland-scanner_2": {
       "inputs": {
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
@@ -634,7 +634,7 @@
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ]
       },
@@ -700,7 +700,7 @@
         "catppuccin": "catppuccin",
         "hm-unstable": "hm-unstable",
         "home-manager": "home-manager",
-        "hyperland": "hyperland",
+        "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "quickshell": "quickshell_2",
@@ -809,27 +809,27 @@
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
-          "hyperland",
+          "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
-          "hyperland",
+          "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
-          "hyperland",
+          "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "hyperland",
+          "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "hyperland",
+          "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "hyperland",
+          "hyprland",
           "systems"
         ]
       },
