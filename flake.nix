@@ -24,9 +24,18 @@
       url = "github:hyprwm/Hyprland";
     };
 
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
+    };
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Lets start having fun with versions

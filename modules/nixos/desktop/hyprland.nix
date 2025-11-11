@@ -20,9 +20,8 @@
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
     plugins = [
-      pkgs.hyprlandPlugins.hyprscrolling
-      pkgs.hyprlandPlugins.hyprspace
-      pkgs.hyprlandPlugins.hyprgrass # Touch grass :p
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprscrolling
+      inputs.hyprgrass.packages.${pkgs.system}.default # Touch grass :p
     ];
     settings = {
       "$mod" = "SUPER";
