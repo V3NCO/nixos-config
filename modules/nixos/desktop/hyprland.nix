@@ -86,6 +86,7 @@
         hyprscrolling = {
           column_width = 0.9;
           fullscreen_on_one_column = false;
+          follow_focus = false;
           focus_fit_method = 1;
         };
       };
