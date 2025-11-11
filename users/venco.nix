@@ -122,6 +122,9 @@
       owmods-cli
       owmods-gui
       ryubing
+
+      inotify-tools
+      wakatime-cli
     ];
   };
 
