@@ -30,6 +30,15 @@
         "$mod, T, exec, kitty"
         "$mod, L, exit"
       ];
+      input = {
+        kb_layout = "fr";
+        numlock_by_default = true;
+        repeat_delay = 250;
+        repeat_rate = 35;
+        follow_mouse = 1;
+        off_window_axis_events = 2;
+
+      };
     };
   };
 }

@@ -16,6 +16,6 @@
     # ../modules/home-manager/vicinae.nix
     ../modules/home-manager/theming/catppuccin.nix
     ../modules/home-manager/desktop/gnome.nix
-    # ../modules/home-manager/caelestia.nix
+    ../modules/home-manager/caelestia.nix
   ];
 }
