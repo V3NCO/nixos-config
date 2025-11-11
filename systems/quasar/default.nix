@@ -18,6 +18,7 @@
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
     ../../modules/nixos/maccam.nix
+    ./hyprland/monitors.nix
   ];
 
   environment.systemPackages = [
