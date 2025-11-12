@@ -7,6 +7,7 @@
     ../../modules/server/tailscale.nix
     ../../modules/server/nginx.nix
     ../../modules/server/fail2ban.nix
+    ../../modules/server/wireguardsrv.nix
     ../../users/venco-server.nix
   ];
 
