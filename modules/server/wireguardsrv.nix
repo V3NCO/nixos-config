@@ -37,7 +37,7 @@
 
       peers = [
         { # french
-          publicKey = "hJnVHvX8EVnxLkCHNhqZvEtFoJiOitLqugil4+ivEVc=";
+          publicKey = "LR8VxxKF5ZMLdl6VDtBMhj4qZkgSJOsuBrc6xriQF2w=";
           allowedIPs = [ "10.100.0.3/32" ];
         }
       ];
