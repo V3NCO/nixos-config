@@ -125,6 +125,7 @@
 
       inotify-tools
       wakatime-cli
+      gale
     ];
   };
 
