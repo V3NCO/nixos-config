@@ -125,7 +125,7 @@
 
       inotify-tools
       wakatime-cli
-      gale
+      r2modman
     ];
   };
 
