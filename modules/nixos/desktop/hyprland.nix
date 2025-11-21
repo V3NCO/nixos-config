@@ -66,6 +66,20 @@
         "$mod, mouse_down, global, caelestia:launcherInterrupt"
       ];
 
+      bindl = [
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
+      ];
+      bindle = [
+        ", XF86AudioRaiseVolume, exec, vol --up"
+        ", XF86AudioLowerVolume, exec, vol --down"
+        ", XF86MonBrightnessUp, exec, bri --up"
+        ", XF86MonBrightnessDown, exec, bri --down"
+        ", XF86Search, exec, launchpad"
+      ];
+
       input = {
         kb_layout = "fr";
         numlock_by_default = true;
