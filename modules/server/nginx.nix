@@ -13,6 +13,14 @@
           proxyPass = "http://100.93.234.76";
         };
       };
+      "aperture-tts-slack.v3nco.dev" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = {
+          recommendedProxySettings = true;
+          proxyPass = "http://100.93.234.76";
+        };
+      };
     };
   };
 }
