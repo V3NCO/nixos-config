@@ -10,7 +10,12 @@
         enableACME = true;
         locations."/" = {
           recommendedProxySettings = true;
-          proxyPass = "http://100.93.234.76";
+          proxyPass = "https://100.93.234.76";
+          extraConfig = ''
+            proxy_ssl_server_name on;
+            proxy_ssl_name $host;
+            proxy_ssl_verify off;
+          '';
         };
       };
       "aperture-tts-slack.v3nco.dev" = {
@@ -18,7 +23,12 @@
         enableACME = true;
         locations."/" = {
           recommendedProxySettings = true;
-          proxyPass = "http://100.93.234.76";
+          proxyPass = "https://100.93.234.76";
+          extraConfig = ''
+            proxy_ssl_server_name on;
+            proxy_ssl_name $host;
+            proxy_ssl_verify off;
+          '';
         };
       };
     };
