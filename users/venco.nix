@@ -98,6 +98,7 @@
       bitwarden-cli
       sc-controller
       blender
+      virt-manager
 
       vlc
       yt-dlp
