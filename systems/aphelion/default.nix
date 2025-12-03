@@ -3,7 +3,13 @@
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
-    ../../modules/nixos/basic
+    ./bootloader.nix
+    ../../modules/nixos/basic/generic.nix
+    ../../modules/nixos/basic/audio.nix
+    ../../modules/nixos/basic/locale.nix
+    ../../modules/nixos/basic/smartcards.nix
+    ../../modules/nixos/basic/direnv.nix
+    ../../modules/nixos/basic/terminal.nix
     ../../modules/server/tailscale.nix
     ../../modules/server/nginx.nix
     ../../modules/server/fail2ban.nix
