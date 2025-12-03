@@ -1,5 +1,5 @@
 { ... }:
 {
   boot.loader.grub.enable = true;
-  boot.loader.grub.bootDevice = "/dev/sda";
+  boot.loader.grub.device = "/dev/sda";
 }
