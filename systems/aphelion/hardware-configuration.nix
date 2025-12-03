@@ -27,7 +27,7 @@
      };
      fileSystems."/boot" = {
        device = "/dev/disk/by-label/NIXBOOT";
-       fsType = "fat32";
+       fsType = "vfat";
      };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
