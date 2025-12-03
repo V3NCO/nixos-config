@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -16,7 +16,7 @@
     ../../modules/server/wireguardsrv.nix
     ../../users/venco-server.nix
   ];
-
+  environment.systemPackages = [ pkgs.spice-vdagent ];
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
