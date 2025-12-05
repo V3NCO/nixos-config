@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,9 +22,15 @@
   networking.hostName = "aphelion"; # Define your hostname.
   networking = {
     defaultGateway = "45.8.201.1";
-    nameservers = ["8.8.8.8" "1.1.1.1"];
+    nameservers = [
+      "8.8.8.8"
+      "1.1.1.1"
+    ];
     interfaces.enp3s0.ipv4.addresses = [
-      {address = "45.8.201.68"; prefixLength = 24;}
+      {
+        address = "45.8.201.68";
+        prefixLength = 24;
+      }
     ];
   };
   # Pick only one of the below networking options.
@@ -43,9 +54,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -132,6 +140,6 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
