@@ -6,5 +6,5 @@
     ./hyprland.nix
   ];
 
-  environment.systemPackages = [ pkgs.kdePackages.full ];
+  environment.systemPackages = [ pkgs.kdePackages.qtdeclarative ];
 }

@@ -74,7 +74,7 @@
     }@inputs:
     {
       nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
-        stdenv.hostPlatform.system = "x86_64-linux";
+        system = "x86_64-linux";
         specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/quasar
@@ -104,7 +104,7 @@
       };
 
       nixosConfigurations.comet = nixpkgs.lib.nixosSystem {
-        stdenv.hostPlatform.system = "x86_64-linux";
+        system = "x86_64-linux";
         specialArgs = { inherit inputs quickshell; };
         modules = [
           ./systems/comet
@@ -133,7 +133,7 @@
         ];
       };
       nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
-        stdenv.hostPlatform.system = "x86_64-linux";
+        system = "x86_64-linux";
         modules = [
           ./systems/aphelion
         ];
