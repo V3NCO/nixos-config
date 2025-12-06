@@ -12,6 +12,9 @@
   #  enable32Bit = true;
   #  package32 = pkgs-unstable.pkgsi686Linux.mesa;
   #};
+  environment.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "hyprland";
+  };
 
   programs.hyprland = {
     enable = true;
