@@ -47,7 +47,7 @@
         "$mod SHIFT, mouse_up, layoutmsg, focus r"
         "$mod SHIFT, mouse_down, layoutmsg, focus l"
         "$mod, J, layoutmsg, promote"
-        "$mod, K, layoutmsg, fit"
+        "$mod, K, layoutmsg, fit active"
       ];
       binde = [
         "$mod, parenright, splitratio, -0.1"
