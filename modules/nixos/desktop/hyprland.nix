@@ -39,13 +39,15 @@
         "$mod, Q, killactive"
         "$mod, L, exit"
 
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
+        "$mod, left, layoutmsg, focus l"
+        "$mod, right, layoutmsg, focus r"
+        "$mod, up, layoutmsg, focus u"
+        "$mod, down, layoutmsg, focus d"
 
-        "$mod SHIFT, mouse_up, layoutmsg, move +col"
-        "$mod SHIFT, mouse_down, layoutmsg, move -col"
+        "$mod SHIFT, mouse_up, layoutmsg, focus r"
+        "$mod SHIFT, mouse_down, layoutmsg, focus l"
+        "$mod, J, layoutmsg, promote"
+        "$mod, K, layoutmsg, fit"
       ];
       binde = [
         "$mod, parenright, splitratio, -0.1"
@@ -76,8 +78,8 @@
         ", XF86AudioPrev, exec, playerctl previous"
       ];
       bindle = [
-        ", XF86AudioRaiseVolume, exec, vol --up"
-        ", XF86AudioLowerVolume, exec, vol --down"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 3%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 3%-"
         ", XF86MonBrightnessUp, exec, bri --up"
         ", XF86MonBrightnessDown, exec, bri --down"
         ", XF86Search, exec, launchpad"
@@ -104,7 +106,7 @@
           column_width = 0.9;
           fullscreen_on_one_column = false;
           follow_focus = false;
-          focus_fit_method = 1;
+          focus_fit_method = 0;
         };
       };
 
