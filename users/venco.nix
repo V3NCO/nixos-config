@@ -115,6 +115,7 @@
 
       android-tools
       swappy
+      hyprshot
       ledger-live-desktop
 
       osu-lazer-bin

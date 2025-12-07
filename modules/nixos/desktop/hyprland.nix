@@ -38,6 +38,7 @@
         "$mod, RETURN, exec, kitty"
         "$mod, Q, killactive"
         "$mod, L, exit"
+        " , Print, exec, hyprshot -m region -z -- swappy"
 
         "$mod, left, layoutmsg, focus l"
         "$mod, right, layoutmsg, focus r"
