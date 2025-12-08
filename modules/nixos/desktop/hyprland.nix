@@ -37,7 +37,8 @@
         "$mod, SPACE, global, caelestia:launcher"
         "$mod, RETURN, exec, kitty"
         "$mod, Q, killactive"
-        "$mod, L, exit"
+        "$mod SHIFT, L, exit"
+        "$mod, L, global, caelestia:lock"
         " , Print, exec, hyprshot -m region -z --raw | swappy -f -"
 
         "$mod, left, layoutmsg, focus l"
