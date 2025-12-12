@@ -128,6 +128,7 @@
       inotify-tools
       wakatime-cli
       r2modman
+      yaak
     ];
   };
 
