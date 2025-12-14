@@ -132,7 +132,7 @@
       r2modman
       yaak
 
-      libreoffice-bin
+      libreoffice-qt-fresh
       hunspell
       hunspellDicts.en_US
       hunspellDicts.fr-any
