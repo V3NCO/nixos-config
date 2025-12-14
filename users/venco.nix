@@ -131,6 +131,11 @@
       wakatime-cli
       r2modman
       yaak
+
+      libreoffice-bin
+      hunspell
+      hunspellDicts.en_US
+      hunspellDicts.fr-any
     ];
   };
 
