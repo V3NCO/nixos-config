@@ -10,6 +10,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "input"
     ];
     initialPassword = "password";
     packages = with pkgs; [

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -15,6 +15,12 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../users
+    ./hyprland
+  ];
+
+  environment.systemPackages = [
+    pkgs.libinput
+    pkgs.libinput-gestures # Add this for libinput command-line tools
   ];
 
   programs.light.enable = true;

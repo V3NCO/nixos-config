@@ -1,17 +1,7 @@
 { inputs, pkgs, ... }:
-# let
-#   pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-# in
 {
   imports = [ inputs.hyprland.nixosModules.default ];
 
-  #hardware.graphics = {
-  #  package = pkgs-unstable.mesa;
-
-  # if you also want 32-bit support (e.g for Steam)
-  #  enable32Bit = true;
-  #  package32 = pkgs-unstable.pkgsi686Linux.mesa;
-  #};
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "hyprland";
   };
@@ -50,6 +40,13 @@
         "$mod SHIFT, mouse_down, layoutmsg, focus l"
         "$mod, J, layoutmsg, promote"
         "$mod, K, layoutmsg, fit active"
+
+        ",swipe:3:r,layoutmsg,focus r"
+        ",swipe:3:l,layoutmsg,focus l"
+        ",swipe:3:u,layoutmsg,focus u"
+        ",swipe:3:d,layoutmsg,focus d"
+        ",swipe:4:u,exec,caelestia-launcher"
+        ",swipe:4:d,killactive"
       ];
       binde = [
         "$mod, parenright, splitratio, -0.1"
@@ -82,8 +79,8 @@
       bindle = [
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 3%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 3%-"
-        ", XF86MonBrightnessUp, exec, bri --up"
-        ", XF86MonBrightnessDown, exec, bri --down"
+        ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
+        ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
         ", XF86Search, exec, launchpad"
       ];
 
@@ -94,6 +91,14 @@
         repeat_rate = 35;
         follow_mouse = 1;
         off_window_axis_events = 2;
+
+        touchpad = {
+          natural_scroll = true;
+          disable_while_typing = true;
+          tap-to-click = true;
+          drag_lock = false;
+          clickfinger_behavior = true;
+        };
       };
 
       exec-once = [
@@ -101,6 +106,7 @@
         "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
         "clipse -listen"
         "caelestia shell -d"
+        "libinput-gestures"
       ];
 
       plugin = {
@@ -110,8 +116,16 @@
           follow_focus = false;
           focus_fit_method = 0;
         };
-      };
+        touch_gestures = {
+          sensitivity = 1.0;
+          workspace_swipe_fingers = 3;
+          long_press_delay = 400;
 
+          experimental = {
+            send_cancel = 0;
+          };
+        };
+      };
     };
   };
 }
