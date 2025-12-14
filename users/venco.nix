@@ -5,6 +5,7 @@
 {
   users.users.venco = {
     isNormalUser = true;
+    initialPassword = "venco";
     description = "Venco";
     extraGroups = [
       "networkmanager"
