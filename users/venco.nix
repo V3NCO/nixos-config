@@ -9,6 +9,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     initialPassword = "password";
     packages = with pkgs; [

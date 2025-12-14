@@ -3,7 +3,10 @@
   users.users.venco = {
     isNormalUser = true;
     initialPassword = "password";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];

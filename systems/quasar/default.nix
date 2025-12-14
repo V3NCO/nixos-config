@@ -22,6 +22,10 @@
     ./hyprland/monitors.nix
   ];
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   environment.systemPackages = [
     pkgs.android-studio-full
     pkgs.python313
