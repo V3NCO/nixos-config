@@ -11,6 +11,7 @@
     nixd
     nil
     nixfmt-rfc-style
+    exfat
   ];
   services.printing.enable = true;
   # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
