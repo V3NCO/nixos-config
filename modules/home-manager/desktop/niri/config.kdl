@@ -12,7 +12,7 @@
 input {
     keyboard {
         xkb {
-            layout "en_US"
+            layout "us"
         }
         numlock
     }

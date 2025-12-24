@@ -20,10 +20,10 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "en_US";
-    variant = "qwerty";
+    layout = "us";
+    variant = "";
   };
 
   # Configure console keymap
-  console.keyMap = "en_US";
+  console.keyMap = "us";
 }
