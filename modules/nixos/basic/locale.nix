@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 {
   # Timezone, duh
   time.timeZone = "Europe/Paris";
@@ -20,10 +20,10 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "fr";
-    variant = "azerty";
+    layout = "en_US";
+    variant = "qwerty";
   };
 
   # Configure console keymap
-  console.keyMap = "fr";
+  console.keyMap = "en_US";
 }

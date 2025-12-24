@@ -85,7 +85,7 @@
       ];
 
       input = {
-        kb_layout = "fr";
+        kb_layout = "en_US";
         numlock_by_default = true;
         repeat_delay = 250;
         repeat_rate = 35;
