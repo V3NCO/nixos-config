@@ -30,7 +30,7 @@
         "$mod SHIFT, L, exit"
         "$mod, L, global, caelestia:lock"
         " , Print, exec, hyprshot -m region -z --raw | swappy -f -"
-
+        "$mod SHIFT, 4, exec, hyprshot -m region -z --raw | swappy -f -"
         "$mod, left, layoutmsg, focus l"
         "$mod, right, layoutmsg, focus r"
         "$mod, up, layoutmsg, focus u"
