@@ -30,13 +30,8 @@
         }
       ];
     };
-    hosts =
-      lib.mkMerge [
-        (lib.optionals (builtins.exists /etc/hosts) [ ])
-        [ ]
-      ]
-      // {
-        "sentinel.v3nco.dev" = "100.93.234.76";
-      };
+    hosts = {
+      "100.93.234.76" = "sentinel.v3nco.dev";
+    };
   };
 }
