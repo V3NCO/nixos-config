@@ -1,7 +1,6 @@
 { ... }:
 {
   services.anubis = {
-    enable = true;
     defaultOptions = {
       settings = {
         WEBMASTER_EMAIL = "anubis@v3nco.dev";
