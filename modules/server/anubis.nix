@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   services.anubis = {
     defaultOptions = {
@@ -24,4 +24,14 @@
       };
     };
   };
+
+  users.groups.anubis = { };
+
+  users.users.nginx.extraGroups = lib.mkDefault [ "anubis" ];
+
+  systemd.tmpfiles.rules = [
+    "d /run/anubis 0755 root anubis -"
+    "d /run/anubis/anubis-nexus 0755 root anubis -"
+    "d /run/anubis/anubis-forgejo 0755 root anubis -"
+  ];
 }
