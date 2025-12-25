@@ -136,6 +136,8 @@
       hunspell
       hunspellDicts.en_US
       hunspellDicts.fr-any
+
+      via
     ];
   };
 
