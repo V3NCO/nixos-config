@@ -37,7 +37,7 @@
         enableACME = true;
         locations."/" = {
           recommendedProxySettings = true;
-          proxyPass = "/run/anubis/anubis-nexus.sock";
+          proxyPass = "http://unix:/run/anubis/anubis-forgejo/anubis.sock";
           extraConfig = ''
             proxy_ssl_server_name on;
             proxy_ssl_name $host;
@@ -64,7 +64,7 @@
         enableACME = true;
         locations."/" = {
           recommendedProxySettings = true;
-          proxyPass = "/run/anubis/anubis-forgejo.sock";
+          proxyPass = "http://unix:/run/anubis/anubis-forgejo/anubis.sock";
           extraConfig = ''
             proxy_ssl_server_name on;
             proxy_ssl_name $host;
