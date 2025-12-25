@@ -31,7 +31,7 @@
       ];
     };
     hosts = {
-      "100.93.234.76" = "sentinel.v3nco.dev";
+      "100.93.234.76" = [ "sentinel.v3nco.dev" ];
     };
   };
 }
