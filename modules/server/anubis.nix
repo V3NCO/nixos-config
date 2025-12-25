@@ -12,14 +12,14 @@
         settings = {
           BIND = "/run/anubis/anubis-nexus/anubis.sock";
           METRICS_BIND = "/run/anubis/anubis-nexus/metrics.sock";
-          TARGET = "https://100.93.234.76";
+          TARGET = "https://sentinel.v3nco.dev";
         };
       };
       forgejo = {
         settings = {
           BIND = "/run/anubis/anubis-forgejo/anubis.sock";
           METRICS_BIND = "/run/anubis/anubis-forgejo/metrics.sock";
-          TARGET = "https://100.93.234.76";
+          TARGET = "https://sentinel.v3nco.dev";
         };
       };
     };
@@ -27,7 +27,9 @@
 
   users.groups.anubis = { };
 
-  users.users.nginx.extraGroups = lib.mkDefault [ "anubis" ];
+  systemd.services.nginx.serviceConfig = {
+    SupplementaryGroups = "anubis";
+  };
 
   systemd.tmpfiles.rules = [
     "d /run/anubis 0755 root anubis -"

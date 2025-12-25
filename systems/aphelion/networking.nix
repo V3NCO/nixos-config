@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   networking = {
     #defaultGateway = "45.8.201.1";
@@ -30,5 +30,13 @@
         }
       ];
     };
+    hosts =
+      lib.mkMerge [
+        (lib.optionals (builtins.exists /etc/hosts) [ ])
+        [ ]
+      ]
+      // {
+        "sentinel.v3nco.dev" = "100.93.234.76";
+      };
   };
 }
