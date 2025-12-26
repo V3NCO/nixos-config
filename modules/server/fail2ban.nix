@@ -17,6 +17,7 @@
     jails = {
       sshd.settings = {
         enabled = true;
+        port = 222;
         mode = "aggressive";
       };
       dovecot.settings = {
