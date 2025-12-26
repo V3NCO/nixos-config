@@ -50,7 +50,7 @@
         };
       };
 
-      certificatesResolvers.acme = {
+      certificatesResolvers.letsencrypt = {
         acme = {
           email = "certificates@v3nco.dev";
           storage = "${config.services.traefik.dataDir}/acme.json";
@@ -70,7 +70,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`traefik.amber.dog`)";
             service = "api@internal";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
               "basic-auth"
@@ -81,7 +81,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`zipline.v3nco.dev`)";
             service = "zipline";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
 
@@ -89,7 +89,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`aperture-tts-slack.v3nco.dev`)";
             service = "aperture-tts-slack";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
 
@@ -97,7 +97,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`synapse.v3nco.dev`)";
             service = "synapse";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
 
@@ -105,7 +105,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`nexus.v3nco.dev`)";
             service = "nexus";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
 
@@ -113,7 +113,7 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`forgejo.v3nco.dev`)";
             service = "forgejo";
-            tls.certResolver = "acme";
+            tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
         };
