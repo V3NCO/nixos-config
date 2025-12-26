@@ -22,19 +22,7 @@
         websecure = {
           address = ":443";
           asDefault = true;
-          http.tls = {
-            certResolver = "cfacme";
-            domains = [
-              {
-                main = "v3nco.dev";
-                sans = [ "*.v3nco.dev" ];
-              }
-              {
-                main = "amber.dog";
-                sans = [ "*.amber.dog" ];
-              }
-            ];
-          };
+          http.tls = { };
         };
       };
 
@@ -62,16 +50,12 @@
         };
       };
 
-      certificatesResolvers.cfacme = {
+      certificatesResolvers.acme = {
         acme = {
           email = "certificates@v3nco.dev";
           storage = "${config.services.traefik.dataDir}/acme.json";
-          dnsChallenge = {
-            provider = "cloudflare";
-            resolvers = [
-              "1.1.1.1:53"
-              "1.0.0.1:53"
-            ];
+          httpChallenge = {
+            entryPoint = "web";
           };
         };
       };
@@ -86,26 +70,80 @@
             entryPoints = [ "websecure" ];
             rule = "Host(`traefik.amber.dog`)";
             service = "api@internal";
-
-            tls = {
-              certResolver = "cfacme";
-              domains = [
-                {
-                  main = "amber.dog";
-                  sans = [ "*.amber.dog" ];
-                }
-              ];
-            };
-
+            tls.certResolver = "acme";
             middlewares = [
               "security-headers"
               "basic-auth"
             ];
           };
+
+          zipline = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`zipline.v3nco.dev`)";
+            service = "zipline";
+            tls.certResolver = "acme";
+            middlewares = [ "security-headers" ];
+          };
+
+          aperture-tts-slack = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`aperture-tts-slack.v3nco.dev`)";
+            service = "aperture-tts-slack";
+            tls.certResolver = "acme";
+            middlewares = [ "security-headers" ];
+          };
+
+          synapse = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`synapse.v3nco.dev`)";
+            service = "synapse";
+            tls.certResolver = "acme";
+            middlewares = [ "security-headers" ];
+          };
+
+          nexus = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`nexus.v3nco.dev`)";
+            service = "nexus";
+            tls.certResolver = "acme";
+            middlewares = [ "security-headers" ];
+          };
+
+          forgejo = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`forgejo.v3nco.dev`)";
+            service = "forgejo";
+            tls.certResolver = "acme";
+            middlewares = [ "security-headers" ];
+          };
         };
 
-        serversTransports = {
-          insecureTransport.insecureSkipVerify = true;
+        services = {
+          zipline.loadBalancer.servers = [
+            {
+              url = "https://100.93.234.76";
+            }
+          ];
+          aperture-tts-slack.loadBalancer.servers = [
+            {
+              url = "https://100.93.234.76";
+            }
+          ];
+          synapse.loadBalancer.servers = [
+            {
+              url = "https://100.93.234.76";
+            }
+          ];
+          nexus.loadBalancer.servers = [
+            {
+              url = "http+unix:///run/anubis/anubis-nexus/anubis.sock";
+            }
+          ];
+          forgejo.loadBalancer.servers = [
+            {
+              url = "http+unix:///run/anubis/anubis-forgejo/anubis.sock";
+            }
+          ];
         };
 
         middlewares = {
@@ -147,6 +185,9 @@
               usersFile = "${config.services.traefik.dataDir}/admindash.htpasswd";
             };
           };
+        };
+        serversTransports = {
+          insecureTransport.insecureSkipVerify = true;
         };
       };
 

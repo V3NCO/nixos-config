@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   networking = {
     #defaultGateway = "45.8.201.1";
