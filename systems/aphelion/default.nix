@@ -24,7 +24,7 @@
   };
   services.openssh = {
     enable = true;
-    port = 222;
+    ports = [ 2223 ];
     settings = {
       PasswordAuthentication = false;
       AllowUsers = [
