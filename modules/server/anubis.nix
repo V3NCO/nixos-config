@@ -8,18 +8,14 @@
       };
     };
     instances = {
-      nexus = {
+      traefik = {
         settings = {
-          BIND = "/run/anubis/anubis-nexus/anubis.sock";
-          METRICS_BIND = "/run/anubis/anubis-nexus/metrics.sock";
-          TARGET = "https://sentinel.v3nco.dev";
-        };
-      };
-      forgejo = {
-        settings = {
-          BIND = "/run/anubis/anubis-forgejo/anubis.sock";
+          BIND = ":7980";
+          REDIRECT_DOMAINS = "v3nco.dev";
+          PUBLIC_URL = "https://anubis.v3nco.dev";
           METRICS_BIND = "/run/anubis/anubis-forgejo/metrics.sock";
-          TARGET = "https://sentinel.v3nco.dev";
+          TARGET = " ";
+          COOKIE_DOMAIN = "v3nco.dev";
         };
       };
     };

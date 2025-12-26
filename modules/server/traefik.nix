@@ -78,6 +78,14 @@
           #   ];
           # };
 
+          anubis = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`anubis.v3nco.dev`)";
+            service = "anubis";
+            tls.certResolver = "letsencrypt";
+            middlewares = [ "security-headers" ];
+          };
+
           zipline = {
             entryPoints = [ "websecure" ];
             rule = "Host(`zipline.v3nco.dev`)";
@@ -107,7 +115,10 @@
             rule = "Host(`nexus.v3nco.dev`)";
             service = "nexus";
             tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
+            middlewares = [
+              "security-headers"
+              "anubis"
+            ];
           };
 
           forgejo = {
@@ -115,7 +126,10 @@
             rule = "Host(`forgejo.v3nco.dev`)";
             service = "forgejo";
             tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
+            middlewares = [
+              "security-headers"
+              "anubis"
+            ];
           };
         };
 
@@ -133,10 +147,16 @@
             servers = [ { url = "https://100.93.234.76"; } ];
           };
           nexus.loadBalancer = {
-            servers = [ { url = "http://unix:/run/anubis/anubis-nexus/anubis.sock"; } ];
+            serversTransport = "insecureTransport";
+            servers = [ { url = "https://100.93.234.76"; } ];
           };
           forgejo.loadBalancer = {
-            servers = [ { url = "http://unix:/run/anubis/anubis-forgejo/anubis.sock"; } ];
+            serversTransport = "insecureTransport";
+            servers = [ { url = "https://100.93.234.76"; } ];
+          };
+          anubis.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "http://localhost:7980"; } ];
           };
         };
 
@@ -148,6 +168,7 @@
             "172.16.0.0/12"
             "100.0.0.0/8"
           ];
+          anubis.forwardauth.address = "http://localhost:7980/.within.website/x/cmd/anubis/api/check";
           security-headers.headers = {
             customResponseHeaders = {
               Server = "";
