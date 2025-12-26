@@ -27,7 +27,7 @@
 
   users.groups.anubis = { };
 
-  systemd.services.nginx.serviceConfig = {
+  systemd.services.traefik.serviceConfig = {
     SupplementaryGroups = "anubis";
   };
 
