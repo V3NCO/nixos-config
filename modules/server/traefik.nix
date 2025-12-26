@@ -216,7 +216,6 @@
             entryPoints = [ "ssh" ];
             rule = "HostSNI(`*`)";
             service = "forgejo-ssh-service";
-            passthrough = true;
           };
         };
 
