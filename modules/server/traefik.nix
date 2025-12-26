@@ -24,6 +24,10 @@
           asDefault = true;
           http.tls = { };
         };
+
+        ssh = {
+          address = ":22";
+        };
       };
 
       log = {
@@ -203,6 +207,27 @@
         };
         serversTransports = {
           insecureTransport.insecureSkipVerify = true;
+        };
+      };
+
+      tcp = {
+        routers = {
+          forgejo-ssh = {
+            entryPoints = [ "ssh" ];
+            rule = "HostSNI(`*`)";
+            service = "forgejo-ssh-service";
+            passthrough = true;
+          };
+        };
+
+        services = {
+          forgejo-ssh-service = {
+            loadBalancer = {
+              servers = [
+                { address = "100.93.234.76:222"; }
+              ];
+            };
+          };
         };
       };
 
