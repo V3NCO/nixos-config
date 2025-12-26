@@ -68,7 +68,7 @@
         routers = {
           traefik = {
             entryPoints = [ "websecure" ];
-            rule = "Host(`traefik.amber.dog`)";
+            rule = "Host(`traefik.v3nco.dev`)";
             service = "api@internal";
             tls.certResolver = "letsencrypt";
             middlewares = [
