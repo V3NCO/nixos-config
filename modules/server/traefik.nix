@@ -60,22 +60,23 @@
         };
       };
 
-      api.dashboard = true;
+      api.dashboard = false;
     };
 
     dynamicConfigOptions = {
       http = {
         routers = {
-          traefik = {
-            entryPoints = [ "websecure" ];
-            rule = "Host(`traefik.v3nco.dev`)";
-            service = "api@internal";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-              "basic-auth"
-            ];
-          };
+          # traefik = {
+          #   entryPoints = [ "websecure" ];
+          #   rule = "Host(`traefik.v3nco.dev`)";
+          #   service = "api@internal";
+          #   tls.certResolver = "letsencrypt";
+          #   middlewares = [
+          #     "security-headers"
+          #     "basic-auth"
+          #     "rate-limit"
+          #   ];
+          # };
 
           zipline = {
             entryPoints = [ "websecure" ];
@@ -175,9 +176,9 @@
           };
           rate-limit = {
             rateLimit = {
-              average = 100;
-              burst = 100;
-              period = 1;
+              average = 5;
+              burst = 20;
+              period = 5;
             };
           };
           basic-auth = {
