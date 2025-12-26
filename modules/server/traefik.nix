@@ -120,31 +120,24 @@
         };
 
         services = {
-          zipline.loadBalancer.servers = [
-            {
-              url = "https://100.93.234.76";
-            }
-          ];
-          aperture-tts-slack.loadBalancer.servers = [
-            {
-              url = "https://100.93.234.76";
-            }
-          ];
-          synapse.loadBalancer.servers = [
-            {
-              url = "https://100.93.234.76";
-            }
-          ];
-          nexus.loadBalancer.servers = [
-            {
-              url = "http+unix:///run/anubis/anubis-nexus/anubis.sock";
-            }
-          ];
-          forgejo.loadBalancer.servers = [
-            {
-              url = "http+unix:///run/anubis/anubis-forgejo/anubis.sock";
-            }
-          ];
+          zipline.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "https://100.93.234.76"; } ];
+          };
+          aperture-tts-slack.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "https://100.93.234.76"; } ];
+          };
+          synapse.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "https://100.93.234.76"; } ];
+          };
+          nexus.loadBalancer = {
+            servers = [ { url = "http://unix:/run/anubis/anubis-nexus/anubis.sock"; } ];
+          };
+          forgejo.loadBalancer = {
+            servers = [ { url = "http://unix:/run/anubis/anubis-nexus/anubis.sock"; } ];
+          };
         };
 
         middlewares = {
