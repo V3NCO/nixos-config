@@ -10,6 +10,7 @@
     instances = {
       traefik = {
         settings = {
+          BIND_NETWORK = "tcp";
           BIND = ":7980";
           REDIRECT_DOMAINS = "v3nco.dev";
           PUBLIC_URL = "https://anubis.v3nco.dev";
