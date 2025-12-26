@@ -136,7 +136,7 @@
             servers = [ { url = "http://unix:/run/anubis/anubis-nexus/anubis.sock"; } ];
           };
           forgejo.loadBalancer = {
-            servers = [ { url = "http://unix:/run/anubis/anubis-nexus/anubis.sock"; } ];
+            servers = [ { url = "http://unix:/run/anubis/anubis-forgejo/anubis.sock"; } ];
           };
         };
 
