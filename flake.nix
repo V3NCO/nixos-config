@@ -19,6 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
+
     # Hyperland Upstream
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -70,6 +72,7 @@
       zen-browser,
       apple-fonts,
       catppuccin,
+      nix-jetbrains-plugins,
       ...
     }@inputs:
     {
