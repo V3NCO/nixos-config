@@ -135,6 +135,16 @@
               "anubis"
             ];
           };
+
+          blahajid = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`identity.blahaj.engineering`)";
+            service = "blahajid";
+            tls.certResolver = "letsencrypt";
+            middlewares = [
+              "security-headers"
+            ];
+          };
         };
 
         services = {
@@ -161,6 +171,10 @@
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "http://localhost:7980"; } ];
+          };
+          blahajid.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "http://100.93.234.76"; } ];
           };
         };
 
