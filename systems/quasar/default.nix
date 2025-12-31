@@ -15,6 +15,7 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/music-making.nix
     ../../users
+    ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
     ../../modules/nixos/maccam.nix
@@ -24,6 +25,21 @@
 
   virtualisation.docker = {
     enable = true;
+  };
+
+  services.openssh = {
+    enable = true;
+    ports = [ 2223 ];
+    settings = {
+      PasswordAuthentication = false;
+      AllowUsers = [
+        "venco"
+        "root"
+      ]; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
   };
 
   environment.systemPackages = [
