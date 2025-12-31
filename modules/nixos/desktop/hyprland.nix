@@ -23,6 +23,14 @@
       general.layout = "scrolling";
       cursor.no_hardware_cursors = true;
 
+      windowrulev2 = [
+        "noinitialfocus, class:(jetbrains-)(.*), floating:0"
+        "noinitialfocus, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:0"
+        "center, class:(jetbrains-)(.*), initialTitle:(.+), floating:0"
+        "center, class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:0"
+        "noinitialfocus, class:(jetbrains-) (.*), title:^win(.*), initialTitle:win.*, floating:0"
+      ];
+
       bind = [
         "$mod, SPACE, global, caelestia:launcher"
         "$mod, RETURN, exec, kitty"

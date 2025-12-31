@@ -6,5 +6,6 @@
   ];
   imports = [
     ./beekeeper.nix
+    ./jetbrains.nix
   ];
 }
