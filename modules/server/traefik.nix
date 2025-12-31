@@ -145,6 +145,16 @@
               "security-headers"
             ];
           };
+
+          blahajidalt = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`blahajid.v3nco.dev`)";
+            service = "blahajid";
+            tls.certResolver = "letsencrypt";
+            middlewares = [
+              "security-headers"
+            ];
+          };
         };
 
         services = {
