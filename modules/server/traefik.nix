@@ -184,7 +184,7 @@
           };
           blahajid.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "http://100.93.234.76"; } ];
+            servers = [ { url = "https://100.93.234.76"; } ];
           };
         };
 
