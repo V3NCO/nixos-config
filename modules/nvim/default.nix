@@ -71,6 +71,10 @@
             # Startup time profiling
             vim-startuptime
             vim-wakatime
+
+            nvim-tree-lua
+            nvim-web-devicons
+            trouble-nvim
           ];
         };
 
