@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./bootloader.nix
+    ../../modules/nvim
     ../../modules/nixos/basic/generic.nix
     ../../modules/nixos/basic/audio.nix
     ../../modules/nixos/basic/locale.nix

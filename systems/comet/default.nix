@@ -3,6 +3,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/nvim
     ../../modules/nixos/basic
     ../../modules/nixos/basic/networking.nix
     ../../modules/nixos/basic/bluetooth.nix

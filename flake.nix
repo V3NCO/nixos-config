@@ -19,6 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
 
     # Hyperland Upstream
@@ -73,6 +75,7 @@
       apple-fonts,
       catppuccin,
       nix-jetbrains-plugins,
+      nixCats,
       ...
     }@inputs:
     {
@@ -82,6 +85,7 @@
         modules = [
           ./systems/quasar
           catppuccin.nixosModules.catppuccin
+          inputs.nixCats.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -112,6 +116,7 @@
         modules = [
           ./systems/comet
           catppuccin.nixosModules.catppuccin
+          inputs.nixCats.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
