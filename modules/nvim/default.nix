@@ -67,6 +67,7 @@
 
             # Startup time profiling
             vim-startuptime
+            vim-wakatime
           ];
         };
 
