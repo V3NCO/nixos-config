@@ -24,6 +24,7 @@
             stylua
             nixd
             alejandra
+            gopls
           ];
         };
 
