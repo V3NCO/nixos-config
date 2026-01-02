@@ -1,0 +1,11 @@
+if not nixCats('general') then
+    return
+end
+
+-- Move lines up/down with Alt+j/k
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { noremap = true, desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m.-2<cr>==", { noremap = true, desc = "Move line up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { noremap = true, desc = "Move line down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { noremap = true, desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { noremap = true, desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { noremap = true, desc = "Move selection up" })

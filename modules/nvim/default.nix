@@ -27,6 +27,7 @@
           ];
         };
 
+        # Use propagatedBuildInputs for plugins that need to be in lua path
         startupPlugins = {
           general = with pkgs.vimPlugins; [
             # UI & Core
@@ -64,6 +65,7 @@
             nvim-dap
             nvim-dap-ui
             nvim-dap-virtual-text
+            nvim-nio # Required dependency for nvim-dap-ui
 
             # Startup time profiling
             vim-startuptime
@@ -85,6 +87,8 @@
           settings = {
             suffix-path = true;
             suffix-LD = true;
+            # Add wrapRc to ensure lua files are found
+            wrapRc = true;
           };
           categories = {
             general = true;
