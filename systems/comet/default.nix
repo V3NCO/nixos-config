@@ -18,7 +18,7 @@
     ../../users
     ./hyprland
   ];
-
+  services.flatpak.enable = true;
   environment.systemPackages = [
     pkgs.libinput
     pkgs.libinput-gestures # Add this for libinput command-line tools

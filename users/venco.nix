@@ -12,7 +12,6 @@
       "docker"
       "input"
     ];
-    services.flatpak.enable = true;
     openssh.authorizedKeys.keys = [
       # Stardust SSH Key
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBONQ8znwJEINzYqw077cPeQGdxuNojS1q8v2PXFbv3hFPCWEgv+Z8J+xOQHJXDaM+48Bd8g67QkKADxQtFkJHak= v3nco@v3nco.dev"
