@@ -10,12 +10,6 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 input {
-    keyboard {
-        xkb {
-            layout "us"
-        }
-        numlock
-    }
     touchpad {
         tap
         natural-scroll

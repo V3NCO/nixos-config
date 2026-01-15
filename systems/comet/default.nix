@@ -16,6 +16,7 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../users
+    ./keyboard.nix
     ./hyprland
   ];
   services.flatpak.enable = true;

@@ -25,3 +25,11 @@ output "HDMI-A-1" {
     transform "normal"
     position x=3840 y=0
 }
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        numlock
+    }
+}

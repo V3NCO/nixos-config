@@ -22,7 +22,12 @@
     ../../modules/nixos/maccam.nix
     ../../modules/nixos/desktop/nvidia.nix
     ./hyprland/monitors.nix
+    ./keyboard.nix
   ];
+
+  systemd.tmpfiles.rules = [
+    ''L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}''
+  ] ++ builtins.attrValues (builtins.mapAttrs (n: v: "L+ /home/${n}/.config/monitors.xml - - - - ${./monitors.xml}") {venco = "venco";});
 
   virtualisation.docker = {
     enable = true;
