@@ -33,6 +33,7 @@
       discord
       vesktop
       slack
+      zoom-us
       signal-desktop-bin
       mattermost-desktop
       spotify
