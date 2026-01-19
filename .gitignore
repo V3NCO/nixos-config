@@ -1,3 +1,5 @@
 .DS_STORE
 result
 *.qcow2
+firmware
+firmware/
