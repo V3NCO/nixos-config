@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -150,19 +151,12 @@
     ];
   };
 
-  programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GUI
-
-  environment.systemPackages = with pkgs; [
-    gpu-screen-recorder-gtk # GUI app
-  ];
-
   boot.supportedFilesystems = [ "ntfs" ];
 
   imports = [
     ../modules/nixos/browsers
     ../modules/nixos/tailscale.nix
     ../modules/nixos/editors
-    ../modules/nixos/steam.nix
     # ../modules/nixos/direnv.nix
   ];
 }

@@ -12,6 +12,7 @@ let
   hostsFile = {
     comet = ../../../../systems/comet/niri.kdl;
     quasar = ../../../../systems/quasar/niri.kdl;
+    stardust = ../../../../systems/stardust/niri.kdl;
   };
 
   hostFile = attrByPath [ hostname ] null hostsFile;

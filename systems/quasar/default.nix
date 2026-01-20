@@ -16,6 +16,7 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/music-making.nix
     ../../users
+    ../modules/nixos/steam.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
@@ -24,6 +25,12 @@
     ./hyprland/monitors.nix
     ./keyboard.nix
   ];
+
+  # programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GUI
+
+  # environment.systemPackages = with pkgs; [
+  #   gpu-screen-recorder-gtk # GUI app
+  # ];
 
   systemd.tmpfiles.rules = [
     ''L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}''

@@ -15,10 +15,18 @@
     ../../modules/nixos/drawing_tablets.nix
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/desktop/nvidia.nix
+    ../modules/nixos/steam.nix
     ../../users
     ./keyboard.nix
     ./hyprland
   ];
+
+  # programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GUI
+
+  # environment.systemPackages = with pkgs; [
+  #  gpu-screen-recorder-gtk # GUI app
+  # ];
+
   services.flatpak.enable = true;
   environment.systemPackages = [
     pkgs.libinput

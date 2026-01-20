@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "beekeeper-studio-5.3.4"
+  # install beekeeper-studio as a system package
+  environment.systemPackages = with pkgs; [
+    beekeeper-studio
   ];
-  environment.systemPackages = [ pkgs.beekeeper-studio ];
+
+  # if you meant to enable some service/option, replace the above with the correct option name
 }

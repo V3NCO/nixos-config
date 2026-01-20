@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, firmware ? null, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -36,10 +36,9 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-
+  programs.gpu-screen-recorder.enable = false;
   programs.nix-ld.enable = true;
   networking.hostName = "stardust";
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
   hardware.ledger.enable = true;
 }
