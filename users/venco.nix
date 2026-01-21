@@ -24,14 +24,12 @@
     initialPassword = "password";
     packages = with pkgs; [
       # Yubikey and Tor
-      tor-browser
       yubikey-personalization
       yubikey-manager
       yubikey-touch-detector
       yubioath-flutter
 
       thunderbird
-      discord
       vesktop
       slack
       zoom-us

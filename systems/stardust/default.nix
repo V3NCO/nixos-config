@@ -1,4 +1,4 @@
-{ pkgs, firmware ? null, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,9 +14,7 @@
     ../../modules/nixos/polkit.nix
     ../../modules/nixos/drawing_tablets.nix
     ../../modules/nixos/theming/catppuccin.nix
-    ../../modules/nixos/music-making.nix
     ../../modules/nixos/flipperzero.nix
-    ../../modules/nixos/cider.nix
     ../../users
     ./keyboard.nix
   ];
@@ -41,4 +39,7 @@
   networking.hostName = "stardust";
   system.stateVersion = "25.11";
   hardware.ledger.enable = true;
+
+  # avoid Asahi firmware extraction when firmware not provided
+  hardware.asahi.extractPeripheralFirmware = false;
 }

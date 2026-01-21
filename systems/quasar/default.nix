@@ -59,6 +59,7 @@
     pkgs.android-studio-full
     pkgs.python313
     pkgs.python313Packages.pip
+    pkgs.tor-browser
   ];
 
   networking.firewall.allowedTCPPorts = [ 8000 ];

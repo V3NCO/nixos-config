@@ -31,6 +31,7 @@
   environment.systemPackages = [
     pkgs.libinput
     pkgs.libinput-gestures # Add this for libinput command-line tools
+    pkgs.tor-browser
   ];
 
   programs.light.enable = true;
