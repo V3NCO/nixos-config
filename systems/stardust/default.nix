@@ -30,6 +30,7 @@
   networking.firewall.allowedUDPPorts = [ 8000 ];
   networking.nameservers = ["1.1.1.1" "9.9.9.9"];
   time.timeZone = "Europe/Paris";
+  networking.wireless.enable = lib.mkForce false;
   networking.networkmanager.enable = true;
   networking.wireless.iwd = {
     enable = true;
