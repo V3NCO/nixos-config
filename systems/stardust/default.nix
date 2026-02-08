@@ -45,6 +45,5 @@
   hardware.ledger.enable = true;
   services.libinput.enable = true;
 
-  # avoid Asahi firmware extraction when firmware not provided
-  hardware.asahi.extractPeripheralFirmware = false;
+  hardware.asahi.extractPeripheralFirmware = true;
 }

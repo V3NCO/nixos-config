@@ -73,6 +73,11 @@
       url = "github:nix-community/nixos-apple-silicon/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    asahi-firmware = {
+      url="/etc/nixos/firmware";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
@@ -112,9 +117,7 @@
       };
 
       # pass the firmware directory only if it exists (avoids adding a missing path to the flake closure)
-      specialArgs = let
-        fw = if builtins.pathExists ./systems/stardust/firmware then ./systems/stardust/firmware else null;
-      in { inherit inputs; quickshell = inputs.quickshell; firmware = fw; };
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
       
       modules = [
         ./systems/stardust
