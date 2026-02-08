@@ -45,15 +45,6 @@
   hardware.ledger.enable = true;
   services.libinput.enable = true;
 
-  nix.settings = {
-    extra-substituters = [
-      "https://nixos-apple-silicon.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
-    ];
-  };
-
   # avoid Asahi firmware extraction when firmware not provided
   hardware.asahi.extractPeripheralFirmware = false;
 }
