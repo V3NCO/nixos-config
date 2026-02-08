@@ -14,7 +14,7 @@
   # only set peripheralFirmwareDirectory when firmware was passed via specialArgs
   # (specialArgs provides `firmware` from flake.nix; it may be null)
   hardware = lib.optionalAttrs (firmware != null) {
-    asahi.peripheralFirmwareDirectory = firmware;
+    asahi.peripheralFirmwareDirectory = ./firmware;
   }; # existing hardware attrs are merged by the NixOS module system
 
   boot.loader.systemd-boot.enable = true;
