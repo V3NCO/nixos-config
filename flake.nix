@@ -4,8 +4,8 @@
   # Inputs
   # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
   nixConfig = {
-    extra-substituters = [ 
-      "https://hyprland.cachix.org" 
+    extra-substituters = [
+      "https://hyprland.cachix.org"
       "https://nixos-apple-silicon.cachix.org"
       "https://nix-community.cachix.org"
     ];
@@ -44,10 +44,10 @@
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
-    # caelestia-shell = {
-      # url = "github:caelestia-dots/shell";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
       # inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    };
 
     # Lets start having fun with versions
     hm-unstable = {
@@ -73,51 +73,29 @@
       url = "github:nix-community/nixos-apple-silicon/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    asahi-firmware = {
+      url="/etc/nixos/firmware";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
-  let
-    sys = "aarch64-linux";
-  in {
-    nixosConfigurations.stardust = nixpkgs.lib.nixosSystem {
-      system = sys;
+  {
+    nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
 
-      pkgs = import inputs.nixpkgs { system = sys;
+      pkgs = import inputs.nixpkgs { system = "x86_64-linux";
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
         };
-        overlays = [
-          (final: prev: let isX86 = prev.stdenv.hostPlatform.system == "x86_64-linux"; in {
-            gpu-screen-recorder = if isX86 then prev.gpu-screen-recorder else prev.stdenv.mkDerivation {
-              name = "gpu-screen-recorder-stub";
-              phases = [ "installPhase" ];
-              installPhase = ''
-                mkdir -p $out/bin
-                echo '# stub' > $out/bin/gpu-screen-recorder
-                chmod +x $out/bin/gpu-screen-recorder
-              '';
-            };
-            gpu-screen-recorder-gtk = if isX86 then prev.gpu-screen-recorder-gtk else prev.stdenv.mkDerivation {
-              name = "gpu-screen-recorder-gtk-stub";
-              phases = [ "installPhase" ];
-              installPhase = ''
-                mkdir -p $out/bin
-                echo '# stub' > $out/bin/gpu-screen-recorder-gtk
-                chmod +x $out/bin/gpu-screen-recorder-gtk
-              '';
-            };
-          })
-        ];
       };
 
-      # pass the firmware directory only if it exists (avoids adding a missing path to the flake closure)
-      specialArgs = let
-        fw = if builtins.pathExists ./systems/stardust/firmware then ./systems/stardust/firmware else null;
-      in { inherit inputs; quickshell = inputs.quickshell; firmware = fw; };
-      
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+
       modules = [
-        ./systems/stardust
+        ./systems/quasar
         inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
         inputs.home-manager.nixosModules.home-manager
@@ -137,15 +115,23 @@
             extraSpecialArgs = {
               inherit inputs;
               quickshell = inputs.quickshell;
-              hostname="stardust";
+              hostname = "quasar";
             };
-          };             
+          };
         }
       ];
     };
 
     nixosConfigurations.comet = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+
+      pkgs = import inputs.nixpkgs { system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
+        };
+      };
+
       specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
       modules = [
         ./systems/comet
@@ -174,10 +160,49 @@
         }
       ];
     };
+
     nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./systems/aphelion
+      ];
+    };
+
+    nixosConfigurations.stardust = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+
+      pkgs = import inputs.nixpkgs { system = "aarch64-linux";
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
+        };
+      };
+
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+
+      modules = [
+        ./systems/stardust
+        inputs.nixCats.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              venco = {
+                imports = [
+                  ./users/venco-home.nix
+                ];
+              };
+            };
+            extraSpecialArgs = {
+              inherit inputs;
+              quickshell = inputs.quickshell;
+              hostname = "stardust";
+            };
+          };
+        }
       ];
     };
   };

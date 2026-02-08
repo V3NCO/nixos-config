@@ -9,11 +9,13 @@
     ../../modules/nixos/basic
     ../../modules/nixos/basic/networking.nix
     ../../modules/nixos/basic/bluetooth.nix
-    ../../modules/nixos/desktop
+    ../../modules/nixos/desktop/greet.nix
+    ../../modules/nixos/desktop/gnome.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
+    ../modules/nixos/browsers/firefox.nix
     # ../../modules/nixos/drawing_tablets.nix
     # ../../modules/nixos/theming/catppuccin.nix
     # ../../modules/nixos/flipperzero.nix
@@ -36,7 +38,12 @@
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
   };
- 
+
+  environment.systemPackages = with pkgs; [
+    vscode-fhs
+    zed-editor-fhs
+  ];
+  
   nix.settings.auto-optimise-store = true;
   programs.gpu-screen-recorder.enable = false;
   programs.nix-ld.enable = true;
@@ -45,15 +52,5 @@
   hardware.ledger.enable = true;
   services.libinput.enable = true;
 
-  nix.settings = {
-    extra-substituters = [
-      "https://nixos-apple-silicon.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
-    ];
-  };
-
-  # avoid Asahi firmware extraction when firmware not provided
-  hardware.asahi.extractPeripheralFirmware = false;
+  hardware.asahi.extractPeripheralFirmware = true;
 }

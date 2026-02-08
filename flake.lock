@@ -83,6 +83,19 @@
         "type": "github"
       }
     },
+    "asahi-firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 0,
+        "narHash": "sha256-EhVelgOyJLfNd3HIQbSIZmFNNjVwZtyeWWS3GFye0V4=",
+        "path": "/etc/nixos/firmware",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/firmware",
+        "type": "path"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -798,6 +811,7 @@
       "inputs": {
         "apple-fonts": "apple-fonts",
         "apple-silicon": "apple-silicon",
+        "asahi-firmware": "asahi-firmware",
         "catppuccin": "catppuccin",
         "hm-unstable": "hm-unstable",
         "home-manager": "home-manager",

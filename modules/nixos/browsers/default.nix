@@ -2,7 +2,7 @@
 {
   imports = [
     ./firefox.nix
-    # ./zen.nix
-    # ./chromium-based.nix
+    ./zen.nix
+    ./chromium-based.nix
   ];
 }
