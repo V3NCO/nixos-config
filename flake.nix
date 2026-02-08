@@ -4,11 +4,18 @@
   # Inputs
   # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
   nixConfig = {
-    extra-substituters = [ "https://hyprland.cachix.org" ];
+    extra-substituters = [
+      "https://hyprland.cachix.org"
+      "https://nixos-apple-silicon.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -60,91 +67,143 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
+
+    apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    asahi-firmware = {
+      url="/etc/nixos/firmware";
+      flake = false;
+    };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      nixpkgs-unstable,
-      hm-unstable,
-      quickshell,
-      zen-browser,
-      apple-fonts,
-      catppuccin,
-      nix-jetbrains-plugins,
-      nixCats,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs quickshell; };
-        modules = [
-          ./systems/quasar
-          catppuccin.nixosModules.catppuccin
-          inputs.nixCats.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "backup";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = {
-                venco = {
-                  imports = [
-                    ./users/venco-home.nix
-                    catppuccin.homeModules.catppuccin
-                  ];
-                };
-              };
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit quickshell;
-                hostname = "quasar";
-              };
-            };
-          }
-        ];
+  outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
+  {
+    nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      pkgs = import inputs.nixpkgs { system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
+        };
       };
 
-      nixosConfigurations.comet = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs quickshell; };
-        modules = [
-          ./systems/comet
-          catppuccin.nixosModules.catppuccin
-          inputs.nixCats.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "backup";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users = {
-                venco = {
-                  imports = [
-                    ./users/venco-home.nix
-                    catppuccin.homeModules.catppuccin
-                  ];
-                };
-              };
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit quickshell;
-                hostname = "comet";
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+
+      modules = [
+        ./systems/quasar
+        inputs.catppuccin.nixosModules.catppuccin
+        inputs.nixCats.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              venco = {
+                imports = [
+                  ./users/venco-home.nix
+                  inputs.catppuccin.homeModules.catppuccin
+                ];
               };
             };
-          }
-        ];
-      };
-      nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./systems/aphelion
-        ];
-      };
+            extraSpecialArgs = {
+              inherit inputs;
+              quickshell = inputs.quickshell;
+              hostname = "quasar";
+            };
+          };
+        }
+      ];
     };
+
+    nixosConfigurations.comet = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      pkgs = import inputs.nixpkgs { system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
+        };
+      };
+
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+      modules = [
+        ./systems/comet
+        inputs.catppuccin.nixosModules.catppuccin
+        inputs.nixCats.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              venco = {
+                imports = [
+                  ./users/venco-home.nix
+                  inputs.catppuccin.homeModules.catppuccin
+                ];
+              };
+            };
+            extraSpecialArgs = {
+              inherit inputs;
+              quickshell = inputs.quickshell;
+              hostname = "comet";
+            };
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./systems/aphelion
+      ];
+    };
+
+    nixosConfigurations.stardust = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+
+      pkgs = import inputs.nixpkgs { system = "aarch64-linux";
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
+        };
+      };
+
+      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+
+      modules = [
+        ./systems/stardust
+        inputs.nixCats.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            backupFileExtension = "backup";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = {
+              venco = {
+                imports = [
+                  ./users/venco-home.nix
+                ];
+              };
+            };
+            extraSpecialArgs = {
+              inherit inputs;
+              quickshell = inputs.quickshell;
+              hostname = "stardust";
+            };
+          };
+        }
+      ];
+    };
+  };
 }

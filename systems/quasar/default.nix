@@ -16,6 +16,9 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/music-making.nix
     ../../users
+    ../modules/nixos/editors
+    ../modules/nixos/browsers
+    ../modules/nixos/steam.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
@@ -23,6 +26,11 @@
     ../../modules/nixos/desktop/nvidia.nix
     ./hyprland/monitors.nix
     ./keyboard.nix
+  ];
+
+  programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
+  environment.systemPackages = with pkgs; [
+    gpu-screen-recorder-gtk # GUI app
   ];
 
   systemd.tmpfiles.rules = [
@@ -48,10 +56,49 @@
     };
   };
 
-  environment.systemPackages = [
-    pkgs.android-studio-full
-    pkgs.python313
-    pkgs.python313Packages.pip
+  environment.systemPackages = with pkgs; [
+    android-studio-full
+    python313
+    python313Packages.pip
+    tor-browser
+    yubikey-personalization
+    yubikey-manager
+    yubikey-touch-detector
+    yubioath-flutter
+    thunderbird
+    vesktop
+    slack
+    zoom-us
+    signal-desktop-bin
+    mattermost-desktop
+    spotify
+    neofetch
+    nnn # terminal file manager
+    nodejs_24
+    nix-output-monitor
+    glow # markdown previewer in terminal
+    godot
+    godot-mono
+    aseprite # I bought it on steam anyways its just convinient to have as a package
+    bitwarden-cli
+    blender
+    virt-manager
+    krita
+    heroic-unwrapped
+    itch
+    itch-dl
+    affine-bin
+    anytype
+    ledger-live-desktop
+    osu-lazer-bin
+    prismlauncher
+    remmina
+    owmods-cli
+    owmods-gui
+    ryubing
+    r2modman
+    libreoffice-qt-fresh
+    via
   ];
 
   networking.firewall.allowedTCPPorts = [ 8000 ];

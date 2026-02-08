@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, firmware ? null, ... }:
 
 {
   imports =
@@ -19,7 +19,9 @@
   networking.nameservers = ["1.1.1.1" "9.9.9.9"];
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
-  hardware.asahi.peripheralFirmwareDirectory = ./firmware;
+  hardware = lib.optionalAttrs (firmware != null) {
+    asahi.peripheralFirmwareDirectory = firmware;
+  };
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 

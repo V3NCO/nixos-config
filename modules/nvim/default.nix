@@ -54,6 +54,7 @@
 
             # Git
             gitsigns-nvim
+            neogit
 
             # Keybindings
             which-key-nvim

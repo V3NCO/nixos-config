@@ -1,22 +1,24 @@
-{ pkgs, ... }:
+{ pkgs, lib, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    ./apple-silicon-support
+
+    inputs.apple-silicon.nixosModules.default
+
     ../../modules/nvim
     ../../modules/nixos/basic
     ../../modules/nixos/basic/networking.nix
     ../../modules/nixos/basic/bluetooth.nix
-    ../../modules/nixos/desktop
+    ../../modules/nixos/desktop/greet.nix
+    ../../modules/nixos/desktop/gnome.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
-    ../../modules/nixos/drawing_tablets.nix
-    ../../modules/nixos/theming/catppuccin.nix
-    ../../modules/nixos/music-making.nix
-    ../../modules/nixos/flipperzero.nix
-    ../../modules/nixos/cider.nix
+    ../modules/nixos/browsers/firefox.nix
+    # ../../modules/nixos/drawing_tablets.nix
+    # ../../modules/nixos/theming/catppuccin.nix
+    # ../../modules/nixos/flipperzero.nix
     ../../users
     ./keyboard.nix
   ];
@@ -24,22 +26,31 @@
   virtualisation.docker = {
     enable = true;
   };
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 8000 ];
   networking.firewall.allowedUDPPorts = [ 8000 ];
   networking.nameservers = ["1.1.1.1" "9.9.9.9"];
   time.timeZone = "Europe/Paris";
+  networking.wireless.enable = lib.mkForce false;
   networking.networkmanager.enable = true;
   networking.wireless.iwd = {
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
   };
 
-
+  environment.systemPackages = with pkgs; [
+    vscode-fhs
+    zed-editor-fhs
+  ];
+  
+  nix.settings.auto-optimise-store = true;
+  programs.gpu-screen-recorder.enable = false;
   programs.nix-ld.enable = true;
   networking.hostName = "stardust";
-  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
   hardware.ledger.enable = true;
+  services.libinput.enable = true;
+
+  hardware.asahi.extractPeripheralFirmware = true;
 }

@@ -4,9 +4,9 @@
     variant = "mac";
   };
 
-  console.keyMap = "fr-mac";
+  console.keyMap = "mac-fr";
 
-  programs.hyprland.settings.input.kb_layout = "fr";
+  # programs.hyprland.settings.input.kb_layout = "fr";
 
   programs.dconf = {
     enable = true;
