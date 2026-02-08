@@ -4,11 +4,18 @@
   # Inputs
   # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
   nixConfig = {
-    extra-substituters = [ "https://hyprland.cachix.org" ];
+    extra-substituters = [ 
+      "https://hyprland.cachix.org" 
+      "https://nixos-apple-silicon.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -61,9 +68,14 @@
     };
 
     catppuccin.url = "github:catppuccin/nix/release-25.11";
+
+    apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
   let
     sys = "aarch64-linux";
   in {
