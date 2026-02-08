@@ -60,7 +60,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix/release-25.11";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
