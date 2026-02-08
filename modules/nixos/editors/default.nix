@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    vscode-fhs
+    # vscode-fhs
     zed-editor-fhs
   ];
   imports = [
-    ./beekeeper.nix
-    ./jetbrains.nix
+    # ./beekeeper.nix
+    # ./jetbrains.nix
   ];
 }
