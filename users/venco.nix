@@ -24,23 +24,23 @@
     initialPassword = "password";
     packages = with pkgs; [
       # Yubikey and Tor
-      yubikey-personalization
-      yubikey-manager
-      yubikey-touch-detector
-      yubioath-flutter
+      # yubikey-personalization
+      # yubikey-manager
+      # yubikey-touch-detector
+      # yubioath-flutter
 
-      thunderbird
-      vesktop
-      slack
-      zoom-us
-      signal-desktop-bin
-      mattermost-desktop
-      spotify
+      # thunderbird
+      # vesktop
+      # slack
+      # zoom-us
+      # signal-desktop-bin
+      # mattermost-desktop
+      # spotify
 
-      neofetch
+      # neofetch
       fastfetch
       hyfetch
-      nnn # terminal file manager
+      # nnn # terminal file manager
 
       # archives
       zip
@@ -54,7 +54,7 @@
       yq-go # yaml processor https://github.com/mikefarah/yq
       eza # A modern replacement for ‘ls’
       fzf # A command-line fuzzy finder
-      nodejs_24
+      # nodejs_24
 
       # networking tools
       mtr # A network diagnostic tool
@@ -79,8 +79,8 @@
       #
       # it provides the command `nom` works just like `nix`
       # with more details log output
-      nix-output-monitor
-      glow # markdown previewer in terminal
+      # nix-output-monitor
+      # glow # markdown previewer in terminal
 
       btop # replacement of htop/nmon
       iotop # io monitoring
@@ -102,50 +102,50 @@
       killall
       clipse
       bash
-      godot
-      godot-mono
-      aseprite # I bought it on steam anyways its just convinient to have as a package
-      bitwarden-cli
+      # godot
+      # godot-mono
+      # aseprite # I bought it on steam anyways its just convinient to have as a package
+      # bitwarden-cli
       sc-controller
-      blender
-      virt-manager
+      # blender
+      # virt-manager
 
       vlc
       yt-dlp
       ffmpeg
-      krita
+      # krita
 
-      heroic-unwrapped
+      # heroic-unwrapped
       # itch
       # itch-dl
 
-      affine-bin
+      # affine-bin
       obsidian
-      anytype
+      # anytype
 
       android-tools
       swappy
       hyprshot
-      ledger-live-desktop
+      # ledger-live-desktop
 
-      osu-lazer-bin
-      prismlauncher
-      remmina
-      owmods-cli
-      owmods-gui
-      ryubing
+      # osu-lazer-bin
+      # prismlauncher
+      # remmina
+      # owmods-cli
+      # owmods-gui
+      # ryubing
 
       inotify-tools
       wakatime-cli
-      r2modman
+      # r2modman
       yaak
 
-      libreoffice-qt-fresh
+      # libreoffice-qt-fresh
       hunspell
       hunspellDicts.en_US
       hunspellDicts.fr-any
 
-      via
+      # via
     ];
   };
 
