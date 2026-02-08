@@ -139,6 +139,7 @@
       wakatime-cli
       # r2modman
       yaak
+      lazygit
 
       # libreoffice-qt-fresh
       hunspell
