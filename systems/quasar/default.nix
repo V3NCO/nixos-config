@@ -16,9 +16,9 @@
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/music-making.nix
     ../../users
-    ../modules/nixos/editors
-    ../modules/nixos/browsers
-    ../modules/nixos/steam.nix
+    ../../modules/nixos/editors
+    ../../modules/nixos/browsers
+    ../../modules/nixos/steam.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/cider.nix
@@ -29,9 +29,6 @@
   ];
 
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
-  environment.systemPackages = with pkgs; [
-    gpu-screen-recorder-gtk # GUI app
-  ];
 
   systemd.tmpfiles.rules = [
     ''L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}''
@@ -57,6 +54,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gpu-screen-recorder-gtk # GUI app
     android-studio-full
     python313
     python313Packages.pip
@@ -106,8 +104,6 @@
 
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.android_sdk.accept_license = true;
   system.stateVersion = "25.11";
   hardware.ledger.enable = true;
 }

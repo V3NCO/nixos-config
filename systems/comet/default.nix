@@ -15,21 +15,19 @@
     ../../modules/nixos/drawing_tablets.nix
     ../../modules/nixos/theming/catppuccin.nix
     ../../modules/nixos/desktop/nvidia.nix
-    ../modules/nixos/browsers
-    ../modules/nixos/editors
-    ../modules/nixos/steam.nix
+    ../../modules/nixos/browsers
+    ../../modules/nixos/editors
+    ../../modules/nixos/steam.nix
     ../../users
     ./keyboard.nix
     ./hyprland
   ];
 
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
-  environment.systemPackages = with pkgs; [
-   gpu-screen-recorder-gtk # GUI app
-  ];
 
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
+    gpu-screen-recorder-gtk
     android-studio-full
     python313
     python313Packages.pip
@@ -77,8 +75,6 @@
   programs.light.enable = true;
   programs.nix-ld.enable = true;
   networking.hostName = "comet";
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.android_sdk.accept_license = true;
   system.stateVersion = "25.11";
   hardware.ledger.enable = true;
 }

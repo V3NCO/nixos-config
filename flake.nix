@@ -88,6 +88,7 @@
       pkgs = import inputs.nixpkgs { system = "x86_64-linux";
         config = {
           allowUnfree = true;
+          android_sdk.accept_license = true;
           permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
         };
       };
@@ -128,6 +129,7 @@
       pkgs = import inputs.nixpkgs { system = "x86_64-linux";
         config = {
           allowUnfree = true;
+          android_sdk.accept_license = true;
           permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
         };
       };
