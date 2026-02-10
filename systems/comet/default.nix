@@ -28,7 +28,7 @@
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
-    android-studio-full
+    android-studio
     python313
     python313Packages.pip
     tor-browser
@@ -50,7 +50,6 @@
     glow # markdown previewer in terminal
     godot
     godot-mono
-    aseprite # I bought it on steam anyways its just convinient to have as a package
     bitwarden-cli
     blender
     virt-manager
