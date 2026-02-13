@@ -20,7 +20,6 @@
     ../../modules/nixos/steam.nix
     ../../users
     ./keyboard.nix
-    ./hyprland
   ];
 
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU

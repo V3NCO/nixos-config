@@ -6,7 +6,7 @@
   };
 
   console.keyMap = "us";
-  programs.hyprland.settings.input.kb_layout = "us";
+  # programs.hyprland.settings.input.kb_layout = "us";
   programs.dconf = {
     enable = true;
     profiles = {

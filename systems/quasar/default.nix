@@ -24,7 +24,6 @@
     ../../modules/nixos/cider.nix
     ../../modules/nixos/maccam.nix
     ../../modules/nixos/desktop/nvidia.nix
-    ./hyprland/monitors.nix
     ./keyboard.nix
   ];
 
