@@ -3,7 +3,7 @@
   imports = [
     ./gnome.nix
     ./greet.nix
-    ./hyprland.nix
+    ./niri.nix
   ];
 
   environment.systemPackages = [ pkgs.kdePackages.qtdeclarative ];
