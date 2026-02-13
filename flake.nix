@@ -103,6 +103,7 @@
         ./systems/quasar
         inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
+        inputs.niri.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -143,6 +144,7 @@
         ./systems/comet
         inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
+        inputs.niri.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -189,6 +191,7 @@
       modules = [
         ./systems/stardust
         inputs.nixCats.nixosModules.default
+        inputs.niri.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
