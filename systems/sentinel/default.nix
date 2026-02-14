@@ -3,6 +3,7 @@
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
+    ./services.nix
     ../../modules/nvim
     ../../modules/nixos/basic
     ../../modules/server/tailscale.nix
@@ -10,6 +11,8 @@
     ../../modules/server/fail2ban.nix
     ../../users/venco-server.nix
   ];
+
+  homelab.ports = [ 22 ];
 
   programs.gnupg.agent = {
     enable = true;
