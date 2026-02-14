@@ -110,7 +110,7 @@
       "Mod+Q".action.close-window = [];
 
       # Apps
-      "Mod+Enter".action.spawn = ["kitty"];
+      "Mod+Return".action.spawn = ["kitty"];
 
       # Layout
       "Mod+Left".action.focus-column-left = [];
