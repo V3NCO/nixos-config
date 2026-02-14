@@ -96,6 +96,7 @@
     ];
 
     binds = {
+      # Media control
       "XF86AudioRaiseVolume" = { action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"]; allow-when-locked = true; };
       "XF86AudioLowerVolume" = { action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"]; allow-when-locked = true; };
       "XF86AudioMute" = { action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"]; allow-when-locked = true; };
@@ -104,10 +105,14 @@
       "XF86AudioPrev" = { action.spawn = ["playerctl" "previous"]; allow-when-locked = true; };
       "XF86AudioNext" = { action.spawn = ["playerctl" "next"]; allow-when-locked = true; };
 
+      # Basics
       "Mod+O" = { repeat = false; action.toggle-overview = []; };
-
       "Mod+Q".action.close-window = [];
 
+      # Apps
+      "Mod+Enter".action.spawn = ["kitty"];
+
+      # Layout
       "Mod+Left".action.focus-column-left = [];
       "Mod+Down".action.focus-window-down = [];
       "Mod+Up".action.focus-window-up = [];
@@ -185,12 +190,16 @@
       "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = [];
       "Mod+W".action.toggle-column-tabbed-display = [];
 
+      # Screenshotting
       "Print".action.screenshot = [];
       "Ctrl+Print".action.screenshot-screen = [];
       "Alt+Print".action.screenshot-window = [];
 
+      # Inhibit
       "Mod+Escape" = { action.toggle-keyboard-shortcuts-inhibit = []; allow-inhibiting=false; };
 
+
+      # Sleep/Logout
       "Mod+Shift+E".action.quit = [];
       "Ctrl+Alt+Delete".action.quit = [];
       "Mod+Shift+P".action.power-off-monitors = [];
