@@ -72,6 +72,7 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     niri.url = "github:sodiboo/niri-flake";
+    hamr.url = "github:Stewart86/hamr";
 
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon/release-25.11";

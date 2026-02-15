@@ -1,5 +1,6 @@
-{ ... }:
+{ hostname, ... }:
 {
+  imports = [ ../../../systems/${hostname}/niri.nix ];
   programs.niri.settings = {
     input = {
       touchpad.tap = false;
@@ -41,6 +42,7 @@
       { argv = ["xwayland-satellite"]; }
       { argv = ["soteria"]; }
       { argv = ["clipse" "-listen"]; }
+      { argv = ["hamr"]; }
     ];
     environment = {
       QT_QPA_PLATFORM = "wayland";
@@ -111,6 +113,8 @@
 
       # Apps
       "Mod+Return".action.spawn = ["kitty"];
+      "Mod+Space".action.spawn =  [ "hamr" "toggle" ];
+      "Mod+V".action.spawn = [ "hamr" "plugin" "clipboard" ];
 
       # Layout
       "Mod+Left".action.focus-column-left = [];
@@ -186,8 +190,8 @@
       "Mod+Shift+Minus".action.set-window-height = "-10%";
       "Mod+Shift+Equal".action.set-window-height = "+10%";
 
-      "Mod+V".action.toggle-window-floating = [];
-      "Mod+Shift+V".action.switch-focus-between-floating-and-tiling = [];
+      "Mod+F".action.toggle-window-floating = [];
+      "Mod+Shift+F".action.switch-focus-between-floating-and-tiling = [];
       "Mod+W".action.toggle-column-tabbed-display = [];
 
       # Screenshotting
