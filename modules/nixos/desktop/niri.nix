@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-  imports = [ ../../nixos/hamr.nix ];
+  imports = [ ../../nixos/walker/walker.nix ];
 
   environment.systemPackages = with pkgs; [
     wl-clipboard # Clipboard support

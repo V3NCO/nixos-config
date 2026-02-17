@@ -42,7 +42,8 @@
       { argv = ["xwayland-satellite"]; }
       { argv = ["soteria"]; }
       { argv = ["clipse" "-listen"]; }
-      { argv = ["hamr"]; }
+      { argv = ["elephant"]; }
+      { argv = ["walker" "--gapplication-service"]; }
     ];
     environment = {
       QT_QPA_PLATFORM = "wayland";
@@ -113,8 +114,8 @@
 
       # Apps
       "Mod+Return".action.spawn = ["kitty"];
-      "Mod+Space".action.spawn =  [ "hamr" "toggle" ];
-      "Mod+V".action.spawn = [ "hamr" "plugin" "clipboard" ];
+      "Mod+Space".action.spawn =  [ "walker" ];
+      "Mod+V".action.spawn = [ "walker" "-m" "clipboard" ];
 
       # Layout
       "Mod+Left".action.focus-column-left = [];

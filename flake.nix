@@ -9,12 +9,16 @@
       "https://nixos-apple-silicon.cachix.org"
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
+      "https://walker.cachix.org"
+      "https://walker-git.cachix.org"
     ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+      "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
     ];
   };
 
@@ -72,7 +76,12 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     niri.url = "github:sodiboo/niri-flake";
-    hamr.url = "github:Stewart86/hamr";
+    elephant.url = "github:abenz1267/elephant";
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
 
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon/release-25.11";
