@@ -62,7 +62,6 @@
       {
         matches = [
           {
-            app-id = "firefox$";
             title="^Picture-in-Picture$";
           }
         ];
@@ -76,6 +75,8 @@
           bottom-left = 12.0;
         };
         clip-to-geometry = true;
+        open-maximized = false;
+        open-fullscreen = false;
       }
       {
         matches = [ {app-id="clipse";} ];
@@ -183,10 +184,10 @@
       "Mod+Ctrl+WheelScrollRight".action.move-column-right = [];
       "Mod+Ctrl+WheelScrollLeft".action.move-column-left = [];
 
-      "Mod+Shift+WheelScrollRight".action.focus-column-right = [];
-      "Mod+Shift+WheelScrollLeft".action.focus-column-left = [];
-      "Mod+Shift+Ctrl+WheelScrollRight".action.move-column-right = [];
-      "Mod+Shift+Ctrl+WheelScrollLeft".action.move-column-left = [];
+      "Mod+Shift+WheelScrollDown".action.focus-column-right = [];
+      "Mod+Shift+WheelScrollUp".action.focus-column-left = [];
+      "Mod+Shift+Ctrl+WheelScrollDown".action.move-column-right = [];
+      "Mod+Shift+Ctrl+WheelScrollUp".action.move-column-left = [];
 
       "Mod+Shift+Minus".action.set-window-height = "-10%";
       "Mod+Shift+Equal".action.set-window-height = "+10%";
@@ -199,7 +200,9 @@
       "Print".action.screenshot = [];
       "Ctrl+Print".action.screenshot-screen = [];
       "Alt+Print".action.screenshot-window = [];
-
+      "Mod+Shift+4".action.screenshot = [];
+      "Mod+Shift+Ctrl+4".action.screenshot-screen = [];
+      "Mod+Shift+Alt+4".action.screenshot-window = [];
       # Inhibit
       "Mod+Escape" = { action.toggle-keyboard-shortcuts-inhibit = []; allow-inhibiting=false; };
 
