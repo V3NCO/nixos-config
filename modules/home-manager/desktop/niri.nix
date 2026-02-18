@@ -194,6 +194,7 @@
 
       "Mod+F".action.toggle-window-floating = [];
       "Mod+Shift+F".action.switch-focus-between-floating-and-tiling = [];
+      "Mod+Ctrl+F".action.fullscreen-window = [];
       "Mod+W".action.toggle-column-tabbed-display = [];
 
       # Screenshotting
