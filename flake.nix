@@ -77,6 +77,7 @@
 
     niri.url = "github:sodiboo/niri-flake";
     elephant.url = "github:abenz1267/elephant";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
 
     walker = {
       url = "github:abenz1267/walker";

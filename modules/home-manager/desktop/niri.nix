@@ -14,6 +14,7 @@
 
     layout = {
       center-focused-column = "never";
+      background-color = "transparent";
 
       preset-column-widths = [
         { proportion = 1. / 3.; }
@@ -29,17 +30,19 @@
         active.gradient = { from="#9683ec"; to="#6f00ffff"; angle=135; };
       };
 
-      # shadow {
-      # // off by default (not enabling to keep things light)
-      # softness 30
-      # spread 5
-      # offset x=0 y=5
-      # color "#0007"
-      # }
+      shadow = {
+        enable = true;
+        softness = 30;
+        spread = 5;
+        offset = { x=0; y=5; };
+        color = "#0007";
+      };
     };
 
     spawn-at-startup = [
       { argv = ["xwayland-satellite"]; }
+      { argv = ["awww-daemon"]; }
+      { argv = ["quickshell"]; }
       { argv = ["soteria"]; }
       { argv = ["clipse" "-listen"]; }
       { argv = ["elephant"]; }
@@ -94,7 +97,6 @@
 
     layer-rules = [
       {
-        matches = [ {namespace="^wallpaper$";} ];
         place-within-backdrop=true;
       }
     ];

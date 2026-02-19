@@ -8,7 +8,7 @@
       withX11 = false;
       withPipewire = true;
       withPam = true;
-      withHyprland = true;
+      withHyprland = false;
       withI3 = false;
     })
   ];
