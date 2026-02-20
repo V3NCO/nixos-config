@@ -1,0 +1,10 @@
+{
+  "theme": {
+    "font": {
+      "family": "Barlow Medium"
+    },
+    "fontMono": {
+      "family": "Iosevka Term ss08"
+    }
+  }
+}

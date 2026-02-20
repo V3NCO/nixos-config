@@ -4,6 +4,7 @@
   imports = [ ../../nixos/walker/walker.nix ];
 
   environment.systemPackages = with pkgs; [
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
     wl-clipboard # Clipboard support
     wlr-randr # Output management
     xwayland-satellite # X11 app support (non-native on niri)

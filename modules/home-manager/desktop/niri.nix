@@ -1,6 +1,6 @@
 { hostname, ... }:
 {
-  imports = [ ../../../systems/${hostname}/niri.nix ];
+  imports = [ ../../../systems/${hostname}/niri.nix ../quickshell ];
   programs.niri.settings = {
     input = {
       touchpad.tap = false;

@@ -1,16 +1,17 @@
-{pkgs, quickshell, ...}:
+{pkgs, inputs, ...}:
 {
   home.packages = [
-    (quickshell.packages.${pkgs.system}.default.override {
+    inputs.qml-niri.packages.${pkgs.system}.default
+    ((inputs.qml-niri.packages.${pkgs.system}.quickshell.override {
       withJemalloc = true;
       withQtSvg = true;
       withWayland = true;
       withX11 = false;
       withPipewire = true;
       withPam = true;
-      withHyprland = false;
-      withI3 = false;
-    })
+    }).overrideAttrs (prevAttrs: {
+      buildInputs = [ pkgs.qt6.qt5compat ] ++ prevAttrs.buildInputs;
+    }))
   ];
 
 
