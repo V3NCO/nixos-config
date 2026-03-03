@@ -1,0 +1,33 @@
+name: Automerge
+
+on:
+  schedule:
+    - cron: 0 * * * *
+
+  pull_request:
+    branches:
+      - master
+
+
+  workflow_dispatch:
+    inputs:
+      pull-request:
+        description: Pull Request Number
+        required: false
+      review:
+        description: Review ID
+        required: false
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: reitermarkus/automerge@v2
+        with:
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          merge-method: rebase
+          do-not-merge-labels: never-merge
+          required-labels: dependencies
+          pull-request: ${{ github.event.inputs.pull-request }}
+          review: ${{ github.event.inputs.review }}
+          dry-run: true
