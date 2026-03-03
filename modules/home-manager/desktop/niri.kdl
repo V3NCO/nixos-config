@@ -1,0 +1,18 @@
+include "nix-generated-config.kdl"
+
+layer-rule {
+    place-within-backdrop true
+}
+
+window-rule {
+    match app-id="^kitty$"
+    background-effect {
+        blur true
+    }
+}
+
+blur {
+    noise 0.002
+    passes 3
+    offset 12
+};

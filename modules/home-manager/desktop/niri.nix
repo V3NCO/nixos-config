@@ -1,6 +1,11 @@
-{ hostname, ... }:
+{ hostname, pkgs, config, ... }:
 {
   imports = [ ../../../systems/${hostname}/niri.nix ../quickshell ];
+
+  xdg.configFile."niri/config.kdl".text = builtins.readFile ./niri.kdl;
+
+  xdg.configFile.niri-config.target = pkgs.lib.mkForce "niri/nix-generated-config.kdl";
+
   programs.niri.settings = {
     input = {
       touchpad.tap = false;

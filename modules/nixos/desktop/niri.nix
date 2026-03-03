@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
   imports = [ ../../nixos/walker/walker.nix ];
 
   environment.systemPackages = with pkgs; [
@@ -33,6 +33,6 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = inputs.niri-wm.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
 }

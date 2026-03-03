@@ -1,8 +1,6 @@
 {
-  description = "A template that shows all standard flake outputs";
+  description = "Esther's config idk";
 
-  # Inputs
-  # https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html#flake-inputs
   nixConfig = {
     extra-substituters = [
       "https://hyprland.cachix.org"
@@ -81,7 +79,11 @@
 
     catppuccin.url = "github:catppuccin/nix/release-25.11";
 
-    niri.url = "github:sodiboo/niri-flake";
+    niri-flake.url = "github:sodiboo/niri-flake";
+    niri-wm = {
+      url = "github:niri-wm/niri/wip/branch";
+      flake = false;
+    };
     elephant.url = "github:abenz1267/elephant";
     awww.url = "git+https://codeberg.org/LGFae/awww";
 
@@ -120,7 +122,7 @@
         ./systems/quasar
         inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
-        inputs.niri.nixosModules.niri
+        inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -161,7 +163,7 @@
         ./systems/comet
         inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
-        inputs.niri.nixosModules.niri
+        inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -208,7 +210,7 @@
       modules = [
         ./systems/stardust
         inputs.nixCats.nixosModules.default
-        inputs.niri.nixosModules.niri
+        inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
