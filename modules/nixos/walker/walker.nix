@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [inputs.walker.nixosModules.default];
-  environment.systemPackages = [ pkgs.rbw  pkgs.wl-clipboard pkgs.wtype ];
+  environment.systemPackages = [ pkgs.rbw  pkgs.wl-clipboard pkgs.wtype pkgs.pinentry-gnome3 ];
   programs.walker = {
     enable = true;
 
@@ -11,7 +11,7 @@
       providers.prefixes = [
         {provider = "websearch"; prefix = "+";}
         {provider = "providerlist"; prefix = "_";}
-        {provider = "bitwarden"; prefix = "\\";}
+        {provider = "bitwarden"; prefix = "!";}
       ];
       keybinds.quick_activate = ["F1" "F2" "F3"];
     };
