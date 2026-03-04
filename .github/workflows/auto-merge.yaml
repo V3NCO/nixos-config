@@ -2,8 +2,7 @@ name: Automerge
 
 on:
   pull_request:
-    branches:
-      - master
+    types: [opened, synchronize, reopened]
 
 
   workflow_dispatch:
@@ -18,6 +17,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.mergeable == true }}
     steps:
       - uses: reitermarkus/automerge@v2
         with:
