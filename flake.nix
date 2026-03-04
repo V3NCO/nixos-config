@@ -192,6 +192,7 @@
       system = "x86_64-linux";
       modules = [
         ./systems/aphelion
+        inputs.nixCats.nixosModules.default
       ];
     };
 
