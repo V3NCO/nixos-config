@@ -1,29 +1,36 @@
-# I have no idea what im doing
-
-name: "Daily flake update"
+name: "Daily flake update (push to main)"
 
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
+
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
-  nix-flake-update:
-    permissions:
-      contents: write
-      id-token: write
-      issues: write
-      pull-requests: write
+  update-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: DeterminateSystems/determinate-nix-action@v3
-      - uses: DeterminateSystems/update-flake-lock@main
+      - name: Checkout main
+        uses: actions/checkout@v4
         with:
-          pr-title: "chore: update flake"
-          pr-labels: | # Labels to be set on the PR
-            dependencies
-            automated
-          inputs: 
+          fetch-depth: 0
+          ref: main
+          # If you plan to use a PAT (recommended for protected branches) set token below:
+          token: ${{ secrets.PERSONAL_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Nix
+        uses: DeterminateSystems/determinate-nix-action@v3
+
+      - name: Update flake inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # List the flake input names you want to update (same as your current workflow)
+          inputs=(
             nixpkgs
             nixpkgs-unstable
             home-manager
@@ -44,3 +51,41 @@ jobs:
             walker
             awww
             apple-silicon
+          )
+
+          # Update each input. `nix flake update --update-input <name>` updates flake.lock
+          for i in "${inputs[@]}"; do
+            echo "Updating flake input: $i"
+            nix flake update --update-input "$i" || true
+          done
+
+      - name: Commit & push if changed
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # show changes for debugging
+          git --no-pager status --porcelain || true
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            # Add the files that are expected to change (usually flake.lock)
+            git add flake.lock || true
+            # If your updates modify other files, add them too, or use `git add -A`
+            # git add -A
+
+            git commit -m "chore: update flake inputs (automated)"
+            # Ensure the origin points to an authenticated URL when using a PAT
+            if [ -n "${GITHUB_TOKEN:-}" ] && [ "${GITHUB_TOKEN}" != "null" ]; then
+              git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            fi
+
+            # Push to main
+            git push origin HEAD:main
+            echo "Pushed changes to main."
+          else
+            echo "No changes to commit."
+          fi
