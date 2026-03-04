@@ -1,9 +1,6 @@
 name: Automerge
 
 on:
-  schedule:
-    - cron: 0 * * * *
-
   pull_request:
     branches:
       - master
