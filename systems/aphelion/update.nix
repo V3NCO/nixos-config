@@ -22,12 +22,12 @@
     restartIfChanged = false;
     path = [pkgs.nixos-rebuild pkgs.systemd];
     script = ''
-      nixos-rebuild boot --flake /home/venco/nixos-rebuild
+      nixos-rebuild boot --flake /home/venco/nixos-config
       booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules})"
       built="$(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules})"
 
       if [ "''${booted}" = "''${built}" ]; then
-        nixos-rebuild switch
+        nixos-rebuild switch --flake /home/venco/nixos-config
       else
         reboot now
       fi
