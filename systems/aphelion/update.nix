@@ -22,7 +22,7 @@
     restartIfChanged = false;
     path = [pkgs.nixos-rebuild pkgs.systemd];
     script = ''
-      nixos-rebuild boot
+      nixos-rebuild boot --flake /home/venco/nixos-rebuild
       booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules})"
       built="$(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules})"
 
