@@ -83,9 +83,9 @@ jobs:
               git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             fi
 
-            # Push to main
-            git push origin HEAD:main
-            echo "Pushed changes to main."
+            # Push to master
+            git push origin HEAD:master
+            echo "Pushed changes to master."
           else
             echo "No changes to commit."
           fi
