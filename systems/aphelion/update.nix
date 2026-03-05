@@ -7,7 +7,7 @@
     startAt = "01:30";
     path = [pkgs.git pkgs.openssh];
     script = ''
-      test "$(git branch --show-current)" = "main"
+      test "$(git branch --show-current)" = "master"
       git pull --ff-only
     '';
     serviceConfig = {
