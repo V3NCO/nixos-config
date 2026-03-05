@@ -12,7 +12,7 @@
     '';
     serviceConfig = {
       WorkingDirectory = "/home/venco/nixos-config";
-      User = "v3nco";
+      User = "venco";
       Type = "oneshot";
     };
   };
