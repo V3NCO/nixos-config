@@ -32,6 +32,9 @@
         reboot now
       fi
     '';
-    serviceConfig.Type = "oneshot";
+    serviceConfig ={
+      Type = "oneshot";
+      User = "venco";
+    };
   };
 }
