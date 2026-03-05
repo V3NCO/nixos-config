@@ -34,7 +34,6 @@
     '';
     serviceConfig ={
       Type = "oneshot";
-      User = "venco";
     };
   };
 }
