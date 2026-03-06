@@ -20,7 +20,7 @@
   systemd.services.rebuild = {
     description = "Rebuilds and activates system config";
     restartIfChanged = false;
-    path = [pkgs.nixos-rebuild pkgs.systemd];
+    path = [pkgs.nixos-rebuild pkgs.systemd pkgs.git pkgs.openssh];
     script = ''
       git config --global --add safe.directory /home/venco/nixos-config
       nixos-rebuild boot --flake /home/venco/nixos-config
