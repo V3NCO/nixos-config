@@ -15,7 +15,7 @@
           REDIRECT_DOMAINS = "v3nco.dev,nexus.v3nco.dev,forgejo.v3nco.dev";
           PUBLIC_URL = "https://anubis.v3nco.dev";
           #METRICS_BIND = "/run/anubis/anubis-forgejo/metrics.sock";
-          TARGET = " "
+          TARGET = " ";
           COOKIE_DOMAIN = "v3nco.dev";
         };
       };
