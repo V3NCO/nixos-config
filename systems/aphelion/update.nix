@@ -34,6 +34,7 @@
       fi
     '';
     serviceConfig ={
+      User = "root";
       Type = "oneshot";
     };
   };
