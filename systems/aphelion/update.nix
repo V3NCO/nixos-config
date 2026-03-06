@@ -22,6 +22,7 @@
     restartIfChanged = false;
     path = [pkgs.nixos-rebuild pkgs.systemd];
     script = ''
+      git config --global --add safe.directory /home/venco/nixos-config
       nixos-rebuild boot --flake /home/venco/nixos-config
       booted="$(readlink /run/booted-system/{initrd,kernel,kernel-modules})"
       built="$(readlink /nix/var/nix/profiles/system/{initrd,kernel,kernel-modules})"
