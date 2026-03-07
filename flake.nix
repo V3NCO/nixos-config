@@ -80,10 +80,7 @@
     catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     niri-flake.url = "github:sodiboo/niri-flake";
-    niri-wm = {
-      url = "github:niri-wm/niri/wip/branch";
-      flake = false;
-    };
+    niri-wm.url = "github:niri-wm/niri/wip/branch";
     elephant.url = "github:abenz1267/elephant";
     awww.url = "git+https://codeberg.org/LGFae/awww";
 

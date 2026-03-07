@@ -1,4 +1,4 @@
-{ hostname, pkgs, config, ... }:
+{ hostname, pkgs, ... }:
 {
   imports = [ ../../../systems/${hostname}/niri.nix ../quickshell ];
 
