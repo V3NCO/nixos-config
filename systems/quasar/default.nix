@@ -24,6 +24,7 @@
     ../../modules/nixos/cider.nix
     ../../modules/nixos/maccam.nix
     ../../modules/nixos/desktop/nvidia.nix
+    ../../modules/nixos/fonts.nix
     ./keyboard.nix
   ];
 
