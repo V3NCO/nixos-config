@@ -74,15 +74,6 @@ Item {
         }
         Component { id: workspacesComponent; Workspaces {} }
         Component { id: focusedWindowComponent; FocusedWindow {} }
-        Component { id: cpuComponent; CPU {} }
-        Component { id: ramComponent; RAM {} }
-        Component { id: networkComponent; Network {} }
-        Component {
-            id: batteryComponent
-            Battery {
-                orientation: Types.stringToOrientation(Config.data.battery.orientation)
-            }
-        }
         Component {
             id: clockComponent
             Clock {
@@ -94,12 +85,8 @@ Item {
         }
 
         readonly property var widgetComponents: {
-            "battery": batteryComponent,
             "clock": clockComponent,
-            "cpu": cpuComponent,
             "focusedWindow": focusedWindowComponent,
-            "network": networkComponent,
-            "ram": ramComponent,
             "separator": separatorComponent,
             "workspaces": workspacesComponent,
         }

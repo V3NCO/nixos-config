@@ -1,10 +1,13 @@
 {
+  "bar": {
+    "size": 35
+  },
   "theme": {
     "font": {
-      "family": "Barlow Medium"
+      "family": ""
     },
     "fontMono": {
-      "family": "Iosevka Term ss08"
+      "family": "Lilex Nerd Font Mono"
     }
   }
 }
