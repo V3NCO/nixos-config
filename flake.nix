@@ -64,6 +64,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell-blur = {
+      url = "github:bbedward/quickshell/ext-bg-effect";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     qml-niri = {
       url = "github:imiric/qml-niri/main";
       inputs.nixpkgs.follows = "nixpkgs";

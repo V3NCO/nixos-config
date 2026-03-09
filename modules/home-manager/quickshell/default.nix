@@ -2,7 +2,7 @@
 {
   home.packages = [
     inputs.qml-niri.packages.${pkgs.system}.default
-    ((inputs.qml-niri.packages.${pkgs.system}.quickshell.override {
+    ((inputs.quickshell-blur.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;
       withWayland = true;
@@ -10,7 +10,7 @@
       withPipewire = true;
       withPam = true;
     }).overrideAttrs (prevAttrs: {
-      buildInputs = [ pkgs.qt6.qt5compat ] ++ prevAttrs.buildInputs;
+      buildInputs = [ pkgs.qt6.qt5compat inputs.qml-niri.packages.${pkgs.system}.qml-niri ] ++ prevAttrs.buildInputs;
     }))
   ];
 

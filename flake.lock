@@ -1170,6 +1170,27 @@
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       }
     },
+    "quickshell-blur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771253284,
+        "narHash": "sha256-9FlKj+sjLly6/ADg5O10nKrINkQx6l7OIfvC1e437zg=",
+        "owner": "bbedward",
+        "repo": "quickshell",
+        "rev": "204b9202fb861f45a954c541faad37b92ea95429",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbedward",
+        "ref": "ext-bg-effect",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "quickshell_2": {
       "inputs": {
         "nixpkgs": [
@@ -1212,6 +1233,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "qml-niri": "qml-niri",
         "quickshell": "quickshell_2",
+        "quickshell-blur": "quickshell-blur",
         "walker": "walker",
         "zen-browser": "zen-browser"
       }
