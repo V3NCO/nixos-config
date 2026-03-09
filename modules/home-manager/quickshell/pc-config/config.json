@@ -4,10 +4,13 @@
   },
   "theme": {
     "font": {
-      "family": ""
+      "family": "SF Compact Display"
     },
     "fontMono": {
       "family": "Lilex Nerd Font Mono"
+    },
+    "colors": {
+      "background": "#77221122"
     }
   }
 }
