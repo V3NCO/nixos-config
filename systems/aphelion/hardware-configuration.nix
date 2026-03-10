@@ -27,7 +27,7 @@
   };
   fileSystems."/boot" = {
     device = "/dev/disk/by-label/NIXBOOT";
-    fsType = "vfat";
+    fsType = "ext4";
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -37,6 +37,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
   services.qemuGuest.enable = true;
-  
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
