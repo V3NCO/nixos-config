@@ -1,5 +1,8 @@
 { ... }:
 {
+  imports = [
+    ./traefik.nix
+  ];
   networking = {
     #defaultGateway = "45.8.201.1";
     hostName = "aphelion";
