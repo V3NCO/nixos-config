@@ -4,5 +4,8 @@
     ../../modules/server/vm
     ../../modules/server/port-conflicts.nix
     ../../modules/server/immich.nix
+    ../../modules/server/vaultwarden.nix
+    ../../modules/server/forgejo.nix
+
   ]
 }
