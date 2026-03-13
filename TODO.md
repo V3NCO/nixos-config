@@ -30,9 +30,9 @@
 ## Sentinel
 Services:
 - [ ] Glance
-- [ ] Immich
-- [ ] Vaultwarden
-- [ ] Forgejo (and runner)
+- [x] Immich
+- [x] Vaultwarden
+- [/] Forgejo (and runner)
 - [ ] HASS
 - [ ] Coder (?)
 - [ ] Drive service

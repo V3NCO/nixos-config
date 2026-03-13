@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    qemu_kvm
+    virt-manager
+    libvirt
+    bridge-utils
+  ];
+
   virtualisation = {
     incus = {
       enable = true;
@@ -43,7 +50,7 @@
         ];
       };
     };
-  
+
     libvirtd = {
       enable = true;
       qemu = {
