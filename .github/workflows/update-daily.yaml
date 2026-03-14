@@ -36,19 +36,23 @@ jobs:
             home-manager
             nixCats
             nix-jetbrains-plugins
-            hyprland
-            hyprland-plugins
-            hyprgrass
-            caelestia-shell
+            # Not using hyprland for the time being so let's save ressources/build time
+            # hyprland
+            # hyprland-plugins
+            # hyprgrass
+            # caelestia-shell
             hm-unstable
             quickshell
+            quickshell-blur
+            qml-niri
             zen-browser
             apple-fonts
             niri-flake
             niri-wm
             elephant
-            walker
             awww
+            walker
+            silentSDDM
             apple-silicon
           )
 

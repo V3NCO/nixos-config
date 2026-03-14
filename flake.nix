@@ -98,6 +98,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     asahi-firmware = {
       url="/etc/nixos/firmware";
       flake = false;
