@@ -17,15 +17,10 @@
   ];
 
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     NVD_BACKEND = "direct";
     # ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
