@@ -1,18 +1,23 @@
 # TODO
 - [x] Media player buttons
 - [ ] Shell (bar)
+  - [ ] Tray apps
+  - [ ] Bluetooth
+  - [ ] Wifi
+  - [ ] Music Player
+  - [ ] Notifications
 - [x] Auto focus by hovering
-- [ ] Polkit > fuzzel ? - Currently using Soteria, switch later.
 - [x] Wallpaper
-- [ ] fuzzel theme
+- [ ] Walker theme
 - [x] Hotkeys
-  - [x] Fuzzel
-- [x] Monitors -- not possible to have vertical
+  - [x] Walker
+- [x] Monitors -- not ssible to have vertical
 - [x] Nvidia
 - [x] Cool
 - [x] Gnome theme cause it impacts the rest
 - [x] Clipboard history
 - [ ] Better shell (terminal)
+- [ ] fastfetch logo set by defaut+fastfetch config
 - [ ] Zen browser customization :fire:
 - [x] Zed
 - [x] Wakatime
