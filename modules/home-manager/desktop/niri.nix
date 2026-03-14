@@ -48,7 +48,7 @@
       { argv = ["xwayland-satellite"]; }
       { argv = ["awww-daemon"]; }
       { argv = ["quickshell"]; }
-      { argv = ["soteria"]; }
+      { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
       { argv = ["clipse" "-listen"]; }
       { argv = ["elephant"]; }
       { argv = ["walker" "--gapplication-service"]; }
@@ -57,6 +57,10 @@
       QT_QPA_PLATFORM = "wayland";
       DISPLAY = ":0";
       XDG_CURRENT_DESKTOP = "niri";
+      NIXOS_OZONE_WL = "1";
+      XDG_SESSION_TYPE = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      SDL_VIDEODRIVER = "wayland";
     };
 
     screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
