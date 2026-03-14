@@ -82,7 +82,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin.url = "github:catppuccin/nix/release-25.11";
 
     niri-flake.url = "github:sodiboo/niri-flake";
     niri-wm.url = "github:niri-wm/niri/wip/branch";
@@ -122,7 +121,6 @@
 
       modules = [
         ./systems/quasar
-        inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
         inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
@@ -135,7 +133,6 @@
               venco = {
                 imports = [
                   ./users/venco-home.nix
-                  inputs.catppuccin.homeModules.catppuccin
                 ];
               };
             };
@@ -163,7 +160,6 @@
       specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
       modules = [
         ./systems/comet
-        inputs.catppuccin.nixosModules.catppuccin
         inputs.nixCats.nixosModules.default
         inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
@@ -176,7 +172,6 @@
               venco = {
                 imports = [
                   ./users/venco-home.nix
-                  inputs.catppuccin.homeModules.catppuccin
                 ];
               };
             };

@@ -17,7 +17,6 @@
     ../../modules/nixos/polkit.nix
     ../modules/nixos/browsers/firefox.nix
     # ../../modules/nixos/drawing_tablets.nix
-    # ../../modules/nixos/theming/catppuccin.nix
     # ../../modules/nixos/flipperzero.nix
     ../../users
     ./keyboard.nix
@@ -43,7 +42,7 @@
     vscode-fhs
     zed-editor-fhs
   ];
-  
+
   nix.settings.auto-optimise-store = true;
   programs.gpu-screen-recorder.enable = false;
   programs.nix-ld.enable = true;

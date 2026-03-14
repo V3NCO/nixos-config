@@ -44,7 +44,6 @@ jobs:
             quickshell
             zen-browser
             apple-fonts
-            catppuccin
             niri-flake
             niri-wm
             elephant

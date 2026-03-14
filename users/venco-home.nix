@@ -14,7 +14,6 @@
     # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
     # ../modules/home-manager/vicinae.nix
-    ../modules/home-manager/theming/catppuccin.nix
     ../modules/home-manager/desktop/gnome.nix
   ];
 }
