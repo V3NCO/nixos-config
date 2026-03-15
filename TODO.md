@@ -17,8 +17,8 @@
 - [x] Gnome theme cause it impacts the rest
 - [x] Clipboard history
 - [ ] Better shell (terminal)
-- [ ] fastfetch logo set by defaut+fastfetch config
-- [ ] Zen browser customization :fire:
+- [x] fastfetch logo set by defaut+fastfetch config
+- [~] Zen browser customization :fire:
 - [x] Zed
 - [x] Wakatime
 - [ ] Clipping
