@@ -14,9 +14,9 @@
         type = "auto";
         source = "${config.xdg.configHome}/ascii/fastfetch.txt";
         color = {
-          "1" = "magenta";
-          "2" = "white";
-          "3" = "blue";
+          "1" = "#9683EC";
+          "2" = "#D6CDFE";
+          "3" = "#FFFFFF";
         };
       };
       display = {
