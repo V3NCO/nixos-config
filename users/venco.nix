@@ -23,8 +23,6 @@
     ];
     initialPassword = "password";
     packages = with pkgs; [
-      fastfetch
-      hyfetch
       zip
       xz
       unzip

@@ -10,6 +10,7 @@
     ../modules/home-manager/gpg.nix
     ../modules/home-manager/git.nix
     ../modules/home-manager/kitty.nix
+    ../modules/home-manager/fetch.nix
     ../modules/home-manager/desktop/niri.nix
     # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
