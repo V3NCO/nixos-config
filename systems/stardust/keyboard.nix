@@ -6,8 +6,6 @@
 
   console.keyMap = "mac-fr";
 
-  # programs.hyprland.settings.input.kb_layout = "fr";
-
   programs.dconf = {
     enable = true;
     profiles = {
