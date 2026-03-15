@@ -6,7 +6,7 @@
 {
   users.users.venco = {
     isNormalUser = true;
-    description = "Venco";
+    description = "Esther";
     extraGroups = [
       "networkmanager"
       "wheel"
