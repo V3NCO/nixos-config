@@ -28,9 +28,6 @@
 
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
 
-  systemd.tmpfiles.rules = [
-    ''L+ /run/gdm/.config/monitors.xml - - - - ${./monitors.xml}''
-  ] ++ builtins.attrValues (builtins.mapAttrs (n: v: "L+ /home/${n}/.config/monitors.xml - - - - ${./monitors.xml}") {venco = "venco";});
 
   virtualisation.docker = {
     enable = true;
