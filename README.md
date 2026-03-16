@@ -6,7 +6,3 @@
 > probably written very badly.
 
 Uses Niri and uuh thats about it I just started getting into nix and nixos so i dont have anything cool to show you (maybe later ?)
-
-Used some things from:
-https://github.com/pabloagn/rhodium/
-https://github.com/linuxmobile/kaku/
