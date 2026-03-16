@@ -11,6 +11,7 @@
     ../../modules/nixos/basic/bluetooth.nix
     ../../modules/nixos/desktop/greet.nix
     ../../modules/nixos/desktop/gnome.nix
+    ../../modules/nixos/power.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix

@@ -8,6 +8,7 @@
     ../../modules/nixos/basic/networking.nix
     ../../modules/nixos/basic/bluetooth.nix
     ../../modules/nixos/desktop
+    ../../modules/nixos/power.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix

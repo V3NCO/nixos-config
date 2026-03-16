@@ -9,6 +9,7 @@
     ../../modules/nixos/basic/bluetooth.nix
     ../../modules/nixos/desktop
     ../../modules/nixos/printing.nix
+    ../../modules/nixos/power.nix
     ../../modules/nixos/ssh.nix
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
