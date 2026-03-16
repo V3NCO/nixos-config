@@ -44,6 +44,8 @@ jobs:
             hm-unstable
             quickshell
             quickshell-blur
+            noctalia
+            noctalia-qs
             qml-niri
             zen-browser
             apple-fonts

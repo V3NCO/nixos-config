@@ -1,6 +1,10 @@
 { hostname, pkgs, ... }:
 {
-  imports = [ ../../../systems/${hostname}/niri.nix ../quickshell ];
+  imports = [
+    ../../../systems/${hostname}/niri.nix
+    # ../quickshell
+    ../noctalia
+  ];
 
   xdg.configFile."niri/config.kdl".text = builtins.readFile ./niri.kdl;
 
@@ -47,7 +51,7 @@
     spawn-at-startup = [
       { argv = ["xwayland-satellite"]; }
       { argv = ["awww-daemon"]; }
-      { argv = ["quickshell"]; }
+      { argv = ["noctalia-shell"]; }
       { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
       { argv = ["clipse" "-listen"]; }
       { argv = ["elephant"]; }
@@ -107,6 +111,10 @@
     layer-rules = [
       {
         place-within-backdrop=true;
+      }
+      {
+        matches = [ { namespace = "^noctalia-notifications.*$"; } { namespace = "^notifications.*$"; } ];
+        block-out-from = "screen-capture";
       }
     ];
 
