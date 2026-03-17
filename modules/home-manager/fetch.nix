@@ -1,7 +1,7 @@
 { config, ... }:
 {
 
-  home.file."${config.xdg.configHome}/ascii" = {
+  home.file."${config.xdg.configHome}/nixosassets/ascii" = {
     source = ./ascii;
     recursive = true;
   };
@@ -12,7 +12,7 @@
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
         type = "auto";
-        source = "${config.xdg.configHome}/ascii/fastfetch.txt";
+        source = "${config.xdg.configHome}/nixosassets/ascii/fastfetch.txt";
         color = {
           "1" = "#9683EC";
           "2" = "#D6CDFE";
@@ -292,7 +292,7 @@
           };
           "backend"= "fastfetch";
           "pride_month_disable" = false;
-          "custom_ascii_path" = "${config.xdg.configHome}/ascii/hyfetch.txt";
+          "custom_ascii_path" = "${config.xdg.configHome}/nixosassets/ascii/hyfetch.txt";
     };
   };
 }

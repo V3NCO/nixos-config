@@ -1,44 +1,53 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 {
   imports = [
     inputs.noctalia.homeModules.default
   ];
+
+  home.file."${config.xdg.configHome}/nixosassets/noctalia" = {
+    source = ./assets;
+    recursive = true;
+  };
 
   # configure options
   programs.noctalia-shell = {
     enable = true;
     settings = {
       bar = {
+        # Bar pos and size
         barType = "floating";
         position = "top";
         density = "default";
+        # The things around the buttons
         showOutline = false;
         showCapsule = false;
         capsuleOpacity = 1;
         capsuleColorKey = "none";
+        # scale and offsets
         widgetSpacing = 6;
         contentPadding = 2;
         fontScale = 1;
+        # Bar appearance stuff
         enableExclusionZoneInset = true;
         backgroundOpacity = 0.78;
         useSeparateOpacity = true;
         floating = true;
         marginVertical = 4;
         marginHorizontal = 4;
-        frameThickness = 8;
-        frameRadius = 12;
+        # frameThickness = 8;
+        # frameRadius = 12;
         outerCorners = true;
         hideOnOverview = false;
         displayMode = "always_visible";
-        autoHideDelay = 500;
-        autoShowDelay = 150;
+        # autoHideDelay = 500;
+        # autoShowDelay = 150;
         showOnWorkspaceSwitch = true;
         widgets = {
           left = [
             {
               colorizeDistroLogo = false;
               colorizeSystemIcon = "none";
-              customIconPath = "";
+              customIconPath = "${config.xdg.configHome}/nixosassets/noctalia/venco.svg";
               enableColorization = false;
               icon = "noctalia";
               id = "ControlCenter";

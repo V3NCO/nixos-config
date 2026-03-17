@@ -134,7 +134,8 @@
 
       # Apps
       "Mod+Return".action.spawn = ["kitty"];
-      "Mod+Space".action.spawn =  [ "walker" ];
+      "Mod+Space".action.spawn-sh =  [ "noctalia-shell ipc call launcher toggle" ];
+      "Mod+S".action.spawn-sh = [ "noctalia-shell ipc call controlCenter toggle" ];
       "Mod+V".action.spawn = [ "walker" "-m" "clipboard" ];
 
       # Layout
