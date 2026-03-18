@@ -12,6 +12,67 @@
   # configure options
   programs.noctalia-shell = {
     enable = true;
+
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+
+      states = {
+        polkit-agent = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        tailscale = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+    };
+
+    pluginSettings = {
+      tailscale = {
+        refreshInterval = 5000;
+        compactMode = true;
+        showIpAddress = true;
+        showPeerCount = true;
+        hideDisconnected = false;
+        terminalCommand = "ghostty";
+        pingCount = 10;
+        defaultPeerAction = "copy-ip";
+      };
+      screen-recorder = {
+        hideInactive = false;
+        iconColor = "primary";
+        directory = "";
+        filenamePattern = "recording_yyyyMMdd_HHmmss";
+        frameRate = "60";
+        customFrameRate = "60";
+        audioCodec = "opus";
+        videoCodec = "h264";
+        quality = "very_high";
+        colorRange = "limited";
+        showCursor = true;
+        copyToClipboard = false;
+        audioSource = "default_output";
+        videoSource = "portal";
+        resolution = "original";
+        restorePortalSession = true;
+        replayEnabled = true;
+        replayDuration = "30";
+        customReplayDuration = "30";
+        replayStorage = "ram";
+      };
+    };
+
     settings = {
       bar = {
         # Bar pos and size
@@ -91,6 +152,18 @@
           ];
           right = [
             {
+              blacklist = [];
+              chevronColor = "none";
+              colorizeIcons = false;
+              drawerEnabled = true;
+              hidePassive = false;
+              id = "Tray";
+              pinned = [];
+            }
+            {
+              id = "plugin:tailscale";
+            }
+            {
               deviceNativePath = "__default__";
               displayMode = "graphic-clean";
               hideIfIdle = false;
@@ -124,9 +197,9 @@
         ];
       };
       general = {
-        avatarImage = "/home/drfoobar/.face";
+        avatarImage = "${config.xdg.configHome}/nixosassets/pfp/venco.png";
         dimmerOpacity = 0.05;
-        showScreenCorners = false;
+        showScreenCorners = true;
         forceBlackScreenCorners = false;
         scaleRatio = 1;
         radiusRatio = 1;
@@ -136,11 +209,11 @@
         animationSpeed = 1;
         animationDisabled = false;
         compactLockScreen = false;
-        lockScreenAnimations = false;
+        lockScreenAnimations = true;
         lockOnSuspend = true;
         showSessionButtonsOnLockScreen = true;
         showHibernateOnLockScreen = false;
-        enableLockScreenMediaControls = false;
+        enableLockScreenMediaControls = true;
         enableShadows = true;
         enableBlurBehind = true;
         shadowDirection = "bottom_right";
@@ -156,11 +229,11 @@
         allowPasswordWithFprintd = false;
         clockStyle = "custom";
         clockFormat = "hh\\nmm";
-        passwordChars = false;
+        passwordChars = true;
         lockScreenMonitors = [
 
         ];
-        lockScreenBlur = 0;
+        lockScreenBlur = 0.5;
         lockScreenTint = 0;
         keybinds = {
           keyUp = [
@@ -197,18 +270,18 @@
         scrollbarAlwaysVisible = true;
         boxBorderEnabled = false;
         panelBackgroundOpacity = 0.93;
-        translucentWidgets = false;
+        translucentWidgets = true;
         panelsAttachedToBar = true;
-        settingsPanelMode = "attached";
+        settingsPanelMode = "window";
         settingsPanelSideBarCardStyle = false;
       };
       location = {
-        name = "Marseille, France";
+        name = "Grenoble, France";
         weatherEnabled = true;
         weatherShowEffects = true;
         useFahrenheit = false;
         use12hourFormat = false;
-        showWeekNumberInCalendar = false;
+        showWeekNumberInCalendar = true;
         showCalendarEvents = true;
         showCalendarWeather = true;
         analogClockInCalendar = false;
@@ -240,7 +313,7 @@
 
         ];
         enableMultiMonitorDirectories = false;
-        showHiddenFiles = false;
+        showHiddenFiles = true;
         viewMode = "single";
         setWallpaperOnAllMonitors = true;
         fillMode = "crop";
@@ -295,7 +368,7 @@
 
         ];
         sortByMostUsed = true;
-        terminalCommand = "alacritty -e";
+        terminalCommand = "ghostty";
         customLaunchPrefixEnabled = false;
         customLaunchPrefix = "";
         viewMode = "list";
@@ -327,6 +400,9 @@
             {
               id = "NoctaliaPerformance";
             }
+            {
+              id = "DarkMode";
+            }
           ];
           right = [
             {
@@ -340,6 +416,9 @@
             }
             {
               id = "NightLight";
+            }
+            {
+              id = "plugin:screen-recorder";
             }
           ];
         };
@@ -456,7 +535,7 @@
           {
             action = "lock";
             command = "";
-            countdownEnabled = true;
+            countdownEnabled = false;
             enabled = true;
             keybind = "1";
           }
@@ -477,7 +556,7 @@
           {
             action = "reboot";
             command = "";
-            countdownEnabled = true;
+            countdownEnabled = false;
             enabled = true;
             keybind = "4";
           }
@@ -491,7 +570,7 @@
           {
             action = "shutdown";
             command = "";
-            countdownEnabled = true;
+            countdownEnabled = false;
             enabled = true;
             keybind = "6";
           }
@@ -506,8 +585,8 @@
             action = "userspaceReboot";
             command = "";
             countdownEnabled = true;
-            enabled = false;
-            keybind = "";
+            enabled = true;
+            keybind = "8";
           }
         ];
       };
@@ -520,7 +599,7 @@
         ];
         location = "top_right";
         overlayLayer = true;
-        backgroundOpacity = 1;
+        backgroundOpacity = 0.78;
         respectExpireTimeout = false;
         lowUrgencyDuration = 3;
         normalUrgencyDuration = 8;
@@ -554,6 +633,7 @@
           0
           1
           2
+          3
         ];
         monitors = [
 
@@ -573,7 +653,7 @@
       };
       brightness = {
         brightnessStep = 5;
-        enforceMinimum = true;
+        enforceMinimum = false;
         enableDdcSupport = false;
         backlightDeviceMappings = [
 
@@ -621,7 +701,7 @@
         notifyUpdates = true;
       };
       idle = {
-        enabled = false;
+        enabled = true;
         screenOffTimeout = 600;
         lockTimeout = 660;
         suspendTimeout = 1800;

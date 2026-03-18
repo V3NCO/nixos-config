@@ -35,4 +35,6 @@
     enable = true;
     package = inputs.niri-wm.packages.${pkgs.stdenv.hostPlatform.system}.niri;
   };
+
+  systemd.user.services.niri-flake-polkit.enable = false;
 }

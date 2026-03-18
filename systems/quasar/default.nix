@@ -51,6 +51,7 @@
 
   environment.systemPackages = with pkgs; [
     (olympus.override { celesteWrapper = "steam-run"; })
+    gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
     android-studio
     python313
