@@ -22,7 +22,7 @@
     };
 
     backgrounds = {
-      sakura = ../../home-manager/desktop/wallpapers/flowers-20.jpg;
+      sakura = ../../../wallpapers/flowers-20.jpg;
     };
 
     settings = {
