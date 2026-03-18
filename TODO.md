@@ -35,6 +35,8 @@
 ## Sentinel
 Services:
 - [ ] Glance
+- [ ] Synapse
+- [ ] Crucix ? just looks sick
 - [x] Immich
 - [x] Vaultwarden
 - [/] Forgejo (and runner)
@@ -43,11 +45,13 @@ Services:
 - [ ] Drive service
 - [ ] Homebox
 - [ ] DNS Server
+- [ ] Zipline (?)
 - [ ] hydroxide (?)
 - [ ] LLM stuff
 - [ ] Package my stuff for nix
   - [ ] Nexus (i need to make the calendar work based on hour and not day at some point)
   - [ ] Blahaj-ID (i need to finish it someday)
+  - [ ] Aperture TTS
 - [ ] Paperless NGX
 - [ ] Radicale
 - [ ] Grafana
