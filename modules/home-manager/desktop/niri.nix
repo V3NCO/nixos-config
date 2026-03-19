@@ -224,6 +224,8 @@
       "Mod+Shift+4".action.screenshot = [];
       "Mod+Shift+Ctrl+4".action.screenshot-screen = [];
       "Mod+Shift+Alt+4".action.screenshot-window = [];
+      "Mod+Shift+Alt+5".action.spawn-sh = [ "noctalia-shell ipc call plugin:screen-recorder toggle" ];
+      "Mod+Shift+Alt+0".action.spawn-sh = [ "noctalia-shell ipc call plugin:screen-recorder saveReplay" ];
       # Inhibit
       "Mod+Escape" = { action.toggle-keyboard-shortcuts-inhibit = []; allow-inhibiting=false; };
 

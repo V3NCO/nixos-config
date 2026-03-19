@@ -35,6 +35,14 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        currency-exchange = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        kde-connect = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
     };
 
@@ -418,7 +426,15 @@
               id = "NightLight";
             }
             {
-              id = "plugin:screen-recorder";
+              enableOnStateLogic = false;
+              generalTooltipText = "Restart Noctalia";
+              icon = "restore";
+              id = "CustomButton";
+              onClicked = "killall .quickshell-wrapper && noctalia-shell";
+              onMiddleClicked = "";
+              onRightClicked = "";
+              showExecTooltip = false;
+              stateChecksJson = "[]";
             }
           ];
         };

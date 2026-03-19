@@ -84,6 +84,7 @@
 
   imports = [
     ../modules/nixos/tailscale.nix
+    ../modules/nixos/kdeconnect.nix
     # ../modules/nixos/direnv.nix
   ];
 }
