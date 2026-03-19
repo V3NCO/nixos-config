@@ -55,7 +55,6 @@
       { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
       { argv = ["clipse" "-listen"]; }
       { argv = ["elephant"]; }
-      { argv = ["walker" "--gapplication-service"]; }
     ];
     environment = {
       QT_QPA_PLATFORM = "wayland";
@@ -120,14 +119,15 @@
 
     binds = {
       # Media control
-      "XF86AudioRaiseVolume" = { action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"]; allow-when-locked = true; };
-      "XF86AudioLowerVolume" = { action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"]; allow-when-locked = true; };
-      "XF86AudioMute" = { action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"]; allow-when-locked = true; };
+      "XF86AudioRaiseVolume" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase" ]; allow-when-locked = true; };
+      "XF86AudioLowerVolume" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease" ]; allow-when-locked = true; };
+      "XF86AudioMute" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput" ]; allow-when-locked = true; };
       "XF86AudioMicMute" = { action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"]; allow-when-locked = true; };
       "XF86AudioPlay" = { action.spawn = ["playerctl" "play-pause"]; allow-when-locked = true; };
       "XF86AudioPrev" = { action.spawn = ["playerctl" "previous"]; allow-when-locked = true; };
       "XF86AudioNext" = { action.spawn = ["playerctl" "next"]; allow-when-locked = true; };
-
+      "XF86MonBrightnessUp" = { action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "increase" ]; allow-when-locked = true; };
+      "XF86MonBrightnessDown" = { action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "decrease" ]; allow-when-locked = true; };
       # Basics
       "Mod+O" = { repeat = false; action.toggle-overview = []; };
       "Mod+Q".action.close-window = [];
@@ -136,7 +136,7 @@
       "Mod+Return".action.spawn = ["kitty"];
       "Mod+Space".action.spawn-sh =  [ "noctalia-shell ipc call launcher toggle" ];
       "Mod+S".action.spawn-sh = [ "noctalia-shell ipc call controlCenter toggle" ];
-      "Mod+V".action.spawn = [ "walker" "-m" "clipboard" ];
+      "Mod+V".action.spawn-sh = [ "noctalia-shell ipc call launcher clipboard" ];
 
       # Layout
       "Mod+Left".action.focus-column-left = [];
@@ -230,6 +230,7 @@
 
       # Sleep/Logout
       "Mod+Shift+E".action.quit = [];
+      "Mod+Ctrl+E".action.spawn-sh = [ "noctalia-shell ipc call lockScreen lock" ];
       "Ctrl+Alt+Delete".action.quit = [];
       "Mod+Shift+P".action.power-off-monitors = [];
     };
