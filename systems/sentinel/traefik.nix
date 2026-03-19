@@ -19,10 +19,22 @@
           };
         };
 
-        websecure = {
+        vencosecure = {
           address = ":443";
           asDefault = true;
-          http.tls = { };
+          http.tls = {
+            certResolver = "letsencrypt";
+            domains = [{ main = "v3nco.dev"; sans = [ "*.v3nco.dev" ]; }];
+          };
+        };
+
+        esthersecure = {
+          address = ":443";
+          asDefault = true;
+          http.tls = {
+            certResolver = "letsencrypt";
+            domains = [{ main = "esther.tf"; sans = [ "*.esther.tf" ]; }];
+          };
         };
 
         ssh = {
@@ -60,7 +72,6 @@
           storage = "${config.services.traefik.dataDir}/acme.json";
           dnsChallenge = {
             provider = "cloudflare";
-            
           };
         };
       };
@@ -72,7 +83,7 @@
       http = {
         routers = {
           # traefik = {
-          #   entryPoints = [ "websecure" ];
+          #   entryPoints = [ "vencosecure" ];
           #   rule = "Host(`traefik.v3nco.dev`)";
           #   service = "api@internal";
           #   tls.certResolver = "letsencrypt";
@@ -84,7 +95,7 @@
           # };
 
           zipline = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`zipline.v3nco.dev`)";
             service = "zipline";
             tls.certResolver = "letsencrypt";
@@ -92,7 +103,7 @@
           };
 
           aperture-tts-slack = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`aperture-tts-slack.v3nco.dev`)";
             service = "aperture-tts-slack";
             tls.certResolver = "letsencrypt";
@@ -100,7 +111,7 @@
           };
 
           synapse = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`synapse.v3nco.dev`)";
             service = "synapse";
             tls.certResolver = "letsencrypt";
@@ -108,7 +119,7 @@
           };
 
           nexus = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`nexus.v3nco.dev`)";
             service = "nexus";
             tls.certResolver = "letsencrypt";
@@ -119,7 +130,7 @@
           };
 
           forgejo = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`forgejo.v3nco.dev`)";
             service = "forgejo";
             tls.certResolver = "letsencrypt";
@@ -130,7 +141,7 @@
           };
 
           blahajid = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`identity.blahaj.engineering`)";
             service = "blahajid";
             tls.certResolver = "letsencrypt";
@@ -140,7 +151,7 @@
           };
 
           blahajidalt = {
-            entryPoints = [ "websecure" ];
+            entryPoints = [ "vencosecure" ];
             rule = "Host(`blahajid.v3nco.dev`)";
             service = "blahajid";
             tls.certResolver = "letsencrypt";
