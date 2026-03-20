@@ -112,6 +112,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dns = {
+      url = "github:kirelagin/dns.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     asahi-firmware = {
       url="/etc/nixos/firmware";
       flake = false;
