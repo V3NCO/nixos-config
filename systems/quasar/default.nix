@@ -30,6 +30,15 @@
   programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
 
 
+  programs.virt-manager.enable = true;
+
+  users.groups.libvirtd.members = ["venco"];
+
+  virtualisation.libvirtd.enable = true;
+
+  virtualisation.spiceUSBRedirection.enable = true;
+
+
   virtualisation.docker = {
     enable = true;
   };
@@ -51,6 +60,7 @@
 
   environment.systemPackages = with pkgs; [
     (olympus.override { celesteWrapper = "steam-run"; })
+    quickemu
     gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
     android-studio
