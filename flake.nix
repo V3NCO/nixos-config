@@ -215,6 +215,8 @@
     nixosConfigurations.sentinel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
+      specialArgs = { inherit inputs; };
+
       modules = [
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
