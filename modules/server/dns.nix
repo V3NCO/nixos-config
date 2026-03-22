@@ -178,6 +178,4 @@ in
     };
   };
 
-  v3nco = zoneFiles.v3nco;
-  esther = zoneFiles.esther;
 }
