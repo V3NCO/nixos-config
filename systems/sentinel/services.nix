@@ -7,5 +7,5 @@
     ../../modules/server/vaultwarden.nix
     ../../modules/server/forgejo.nix
 
-  ]
+  ];
 }
