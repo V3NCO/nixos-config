@@ -7,6 +7,18 @@
     bridge-utils
   ];
 
+  homelab.ports = [ 8443 ];
+  homelab.services.incus = {
+    subdomain = "incus";
+    zone = "v3nco";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = 8443;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
   virtualisation = {
     incus = {
       enable = true;
