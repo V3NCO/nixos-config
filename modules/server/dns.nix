@@ -1,7 +1,8 @@
-{ lib, inputs, config, ... }:
+{ lib, inputs, config, pkgs, ... }:
 let
   dns = inputs.dns;
-  util = dns.util;
+
+  util = dns.util.${pkgs.stdenv.hostPlatform.system};
 
   zones = {
     v3nco = { domain = "v3nco.dev"; };
