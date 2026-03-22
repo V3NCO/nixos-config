@@ -168,11 +168,11 @@ in
         auth-zone = [
           {
             name = zones.v3nco.domain;
-            zonefile = zoneFiles.v3nco;
+            zonefile = toString zoneFiles.v3nco;
           }
           {
             name = zones.esther.domain;
-            zonefile = zoneFiles.esther;
+            zonefile = toString zoneFiles.esther;
           }
         ];
       };
