@@ -3,7 +3,7 @@
   networking = {
     networkmanager.enable = lib.mkForce false;
 
-    defaultGateway = "10.0.0.1";
+    #defaultGateway = "10.0.0.1";
     useNetworkd = true;
     nftables.enable = true;
 

@@ -24,20 +24,20 @@ in
     };
   };
 
-  services.gitea-actions-runner = {
-    package = pkgs.forgejo-runner;
-    instances.default = {
-      enable = true;
-      name = "monolith";
-      url = "https://git.v3nco.dev";
-      tokenFile = /var/lib/forgjo-runner/monolith-token;
-      labels = [
-        "ubuntu-latest:docker://node:16-bullseye"
-        "ubuntu-22.04:docker://node:16-bullseye"
-        "ubuntu-20.04:docker://node:16-bullseye"
-        "ubuntu-18.04:docker://node:16-buster"
-      ];
-    };
-    };
+  # services.gitea-actions-runner = {
+  #   package = pkgs.forgejo-runner;
+  #   instances.default = {
+  #     enable = true;
+  #     name = "monolith";
+  #     url = "https://git.v3nco.dev";
+  #     tokenFile = /var/lib/forgjo-runner/monolith-token;
+  #     labels = [
+  #       "ubuntu-latest:docker://node:16-bullseye"
+  #       "ubuntu-22.04:docker://node:16-bullseye"
+  #       "ubuntu-20.04:docker://node:16-bullseye"
+  #       "ubuntu-18.04:docker://node:16-buster"
+  #     ];
+  #   };
+  # };
 
 }

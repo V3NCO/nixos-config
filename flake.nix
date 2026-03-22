@@ -215,12 +215,6 @@
     nixosConfigurations.sentinel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
-      pkgs = import inputs.nixpkgs { system = "aarch64-linux";
-        config = {
-          allowUnfree = true;
-        };
-      };
-
       modules = [
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
