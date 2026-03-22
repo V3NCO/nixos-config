@@ -13,7 +13,7 @@
     ../../users/venco-server.nix
   ];
 
-  homelab.ports = [ 22 ];
+  homelab.ports = [ 2223 ];
 
   programs.gnupg.agent = {
     enable = true;
@@ -21,7 +21,7 @@
   };
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [ 2223 ];
     settings = {
       PasswordAuthentication = false;
       AllowUsers = [

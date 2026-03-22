@@ -50,6 +50,9 @@ let
       homelabServices;
 in
 {
+
+  homelab.ports = [ 22 ];
+
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
 
