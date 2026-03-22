@@ -12,7 +12,7 @@
     subdomain = "incus";
     zone = "v3nco";
     upstream = {
-      scheme = "http";
+      scheme = "https";
       host = "127.0.0.1";
       port = 8443;
     };
