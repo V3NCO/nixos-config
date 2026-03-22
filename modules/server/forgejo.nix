@@ -4,6 +4,20 @@ let
   srv = cfg.settings.server;
 in
 {
+  homelab.services.forgejo = {
+    subdomain = "git";
+    zone = "v3nco";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = srv.HTTP_PORT;
+    };
+    middlewares = [
+      "security-headers"
+      "anubis"
+    ];
+  };
+
   homelab.ports = [srv.HTTP_PORT];
   services.forgejo = {
     enable = true;

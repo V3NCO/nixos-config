@@ -1,177 +1,183 @@
-{ inputs, ... }:
+{ lib, inputs, config, ... }:
 let
   dns = inputs.dns;
   util = dns.util;
 
+  zones = {
+    v3nco = { domain = "v3nco.dev"; };
+    esther = { domain = "esther.tf"; };
+  };
 
-  v3nco = with dns.lib.combinators; {
-    SOA = {
-      nameServer = "ns.test.com.";
-      adminEmail = "admin@test.com";
-      serial = 2019030800;
+  sentinelHostLabel = "sentinel";
+  sentinelTailscaleIp = config.homelab.dns.sentinelTailscaleIp;
+
+  services = config.homelab.services;
+
+  servicesForZone =
+    zoneKey:
+    lib.attrValues (lib.filterAttrs (_: svc: (svc.zone or "v3nco") == zoneKey) services);
+
+  mkZone =
+    zoneKey:
+    let
+      domain = zones.${zoneKey}.domain;
+      sentinelFqdn = "${sentinelHostLabel}.${domain}.";
+      svcs = servicesForZone zoneKey;
+    in
+    {
+      SOA = {
+        nameServer = sentinelFqdn;
+        adminEmail = "hostmaster.${domain}";
+        serial = config.homelab.dns.serial;
+      };
+
+      NS = [ sentinelFqdn ];
+
+      subdomains =
+        lib.listToAttrs (
+          [
+            {
+              name = sentinelHostLabel;
+              value = { A = [ sentinelTailscaleIp ]; };
+            }
+          ]
+          ++ map
+            (svc: {
+              name = svc.subdomain;
+              value = { CNAME = [ sentinelFqdn ]; };
+            })
+            svcs
+        );
     };
 
-    NS = [
-      "ns.test.com."
-      "ns2.test.com."
-    ];
+  zoneFiles = {
+    v3nco = util.writeZone zones.v3nco.domain (mkZone "v3nco");
+    esther = util.writeZone zones.esther.domain (mkZone "esther");
+  };
+in
+{
+  options = {
+    homelab = {
+      dns = {
+        serial = lib.mkOption {
+          type = lib.types.int;
+          default = 1;
+          description = "Zone serial number for locally generated split-horizon zones.";
+        };
 
-    A = [
-      { address = "203.0.113.1"; ttl = 60 * 60; }
-      "203.0.113.2"
-      (ttl (60 * 60) (a "203.0.113.3"))
-    ];
+        sentinelTailscaleIp = lib.mkOption {
+          type = lib.types.str;
+          default = "100.96.199.124";
+          description = "Sentinel's Tailscale IPv4 address (100.x.y.z) used for split-horizon A records.";
+        };
 
-    AAAA = [
-      "4321:0:1:2:3:4:567:89ab"
-    ];
+        zoneFiles = lib.mkOption {
+          type = lib.types.attrsOf lib.types.path;
+          readOnly = true;
+          default = { };
+          description = "Generated zone file paths, suitable for DNS daemons to load.";
+        };
+      };
 
-    MX = mx.google;
+      services = lib.mkOption {
+        type =
+          lib.types.attrsOf (lib.types.submodule ({ name, ... }: {
+            options = {
+              zone = lib.mkOption {
+                type = lib.types.enum [ "v3nco" "esther" ];
+                default = "v3nco";
+                description = "Which base domain zone to use.";
+              };
 
-    TXT = [
-      (with spf; strict [ "a:mail.example.com" google ])
-    ];
+              subdomain = lib.mkOption {
+                type = lib.types.str;
+                default = name;
+                description = "The subdomain label to publish within the selected zone.";
+              };
 
-    DMARC = [ (dmarc.postmarkapp "mailto:re+abcdefghijk@dmarc.postmarkapp.com") ];
+              # Fields below are not used by DNS generation, but are here so Traefik can
+              # consume the same registry (Option A from our discussion).
+              fqdn = lib.mkOption {
+                type = lib.types.nullOr lib.types.str;
+                default = null;
+                description = "Optional explicit FQDN override (Traefik can use this). DNS generation ignores this.";
+              };
 
-    CAA = letsEncrypt "admin@example.com";
+              upstream = {
+                scheme = lib.mkOption {
+                  type = lib.types.enum [ "http" "https" ];
+                  default = "http";
+                  description = "Upstream scheme (for Traefik).";
+                };
 
-    SRV = [
-      {
-        service = "sip";
-        proto = "tcp";
-        port = 5060;
-        target = "sip.example.com";
-      }
-    ];
+                host = lib.mkOption {
+                  type = lib.types.str;
+                  default = "127.0.0.1";
+                  description = "Upstream host (for Traefik).";
+                };
 
-    SSHFP = [
-      {
-        algorithm = "ed25519";
-        fingerprintType = "sha256";
-        fingerprint = "899EB4AC9285578AFDA3CCBE152EE78D8618B8F3862FEF2703E1FC7011E9B8AA";
-      }
-    ];
-    OPENPGPKEY = [
-      "very long base64 text"
-    ];
-    HTTPS = [
-      {
-        svcPriority = 1;
-        targetName = ".";
-        alpn = [ "http/1.1" "h2" "h3" ];
-        ipv4hint = [ "203.0.113.1" "203.0.113.2" "203.0.113.3" ];
-        ipv6hint = [ "4321:0:1:2:3:4:567:89ab" ];
-      }
-    ];
-    TLSA = [
-      {
-        certUsage = "dane-ee";
-        selector = "spki";
-        matchingType = "sha256";
-        certificate = "899EB4AC9285578AFDA3CCBE152EE78D8618B8F3862FEF2703E1FC7011E9B8AA";
-      }
-    ];
+                port = lib.mkOption {
+                  type = lib.types.int;
+                  description = "Upstream port (for Traefik).";
+                };
+              };
 
-    subdomains = rec {
-      www.A = [ "203.0.113.4" ];
-      www2 = host "203.0.113.5" "4321:0:1:2:3:4:567:89bb";
-      www3 = host "203.0.113.6" null;
-      www4 = www3;
+              middlewares = lib.mkOption {
+                type = lib.types.nullOr (lib.types.listOf lib.types.str);
+                default = null;
+                description = "Optional Traefik middlewares list.";
+              };
 
-      staging = delegateTo [
-        "ns1.another.com."
-        "ns2.another.com."
-      ];
-
-      foo.subdomains.www.CNAME = [ "foo.test.com." ];
+              entryPoints = lib.mkOption {
+                type = lib.types.nullOr (lib.types.listOf lib.types.str);
+                default = null;
+                description = "Optional Traefik entryPoints override.";
+              };
+            };
+          }));
+        default = { };
+        description = "Shared registry of homelab services for DNS + Traefik generation.";
+      };
     };
   };
 
-  esther = with dns.lib.combinators; {
-    SOA = {
-      nameServer = "ns.test.com.";
-      adminEmail = "admin@test.com";
-      serial = 2019030800;
-    };
+  config = {
+    homelab.dns.zoneFiles = zoneFiles;
 
-    NS = [
-      "ns.test.com."
-      "ns2.test.com."
-    ];
+    services.unbound = {
+      enable = true;
 
-    A = [
-      { address = "203.0.113.1"; ttl = 60 * 60; }
-      "203.0.113.2"
-      (ttl (60 * 60) (a "203.0.113.3"))
-    ];
+      settings = {
+        server = {
+          interface = [
+            "127.0.0.1"
+            sentinelTailscaleIp
+          ];
 
-    AAAA = [
-      "4321:0:1:2:3:4:567:89ab"
-    ];
+          access-control = [
+            "127.0.0.0/8 allow"
+            "100.64.0.0/10 allow"
+          ];
 
-    MX = mx.google;
+          # Basic hardening.
+          hide-identity = "yes";
+          hide-version = "yes";
+        };
 
-    TXT = [
-      (with spf; strict [ "a:mail.example.com" google ])
-    ];
-
-    DMARC = [ (dmarc.postmarkapp "mailto:re+abcdefghijk@dmarc.postmarkapp.com") ];
-
-    CAA = letsEncrypt "admin@example.com";
-
-    SRV = [
-      {
-        service = "sip";
-        proto = "tcp";
-        port = 5060;
-        target = "sip.example.com";
-      }
-    ];
-
-    SSHFP = [
-      {
-        algorithm = "ed25519";
-        fingerprintType = "sha256";
-        fingerprint = "899EB4AC9285578AFDA3CCBE152EE78D8618B8F3862FEF2703E1FC7011E9B8AA";
-      }
-    ];
-    OPENPGPKEY = [
-      "very long base64 text"
-    ];
-    HTTPS = [
-      {
-        svcPriority = 1;
-        targetName = ".";
-        alpn = [ "http/1.1" "h2" "h3" ];
-        ipv4hint = [ "203.0.113.1" "203.0.113.2" "203.0.113.3" ];
-        ipv6hint = [ "4321:0:1:2:3:4:567:89ab" ];
-      }
-    ];
-    TLSA = [
-      {
-        certUsage = "dane-ee";
-        selector = "spki";
-        matchingType = "sha256";
-        certificate = "899EB4AC9285578AFDA3CCBE152EE78D8618B8F3862FEF2703E1FC7011E9B8AA";
-      }
-    ];
-
-    subdomains = rec {
-      www.A = [ "203.0.113.4" ];
-      www2 = host "203.0.113.5" "4321:0:1:2:3:4:567:89bb";
-      www3 = host "203.0.113.6" null;
-      www4 = www3;
-
-      staging = delegateTo [
-        "ns1.another.com."
-        "ns2.another.com."
-      ];
-
-      foo.subdomains.www.CNAME = [ "foo.test.com." ];
+        auth-zone = [
+          {
+            name = zones.v3nco.domain;
+            zonefile = zoneFiles.v3nco;
+          }
+          {
+            name = zones.esther.domain;
+            zonefile = zoneFiles.esther;
+          }
+        ];
+      };
     };
   };
-in {
-  util.writeZone "v3nco.dev" v3nco
-  util.writeZone "esther.tf" esther
+
+  v3nco = zoneFiles.v3nco;
+  esther = zoneFiles.esther;
 }

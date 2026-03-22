@@ -1,5 +1,16 @@
 { config, ... }:
 {
+  homelab.services.vaultwarden = {
+    subdomain = "vaultwarden";
+    zone = "v3nco";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = config.services.vaultwarden.config.ROCKET_PORT;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
   homelab.ports = [ config.services.vaultwarden.config.ROCKET_PORT ];
   services.vaultwarden = {
     enable = true;

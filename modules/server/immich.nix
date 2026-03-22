@@ -1,5 +1,16 @@
 { config, ... }:
 {
+  homelab.services.immich = {
+    subdomain = "immich";
+    zone = "v3nco";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = config.services.immich.port;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
   homelab.ports = [ config.services.immich.port ];
   services.immich = {
     enable = true;

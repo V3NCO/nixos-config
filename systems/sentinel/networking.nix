@@ -24,10 +24,13 @@
       enable = true;
       allowedTCPPorts = [
         22
+        53
         80
         443
       ];
-      allowedUDPPortRanges = [ ];
+      allowedUDPPorts = [
+        53
+      ];
     };
   };
 }

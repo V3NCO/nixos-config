@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./services.nix
+    ./traefik.nix
+    ../../modules/server/dns.nix
     ../../modules/nvim
     ../../modules/nixos/basic
     ../../modules/server/tailscale.nix

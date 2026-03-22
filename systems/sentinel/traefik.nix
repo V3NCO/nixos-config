@@ -1,4 +1,54 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  zones = {
+    v3nco = { domain = "v3nco.dev"; };
+    esther = { domain = "esther.tf"; };
+  };
+
+  defaults = {
+    entryPoints = [ "websecure" ];
+    middlewares = [ "security-headers" ];
+    tlsCertResolver = "letsencrypt";
+    serversTransport = "insecureTransport";
+  };
+
+  homelabServices = config.homelab.services or { };
+
+  mkHostname = svc:
+    if svc ? fqdn && svc.fqdn != null then
+      svc.fqdn
+    else
+      "${svc.subdomain}.${zones.${svc.zone}.domain}";
+
+  mkUpstreamUrl = svc: "${svc.upstream.scheme}://${svc.upstream.host}:${toString svc.upstream.port}";
+
+  mkEntryPoints = svc:
+    if svc ? entryPoints && svc.entryPoints != null then svc.entryPoints else defaults.entryPoints;
+
+  mkMiddlewares = svc:
+    if svc ? middlewares && svc.middlewares != null then svc.middlewares else defaults.middlewares;
+
+  routersFromRegistry =
+    lib.mapAttrs
+      (name: svc: {
+        entryPoints = mkEntryPoints svc;
+        rule = "Host(`${mkHostname svc}`)";
+        service = name;
+        tls = { certResolver = defaults.tlsCertResolver; };
+        middlewares = mkMiddlewares svc;
+      })
+      homelabServices;
+
+  servicesFromRegistry =
+    lib.mapAttrs
+      (name: svc: {
+        loadBalancer = {
+          serversTransport = defaults.serversTransport;
+          servers = [ { url = mkUpstreamUrl svc; } ];
+        };
+      })
+      homelabServices;
+in
 {
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
@@ -12,28 +62,22 @@
       entryPoints = {
         web = {
           address = ":80";
-          asDefault = true;
+          asDefault = false;
           http.redirections.entrypoint = {
             to = "websecure";
             scheme = "https";
           };
         };
 
-        vencosecure = {
+        websecure = {
           address = ":443";
           asDefault = true;
           http.tls = {
-            certResolver = "letsencrypt";
-            domains = [{ main = "v3nco.dev"; sans = [ "*.v3nco.dev" ]; }];
-          };
-        };
-
-        esthersecure = {
-          address = ":443";
-          asDefault = true;
-          http.tls = {
-            certResolver = "letsencrypt";
-            domains = [{ main = "esther.tf"; sans = [ "*.esther.tf" ]; }];
+            certResolver = defaults.tlsCertResolver;
+            domains = [
+              { main = zones.v3nco.domain; sans = [ "*.${zones.v3nco.domain}" ]; }
+              { main = zones.esther.domain; sans = [ "*.${zones.esther.domain}" ]; }
+            ];
           };
         };
 
@@ -81,116 +125,8 @@
 
     dynamicConfigOptions = {
       http = {
-        routers = {
-          # traefik = {
-          #   entryPoints = [ "vencosecure" ];
-          #   rule = "Host(`traefik.v3nco.dev`)";
-          #   service = "api@internal";
-          #   tls.certResolver = "letsencrypt";
-          #   middlewares = [
-          #     "security-headers"
-          #     "basic-auth"
-          #     "rate-limit"
-          #   ];
-          # };
-
-          zipline = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`zipline.v3nco.dev`)";
-            service = "zipline";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
-
-          aperture-tts-slack = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`aperture-tts-slack.v3nco.dev`)";
-            service = "aperture-tts-slack";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
-
-          synapse = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`synapse.v3nco.dev`)";
-            service = "synapse";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
-
-          nexus = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`nexus.v3nco.dev`)";
-            service = "nexus";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-              "anubis"
-            ];
-          };
-
-          forgejo = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`forgejo.v3nco.dev`)";
-            service = "forgejo";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-              "anubis"
-            ];
-          };
-
-          blahajid = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`identity.blahaj.engineering`)";
-            service = "blahajid";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-            ];
-          };
-
-          blahajidalt = {
-            entryPoints = [ "vencosecure" ];
-            rule = "Host(`blahajid.v3nco.dev`)";
-            service = "blahajid";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-            ];
-          };
-        };
-
-        services = {
-          zipline.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-          aperture-tts-slack.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-          synapse.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-          nexus.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-          forgejo.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-          anubis.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "http://localhost:7980"; } ];
-          };
-          blahajid.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
-          };
-        };
+        routers = routersFromRegistry;
+        services = servicesFromRegistry;
 
         middlewares = {
           local-ipwhitelist.ipAllowList.sourceRange = [
