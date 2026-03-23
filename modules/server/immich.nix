@@ -14,6 +14,8 @@
   homelab.ports = [ config.services.immich.port ];
   services.immich = {
     enable = true;
+    host = "127.0.0.1";
+    port = 2283;
     settings = {
       backup = {
         database = {
