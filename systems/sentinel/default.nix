@@ -19,6 +19,11 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  virtualisation.docker = {
+    enable = true;
+  };
+
   services.openssh = {
     enable = true;
     ports = [ 2223 ];
