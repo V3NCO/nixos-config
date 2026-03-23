@@ -16,11 +16,6 @@
     enable = true;
     host = "127.0.0.1";
     port = 2283;
-    database = {
-      enable = true;
-      enableVectors = true;
-      enableVectorChord = true;
-    };
     settings = {
       backup = {
         database = {
