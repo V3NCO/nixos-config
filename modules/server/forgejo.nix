@@ -14,7 +14,6 @@ in
     };
     middlewares = [
       "security-headers"
-      "anubis"
     ];
   };
 

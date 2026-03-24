@@ -133,7 +133,6 @@ in
             "172.16.0.0/12"
             "100.0.0.0/8"
           ];
-          anubis.forwardauth.address = "http://localhost:7980/.within.website/x/cmd/anubis/api/check";
           security-headers.headers = {
             customResponseHeaders = {
               Server = "";
