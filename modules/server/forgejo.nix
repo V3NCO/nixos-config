@@ -18,17 +18,18 @@ in
     ];
   };
 
-  homelab.ports = [srv.HTTP_PORT];
+  homelab.ports = [srv.HTTP_PORT srv.SSH_PORT];
   services.forgejo = {
     enable = true;
     database.type = "postgres";
     lfs.enable = true;
+    dump.enable = true;
     settings = {
       server = {
         DOMAIN = "git.v3nco.dev";
         ROOT_URL = "https://${srv.DOMAIN}/";
         HTTP_PORT = 3823;
-        SSH_PORT = lib.head config.services.openssh.ports;
+        SSH_PORT = 222;
       };
       service.DISABLE_REGISTRATION = false;
       actions = {

@@ -50,9 +50,6 @@ let
       homelabServices;
 in
 {
-
-  homelab.ports = [ 22 ];
-
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
 
@@ -82,10 +79,6 @@ in
               { main = zones.esther.domain; sans = [ "*.${zones.esther.domain}" ]; }
             ];
           };
-        };
-
-        ssh = {
-          address = ":22";
         };
       };
 
@@ -178,25 +171,6 @@ in
         };
       };
 
-      tcp = {
-        routers = {
-          forgejo-ssh = {
-            entryPoints = [ "ssh" ];
-            rule = "HostSNI(`*`)";
-            service = "forgejo-ssh-service";
-          };
-        };
-
-        services = {
-          forgejo-ssh-service = {
-            loadBalancer = {
-              servers = [
-                { address = "100.93.234.76:222"; }
-              ];
-            };
-          };
-        };
-      };
 
       tls = {
         options = {
