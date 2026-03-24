@@ -18,6 +18,11 @@ in
   };
 
   homelab.ports = [srv.HTTP_PORT srv.SSH_PORT];
+
+  environment.systemPackages = [
+    pkgs.forgejo-cli
+  ];
+
   services.forgejo = {
     enable = true;
     package = pkgs.forgejo;
