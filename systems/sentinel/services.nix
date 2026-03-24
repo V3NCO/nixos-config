@@ -6,5 +6,6 @@
     ../../modules/server/immich.nix
     ../../modules/server/vaultwarden.nix
     ../../modules/server/forgejo.nix
+    ../../modules/server/radicale.nix
   ];
 }
