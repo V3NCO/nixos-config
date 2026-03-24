@@ -21,6 +21,7 @@ in
   homelab.ports = [srv.HTTP_PORT srv.SSH_PORT];
   services.forgejo = {
     enable = true;
+    package = pkgs.forgejo;
     database.type = "postgres";
     lfs.enable = true;
     dump.enable = true;
