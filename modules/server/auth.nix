@@ -42,6 +42,7 @@ in {
     settings = {
       ANALYTICS_DISABLED = true;
       TRUST_PROXY = true;
+      APP_URL = "https://pid.v3nco.dev";
       HOST = "127.0.0.1";
       PORT = 4391;
     };
