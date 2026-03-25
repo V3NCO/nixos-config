@@ -14,6 +14,7 @@
   services.zitadel = {
     enable = true;
     tlsMode = "external";
+    masterKeyFile = "/etc/zitadel/master.key";
     settings = {
       Port = 8123;
       ExternalDomain = "zitadel.v3nco.dev";
