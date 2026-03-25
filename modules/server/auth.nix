@@ -41,6 +41,7 @@ in {
     enable = true;
     settings = {
       ANALYTICS_DISABLED = true;
+      TRUST_PROXY = true;
       HOST = "127.0.0.1";
       PORT = 4391;
     };
