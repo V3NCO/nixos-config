@@ -7,6 +7,6 @@
     ../../modules/server/vaultwarden.nix
     ../../modules/server/forgejo.nix
     ../../modules/server/radicale.nix
-    ../../modules/server/zitadel.nix
+    ../../modules/server/auth.nix
   ];
 }

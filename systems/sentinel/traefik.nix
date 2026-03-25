@@ -53,6 +53,8 @@ in
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
 
+  homelab.ports = [ 80 443 ];
+
   services.traefik = {
     enable = true;
 
@@ -126,6 +128,7 @@ in
         services = servicesFromRegistry;
 
         middlewares = {
+          tinyauth.forwardauth.address = "https://tinyauth.v3nco.dev/api/auth/traefik";
           local-ipwhitelist.ipAllowList.sourceRange = [
             "192.168.0.0/16"
             "10.0.0.0/8"
