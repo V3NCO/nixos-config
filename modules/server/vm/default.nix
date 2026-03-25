@@ -43,11 +43,11 @@
         ];
         storage_pools = [
           {
-            name = "zfs-incus";
-            driver = "zfs";
             config = {
-              source = "rpool/incus";
+              source = "/var/lib/incus/storage-pools/default";
             };
+            driver = "dir";
+            name = "default";
           }
         ];
         profiles = [
@@ -61,7 +61,7 @@
               };
               root = {
                 path = "/";
-                pool = "zfs-incus";
+                pool = "default";
                 type = "disk";
               };
             };
