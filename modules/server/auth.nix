@@ -37,6 +37,7 @@ in {
       SERVER_ADDRESS = "127.0.0.1";
     };
   };
+
   services.pocket-id = {
     enable = true;
     settings = {

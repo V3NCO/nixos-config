@@ -24,9 +24,11 @@
       enable = true;
       ui.enable = true;
       preseed = {
-
         config = {
           "core.https_address" = "127.0.0.1:8443";
+          "oidc.client.id" = "2c0df8c4-e6c2-43cc-a2dd-70a545838ae1"; #find a way to change this someday, i dont like hardcoding the client id that isnt declarative
+          "oidc.issuer" = "https://pid.v3nco.dev/.well-known/openid-configuration";
+          "oidc.scopes" = "openid,email,profile";
         };
 
         networks = [
