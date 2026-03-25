@@ -1,5 +1,9 @@
-{ inputs, config, ... }:
-{
+{ pkgs, inputs, config, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+  };
+in {
   imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/security/tinyauth.nix"];
 
   homelab.ports = [ 4390 4391 ];
@@ -26,6 +30,7 @@
 
   services.tinyauth = {
     enable = true;
+    package = unstable.tinyauth ;
     settings = {
       APPURL = "https://tinyauth.v3nco.dev";
       SERVER_PORT = 4390;
