@@ -8,5 +8,6 @@
     ../../modules/server/forgejo.nix
     ../../modules/server/radicale.nix
     ../../modules/server/auth.nix
+    ../../modules/server/paperless-ngx.nix
   ];
 }

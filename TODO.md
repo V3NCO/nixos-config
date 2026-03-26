@@ -40,20 +40,20 @@ Services:
 - [x] Immich
 - [x] Vaultwarden
 - [/] Forgejo (and runner)
-- [ ] HASS
+- [x] HASS
 - [ ] Coder (?)
 - [ ] Drive service
 - [ ] Homebox
-- [ ] DNS Server
+- [x] DNS Server
 - [ ] Zipline (?)
 - [ ] hydroxide (?)
-- [ ] LLM stuff
+- [ ] LLM stuff (?)
 - [ ] Package my stuff for nix
   - [ ] Nexus (i need to make the calendar work based on hour and not day at some point)
   - [ ] Blahaj-ID (i need to finish it someday)
   - [ ] Aperture TTS
 - [ ] Paperless NGX
-- [ ] Radicale
+- [x] Radicale
 - [ ] Grafana
 
 
