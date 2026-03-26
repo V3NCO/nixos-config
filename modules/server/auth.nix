@@ -35,6 +35,13 @@ in {
       APPURL = "https://tinyauth.v3nco.dev/";
       SERVER_PORT = 4390;
       SERVER_ADDRESS = "127.0.0.1";
+
+      OAUTH_PROVIDERS_POCKETID_AUTHURL="https://pid.v3nco.dev/authorize";
+      OAUTH_PROVIDERS_POCKETID_TOKENURL="https://pid.v3nco.dev/api/oidc/token";
+      OAUTH_PROVIDERS_POCKETID_USERINFOURL="https://pid.v3nco.dev/api/oidc/userinfo";
+      OAUTH_PROVIDERS_POCKETID_REDIRECTURL="https://tinyauth.example.com/api/oauth/callback/pocketid";
+      OAUTH_PROVIDERS_POCKETID_SCOPES="openid email profile groups";
+      OAUTH_PROVIDERS_POCKETID_NAME="Pocket ID";
     };
   };
 
