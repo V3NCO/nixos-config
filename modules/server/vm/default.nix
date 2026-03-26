@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./hass.nix ];
+
   environment.systemPackages = with pkgs; [
     qemu_kvm
     virt-manager
@@ -31,16 +33,6 @@
           "oidc.scopes" = "openid,email,profile";
         };
 
-        networks = [
-          {
-            name = "incusbr0";
-            type = "bridge";
-            config = {
-              "ipv4.address" = "10.0.100.1/24";
-              "ipv4.nat" = "true";
-            };
-          }
-        ];
         storage_pools = [
           {
             config = {
@@ -56,7 +48,7 @@
             devices = {
               eth0 = {
                 name = "eth0";
-                network = "incusbr0";
+                network = "br0";
                 type = "nic";
               };
               root = {
