@@ -48,7 +48,8 @@
             devices = {
               eth0 = {
                 name = "eth0";
-                network = "br0";
+                nictype = "bridged";
+                parent = "br0";
                 type = "nic";
               };
               root = {
@@ -64,4 +65,6 @@
 
     libvirtd.enable = true;
   };
+  systemd.services."incus-preseed".after = [ "network-online.target" ];
+  systemd.services."incus-preseed".wants = [ "network-online.target" ];
 }
