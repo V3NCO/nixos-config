@@ -5,7 +5,7 @@
     zone = "v3nco";
     upstream = {
       scheme = "http";
-      host = "100.110.203.27";
+      host = "192.168.0.222";
       port = 8123;
     };
     middlewares = [ "security-headers" ];
