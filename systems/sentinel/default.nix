@@ -5,6 +5,7 @@
     ./networking.nix
     ./services.nix
     ./traefik.nix
+    ./backups.nix
     ../../modules/server/dns.nix
     ../../modules/nvim
     ../../modules/nixos/basic
