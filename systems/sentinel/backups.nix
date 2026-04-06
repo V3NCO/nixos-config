@@ -6,7 +6,7 @@
   ];
 
   fileSystems."/mnt/synology-backups" = {
-        device = "//&lt;100.89.108.16&gt;/Backup-Sentinel";
+        device = "//100.89.108.16/Backup-Sentinel";
         fsType = "cifs";
         options = let
           automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
