@@ -35,6 +35,8 @@ in
         ROOT_URL = "https://${srv.DOMAIN}/";
         HTTP_PORT = 3823;
         SSH_PORT = 222;
+        START_SSH_SERVER = true;
+        SSH_LISTEN_PORT = 222;
       };
       service.DISABLE_REGISTRATION = false;
       actions = {
