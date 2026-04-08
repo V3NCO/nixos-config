@@ -9,6 +9,6 @@
     ../../modules/server/radicale.nix
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix
-    ../../modules/server/grafana.nix
+    ../../modules/server/grafana
   ];
 }

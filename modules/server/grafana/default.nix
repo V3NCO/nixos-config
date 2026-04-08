@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
   homelab = {
-    ports = [ config.services.grafana.settings.server.http_port 9090 ];
+    ports = with config.services [
+      grafana.settings.server.http_port
+      prometheus.port
+      prometheus.exporters.node.port ];
     services.grafana = {
       subdomain = "grafana";
       zone = "v3nco";
@@ -41,7 +44,10 @@
 
   services.prometheus = {
     enable = true;
-    exporters.node.enable = true;
+    exporters.node = {
+      enable = true;
+      enabledCollectors = [ "systemd" ];
+    };
     scrapeConfigs = [
       {
         job_name = "node";
@@ -50,4 +56,5 @@
     ];
   };
 
+  environment.etc."grafana-dashboards/node-exporter.json".source = ./node-exporter.json;
 }
