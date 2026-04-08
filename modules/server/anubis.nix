@@ -12,7 +12,7 @@
         settings = {
           BIND_NETWORK = "tcp";
           BIND = ":7980";
-          REDIRECT_DOMAINS = "v3nco.dev,nexus.v3nco.dev,forgejo.v3nco.dev";
+          REDIRECT_DOMAINS = "v3nco.dev,nexus.v3nco.dev,git.v3nco.dev";
           PUBLIC_URL = "https://anubis.v3nco.dev";
           METRICS_BIND_NETWORK = "tcp";
           METRICS_BIND = "127.0.0.1:9099";
