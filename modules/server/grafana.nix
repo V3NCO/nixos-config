@@ -1,4 +1,4 @@
-{ ... }:
+{ config, pkgs, ... }:
 {
   homelab = {
     ports = [ config.services.grafana.settings.server.http_port 9090 ];
