@@ -23,14 +23,14 @@
       dataDir = "/var/lib/beszel-hub";
       host = "127.0.0.1";
       environment = {};
-      environmentFile = "";
+      environmentFile = null;
     };
 
     agent = {
       enable = true;
       extraPath = [];
       environment = {};
-      environmentFile = "";
+      environmentFile = null;
       smartmon = {
         enable = true;
         package = pkgs.smartmontools;
