@@ -163,23 +163,23 @@
         services = {
           zipline.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
           aperture-tts-slack.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
           synapse.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
           nexus.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
           git.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
@@ -187,7 +187,7 @@
           };
           blahajid.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.93.234.76"; } ];
+            servers = [ { url = "https://100.96.199.124"; } ];
           };
         };
 
@@ -250,7 +250,7 @@
           git-ssh-service = {
             loadBalancer = {
               servers = [
-                { address = "100.93.234.76:222"; }
+                { address = "100.96.199.124:222"; }
               ];
             };
           };
