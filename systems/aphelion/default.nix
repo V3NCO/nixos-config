@@ -17,6 +17,7 @@
     ../../modules/server/wireguardsrv.nix
     ../../modules/server/anubis.nix
     ../../users/venco-server.nix
+    ../../modules/server/grafana/aphelion-prometheus.nix
   ];
   environment.systemPackages = [ pkgs.spice-vdagent ];
   programs.gnupg.agent = {

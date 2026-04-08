@@ -32,10 +32,16 @@
       enable = true;
       datasources.settings.datasources = [
         {
-          name = "Prometheus";
+          name = "Prometheus Sentinel";
           type = "prometheus";
           access = "proxy";
           url = "http://127.0.0.1:9090";
+        }
+        {
+          name = "Prometheus Aphelion";
+          type = "prometheus";
+          access = "proxy";
+          url = "http://100.86.29.63:9090";
         }
       ];
       dashboards.settings.providers = [

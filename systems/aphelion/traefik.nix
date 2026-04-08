@@ -28,6 +28,17 @@
         ssh = {
           address = ":222";
         };
+
+        metrics = {
+          address = "127.0.0.1:8082";
+        };
+      };
+
+      metrics.prometheus = {
+        entryPoint = "metrics";
+        addEntryPointsLabels = true;
+        addRoutersLabels = true;
+        addServicesLabels = true;
       };
 
       log = {
