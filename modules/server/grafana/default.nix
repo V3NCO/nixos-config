@@ -68,4 +68,5 @@
   };
 
   environment.etc."grafana-dashboards/node-exporter.json".source = ./node-exporter.json;
+  environment.etc."grafana-dashboards/anubis-dashboard.json".source = ./anubis-dash.json;
 }
