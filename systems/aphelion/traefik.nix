@@ -101,21 +101,13 @@
             middlewares = [ "security-headers" ];
           };
 
-          zipline = {
-            entryPoints = [ "websecure" ];
-            rule = "Host(`zipline.v3nco.dev`)";
-            service = "zipline";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
-
-          aperture-tts-slack = {
-            entryPoints = [ "websecure" ];
-            rule = "Host(`aperture-tts-slack.v3nco.dev`)";
-            service = "aperture-tts-slack";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
+          # aperture-tts-slack = {
+          #   entryPoints = [ "websecure" ];
+          #   rule = "Host(`aperture-tts-slack.v3nco.dev`)";
+          #   service = "aperture-tts-slack";
+          #   tls.certResolver = "letsencrypt";
+          #   middlewares = [ "security-headers" ];
+          # };
 
           synapse = {
             entryPoints = [ "websecure" ];
@@ -136,10 +128,10 @@
             ];
           };
 
-          forgejo = {
+          git = {
             entryPoints = [ "websecure" ];
-            rule = "Host(`forgejo.v3nco.dev`)";
-            service = "forgejo";
+            rule = "Host(`git.v3nco.dev`)";
+            service = "git";
             tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
@@ -185,7 +177,7 @@
             serversTransport = "insecureTransport";
             servers = [ { url = "https://100.93.234.76"; } ];
           };
-          forgejo.loadBalancer = {
+          git.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "https://100.93.234.76"; } ];
           };
@@ -247,15 +239,15 @@
 
       tcp = {
         routers = {
-          forgejo-ssh = {
+          git-ssh = {
             entryPoints = [ "ssh" ];
             rule = "HostSNI(`*`)";
-            service = "forgejo-ssh-service";
+            service = "git-ssh-service";
           };
         };
 
         services = {
-          forgejo-ssh-service = {
+          git-ssh-service = {
             loadBalancer = {
               servers = [
                 { address = "100.93.234.76:222"; }
