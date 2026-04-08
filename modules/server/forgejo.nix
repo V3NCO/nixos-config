@@ -47,6 +47,7 @@ in
   };
 
   systemd.services.forgejo.serviceConfig = {
+    NoNewPrivileges = lib.mkForce "no";
     AmbientCapabilities = lib.mkForce "CAP_NET_BIND_SERVICE";
     CapabilityBoundingSet = lib.mkForce "CAP_NET_BIND_SERVICE";
   };
