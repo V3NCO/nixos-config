@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 {
   homelab = {
-    ports = with config.services [
+    ports = with config.services; [
       grafana.settings.server.http_port
       prometheus.port
-      prometheus.exporters.node.port ];
+      prometheus.exporters.node.port
+    ];
     services.grafana = {
       subdomain = "grafana";
       zone = "v3nco";
