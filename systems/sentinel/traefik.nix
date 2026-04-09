@@ -53,7 +53,7 @@ in
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
 
-  homelab.ports = [ 80 443 ];
+  homelab.ports = [ 80 443 8723 ];
 
   services.traefik = {
     enable = true;
@@ -71,6 +71,10 @@ in
           };
         };
 
+        metrics = {
+          address = "127.0.0.1:8723";
+        };
+
         websecure = {
           address = ":443";
           asDefault = true;
@@ -82,6 +86,13 @@ in
             ];
           };
         };
+      };
+
+      metrics.prometheus = {
+        entryPoint = "metrics";
+        addEntryPointsLabels = true;
+        addRoutersLabels = true;
+        addServicesLabels = true;
       };
 
       log = {
