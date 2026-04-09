@@ -10,5 +10,6 @@
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix
     ../../modules/server/grafana
+    ../../modules/server/music
   ];
 }
