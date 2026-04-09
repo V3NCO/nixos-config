@@ -1,18 +1,26 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   environment.systemPackages = with pkgs; [
     restic
     cifs-utils
   ];
 
-  fileSystems."/mnt/synology-backups" = {
-        device = "//100.89.108.16/Backup-Sentinel";
-        fsType = "cifs";
-        options = let
-          automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+  homelab.ports = [ config.services.prometheus.exporters.restic.port ];
 
-        in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
-    };
+  fileSystems."/mnt/synology-backups" = {
+    device = "//100.89.108.16/Backup-Sentinel";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
+  services.prometheus.exporters.restic = {
+    enable = true;
+    repository = config.services.restic.backups.backup.repository;
+    listenAddress = "127.0.0.1";
+    passwordFile = config.services.restic.backups.backup.passwordFile;
+  };
 
   services.restic = {
     backups = let

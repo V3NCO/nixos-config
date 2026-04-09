@@ -60,18 +60,14 @@
       enabledCollectors = [ "systemd" ];
     };
     scrapeConfigs = [
-      {
-        job_name = "node";
-        static_configs = [{ targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ]; }];
-      }
-      {
-        job_name = "traefik";
-        static_configs = [{ targets = [ "127.0.0.1:8723" ]; }];
-      }
+      { job_name = "node"; static_configs = [{ targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ]; }]; }
+      { job_name = "restic"; static_configs = [{ targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.restic.port}" ]; }]; }
+      { job_name = "traefik"; static_configs = [{ targets = [ "127.0.0.1:8723" ]; }]; }
     ];
   };
 
   environment.etc."grafana-dashboards/node-exporter.json".source = ./node-exporter.json;
   environment.etc."grafana-dashboards/anubis-dashboard.json".source = ./anubis-dash.json;
   environment.etc."grafana-dashboards/traefik.json".source = ./traefik.json;
+  environment.etc."grafana-dashboards/restic.json".source = ./restic.json;
 }
