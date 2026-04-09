@@ -31,5 +31,6 @@
       ];
       remote_file_management = true;
     };
+    domain = null;
   };
 }
