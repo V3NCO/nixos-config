@@ -36,4 +36,7 @@
       "/shared/music"
     ];
   };
+
+  users.groups.music = {};
+  users.users.navidrome.group = "music";
 }
