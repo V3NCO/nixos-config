@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, lib, config, ... }:
 {
   homelab = {
     ports = [ config.services.slskd.settings.web.port config.services.slskd.settings.soulseek.listen_port ];
@@ -13,6 +13,25 @@
       middlewares = [
         "security-headers"
       ];
+    };
+  };
+
+  environment.systemPackages = [ pkgs.beets pkgs.ffmpeg ];
+
+  systemd.timers."beets-import-soulseek" = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "15m";
+      OnUnitActiveSec = "15m";
+      Unit = "beets-import-soulseek.service";
+    };
+  };
+
+  systemd.services."beets-import-soulseek" = {
+    script = "set -eu && ${lib.getExe pkgs.beets} import /shared/downloads/music --quiet";
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
     };
   };
 
