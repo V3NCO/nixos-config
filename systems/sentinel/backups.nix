@@ -26,6 +26,7 @@
         "/etc"
         "/home"
         "/root"
+        "/shared"
       ];
       checkOpts = [
         "--with-cache"
