@@ -2,8 +2,8 @@
 {
   homelab = {
     ports = [ config.services.navidrome.settings.Port ];
-    services.grafana = {
-      subdomain = "grafana";
+    services.navidrome = {
+      subdomain = "navidrome";
       zone = "v3nco";
       upstream = {
         scheme = "http";
