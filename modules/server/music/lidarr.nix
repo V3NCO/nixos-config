@@ -21,7 +21,6 @@
     group = "music";
     settings = {
       server = {
-        urlbase = "https://lidarr.v3nco.dev";
         port = 8686;
       };
     };
