@@ -1,7 +1,7 @@
 { config, ... }:
 {
   homelab = {
-    ports = [ config.services.lidarr.settings.web.port config.services.slskd.settings.soulseek.listen_port ];
+    ports = [ config.services.slskd.settings.web.port config.services.slskd.settings.soulseek.listen_port ];
     services.slskd = {
       subdomain = "slskd";
       zone = "v3nco";
