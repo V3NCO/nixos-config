@@ -1,11 +1,17 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, inputs, config, ... }:
 
 let
-  wrtag = (pkgs.buildGoModule (finalAttrs: {
+
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+
+  wrtag = (unstable.buildGoModule (finalAttrs: {
     pname = "wrtag";
     version = "0.30.0";
 
-    src = pkgs.fetchFromGitHub {
+    src = unstable.fetchFromGitHub {
       owner = "sentriz";
       repo = "wrtag";
       tag = "v${finalAttrs.version}";
@@ -14,7 +20,7 @@ let
 
     vendorHash = "sha256-CevWYD93fdt7MmWZjBKGR3+isOzWzAo5c8X55qG8/2A=";
 
-    nativeBuildInputs = [ pkgs.installShellFiles pkgs.go_1_26 ];
+    nativeBuildInputs = [ unstable.installShellFiles ];
 
     postInstall = ''
       installShellCompletion contrib/completions/wrtag.{fish,bash}
