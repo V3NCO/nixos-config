@@ -20,14 +20,6 @@ let
       installShellCompletion contrib/completions/wrtag.{fish,bash}
       installShellCompletion contrib/completions/metadata.fish
     '';
-
-    passthru = {
-      updateScript = pkgs.nix-update-script { };
-      tests.version = testers.testVersion {
-        package = finalAttrs.finalPackage;
-        command = "wrtag --version";
-      };
-    };
   }));
 in
 {
