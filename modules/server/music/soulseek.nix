@@ -79,7 +79,7 @@ in
       EnvironmentFile = "/var/lib/wrtag/.env";
     };
     environment = {
-      PATH = pkgs.lib.makeBinPath [ unstable.ffmpeg unstable.chromaprint unstable.rsgain ];
+      PATH = pkgs.lib.mkForce (pkgs.lib.makeBinPath [ unstable.ffmpeg unstable.chromaprint unstable.rsgain ]);
       WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
       WRTAG_WEB_LISTEN_ADDR = ":7834";
       WRTAG_WEB_PUBLIC_URL = "https://wrtag.v3nco.dev";
