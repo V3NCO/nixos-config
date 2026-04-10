@@ -32,7 +32,7 @@ let
 in
 {
   # Just go in the git history for the beets config ngl
-  
+
   homelab = {
     ports = [ config.services.slskd.settings.web.port config.services.slskd.settings.soulseek.listen_port 7834 ];
     services ={
