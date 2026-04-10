@@ -72,13 +72,14 @@ in
   systemd.services."wrtag-web" = {
     serviceConfig = {
       ExecStart = ''
-        ${wrtag}/bin/wrtagweb -addon "lyrics lrclib musixmatch genius" -addon "replaygain"
+        ${wrtag}/bin/wrtagweb -addon "lyrics" -addon "lrclib" -addon "musixmatch" -addon "genius" -addon "replaygain"
       '';
       User = "wrtag";
       Group = "music";
-      EnvironmentFile = ["/var/lib/wrtag/.env"];
+      EnvironmentFile = "/var/lib/wrtag/.env";
     };
     environment = {
+      PATH = pkgs.lib.makeBinPath [ unstable.ffmpeg unstable.chromaprint unstable.rsgain ];
       WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
       WRTAG_WEB_LISTEN_ADDR = ":7834";
       WRTAG_WEB_PUBLIC_URL = "https://wrtag.v3nco.dev";
