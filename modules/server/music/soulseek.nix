@@ -17,14 +17,35 @@
   };
 
   environment.systemPackages = [
-    pkgs.beets.override {
+    (pkgs.python313Packages.beets.override {
       pluginOverrides = {
         beetcamp = {
           enable = true;
           propagatedBuildInputs = [ pkgs.python313Packages.beetcamp ];
         };
+        youtube = {
+          enable = true;
+          propagatedBuildInputs = [
+            (pkgs.python313Packages.buildPythonPackage rec {
+              pname = "beets-youtube";
+              version = "0.1.0";
+              src = pkgs.fetchFromGitHub {
+                owner = "arsaboo";
+                repo = "beets-youtube";
+                rev = "85503871a901c24220214c66ce22ac191eb0417c";
+                hash = "sha256-n5wssgsNZOXNcX2fhORPtCozIqTUSXHfL0EQ8gbsN3k=";
+              };
+              format = "setuptools";
+              propagatedBuildInputs = with pkgs.python313Packages; [
+                ytmusicapi
+                requests
+                pillow
+              ];
+            })
+          ];
+        };
       };
-    }
+    })
     pkgs.ffmpeg
     pkgs.chromaprint
   ];
