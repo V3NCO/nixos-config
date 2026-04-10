@@ -76,8 +76,8 @@ in
       '';
       User = "wrtag";
       Group = "music";
-      environmentFile = "/var/lib/wrtag/.env";
     };
+    environmentFile = "/var/lib/wrtag/.env";
     environment = {
       WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
       WRTAG_WEB_LISTEN_ADDR = ":7834";
