@@ -16,7 +16,18 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.beets pkgs.ffmpeg ];
+  environment.systemPackages = [
+    pkgs.beets.override {
+      pluginOverrides = {
+        beetcamp = {
+          enable = true;
+          propagatedBuildInputs = [ pkgs.python313Packages.beetcamp ];
+        };
+      };
+    }
+    pkgs.ffmpeg
+    pkgs.chromaprint
+  ];
 
   systemd.timers."beets-import-soulseek" = {
     wantedBy = ["timers.target"];
