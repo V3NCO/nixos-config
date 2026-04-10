@@ -1,53 +1,66 @@
 { pkgs, lib, config, ... }:
 
 let
-  customBeets = (pkgs.python313Packages.beets.override {
-    pluginOverrides = {
-      beetcamp = {
-        enable = true;
-        propagatedBuildInputs = [ pkgs.python313Packages.beetcamp ];
-      };
-      youtube = {
-        enable = true;
-        propagatedBuildInputs = [
-          (pkgs.python313Packages.buildPythonPackage rec {
-            pname = "beets-youtube";
-            version = "0.1.0";
-            src = pkgs.fetchFromGitHub {
-              owner = "arsaboo";
-              repo = "beets-youtube";
-              rev = "85503871a901c24220214c66ce22ac191eb0417c";
-              hash = "sha256-n5wssgsNZOXNcX2fhORPtCozIqTUSXHfL0EQ8gbsN3k=";
-            };
-            format = "setuptools";
-            propagatedBuildInputs = with pkgs.python313Packages; [
-              ytmusicapi
-              requests
-              pillow
-            ];
-          })
-        ];
+  wrtag = (pkgs.buildGoModule (finalAttrs: {
+    pname = "wrtag";
+    version = "0.30.0";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "sentriz";
+      repo = "wrtag";
+      tag = "v${finalAttrs.version}";
+      hash = "sha256-ba3HrAUaI9onuRFns9q2fkJxZWhadqJjd8rAmlIVvg4=";
+    };
+
+    vendorHash = "sha256-CevWYD93fdt7MmWZjBKGR3+isOzWzAo5c8X55qG8/2A=";
+
+    nativeBuildInputs = [ pkgs.installShellFiles ];
+
+    postInstall = ''
+      installShellCompletion contrib/completions/wrtag.{fish,bash}
+      installShellCompletion contrib/completions/metadata.fish
+    '';
+
+    passthru = {
+      updateScript = pkgs.nix-update-script { };
+      tests.version = testers.testVersion {
+        package = finalAttrs.finalPackage;
+        command = "wrtag --version";
       };
     };
-  }).overridePythonAttrs (old: {
-    catchConflicts = false;
-  });
-
+  }))
 in
 {
+  # Just go in the git history for the beets config ngl
+  
   homelab = {
-    ports = [ config.services.slskd.settings.web.port config.services.slskd.settings.soulseek.listen_port ];
-    services.slskd = {
-      subdomain = "slskd";
-      zone = "v3nco";
-      upstream = {
-        scheme = "http";
-        host = "127.0.0.1";
-        port = config.services.slskd.settings.web.port;
+    ports = [ config.services.slskd.settings.web.port config.services.slskd.settings.soulseek.listen_port 7834 ];
+    services ={
+      slskd = {
+        subdomain = "slskd";
+        zone = "v3nco";
+        upstream = {
+          scheme = "http";
+          host = "127.0.0.1";
+          port = config.services.slskd.settings.web.port;
+        };
+        middlewares = [
+          "security-headers"
+        ];
       };
-      middlewares = [
-        "security-headers"
-      ];
+
+      wrtag = {
+        subdomain = "wrtag";
+        zone = "v3nco";
+        upstream = {
+          scheme = "http";
+          host = "127.0.0.1";
+          port = 7834;
+        };
+        middlewares = [
+          "security-headers"
+        ];
+      };
     };
   };
 
@@ -55,24 +68,29 @@ in
     customBeets
     pkgs.ffmpeg
     pkgs.chromaprint
+    wrtag
   ];
 
-  systemd.timers."beets-import-soulseek" = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnBootSec = "15m";
-      OnUnitActiveSec = "15m";
-      Unit = "beets-import-soulseek.service";
+
+  systemd.services."wrtag-web" = {
+    serviceConfig = {
+      ExecStart = ''
+        ${lib.getExe wrtag "wrtagweb"} -addon "lyrics lrclib musixmatch genius" -addon "replaygain"
+      '';
+      User = "wrtag";
+      Group = "music";
+      environmentFile = "/var/lib/wrtag/.env";
+      environment = {
+        WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
+        WRTAG_WEB_LISTEN_ADDR = ":7834";
+        WRTAG_WEB_PUBLIC_URL="https://wrtag.v3nco.dev";
+        WRTAG_PATH_FORMAT="/shared/music/{{ artists .Release.Artists | sort | join "; " | safepath }}/({{ .Release.ReleaseGroup.FirstReleaseDate.Year }}) {{ .Release.Title | safepath }}{{ if not (eq .ReleaseDisambiguation "") }} ({{ .ReleaseDisambiguation | safepath }}){{ end }}/{{ if gt (len .Release.Media) 1 }}d{{ pad0 2 .Media.Position }} {{ end }}{{ pad0 2 .Track.Position }}.{{ .Media.TrackCount | pad0 2 }} {{ if .IsCompilation }}{{ artistsString .Track.Artists | safepath }} - {{ end }}{{ .Track.Title | safepath }}{{ .Ext }}"
+      };
     };
   };
 
-  systemd.services."beets-import-soulseek" = {
-    script = "set -eu && ${lib.getExe customBeets} import /shared/downloads/music --quiet";
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
-    };
-  };
+  users.groups.music = {};
+  users.users.wrtag.group = "music";
 
   services.slskd = {
     enable = true;
