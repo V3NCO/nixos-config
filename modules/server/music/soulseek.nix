@@ -46,7 +46,7 @@
         };
       };
     }).overridePythonAttrs (old: {
-      pythonCatchConflictsPhase = "none";
+      catchConflicts = false;
     }))
 
     pkgs.ffmpeg
