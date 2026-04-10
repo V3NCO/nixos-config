@@ -104,6 +104,10 @@
     r2modman
     libreoffice-qt-fresh
     via
+    typst
+    helvum
+    picard
+    tagger
   ];
 
   networking.firewall.allowedTCPPorts = [ 8000 ];
