@@ -17,7 +17,7 @@
   };
 
   environment.systemPackages = [
-    (pkgs.python313Packages.beets.override {
+    ((pkgs.python313Packages.beets.override {
       pluginOverrides = {
         beetcamp = {
           enable = true;
@@ -45,7 +45,10 @@
           ];
         };
       };
-    })
+    }).overridePythonAttrs (old: {
+      pythonCatchConflictsPhase = "none";
+    }))
+
     pkgs.ffmpeg
     pkgs.chromaprint
   ];
