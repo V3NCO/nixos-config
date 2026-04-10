@@ -71,14 +71,14 @@ in
       User = "wrtag";
       Group = "music";
       environmentFile = "/var/lib/wrtag/.env";
-      environment = {
-        WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
-        WRTAG_WEB_LISTEN_ADDR = ":7834";
-        WRTAG_WEB_PUBLIC_URL="https://wrtag.v3nco.dev";
-        WRTAG_PATH_FORMAT=''
-          /shared/music/{{ artists .Release.Artists | sort | join "; " | safepath }}/({{ .Release.ReleaseGroup.FirstReleaseDate.Year }}) {{ .Release.Title | safepath }}{{ if not (eq .ReleaseDisambiguation "") }} ({{ .ReleaseDisambiguation | safepath }}){{ end }}/{{ if gt (len .Release.Media) 1 }}d{{ pad0 2 .Media.Position }} {{ end }}{{ pad0 2 .Track.Position }}.{{ .Media.TrackCount | pad0 2 }} {{ if .IsCompilation }}{{ artistsString .Track.Artists | safepath }} - {{ end }}{{ .Track.Title | safepath }}{{ .Ext }}
-        '';
-      };
+    };
+    environment = {
+      WRTAG_WEB_DB_PATH = "/var/lib/wrtag/wrtag.db";
+      WRTAG_WEB_LISTEN_ADDR = ":7834";
+      WRTAG_WEB_PUBLIC_URL = "https://wrtag.v3nco.dev";
+      WRTAG_PATH_FORMAT = ''
+        /shared/music/{{ artists .Release.Artists | sort | join "; " | safepath }}/({{ .Release.ReleaseGroup.FirstReleaseDate.Year }}) {{ .Release.Title | safepath }}{{ if not (eq .ReleaseDisambiguation "") }} ({{ .ReleaseDisambiguation | safepath }}){{ end }}/{{ if gt (len .Release.Media) 1 }}d{{ pad0 2 .Media.Position }} {{ end }}{{ pad0 2 .Track.Position }}.{{ .Media.TrackCount | pad0 2 }} {{ if .IsCompilation }}{{ artistsString .Track.Artists | safepath }} - {{ end }}{{ .Track.Title | safepath }}{{ .Ext }}
+      '';
     };
   };
 
