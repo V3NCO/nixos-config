@@ -28,7 +28,7 @@ let
         command = "wrtag --version";
       };
     };
-  }))
+  }));
 in
 {
   # Just go in the git history for the beets config ngl
