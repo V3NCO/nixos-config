@@ -83,7 +83,7 @@ in
   };
 
   users.groups.music = {};
-  users.users.wrtag.group = "music";
+  users.users.wrtag = { group = "music"; isSystemUser = true; }
 
   services.slskd = {
     enable = true;
