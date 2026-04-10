@@ -19,7 +19,7 @@
   environment.systemPackages = [
     ((pkgs.python313Packages.beets.override {
       pluginOverrides = {
-        beetcamp = {
+        bandcamp = {
           enable = true;
           propagatedBuildInputs = [ pkgs.python313Packages.beetcamp ];
         };
