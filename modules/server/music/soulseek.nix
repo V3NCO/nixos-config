@@ -66,7 +66,7 @@ in
   systemd.services."wrtag-web" = {
     serviceConfig = {
       ExecStart = ''
-        ${lib.getExe wrtag "wrtagweb"} -addon "lyrics lrclib musixmatch genius" -addon "replaygain"
+        ${wrtag}/bin/wrtagweb -addon "lyrics lrclib musixmatch genius" -addon "replaygain"
       '';
       User = "wrtag";
       Group = "music";
