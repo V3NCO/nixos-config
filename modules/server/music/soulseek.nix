@@ -21,7 +21,7 @@ let
     vendorHash = "sha256-S0emGAQJi9MLvyU3lL/Vrc4SZ10w6MOqND0LsBI7lg8=";
 
     nativeBuildInputs = [ unstable.installShellFiles ];
-
+    buildInputs = [ unstable.ffmpeg unstable.chromaprint unstable.rsgain ];
     postInstall = ''
       installShellCompletion contrib/completions/wrtag.{fish,bash}
       installShellCompletion contrib/completions/metadata.fish
