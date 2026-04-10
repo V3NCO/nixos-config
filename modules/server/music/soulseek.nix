@@ -18,7 +18,7 @@ let
       hash = "sha256-ba3HrAUaI9onuRFns9q2fkJxZWhadqJjd8rAmlIVvg4=";
     };
 
-    vendorHash = "sha256-CevWYD93fdt7MmWZjBKGR3+isOzWzAo5c8X55qG8/2A=";
+    vendorHash = "sha256-S0emGAQJi9MLvyU3lL/Vrc4SZ10w6MOqND0LsBI7lg8=";
 
     nativeBuildInputs = [ unstable.installShellFiles ];
 
