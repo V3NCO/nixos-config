@@ -57,7 +57,6 @@ in
   };
 
   environment.systemPackages = [
-    customBeets
     pkgs.ffmpeg
     pkgs.chromaprint
     wrtag
