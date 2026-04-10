@@ -14,6 +14,8 @@ let
 
     vendorHash = "sha256-CevWYD93fdt7MmWZjBKGR3+isOzWzAo5c8X55qG8/2A=";
 
+    go = pkgs.go_1_26;
+
     nativeBuildInputs = [ pkgs.installShellFiles ];
 
     postInstall = ''
