@@ -1,8 +1,11 @@
 { ... }:
 {
+  users.users.syncthing.group = "music";
+
   services.syncthing = {
     enable = true;
     relay.enable = true;
+    group = "music";
     settings = {
       options = {
         relaysEnabled = true;
