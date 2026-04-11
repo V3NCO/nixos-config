@@ -78,6 +78,9 @@ in
         websecure = {
           address = ":443";
           asDefault = true;
+          forwardedHeaders = {
+            trustedIPs = [ "127.0.0.1" ];
+          };
           http.tls = {
             certResolver = defaults.tlsCertResolver;
             domains = [
