@@ -20,7 +20,7 @@
       devices = {
         "quasar" = {
           name = "quasar";
-          id = "ELTGVOH-WX2MMU6-LGXOMFR-TCB7ROU-EWZBTWM-STXGNWL-BEAKGYI-ERUNBQD";
+          id = "3K6DWLC-GP2KH6Z-JHTU2E2-KLKZJEP-CZ24AN7-F26IYOX-LEMNPCS-73P5NAT";
         };
       };
       folders = {
