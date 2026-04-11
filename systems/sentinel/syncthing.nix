@@ -10,7 +10,6 @@
     configDir = "/var/lib/syncthing/.config/syncthing";
     key = "/var/lib/syncthing/key.pem";
     cert = "/var/lib/syncthing/cert.pem";
-    extraFlags = [ "--no-default-folder" ];
     overrideDevices = true;
     overrideFolders = true;
     settings = {
