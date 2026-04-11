@@ -140,6 +140,7 @@ in
 
         middlewares = {
           tinyauth.forwardauth.address = "https://tinyauth.v3nco.dev/api/auth/traefik";
+          tinyauth.forwardauth.authResponseHeaders = "authorization";
           local-ipwhitelist.ipAllowList.sourceRange = [
             "192.168.0.0/16"
             "10.0.0.0/8"
