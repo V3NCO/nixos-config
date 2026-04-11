@@ -5,7 +5,7 @@
     relay.enable = true;
     user = "venco";
     dataDir = "/home/venco/shared";
-    configDir = "/var/lib/syncthing";
+    configDir = "/var/lib/syncthing/.config/syncthing";
     key = "/var/lib/syncthing/key.pem";
     cert = "/var/lib/syncthing/cert.pem";
     overrideDevices = true;
