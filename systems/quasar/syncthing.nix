@@ -3,6 +3,7 @@
   services.syncthing = {
     enable = true;
     relay.enable = true;
+    user = "venco";
     settings = {
       options = {
         urAccepted = -1;
