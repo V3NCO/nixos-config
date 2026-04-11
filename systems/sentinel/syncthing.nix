@@ -6,6 +6,13 @@
     enable = true;
     relay.enable = true;
     group = "music";
+    dataDir = "/shared";
+    configDir = "/var/lib/syncthing/.config/syncthing";
+    key = "/var/lib/syncthing/key.pem";
+    cert = "/var/lib/syncthing/cert.pem";
+    extraFlags = [ "--no-default-folder" ];
+    overrideDevices = true;
+    overrideFolders = true;
     settings = {
       options = {
         relaysEnabled = true;
@@ -14,7 +21,7 @@
       devices = {
         "quasar" = {
           name = "quasar";
-          id = "LMPIBFE-3QVLUXS-OCRLMVA-RG7MAUI-HOBLUHS-YMN2QRP-NDBNEES-RIEVEAE";
+          id = "ELTGVOH-WX2MMU6-LGXOMFR-TCB7ROU-EWZBTWM-STXGNWL-BEAKGYI-ERUNBQD";
         };
       };
       folders = {
