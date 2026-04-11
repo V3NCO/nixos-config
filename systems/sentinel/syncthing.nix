@@ -15,6 +15,7 @@
         };
         middlewares = [
           "security-headers"
+          "tinyauth"
         ];
       };
     };
@@ -31,6 +32,7 @@
     overrideDevices = true;
     overrideFolders = true;
     settings = {
+      gui.insecureSkipHostcheck = true;
       options = {
         relaysEnabled = true;
         urAccepted = -1;
