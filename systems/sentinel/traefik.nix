@@ -142,7 +142,7 @@ in
         services = servicesFromRegistry;
 
         middlewares = {
-          tinyauth.forwardauth.address = "https://127.0.0.1:4390/api/auth/traefik";
+          tinyauth.forwardauth.address = "http://127.0.0.1:4390/api/auth/traefik";
           tinyauth.forwardauth.authResponseHeaders = "authorization";
           local-ipwhitelist.ipAllowList.sourceRange = [
             "192.168.0.0/16"
