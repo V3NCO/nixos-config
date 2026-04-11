@@ -69,6 +69,9 @@
     r2modman
     libreoffice-qt-fresh
     via
+    typst
+    helvum
+    feishin
   ];
 
   programs.light.enable = true;

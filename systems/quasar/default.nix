@@ -109,6 +109,7 @@
     helvum
     picard
     tagger
+    feishin
   ];
 
   networking.firewall.allowedTCPPorts = [ 8000 ];
