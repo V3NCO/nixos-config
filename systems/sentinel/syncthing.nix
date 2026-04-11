@@ -47,6 +47,7 @@
         "/shared" = {
           id = "sentinel-share";
           type = "sendreceive";
+          ignorePerms = true;
           devices = ["quasar"];
         };
       };

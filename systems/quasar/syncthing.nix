@@ -24,6 +24,7 @@
         "/home/venco/shared/sentinel" = {
           id = "sentinel-share";
           type = "sendreceive";
+          ignorePerms = true;
           copyOwnershipFromParent = true;
           devices = ["sentinel"];
         };
