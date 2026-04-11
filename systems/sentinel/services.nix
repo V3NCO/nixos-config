@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/server/vm
+    ./syncthing.nix
     ../../modules/server/port-conflicts.nix
     ../../modules/server/immich.nix
     ../../modules/server/vaultwarden.nix
