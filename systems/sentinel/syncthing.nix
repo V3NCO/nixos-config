@@ -1,6 +1,24 @@
-{ ... }:
+{ config, ... }:
 {
   users.users.syncthing.group = "music";
+
+  homelab = {
+    ports = [ 8384 22000 21027 ];
+    services ={
+      syncthing = {
+        subdomain = "syncthing";
+        zone = "v3nco";
+        upstream = {
+          scheme = "http";
+          host = "127.0.0.1";
+          port = 8384;
+        };
+        middlewares = [
+          "security-headers"
+        ];
+      };
+    };
+  };
 
   services.syncthing = {
     enable = true;
