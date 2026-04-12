@@ -28,6 +28,7 @@
       MusicFolder = "/shared/music";
       DataFolder = "/var/lib/navidrome";
       LogFile = "/var/lib/navidrome/navidrome.log";
+      EnableSharing = true;
     };
   };
 
