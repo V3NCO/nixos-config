@@ -65,6 +65,9 @@ in
         web = {
           address = ":80";
           asDefault = false;
+          forwardedHeaders = {
+            trustedIPs = [ "127.0.0.1" "100.86.29.63" ];
+          };
           http.redirections.entrypoint = {
             to = "websecure";
             scheme = "https";
@@ -79,7 +82,7 @@ in
           address = ":443";
           asDefault = true;
           forwardedHeaders = {
-            trustedIPs = [ "127.0.0.1" ];
+            trustedIPs = [ "127.0.0.1" "100.86.29.63" ];
           };
           http.tls = {
             certResolver = defaults.tlsCertResolver;

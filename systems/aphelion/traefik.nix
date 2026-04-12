@@ -81,18 +81,6 @@
     dynamicConfigOptions = {
       http = {
         routers = {
-          # traefik = {
-          #   entryPoints = [ "websecure" ];
-          #   rule = "Host(`traefik.v3nco.dev`)";
-          #   service = "api@internal";
-          #   tls.certResolver = "letsencrypt";
-          #   middlewares = [
-          #     "security-headers"
-          #     "basic-auth"
-          #     "rate-limit"
-          #   ];
-          # };
-
           anubis = {
             entryPoints = [ "websecure" ];
             rule = "Host(`anubis.v3nco.dev`)";
@@ -109,29 +97,39 @@
           #   middlewares = [ "security-headers" ];
           # };
 
-          synapse = {
-            entryPoints = [ "websecure" ];
-            rule = "Host(`synapse.v3nco.dev`)";
-            service = "synapse";
-            tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
-          };
+          # nexus = {
+          #   entryPoints = [ "websecure" ];
+          #   rule = "Host(`nexus.v3nco.dev`)";
+          #   service = "nexus";
+          #   tls.certResolver = "letsencrypt";
+          #   middlewares = [
+          #     "security-headers"
+          #     "anubis"
+          #   ];
+          # };
 
-          nexus = {
-            entryPoints = [ "websecure" ];
-            rule = "Host(`nexus.v3nco.dev`)";
-            service = "nexus";
-            tls.certResolver = "letsencrypt";
-            middlewares = [
-              "security-headers"
-              "anubis"
-            ];
-          };
+          # blahajid = {
+          #   entryPoints = [ "websecure" ];
+          #   rule = "Host(`identity.v3nco.dev`)";
+          #   service = "blahajid";
+          #   tls.certResolver = "letsencrypt";
+          #   middlewares = [
+          #     "security-headers"
+          #   ];
+          # };
+
+          # synapse = {
+          #   entryPoints = [ "websecure" ];
+          #   rule = "Host(`synapse.v3nco.dev`)";
+          #   service = "synapse";
+          #   tls.certResolver = "letsencrypt";
+          #   middlewares = [ "security-headers" ];
+          # };
 
           git = {
             entryPoints = [ "websecure" ];
             rule = "Host(`git.v3nco.dev`)";
-            service = "git";
+            service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
@@ -139,20 +137,30 @@
             ];
           };
 
-          blahajid = {
+          tinyauth = {
             entryPoints = [ "websecure" ];
-            rule = "Host(`identity.blahaj.engineering`)";
-            service = "blahajid";
+            rule = "Host(`tinyauth.v3nco.dev`)";
+            service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
             ];
           };
 
-          blahajidalt = {
+          pocketid = {
             entryPoints = [ "websecure" ];
-            rule = "Host(`blahajid.v3nco.dev`)";
-            service = "blahajid";
+            rule = "Host(`pid.v3nco.dev`)";
+            service = "sentinel-sec";
+            tls.certResolver = "letsencrypt";
+            middlewares = [
+              "security-headers"
+            ];
+          };
+
+          navidrome = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`navidrome.v3nco.dev`)";
+            service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
@@ -161,31 +169,11 @@
         };
 
         services = {
-          zipline.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.96.199.124"; } ];
-          };
-          aperture-tts-slack.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.96.199.124"; } ];
-          };
-          synapse.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.96.199.124"; } ];
-          };
-          nexus.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.96.199.124"; } ];
-          };
-          git.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "https://100.96.199.124"; } ];
-          };
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "http://localhost:7980"; } ];
           };
-          blahajid.loadBalancer = {
+          sentinel-sec.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "https://100.96.199.124"; } ];
           };
