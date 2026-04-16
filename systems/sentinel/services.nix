@@ -10,6 +10,7 @@
     ../../modules/server/radicale.nix
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix
+    ../../modules/server/ocis.nix
     ../../modules/server/grafana
     ../../modules/server/music
   ];
