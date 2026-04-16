@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 {
   homelab.services.homebox = {
     subdomain = "homebox";
@@ -6,18 +6,18 @@
     upstream = {
       scheme = "http";
       host = "127.0.0.1";
-      port = config.services.homebox.settings.HBOX_WEB_PORT;
+      port = (lib.toInt config.services.homebox.settings.HBOX_WEB_PORT);
     };
     middlewares = [ "security-headers" ];
   };
 
-  homelab.ports = [ config.services.homebox.settings.HBOX_WEB_PORT ];
+  homelab.ports = [ (lib.toInt config.services.homebox.settings.HBOX_WEB_PORT) ];
 
   services.homebox = {
     enable = true;
     database.createLocally = true;
     settings = {
-      HBOX_WEB_PORT = 7745;
+      HBOX_WEB_PORT = "7745";
       HBOX_STORAGE_CONN_STRING = "file:///var/lib/homebox";
       HBOX_STORAGE_PREFIX_PATH = "data";
       HBOX_OPTIONS_ALLOW_REGISTRATION = "false";
