@@ -20,7 +20,7 @@
       HBOX_WEB_PORT = "7745";
       HBOX_STORAGE_CONN_STRING = "file:///var/lib/homebox";
       HBOX_STORAGE_PREFIX_PATH = "data";
-      HBOX_OPTIONS_ALLOW_REGISTRATION = "false";
+      HBOX_OPTIONS_ALLOW_REGISTRATION = "true";
       HBOX_OPTIONS_CHECK_GITHUB_RELEASE = "false";
       HBOX_MODE = "production";
       HOME = "/var/lib/homebox";
