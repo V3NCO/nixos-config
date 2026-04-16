@@ -16,12 +16,13 @@
   services.nextcloud = {
     enable = true;
     package = pkgs.nextcloud33;
+    database.createLocally = true;
     extraAppsEnable = true;
-    config.adminpassFile = "/var/lib/adminPass";
+    config.adminpassFile = "/var/lib/nextcloud/adminPass";
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
     };
-    hostName = "https://nextcloud.v3nco.dev";
+    hostName = "nextcloud.v3nco.dev";
     config.dbtype = "sqlite";
     maxUploadSize = "10G";
   };
