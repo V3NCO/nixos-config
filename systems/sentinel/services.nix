@@ -11,6 +11,7 @@
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix
     ../../modules/server/nextcloud.nix
+    ../../modules/server/homebox.nix
     ../../modules/server/grafana
     ../../modules/server/music
   ];
