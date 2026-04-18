@@ -1,11 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ self, config, pkgs, lib, ... }: # Note: 'self' is added here
 
 let
   cfg = config.services.syncpronote;
-  syncpronote-pkg = config.services.syncpronote.package;
+  # The package is now referenced directly from the flake's outputs.
+  syncpronote-pkg = cfg.package;
 
-  # Create a separate shell script for the pre-start logic.
-  # This avoids the purity error by isolating the use of the absolute path string.
   preStartScript = pkgs.writeShellScript "syncpronote-pre-start" ''
     #!${pkgs.runtimeShell}
     set -e
@@ -31,8 +30,9 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.callPackage ./flake.nix { };
-      defaultText = "pkgs.callPackage ./flake.nix { }";
+      # The default now correctly points to the package from the flake.
+      default = self.packages.${pkgs.system}.default;
+      defaultText = "The default package from the syncpronote flake.";
       description = "The syncpronote package to use.";
     };
 
@@ -73,8 +73,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # This is the correct way to define the system user.
-    # Do not set `home` to an absolute path here.
     users.users.${cfg.user} = {
       isSystemUser = true;
       group = cfg.group;
@@ -88,17 +86,13 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      # Use the script created above for the preStart command.
-      script = ''
-        exec ${syncpronote-pkg}/bin/syncpronote
-      '';
-
       serviceConfig = {
         Type = "simple";
         User = cfg.user;
         Group = cfg.group;
         WorkingDirectory = cfg.dataDir;
         ExecStartPre = "${preStartScript}";
+        ExecStart = "${syncpronote-pkg}/bin/syncpronote";
         Restart = "on-failure";
       };
     };
