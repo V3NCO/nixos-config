@@ -28,7 +28,7 @@ in
     };
 
     dataDir = lib.mkOption {
-      type = lib.types.path;
+      type = lib.types.str;
       default = "/var/lib/syncpronote";
       description = "The directory to store syncpronote data and configuration.";
     };
