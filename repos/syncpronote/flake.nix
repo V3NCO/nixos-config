@@ -21,12 +21,20 @@
           dontNpmBuild = true;
           installPhase = ''
             runHook preInstall
+
+            sed -i 's|path.join(__dirname, ".config"|path.join(process.cwd(), ".config"|g' index.js
+            sed -i 's|path.join(__dirname, "..", ".config"|path.join(process.cwd(), ".config"|g' utils/ntfy.js cli/auth-pronote.js cli/auth-google.js 2>/dev/null || true
+            sed -i "s|path.join(__dirname, '..', '.config'|path.join(process.cwd(), '.config'|g" utils/icalendar.js 2>/dev/null || true
+            sed -i 's|require("./utils/classnames")|require("fs").existsSync(require("path").join(process.cwd(), "utils/classnames.js")) ? require(require("path").join(process.cwd(), "utils/classnames.js")) : require("./utils/classnames")|g' index.js
+            sed -i 's|require("./utils/custom-hours")|require("fs").existsSync(require("path").join(process.cwd(), "utils/custom-hours.js")) ? require(require("path").join(process.cwd(), "utils/custom-hours.js")) : require("./utils/custom-hours")|g' index.js
+
             mkdir -p $out/bin
             cp -r ./* $out/
             makeWrapper ${nodeJs}/bin/node $out/bin/syncpronote \
               --add-flags "$out/index.js"
             runHook postInstall
           '';
+
           meta = with pkgs.lib; {
             description = "A tool to synchronize Pronote calendar to another calendar service.";
             homepage = "https://github.com/johan-perso/syncpronote";
