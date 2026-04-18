@@ -3,6 +3,27 @@
 let
   cfg = config.services.syncpronote;
   syncpronote-pkg = config.services.syncpronote.package;
+
+  # Create a separate shell script for the pre-start logic.
+  # This avoids the purity error by isolating the use of the absolute path string.
+  preStartScript = pkgs.writeShellScript "syncpronote-pre-start" ''
+    #!${pkgs.runtimeShell}
+    set -e
+    mkdir -p "${cfg.dataDir}/.config"
+    mkdir -p "${cfg.dataDir}/utils"
+    cp "${cfg.secrets}" "${cfg.dataDir}/.config/secrets.json"
+
+    if [ -n "${cfg.classnames}" ]; then
+      cp "${cfg.classnames}" "${cfg.dataDir}/utils/classnames.js"
+    fi
+
+    if [ -n "${cfg.customHours}" ]; then
+      cp "${cfg.customHours}" "${cfg.dataDir}/utils/custom-hours.js"
+    fi
+
+    chown -R "${cfg.user}:${cfg.group}" "${cfg.dataDir}"
+  '';
+
 in
 {
   options.services.syncpronote = {
@@ -52,6 +73,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # This is the correct way to define the system user.
+    # Do not set `home` to an absolute path here.
     users.users.${cfg.user} = {
       isSystemUser = true;
       group = cfg.group;
@@ -65,30 +88,19 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
+      # Use the script created above for the preStart command.
+      script = ''
+        exec ${syncpronote-pkg}/bin/syncpronote
+      '';
+
       serviceConfig = {
         Type = "simple";
         User = cfg.user;
         Group = cfg.group;
         WorkingDirectory = cfg.dataDir;
-        ExecStart = "${syncpronote-pkg}/bin/syncpronote";
+        ExecStartPre = "${preStartScript}";
         Restart = "on-failure";
       };
-
-      preStart = ''
-        mkdir -p ${cfg.dataDir}/.config
-        mkdir -p ${cfg.dataDir}/utils
-        cp ${cfg.secrets} ${cfg.dataDir}/.config/secrets.json
-
-        if [ -n "${cfg.classnames}" ]; then
-          cp ${cfg.classnames} ${cfg.dataDir}/utils/classnames.js
-        fi
-
-        if [ -n "${cfg.customHours}" ]; then
-          cp ${cfg.customHours} ${cfg.dataDir}/utils/custom-hours.js
-        fi
-
-        chown -R ${cfg.user}:${cfg.group} ${cfg.dataDir}
-      '';
     };
   };
 }
