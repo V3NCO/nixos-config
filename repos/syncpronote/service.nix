@@ -1,9 +1,12 @@
-{ self, config, pkgs, lib, ... }: # Note: 'self' is added here
+{ config, pkgs, lib, ... }:
 
 let
   cfg = config.services.syncpronote;
-  # The package is now referenced directly from the flake's outputs.
-  syncpronote-pkg = cfg.package;
+
+  # Correctly import the flake from the current directory and get the package.
+  # This assumes 'flake.nix' is in the same directory as 'service.nix'.
+  syncpronote-flake = builtins.getFlake (toString ./.);
+  syncpronote-pkg = syncpronote-flake.packages.${pkgs.system}.default;
 
   preStartScript = pkgs.writeShellScript "syncpronote-pre-start" ''
     #!${pkgs.runtimeShell}
@@ -28,13 +31,8 @@ in
   options.services.syncpronote = {
     enable = lib.mkEnableOption "Enable the syncpronote service";
 
-    package = lib.mkOption {
-      type = lib.types.package;
-      # The default now correctly points to the package from the flake.
-      default = self.packages.${pkgs.system}.default;
-      defaultText = "The default package from the syncpronote flake.";
-      description = "The syncpronote package to use.";
-    };
+    # The package option is now gone, as the module provides it itself.
+    # This simplifies the user's configuration.
 
     user = lib.mkOption {
       type = lib.types.str;
