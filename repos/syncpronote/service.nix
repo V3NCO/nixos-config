@@ -33,11 +33,6 @@ in
       description = "The directory to store syncpronote data and configuration.";
     };
 
-    googleCredentials = lib.mkOption {
-      type = lib.types.path;
-      description = "Path to google-credentials.json";
-    };
-
     secrets = lib.mkOption {
       type = lib.types.path;
       description = "Path to secrets.json";
@@ -82,8 +77,6 @@ in
       preStart = ''
         mkdir -p ${cfg.dataDir}/.config
         mkdir -p ${cfg.dataDir}/utils
-
-        cp ${cfg.googleCredentials} ${cfg.dataDir}/google-credentials.json
         cp ${cfg.secrets} ${cfg.dataDir}/.config/secrets.json
 
         if [ -n "${cfg.classnames}" ]; then
