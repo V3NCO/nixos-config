@@ -20,6 +20,7 @@
       enable = true;
       allowedTCPPorts = [
         22
+        222
         80
         443
       ];
