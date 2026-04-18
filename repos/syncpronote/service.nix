@@ -56,6 +56,7 @@ in
       isSystemUser = true;
       group = cfg.group;
       home = cfg.dataDir;
+      createHome = true;
     };
 
     users.groups.${cfg.group} = {};
