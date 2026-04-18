@@ -226,7 +226,7 @@
         inputs.nixCats.nixosModules.default
         ({ pkgs, _module, ... }: {
           imports = [ inputs.syncpronote.nixosModules.default ];
-          _module.args.syncpronote-pkg = inputs.syncpronote.packages.${pkgs.system}.default;
+          _module.args.syncpronote-pkg = inputs.syncpronote.packages.${pkgs.stdenv.hostPlatform.system}.default;
         })
 
       ];
