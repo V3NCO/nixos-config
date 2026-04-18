@@ -8,13 +8,16 @@ let
     set -e
     mkdir -p "${cfg.dataDir}/.config"
     mkdir -p "${cfg.dataDir}/utils"
-    cp "${cfg.secrets}" "${cfg.dataDir}/.config/secrets.json"
 
-    if [ -n "${cfg.classnames}" ]; then
+    if [ "${cfg.secrets}" != "${cfg.dataDir}/.config/secrets.json" ]; then
+      cp "${cfg.secrets}" "${cfg.dataDir}/.config/secrets.json"
+    fi
+
+    if [ -n "${cfg.classnames}" ] && [ "${cfg.classnames}" != "${cfg.dataDir}/utils/classnames.js" ]; then
       cp "${cfg.classnames}" "${cfg.dataDir}/utils/classnames.js"
     fi
 
-    if [ -n "${cfg.customHours}" ]; then
+    if [ -n "${cfg.customHours}" ] && [ "${cfg.customHours}" != "${cfg.dataDir}/utils/custom-hours.js" ]; then
       cp "${cfg.customHours}" "${cfg.dataDir}/utils/custom-hours.js"
     fi
 
