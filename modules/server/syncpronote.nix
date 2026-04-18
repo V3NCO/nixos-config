@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./syncpronote/service.nix ];
+  imports = [ ../../repos/syncpronote/service.nix ];
 
   services.syncpronote = {
     enable = true;
