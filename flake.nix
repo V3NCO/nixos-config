@@ -224,7 +224,10 @@
       modules = [
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
-        inputs.syncpronote.nixosModules.default
+        ({_module, ...}: {
+          imports = [ inputs.syncpronote.nixosModules.default ];
+          _module.args.syncpronote-pkg = inputs.syncpronote.packages."x86_64-linux".default;
+        })
 
       ];
     };

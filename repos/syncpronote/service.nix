@@ -1,12 +1,7 @@
-{ config, pkgs, lib, ... }:
-
+# repos/syncpronote/service.nix
+{ config, pkgs, lib, syncpronote-pkg, ... }:
 let
   cfg = config.services.syncpronote;
-
-  # Correctly import the flake from the current directory and get the package.
-  # This assumes 'flake.nix' is in the same directory as 'service.nix'.
-  syncpronote-flake = builtins.getFlake (toString ./.);
-  syncpronote-pkg = syncpronote-flake.packages.${pkgs.system}.default;
 
   preStartScript = pkgs.writeShellScript "syncpronote-pre-start" ''
     #!${pkgs.runtimeShell}
@@ -30,44 +25,12 @@ in
 {
   options.services.syncpronote = {
     enable = lib.mkEnableOption "Enable the syncpronote service";
-
-    # The package option is now gone, as the module provides it itself.
-    # This simplifies the user's configuration.
-
-    user = lib.mkOption {
-      type = lib.types.str;
-      default = "syncpronote";
-      description = "User to run syncpronote as.";
-    };
-
-    group = lib.mkOption {
-      type = lib.types.str;
-      default = "syncpronote";
-      description = "Group to run syncpronote as.";
-    };
-
-    dataDir = lib.mkOption {
-      type = lib.types.str;
-      default = "/var/lib/syncpronote";
-      description = "The directory to store syncpronote data and configuration.";
-    };
-
-    secrets = lib.mkOption {
-      type = lib.types.path;
-      description = "Path to secrets.json";
-    };
-
-    classnames = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Path to a custom classnames.js file.";
-    };
-
-    customHours = lib.mkOption {
-      type = lib.types.nullOr lib.types.path;
-      default = null;
-      description = "Path to a custom custom-hours.js file.";
-    };
+    user = lib.mkOption { type = lib.types.str; default = "syncpronote"; };
+    group = lib.mkOption { type = lib.types.str; default = "syncpronote"; };
+    dataDir = lib.mkOption { type = lib.types.str; default = "/var/lib/syncpronote"; };
+    secrets = lib.mkOption { type = lib.types.path; description = "Path to secrets.json"; };
+    classnames = lib.mkOption { type = lib.types.nullOr lib.types.path; default = null; description = "Path to a custom classnames.js file."; };
+    customHours = lib.mkOption { type = lib.types.nullOr lib.types.path; default = null; description = "Path to a custom custom-hours.js file."; };
   };
 
   config = lib.mkIf cfg.enable {
