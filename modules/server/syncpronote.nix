@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../../repos/syncpronote/service.nix ];
-
   services.syncpronote = {
     enable = true;
     secrets = /var/lib/syncpronote/secrets.json;

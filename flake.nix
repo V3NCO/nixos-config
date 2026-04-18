@@ -121,6 +121,10 @@
       url="/etc/nixos/firmware";
       flake = false;
     };
+    syncpronote = {
+      url = "./repos/syncpronote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
@@ -220,6 +224,8 @@
       modules = [
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
+        inputs.syncpronote.nixosModules.default
+
       ];
     };
 
