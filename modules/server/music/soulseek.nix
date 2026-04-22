@@ -94,9 +94,9 @@ in
         "/shared/music"
       ];
       shares.filters = [
-        "*Yowane*"
-        "*Vylet Pony*"
-        "*Gonarch's Lair*"
+        ".*Yowane.*"
+        ".*Vylet Pony.*"
+        ".*Gonarch's Lair.*"
       ];
       remote_file_management = true;
     };
