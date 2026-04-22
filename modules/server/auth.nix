@@ -33,7 +33,7 @@ in {
     package = unstable.tinyauth;
     environmentFile = "/var/lib/tinyauth/.env";
     settings = {
-      APPURL = "https://tinyauth.v3nco.dev/";
+      APPURL = "https://tinyauth.v3nco.dev";
       SERVER_PORT = 4390;
       SERVER_ADDRESS = "127.0.0.1";
 
