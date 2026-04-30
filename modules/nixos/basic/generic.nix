@@ -13,5 +13,7 @@
     exfat
   ];
   services.printing.enable = true;
+
+  boot.blacklistedKernelModules = [ "algif_aead" ];
   # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
 }
