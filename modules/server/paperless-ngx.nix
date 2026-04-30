@@ -1,7 +1,7 @@
 { config, ... }:
 {
   homelab = {
-    ports = [];
+    ports = [ config.services.paperless.port config.services.gotenberg.port config.services.tika.port];
     services = {
       paperless-ngx = {
         subdomain = "paperless";
