@@ -35,7 +35,7 @@
 
   services.pgadmin = {
     enable = true;
-  }
+  };
 
   systemd.services.pgadmin.serviceConfig.User = lib.mkForce "sharkey";
 }
