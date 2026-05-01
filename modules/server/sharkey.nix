@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   homelab.services.sharkey = {
     subdomain = "sharkey";
@@ -11,7 +11,18 @@
     middlewares = [ "security-headers" ];
   };
 
-  homelab.ports = [ config.services.sharkey.settings.port ];
+  homelab.services.pgadmin = {
+    subdomain = "pgadmin";
+    zone = "v3nco";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = config.services.pgadmin.port;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
+  homelab.ports = [ config.services.sharkey.settings.port config.services.pgadmin.port ];
 
   services.sharkey = {
     enable = true;
@@ -21,4 +32,10 @@
       url = "https://sharkey.v3nco.dev/";
     };
   };
+
+  services.pgadmin = {
+    enable = true;
+  }
+
+  systemd.services.pgadmin.serviceConfig.User = lib.mkForce "sharkey";
 }
