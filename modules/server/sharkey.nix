@@ -36,6 +36,7 @@
   services.pgadmin = {
     enable = true;
     initialEmail = "account.pgadmin@v3nco.dev";
+    initialPasswordFile = "/var/lib/sharkey/pgadminpass";
   };
 
   systemd.services.pgadmin.serviceConfig.User = lib.mkForce "sharkey";
