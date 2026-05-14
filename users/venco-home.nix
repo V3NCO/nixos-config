@@ -21,6 +21,7 @@
     ../modules/home-manager/git.nix
     ../modules/home-manager/term.nix
     ../modules/home-manager/fetch.nix
+    ../modules/home-manager/vr.nix
     ../modules/home-manager/desktop/niri.nix
     # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell

@@ -25,6 +25,7 @@
     #../../modules/nixos/cider.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../modules/nixos/fonts.nix
+    ../../modules/nixos/vr.nix
     ./keyboard.nix
   ];
 
