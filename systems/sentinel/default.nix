@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,6 +6,7 @@
     ./services.nix
     ./traefik.nix
     ./backups.nix
+    ./ai.nix
     ../../modules/server/dns.nix
     ../../modules/nvim
     ../../modules/nixos/basic
@@ -15,6 +16,12 @@
   ];
 
   homelab.ports = [ 22 ];
+
+
+  environment.systemPackages = [
+    pkgs.fastfetch
+    pkgs.hyfetch
+  ];
 
   programs.gnupg.agent = {
     enable = true;
