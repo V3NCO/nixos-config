@@ -115,9 +115,9 @@
           left = [
             {
               colorizeDistroLogo = false;
-              colorizeSystemIcon = "none";
+              colorizeSystemIcon = "primary";
               customIconPath = "${config.xdg.configHome}/nixosassets/noctalia/venco.svg";
-              enableColorization = false;
+              enableColorization = true;
               icon = "noctalia";
               id = "ControlCenter";
               useDistroLogo = false;
@@ -679,9 +679,9 @@
         useWallpaperColors = true;
         predefinedScheme = "Monochrome";
         darkMode = true;
-        schedulingMode = "off";
-        manualSunrise = "06:30";
-        manualSunset = "18:30";
+        schedulingMode = "manual";
+        manualSunrise = "09:00";
+        manualSunset = "20:30";
         generationMethod = "tonal-spot";
         monitorForColors = "";
       };
