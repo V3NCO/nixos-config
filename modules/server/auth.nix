@@ -1,9 +1,5 @@
-{ pkgs, inputs, config, ... }:
-let
-  unstable = import inputs.nixpkgs-unstable {
-    system = pkgs.stdenv.hostPlatform.system;
-  };
-in {
+{ unstable, inputs, config, ... }:
+{
   imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/security/tinyauth.nix"];
 
   homelab.ports = [ 4390 4391 ];

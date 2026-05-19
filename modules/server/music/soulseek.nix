@@ -1,8 +1,6 @@
-{ pkgs, inputs, lib, config, ... }:
+{ pkgs, unstable, lib, config, ... }:
 
 let
-  unstable = import inputs.nixpkgs-unstable {system = pkgs.stdenv.hostPlatform.system;};
-
   customBeets = (unstable.python313Packages.beets.override {
     pluginOverrides = {
       beetcamp = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ unstable, pkgs, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -65,7 +65,7 @@
     quickemu
     gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
-    android-studio
+    unstable.android-studio
     python313
     python313Packages.pip
     tor-browser

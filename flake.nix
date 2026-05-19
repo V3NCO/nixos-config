@@ -140,7 +140,13 @@
         };
       };
 
-      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+      specialArgs = {
+        inherit inputs;
+        quickshell = inputs.quickshell;
+        unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+          config = { allowUnfree = true; android_sdk.accept_license = true; };
+        };
+      };
 
       modules = [
         ./systems/quasar
@@ -180,7 +186,13 @@
         };
       };
 
-      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+      specialArgs = {
+        inherit inputs;
+        quickshell = inputs.quickshell;
+        unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+          config = { allowUnfree = true; android_sdk.accept_license = true; };
+        };
+      };
       modules = [
         ./systems/comet
         inputs.nixCats.nixosModules.default
@@ -214,12 +226,22 @@
         ./systems/aphelion
         inputs.nixCats.nixosModules.default
       ];
+      specialArgs = {
+        unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+          config = { allowUnfree = true; android_sdk.accept_license = true; };
+        };
+      };
     };
 
     nixosConfigurations.sentinel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs;
+        unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+          config = { allowUnfree = true; android_sdk.accept_license = true; };
+        };
+      };
 
       modules = [
         ./systems/sentinel
@@ -228,7 +250,6 @@
           imports = [ inputs.syncpronote.nixosModules.default ];
           _module.args.syncpronote-pkg = inputs.syncpronote.packages.${pkgs.stdenv.hostPlatform.system}.default;
         })
-
       ];
     };
 
@@ -242,7 +263,13 @@
         };
       };
 
-      specialArgs = { inherit inputs; quickshell = inputs.quickshell; };
+      specialArgs = {
+        inherit inputs;
+        quickshell = inputs.quickshell;
+        unstable = import inputs.nixpkgs-unstable { system = "aarch64-linux";
+          config = { allowUnfree = true; android_sdk.accept_license = true; };
+        };
+      };
 
       modules = [
         ./systems/stardust

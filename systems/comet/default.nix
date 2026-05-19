@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -28,7 +28,7 @@
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
-    android-studio
+    unstable.android-studio
     python313
     python313Packages.pip
     tor-browser
