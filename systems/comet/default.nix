@@ -28,7 +28,15 @@
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [
     gpu-screen-recorder-gtk
-    unstable.android-studio
+    (symlinkJoin {
+      name = "android-studio-wrapped";
+      paths = [ unstable.android-studio ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/android-studio \
+        --unset QT_QPA_PLATFORM
+      '';
+    })
     python313
     python313Packages.pip
     tor-browser

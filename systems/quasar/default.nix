@@ -65,7 +65,15 @@
     quickemu
     gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
-    unstable.android-studio
+    (symlinkJoin {
+      name = "android-studio-wrapped";
+      paths = [ unstable.android-studio ];
+      buildInputs = [ makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/android-studio \
+        --unset QT_QPA_PLATFORM
+      '';
+    })
     python313
     python313Packages.pip
     tor-browser
