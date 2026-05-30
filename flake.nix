@@ -117,6 +117,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    streamcontroller = {
+      url = "github:Daaboulex/streamcontroller-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     asahi-firmware = {
       url="/etc/nixos/firmware";
       flake = false;

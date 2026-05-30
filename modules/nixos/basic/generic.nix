@@ -11,6 +11,7 @@
     nil
     nixfmt-rfc-style
     exfat
+    jq
   ];
   services.printing.enable = true;
 

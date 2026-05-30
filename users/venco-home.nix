@@ -23,6 +23,7 @@
     ../modules/home-manager/fetch.nix
     ../modules/home-manager/vr.nix
     ../modules/home-manager/desktop/niri.nix
+    ../modules/home-manager/streamdeck.nix
     # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
     # ../modules/home-manager/vicinae.nix

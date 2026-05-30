@@ -83,6 +83,7 @@
     yubioath-flutter
     thunderbird
     vesktop
+    discord
     slack
     zoom-us
     signal-desktop-bin
