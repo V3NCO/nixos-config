@@ -22,6 +22,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
+    ../../modules/nixos/streamdeck.nix
     #../../modules/nixos/cider.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../modules/nixos/fonts.nix

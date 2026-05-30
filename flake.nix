@@ -82,7 +82,7 @@
 
 
     niri-flake.url = "github:sodiboo/niri-flake";
-    niri-wm.url = "github:niri-wm/niri/wip/branch";
+    niri-wm.url = "github:niri-wm/niri";
     elephant.url = "github:abenz1267/elephant";
     awww.url = "git+https://codeberg.org/LGFae/awww";
 
@@ -163,9 +163,13 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
+            sharedModules = [
+              inputs.streamcontroller.homeManagerModules.default
+            ];
             users = {
               venco = {
                 imports = [
+                  ./modules/home-manager/streamdeck.nix
                   ./users/venco-home.nix
                 ];
               };
