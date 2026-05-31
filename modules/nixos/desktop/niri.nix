@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }:
 {
   nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
-  imports = [ ../../nixos/walker/walker.nix ];
 
   environment.systemPackages = with pkgs; [
     inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
@@ -33,6 +32,7 @@
 
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
   };
 
   systemd.user.services.niri-flake-polkit.enable = false;

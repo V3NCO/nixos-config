@@ -9,7 +9,7 @@
     git
     nixd
     nil
-    nixfmt-rfc-style
+    nixfmt
     exfat
     jq
   ];

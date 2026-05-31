@@ -87,10 +87,9 @@
     discord
     slack
     zoom-us
-    signal-desktop-bin
+    signal-desktop
     mattermost-desktop
     spotify
-    neofetch
     nnn # terminal file manager
     nodejs_24
     nix-output-monitor
@@ -117,7 +116,7 @@
     libreoffice-qt-fresh
     via
     typst
-    helvum
+    crosspipe
     picard
     tagger
     feishin
@@ -128,6 +127,6 @@
 
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   hardware.ledger.enable = true;
 }

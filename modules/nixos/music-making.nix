@@ -8,7 +8,6 @@
     lsp-plugins
     x42-plugins
     helm
-    surge
     dexed
     zynaddsubfx
     geonkick

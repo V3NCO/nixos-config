@@ -3,7 +3,7 @@
 {
   home.username = "venco";
   home.homeDirectory = "/home/venco";
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
   # home.packages = with pkgs; [];
 
   home.file."${config.xdg.configHome}/nixosassets/pfp" = {
@@ -23,7 +23,6 @@
     ../modules/home-manager/fetch.nix
     ../modules/home-manager/vr.nix
     ../modules/home-manager/desktop/niri.nix
-    ../modules/home-manager/streamdeck.nix
     # ../modules/home-manager/direnv.nix
     # ../modules/home-manager/quickshell
     # ../modules/home-manager/vicinae.nix

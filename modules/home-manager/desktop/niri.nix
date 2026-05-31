@@ -53,8 +53,6 @@
       { argv = ["awww-daemon"]; }
       { argv = ["noctalia-shell"]; }
       { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
-      { argv = ["clipse" "-listen"]; }
-      { argv = ["elephant"]; }
     ];
     environment = {
       QT_QPA_PLATFORM = "wayland";

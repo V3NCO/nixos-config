@@ -3,7 +3,7 @@
   imports = [inputs.walker.nixosModules.default];
   environment.systemPackages = [ pkgs.rbw  pkgs.wl-clipboard pkgs.wtype pkgs.pinentry-gnome3 ];
   programs.walker = {
-    enable = true;
+    enable = false;
 
     config = {
       theme = "venco-walker-theme";

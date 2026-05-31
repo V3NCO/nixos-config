@@ -6,7 +6,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wlx-overlay-s
+    wayvr
     android-tools
     bs-manager
   ];
