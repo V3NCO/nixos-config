@@ -1,0 +1,65 @@
+"""Module to manage HomeAssistantPlugin action settings."""
+
+from HomeAssistantPlugin.actions.cores.base_core.base_settings import BaseSettings
+from HomeAssistantPlugin.actions.cores.customization_core import customization_const
+from HomeAssistantPlugin.actions.cores.customization_core.customization import Customization
+
+
+class CustomizationSettings(BaseSettings):
+    """
+    Class to manage all settings for an HomeAssistantPlugin action.
+    :param action: the action whose settings are being managed
+    """
+
+    def __init__(self, action, customization_name, customization_implementation):
+        super().__init__(action)
+
+        self.customization_name = customization_name
+        self.customization_implementation = customization_implementation
+
+    def get_customizations(self):
+        return [self.customization_implementation.from_dict(c) for c in
+                self._action.get_settings()[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS]]
+
+    def move_customization(self, index: int, offset: int):
+        """
+        Move the customization at the index by x places.
+        :param index: the index to move
+        :param offset: number of places to move; may be negative
+        :return:
+        """
+        settings = self._action.get_settings()
+        customization = settings[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS].pop(index)
+        settings[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS].insert(index + offset,
+                                                                                             customization)
+        self._action.set_settings(settings)
+
+    def remove_customization(self, index: int) -> None:
+        """
+        Remove the customization at the index.
+        :param index: the index to remove
+        :return:
+        """
+        settings = self._action.get_settings()
+        settings[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS].pop(index)
+        self._action.set_settings(settings)
+
+    def replace_customization(self, index: int, customization: Customization) -> None:
+        """
+        Replace the customization at the index.
+        :param index: the index to replace
+        :param customization: the new customization
+        :return:
+        """
+        settings = self._action.get_settings()
+        settings[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS][index] = customization.export()
+        self._action.set_settings(settings)
+
+    def add_customization(self, customization: Customization) -> None:
+        """
+        Add a new customization.
+        :param customization: the new customization
+        """
+        settings = self._action.get_settings()
+        settings[self.customization_name][customization_const.SETTING_CUSTOMIZATIONS].append(customization.export())
+        self._action.set_settings(settings)
