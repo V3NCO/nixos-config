@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 {
   imports = [inputs.silentSDDM.nixosModules.default];
   environment.systemPackages = [];
@@ -11,7 +11,7 @@
       compositor = "kwin";
     };
     autoNumlock = true;
-    package = pkgs.kdePackages.sddm;
+    package = lib.mkForce pkgs.kdePackages.sddm;
   };
 
   programs.silentSDDM = {
