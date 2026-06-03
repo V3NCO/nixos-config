@@ -1,5 +1,6 @@
 { ... }:
 {
+  home.file.".local/share/plasma".source = ./kde/localplasma;
   programs.plasma = {
     enable = true;
     shortcuts = {
@@ -400,7 +401,6 @@
       "kate/anonymous.katesession"."MainWindow0-Splitter 0".Orientation = 1;
       "kate/anonymous.katesession"."MainWindow0-Splitter 0".Sizes = 595;
       "kate/anonymous.katesession"."MainWindow0-ViewSpace 0".Count = 0;
-      "kate/anonymous.katesession"."MainWindow0-ViewSpace 0".Documents = "";
       "kate/anonymous.katesession"."Open Documents".Count = 0;
       "kate/anonymous.katesession"."Open MainWindows".Count = 1;
       "kate/anonymous.katesession"."Plugin:kateprojectplugin:".projects = "";

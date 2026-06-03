@@ -27,6 +27,7 @@
     # Random themes
     klassy
     darkly
+    fluent-icon-theme
   ];
 
 }

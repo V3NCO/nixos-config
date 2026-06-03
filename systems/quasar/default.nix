@@ -41,6 +41,12 @@
 
   virtualisation.spiceUSBRedirection.enable = true;
 
+  virtualisation.vmVariant = {
+    virtualisation = {
+      memorySize =  8192; # Use 2048MiB memory.
+      cores = 3;
+      };
+    };
 
   virtualisation.docker = {
     enable = true;
