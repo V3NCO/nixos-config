@@ -70,7 +70,6 @@
       yt-dlp
       ffmpeg
       obsidian
-      nextcloud-client
       android-tools
       swappy
       hyprshot

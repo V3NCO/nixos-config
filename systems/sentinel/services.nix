@@ -10,7 +10,7 @@
     ../../modules/server/radicale.nix
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix
-    ../../modules/server/nextcloud.nix
+    # ../../modules/server/nextcloud.nix
     ../../modules/server/homebox.nix
     ../../modules/server/syncpronote.nix
     ../../modules/server/sharkey.nix

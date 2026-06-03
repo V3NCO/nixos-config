@@ -108,7 +108,6 @@
     ledger-live-desktop
     osu-lazer-bin
     prismlauncher
-    remmina
     owmods-cli
     owmods-gui
     ryubing
