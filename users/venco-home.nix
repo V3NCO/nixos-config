@@ -27,5 +27,6 @@
     # ../modules/home-manager/quickshell
     # ../modules/home-manager/vicinae.nix
     ../modules/home-manager/desktop/gnome.nix
+    ../modules/home-manager/desktop/kde.nix
   ];
 }

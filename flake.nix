@@ -28,6 +28,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
@@ -164,6 +171,7 @@
             useUserPackages = true;
             sharedModules = [
               inputs.streamcontroller.homeManagerModules.default
+              inputs.plasma-manager.homeModules.plasma-manager
             ];
             users = {
               venco = {
@@ -211,6 +219,9 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
+            sharedModules = [
+              inputs.plasma-manager.homeModules.plasma-manager
+            ];
             users = {
               venco = {
                 imports = [
@@ -289,6 +300,9 @@
             backupFileExtension = "backup";
             useGlobalPkgs = true;
             useUserPackages = true;
+            sharedModules = [
+              inputs.plasma-manager.homeModules.plasma-manager
+            ];
             users = {
               venco = {
                 imports = [
