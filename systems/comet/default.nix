@@ -18,7 +18,7 @@
     ../../modules/nixos/browsers
     ../../modules/nixos/editors
     ../../modules/nixos/steam.nix
-    ../../modules/nixos/fonts.nix
+    ../../modules/nixos/fonts
     ../../users
     ./keyboard.nix
   ];

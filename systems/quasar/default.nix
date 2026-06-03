@@ -25,7 +25,7 @@
     ../../modules/nixos/streamdeck.nix
     #../../modules/nixos/cider.nix
     ../../modules/nixos/desktop/nvidia.nix
-    ../../modules/nixos/fonts.nix
+    ../../modules/nixos/fonts
     ../../modules/nixos/vr.nix
     ./keyboard.nix
   ];
