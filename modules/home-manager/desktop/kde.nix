@@ -7,8 +7,138 @@
     panels = [
       {
         location = "bottom";
+        opacity = "translucent";
+        lengthMode = "fit";
+        hiding = "dodgewindows";
+        alignment = "left";
+        floating = true;
         widgets = [
-          "org.kde.plasma.kickoff"
+          {
+            name = "org.kde.plasma.kickoff";
+            config = { Global = { icon = "choice-rhomb"; }; };
+          }
+          "org.kde.plasma.marginsseparator"
+          {
+            name = "org.kde.plasma.icontasks";
+            config = {
+              General = {
+                launchers = [
+                  "applications:org.kde.dolphin.desktop"
+                  "applications:dev.zed.Zed.desktop"
+                  "applications:zen-twilight.desktop"
+                ];
+              };
+            };
+          }
+        ];
+        height = 44;
+      }
+      {
+        location = "bottom";
+        opacity = "translucent";
+        lengthMode = "fit";
+        hiding = "dodgewindows";
+        alignment = "right";
+        floating = true;
+        widgets = [
+          {
+            name = "org.kde.plasma.systemtray";
+            config = {
+              General = {
+                disabledStatusNotifiers = "com.core447.StreamController.TrayIcon";
+                extraItems = [
+                  "org.kde.plasma.mediacontroller"
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.devicenotifier"
+                  "org.kde.kscreen"
+                  "org.kde.kdeconnect"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.battery"
+                  "org.kde.plasma.printmanager"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.trash"
+                ];
+                hiddenItems = [
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.devicenotifier"
+                  "org.kde.kscreen"
+                  "org.kde.kdeconnect"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.battery"
+                  "org.kde.plasma.printmanager"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.trash"
+                ];
+                knownItems = [
+                  "org.kde.plasma.kclock_1x2"
+                  "org.kde.kdeconnect"
+                  "org.kde.plasma.mediacontroller"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.cameraindicator"
+                  "org.kde.plasma.devicenotifier"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.manage-inputmethod"
+                  "org.kde.plasma.battery"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.printmanager"
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.kscreen"
+                  "org.kde.plasma.weather"
+                  "org.kde.plasma.keyboardindicator"
+                ];
+              };
+            };
+            applets = [
+              { plugin = "org.kde.kdeconnect"; }
+              { plugin = "org.kde.plasma.clipboard"; }
+              { plugin = "org.kde.plasma.devicenotifier"; }
+              { plugin = "org.kde.plasma.notifications"; }
+              { plugin = "org.kde.plasma.printmanager"; }
+              {
+                plugin = "org.kde.plasma.volume";
+                config = { General = { migrated = true; }; };
+              }
+              { plugin = "org.kde.plasma.networkmanagement"; }
+              { plugin = "org.kde.kscreen"; }
+              { plugin = "org.kde.plasma.battery"; }
+              { plugin = "org.kde.plasma.brightness"; }
+              { plugin = "org.kde.plasma.trash"; }
+            ];
+          }
+        ];
+      }
+      {
+        location = "bottom";
+        opacity = "translucent";
+        lengthMode = "fit";
+        hiding = "dodgewindows";
+        alignment = "right";
+        floating = true;
+        widgets = [
+          {
+            name = "org.kde.plasma.digitalclock";
+            config = {
+              Appearance = {
+                fontFamily = "Google Sans Flex";
+                fontSize = 14;
+                fontStyleName = "Regular";
+                fontWeight = 600;
+                showDate = false;
+                time.format = "12h";
+              };
+            };
+          }
+          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.showdesktop"
         ];
         height = 44;
       }
