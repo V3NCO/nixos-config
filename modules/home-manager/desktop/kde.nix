@@ -45,7 +45,11 @@
             name = "org.kde.plasma.systemtray";
             config = {
               General = {
-                disabledStatusNotifiers = "com.core447.StreamController.TrayIcon";
+                disabledStatusNotifiers = [
+                  "com.core447.StreamController.TrayIcon"
+                  "chrome_status_icon_1"
+                  "blueman"
+                ];
                 extraItems = [
                   "org.kde.plasma.mediacontroller"
                   "org.kde.plasma.volume"
@@ -74,6 +78,7 @@
                   "org.kde.plasma.clipboard"
                   "org.kde.plasma.notifications"
                   "org.kde.plasma.trash"
+                  "plasmashell_microphone"
                 ];
                 knownItems = [
                   "org.kde.plasma.kclock_1x2"
@@ -97,50 +102,24 @@
                 ];
               };
             };
-            applets = [
-              { plugin = "org.kde.kdeconnect"; }
-              { plugin = "org.kde.plasma.clipboard"; }
-              { plugin = "org.kde.plasma.devicenotifier"; }
-              { plugin = "org.kde.plasma.notifications"; }
-              { plugin = "org.kde.plasma.printmanager"; }
-              {
-                plugin = "org.kde.plasma.volume";
-                config = { General = { migrated = true; }; };
-              }
-              { plugin = "org.kde.plasma.networkmanagement"; }
-              { plugin = "org.kde.kscreen"; }
-              { plugin = "org.kde.plasma.battery"; }
-              { plugin = "org.kde.plasma.brightness"; }
-              { plugin = "org.kde.plasma.trash"; }
-            ];
           }
-        ];
-      }
-      {
-        location = "bottom";
-        opacity = "translucent";
-        lengthMode = "fit";
-        hiding = "dodgewindows";
-        alignment = "right";
-        floating = true;
-        widgets = [
           {
             name = "org.kde.plasma.digitalclock";
             config = {
               Appearance = {
+                autoFontAndSize = false;
                 fontFamily = "Google Sans Flex";
-                fontSize = 14;
+                fontSize = 12;
                 fontStyleName = "Regular";
-                fontWeight = 600;
+                fontWeight = 500;
                 showDate = false;
-                time.format = "12h";
+                use24hFormat=0;
               };
             };
           }
           "org.kde.plasma.marginsseparator"
           "org.kde.plasma.showdesktop"
         ];
-        height = 44;
       }
     ];
 
@@ -152,7 +131,6 @@
 
       widgetStyle = "Darkly";
       theme = "Ant-Dark";
-      lookAndFeel = "Ant-Dark";
       iconTheme = "Fluent-dark";
       colorScheme = "KanagawaWave";
 
@@ -165,8 +143,6 @@
         engine = "KSplashQML";
         theme = "Lagtrain";
       };
-
-
     };
 
     shortcuts = {
@@ -316,12 +292,13 @@
       kwinrc.ElectricBorders.BottomLeft = "ApplicationLauncher";
       kwinrc.Plugins.wobblywindowsEnabled = true;
       kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/26a4d4a6-196d-47de-89d1-48d54f6b1ee1".padding = 4;
-      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/26a4d4a6-196d-47de-89d1-48d54f6b1ee1".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\x5d}";
+      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/26a4d4a6-196d-47de-89d1-48d54f6b1ee1".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\\x5d}"; # Escaped backslashes
       kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/a5c2ca80-e47c-4bbb-bd63-c5c87b6ed4df".padding = 4;
-      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/a5c2ca80-e47c-4bbb-bd63-c5c87b6ed4df".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\x5d}";
+      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/a5c2ca80-e47c-4bbb-bd63-c5c87b6ed4df".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\\x5d}"; # Escaped backslashes
       kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/f17c87b4-d4aa-464e-8016-ced5bdc14d2a".padding = 4;
-      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/f17c87b4-d4aa-464e-8016-ced5bdc14d2a".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\x5d}";
+      kwinrc."Tiling/9458cdb0-aa1f-445d-84a1-31ccc9188ada/f17c87b4-d4aa-464e-8016-ced5bdc14d2a".tiles = "{\"layoutDirection\":\"horizontal\",\"tiles\":\\x5b{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}\\x5d}"; # Escaped backslashes
       kwinrc.Xwayland.Scale = 1;
+      kwinrc."org.kde.kdecoration2".library = "org.kde.klassy";
       kwinrc."org.kde.kdecoration2".theme = "Klassy";
       plasma-localerc.Formats.LANG = "en_US.UTF-8";
       plasmanotifyrc."Applications/slack".Seen = true;
