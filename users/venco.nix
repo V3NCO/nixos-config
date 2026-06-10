@@ -80,6 +80,15 @@
       hunspell
       hunspellDicts.en_US
       hunspellDicts.fr-any
+
+
+      charm
+      glow
+      pop
+      wishlist
+      crush
+      vhs
+      skate
     ];
   };
 
