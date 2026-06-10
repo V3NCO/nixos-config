@@ -14,6 +14,9 @@
     package = lib.mkForce pkgs.kdePackages.sddm;
   };
 
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
   programs.silentSDDM = {
     enable = true;
     theme = "default";

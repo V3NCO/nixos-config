@@ -33,4 +33,9 @@
       pkgs.xdg-desktop-portal-termfilechooser
     ];
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  environment.variables = {
+    QT_DISABLE_KWALLET = "1";
+  };
 }
