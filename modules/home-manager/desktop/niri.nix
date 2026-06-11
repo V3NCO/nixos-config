@@ -51,7 +51,7 @@
     spawn-at-startup = [
       { argv = ["xwayland-satellite"]; }
       { argv = ["awww-daemon"]; }
-      { argv = ["noctalia-shell"]; }
+      { argv = ["noctalia"]; }
       { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
     ];
     environment = {
@@ -108,34 +108,35 @@
 
     layer-rules = [
       {
-        place-within-backdrop=true;
+        matches = [{namespace="^noctalia-backdrop*$";}];
+        place-within-backdrop = true;
       }
       {
-        matches = [ { namespace = "^noctalia-notifications.*$"; } { namespace = "^notifications.*$"; } ];
+        matches = [ { namespace = "^noctalia-notifications.*$"; } { namespace = "^noctalia-notification*$"; } { namespace = "^notifications.*$"; } ];
         block-out-from = "screen-capture";
       }
     ];
 
     binds = {
       # Media control
-      "XF86AudioRaiseVolume" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase" ]; allow-when-locked = true; };
-      "XF86AudioLowerVolume" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease" ]; allow-when-locked = true; };
-      "XF86AudioMute" = { action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput" ]; allow-when-locked = true; };
+      "XF86AudioRaiseVolume" = { action.spawn = ["noctalia" "msg" "volume-up"]; allow-when-locked = true; };
+      "XF86AudioLowerVolume" = { action.spawn = ["noctalia" "msg" "volume-down"]; allow-when-locked = true; };
+      "XF86AudioMute" = { action.spawn = [ "noctalia" "msg" "volume-mute" ]; allow-when-locked = true; };
       "XF86AudioMicMute" = { action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"]; allow-when-locked = true; };
       "XF86AudioPlay" = { action.spawn = ["playerctl" "play-pause"]; allow-when-locked = true; };
       "XF86AudioPrev" = { action.spawn = ["playerctl" "previous"]; allow-when-locked = true; };
       "XF86AudioNext" = { action.spawn = ["playerctl" "next"]; allow-when-locked = true; };
-      "XF86MonBrightnessUp" = { action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "increase" ]; allow-when-locked = true; };
-      "XF86MonBrightnessDown" = { action.spawn = [ "noctalia-shell" "ipc" "call" "brightness" "decrease" ]; allow-when-locked = true; };
+      "XF86MonBrightnessUp" = { action.spawn = [ "noctalia" "msg" "brightness-up" ]; allow-when-locked = true; };
+      "XF86MonBrightnessDown" = { action.spawn = [ "noctalia" "msg" "brightness-down" ]; allow-when-locked = true; };
       # Basics
       "Mod+O" = { repeat = false; action.toggle-overview = []; };
       "Mod+Q".action.close-window = [];
 
       # Apps
       "Mod+Return".action.spawn = ["kitty"];
-      "Mod+Space".action.spawn-sh =  [ "noctalia-shell ipc call launcher toggle" ];
-      "Mod+S".action.spawn-sh = [ "noctalia-shell ipc call controlCenter toggle" ];
-      "Mod+V".action.spawn-sh = [ "noctalia-shell ipc call launcher clipboard" ];
+      "Mod+Space".action.spawn-sh =  [ "noctalia msg panel-toggle launcher" ];
+      "Mod+S".action.spawn-sh = [ "noctalia msg panel-toggle control-center" ];
+      "Mod+V".action.spawn-sh = [ "noctalia msg panel-toggle clipboard" ];
 
       # Layout
       "Mod+Left".action.focus-column-left = [];
@@ -223,15 +224,13 @@
       "Mod+Shift+4".action.screenshot = [];
       "Mod+Shift+Ctrl+4".action.screenshot-screen = [];
       "Mod+Shift+Alt+4".action.screenshot-window = [];
-      "Mod+Shift+Alt+5".action.spawn-sh = [ "noctalia-shell ipc call plugin:screen-recorder toggle" ];
-      "Mod+Shift+Alt+0".action.spawn-sh = [ "noctalia-shell ipc call plugin:screen-recorder saveReplay" ];
       # Inhibit
       "Mod+Escape" = { action.toggle-keyboard-shortcuts-inhibit = []; allow-inhibiting=false; };
 
 
       # Sleep/Logout
       "Mod+Shift+E".action.quit = [];
-      "Mod+Ctrl+E".action.spawn-sh = [ "noctalia-shell ipc call lockScreen lock" ];
+      "Mod+Ctrl+E".action.spawn-sh = [ "noctalia msg session lock" ];
       "Ctrl+Alt+Delete".action.quit = [];
       "Mod+Shift+P".action.power-off-monitors = [];
     };
