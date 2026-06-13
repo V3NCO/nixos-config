@@ -104,6 +104,19 @@
         matches = [ {app-id = "signal";} ];
         block-out-from = "screen-capture";
       }
+      {
+        matches = [ {app-id = "slack";} ];
+        block-out-from = "screen-capture";
+      }
+      {
+        matches = [ {app-id = "vesktop";} ];
+        block-out-from = "screen-capture";
+      }
+      {
+        matches = [ {app-id = "discord";} ];
+        block-out-from = "screen-capture";
+      }
+
     ];
 
     layer-rules = [
