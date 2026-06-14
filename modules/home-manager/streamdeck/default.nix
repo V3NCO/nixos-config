@@ -1,11 +1,23 @@
 { config, ... }:
 {
-  home.file.".var/app/com.core447.StreamController/data/plugins".source = ./plugins;
+  home.file = {
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_OBSPlugin".source = ./plugins/com_core447_OBSPlugin;
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_OSPlugin".source = ./plugins/com_core447_OSPlugin;
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_QEMUPlugin".source = ./plugins/com_core447_QEMUPlugin;
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_Requests".source = ./plugins/com_core447_Requests;
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_Weather".source = ./plugins/com_core447_Weather;
+    ".var/app/com.core447.StreamController/data/plugins/com_core447_DeckPlugin".source = ./plugins/com_core447_DeckPlugin;
+    ".var/app/com.core447.StreamController/data/plugins/com_gapls_AudioControl".source = ./plugins/com_gapls_AudioControl;
+    ".var/app/com.core447.StreamController/data/plugins/HomeAssistantPlugin".source = ./plugins/HomeAssistantPlugin;
+    ".var/app/com.core447.StreamController/data/plugins/net_pniedzielski_OBSLiveSplitOnePlugin".source = ./plugins/net_pniedzielski_OBSLiveSplitOnePlugin;
+  };
   # home.file.".var/app/com.core447.StreamController/data/Assets/AssetManager/Assets".source = ./Assets/assets;
   # home.file.".var/app/com.core447.StreamController/data/Assets/AssetManager/Thumbnails".source = ./Assets/thumbnails;
   # home.file.".var/app/com.core447.StreamController/data/Assets/AssetManager/Assets.json".text = builtins.toJSON ./Assets/assets.nix;
   programs.streamcontroller = {
     enable = true;
+
+    dataPath = "${config.home.homeDirectory}/.var/app/com.core447.StreamController/data";
 
     defaultPages = {
       "AL46K2C70879" = "Default";
@@ -16,6 +28,9 @@
       "volume_down_24dp_E3E3E3.svg"= ./assets/volume_down_24dp_E3E3E3.svg;
       "volume_mute_24dp_E3E3E3.svg"= ./assets/volume_mute_24dp_E3E3E3.svg;
       "volume_up_24dp_E3E3E3.svg"= ./assets/volume_up_24dp_E3E3E3.svg;
+      "play_pause_24dp_E3E3E3.svg"= ./assets/play_pause_24dp_E3E3E3.svg;
+      "skip_next_24dp_E3E3E3.svg" = ./assets/skip_next_24dp_E3E3E3.svg;
+      "skip_previous_24dp_E3E3E3.svg" = ./assets/skip_previous_24dp_E3E3E3.svg;
     };
 
     pages = {
@@ -35,7 +50,7 @@
                   {
                     "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "command" = "noctalia-shell ipc call volume increase";
+                      "command" = "wpctl set-volume @DEFAULT_SINK@ 5%+";
                     };
                   }
                 ];
@@ -52,7 +67,7 @@
                   {
                     "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "command" = "noctalia-shell ipc call volume decrease";
+                      "command" = "wpctl set-volume @DEFAULT_SINK@ 5%-";
                     };
                   }
                 ];
@@ -69,22 +84,7 @@
                   {
                     "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "command" = "noctalia-shell ipc call volume muteOutput";
-                    };
-                  }
-                ];
-              };
-            };
-          };
-          "1x0" = {
-            states = {
-              "0" = {
-                actions = [
-                  {
-                    "comment" = "Vol +";
-                    "id" = "com_core447_OSPlugin::RunCommand";
-                    "settings" = {
-                      "command" = "noctalia-shell ipc call volume increase";
+                      "command" = "wpctl set-mute @DEFAULT_SINK@ toggle";
                     };
                   }
                 ];
@@ -94,12 +94,14 @@
           "1x1" = {
             states = {
               "0" = {
+                media = {
+                  path = "${config.programs.streamcontroller.dataPath}/assets/skip_previous_24dp_E3E3E3.svg";
+                };
                 actions = [
                   {
-                    "id" = "com_core447_MediaPlugin::Previous";
+                    "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "show_label" = true;
-                      "show_thumbnail" = true;
+                      "command" = "playerctl previous";
                     };
                   }
                 ];
@@ -109,19 +111,16 @@
           "2x1" = {
             states = {
               "0" = {
+                media = {
+                  path = "${config.programs.streamcontroller.dataPath}/assets/play_pause_24dp_E3E3E3.svg";
+                };
                 actions = [
                   {
-                    "id" = "com_core447_MediaPlugin::PlayPause";
+                    "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "show_label" = true;
-                      "show_thumbnail" = true;
+                      "command" = "playerctl play-pause";
                     };
                   }
-                ];
-                label-control-actions = [
-                  0
-                  0
-                  0
                 ];
               };
             };
@@ -129,12 +128,14 @@
           "3x1" = {
             states = {
               "0" = {
+                media = {
+                  path = "${config.programs.streamcontroller.dataPath}/assets/skip_next_24dp_E3E3E3.svg";
+                };
                 actions = [
                   {
-                    "id" = "com_core447_MediaPlugin::Next";
+                    "id" = "com_core447_OSPlugin::RunCommand";
                     "settings" = {
-                      "show_label" = true;
-                      "show_thumbnail" = true;
+                      "command" = "playerctl next";
                     };
                   }
                 ];
