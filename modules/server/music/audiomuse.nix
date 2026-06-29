@@ -78,7 +78,7 @@ in {
       POSTGRES_PORT = "5432";
       REDIS_URL = "redis://127.0.0.1:6379/0";
       TZ = "Europe/Paris";
-      TEMP_DIR = "${dataDir}/temp_audio";
+      TEMP_DIR = "/app/temp_audio";
     };
 
     volumes = [
@@ -106,7 +106,7 @@ in {
       POSTGRES_PORT = "5432";
       REDIS_URL = "redis://127.0.0.1:6379/0";
       TZ = "Europe/Paris";
-      TEMP_DIR = "${dataDir}/temp_audio";
+      TEMP_DIR = "/app/temp_audio";
     };
 
     volumes = [

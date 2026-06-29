@@ -69,6 +69,7 @@ in {
     ];
     settings = {
       Address = "127.0.0.1";
+      Agents = "audiomuseai,listenbrainz,lastfm,deezer"
       EnableInsightsCollector = false;
       BaseUrl = "https://navidrome.v3nco.dev";
       MusicFolder = "/shared/music";
