@@ -25,7 +25,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://github.com/Myzel394/navidrome-musixmatch-plugin/releases/download/v0.2.1/navidrome-musixmatch-plugin.ndp";
-      hash = "sha256-g6tlmfvfKMhNLqnnc33Mk93/tpYd3Hr9ccd2i6bJ988=";
+      hash = "sha256-g6tlWbvfKMSNLqnnc33Mk93/tpYd3Hrfccd2i6bJ988=";
     };
 
     dontUnpack = true;
