@@ -80,9 +80,9 @@ in {
       TEMP_DIR="${dataDir}/temp_audio";
     };
 
-    environmentFiles = [
-      "${dataDir}/.env"
-    ];
+    # environmentFiles = [
+    #   "${dataDir}/.env"
+    # ];
 
     volumes = [
       "${dataDir}/temp_audio_flask:/app/temp_audio:Z"
@@ -113,9 +113,9 @@ in {
       TEMP_DIR="${dataDir}/temp_audio";
     };
 
-    environmentFiles = [
-      "${dataDir}/.env"
-    ];
+    # environmentFiles = [
+    #   "${dataDir}/.env"
+    # ];
 
     volumes = [
       "${dataDir}/temp_audio_worker:/app/temp_audio:Z"
