@@ -49,10 +49,15 @@ in {
         ensureClauses.login = true;
       }
     ];
+    authentication = ''
+      host all audiomuse 127.0.0.1/32 trust
+    '';
   };
 
   services.redis.servers.audiomuse = {
     enable = true;
+    port = 6379;
+    bind = "127.0.0.1";
     settings = {
       maxmemory = "256mb";
       maxmemory-policy = "allkeys-lru";
@@ -70,19 +75,14 @@ in {
 
     environment = {
       SERVICE_TYPE = "flask";
-      POSTGRES_USER="audiomuse";
-      # Set POSTGRES_PASSWORD in env file;
-      POSTGRES_DB="audiomuse";
-      POSTGRES_HOST="/run/postgresql";
-      POSTGRES_PORT="5432";
-      REDIS_URL="unix://${redisServer.unixSocket}";
-      TZ="Europe/Paris";
-      TEMP_DIR="${dataDir}/temp_audio";
+      POSTGRES_USER = "audiomuse";
+      POSTGRES_DB = "audiomuse";
+      POSTGRES_HOST = "127.0.0.1";
+      POSTGRES_PORT = "5432";
+      REDIS_URL = "redis://127.0.0.1:6379/0";
+      TZ = "Europe/Paris";
+      TEMP_DIR = "${dataDir}/temp_audio";
     };
-
-    # environmentFiles = [
-    #   "${dataDir}/.env"
-    # ];
 
     volumes = [
       "${dataDir}/temp_audio_flask:/app/temp_audio:Z"
@@ -103,19 +103,14 @@ in {
 
     environment = {
       SERVICE_TYPE = "worker";
-      POSTGRES_USER="audiomuse";
-      # Set POSTGRES_PASSWORD in env file;
-      POSTGRES_DB="audiomuse";
-      POSTGRES_HOST="/run/postgresql";
-      POSTGRES_PORT="5432";
-      REDIS_URL="unix://${redisServer.unixSocket}";
-      TZ="Europe/Paris";
-      TEMP_DIR="${dataDir}/temp_audio";
+      POSTGRES_USER = "audiomuse";
+      POSTGRES_DB = "audiomuse";
+      POSTGRES_HOST = "127.0.0.1";
+      POSTGRES_PORT = "5432";
+      REDIS_URL = "redis://127.0.0.1:6379/0";
+      TZ = "Europe/Paris";
+      TEMP_DIR = "${dataDir}/temp_audio";
     };
-
-    # environmentFiles = [
-    #   "${dataDir}/.env"
-    # ];
 
     volumes = [
       "${dataDir}/temp_audio_worker:/app/temp_audio:Z"
