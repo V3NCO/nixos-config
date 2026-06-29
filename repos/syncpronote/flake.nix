@@ -1,7 +1,7 @@
 {
   description = "A custom package for the syncpronote service.";
 
-  outputs = { self, lib, nixpkgs }:
+  outputs = { self, nixpkgs }:
   let
     supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -17,7 +17,7 @@
           pname = "syncpronote";
           version = "1.3.0";
           src = ./.;
-          npmDepsHash = lib.fakeHash;
+          npmDepsHash = fakeHash;
           dontNpmBuild = true;
           installPhase = ''
             runHook preInstall
