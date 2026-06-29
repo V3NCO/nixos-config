@@ -10,7 +10,7 @@
     packages = forAllSystems (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        nodeJs = pkgs.nodejs_20;
+        nodeJs = pkgs.nodejs_24;
       in
       {
         default = pkgs.buildNpmPackage {
