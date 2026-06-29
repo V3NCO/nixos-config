@@ -74,7 +74,7 @@ in {
       # Set POSTGRES_PASSWORD in env file;
       POSTGRES_DB="audiomuse";
       POSTGRES_HOST="/run/postgresql";
-      POSTGRES_PORT=5432;
+      POSTGRES_PORT="5432";
       REDIS_URL="unix://${redisServer.unixSocket}";
       TZ="Europe/Paris";
       TEMP_DIR="${dataDir}/temp_audio";
@@ -107,7 +107,7 @@ in {
       # Set POSTGRES_PASSWORD in env file;
       POSTGRES_DB="audiomuse";
       POSTGRES_HOST="/run/postgresql";
-      POSTGRES_PORT=5432;
+      POSTGRES_PORT="5432";
       REDIS_URL="unix://${redisServer.unixSocket}";
       TZ="Europe/Paris";
       TEMP_DIR="${dataDir}/temp_audio";
