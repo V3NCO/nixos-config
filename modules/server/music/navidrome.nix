@@ -1,43 +1,41 @@
-{ lib, config, pkgs, unstable, ... }:
+{ config, pkgs, unstable, ... }:
 let
-  lyrics-navidrome = pkgs.buildNavidromePlugin rec {
+  lyrics-navidrome = pkgs.stdenv.mkDerivation {
     pname = "nd-lyrics";
     version = "6.1.3";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "J0R6IT0";
-      repo = "navidrome-lyrics-plugin";
-      tag = "v${version}";
-      hash = "sha256-dnl6TlRQYU6y7unzR8rDpuxOI9mxgo/PSrUVeBfiue4=";
+    src = pkgs.fetchurl {
+      url = "https://github.com/J0R6IT0/navidrome-lyrics-plugin/releases/download/v6.1.3/nd-lyrics.ndp";
+      hash = "sha256-U54KfULuMBDkJYzn4nuV8oKdaqJU20MMhnDv43rB9dY=";
     };
 
-    vendorHash = "sha256-AAAAAlRQYU6y7unzR8rDpuxOI9mxgo/PSrUVeBfiue4";
+    dontUnpack = true;
 
-    meta = {
-      description = "A Navidrome plugin for fetching lyrics from various sources.";
-      homepage = "https://github.com/J0R6IT0/navidrome-lyrics-plugin";
-      sourceProvenance = with lib.sourceTypes; [ fromSource ];
-    };
+    installPhase = ''
+      mkdir -p $out/share
+      cp $src $out/share/nd-lyrics.ndp
+    '';
+
+    passthru = { isNavidromePlugin = true; };
   };
 
-  musixmatch-navidrome = pkgs.buildNavidromePlugin rec {
+  musixmatch-navidrome = pkgs.stdenv.mkDerivation {
     pname = "navidrome-musixmatch-plugin";
     version = "0.2.1";
 
-    src = pkgs.fetchFromGitHub {
-      owner = "Myzel394";
-      repo = "navidrome-musixmatch-plugin";
-      tag = "v${version}";
-      hash = "sha256-BBBBBlRQYU6y7unzR8rDpuxOI9mxgo/PSrUVeBfiue4";
+    src = pkgs.fetchurl {
+      url = "https://github.com/Myzel394/navidrome-musixmatch-plugin/releases/download/v0.2.1/navidrome-musixmatch-plugin.ndp";
+      hash = "sha256-g6tlmfvfKMhNLqnnc33Mk93/tpYd3Hr9ccd2i6bJ988=";
     };
 
-    vendorHash = "sha256-CCCCClRQYU6y7unzR8rDpuxOI9mxgo/PSrUVeBfiue4";
+    dontUnpack = true;
 
-    meta = {
-      description = "Scrape lyrics (plain & synced) from Musixmatch, the official lyrics provider for Spotify";
-      homepage = "https://github.com/Myzel394/navidrome-musixmatch-plugin";
-      sourceProvenance = with lib.sourceTypes; [ fromSource ];
-    };
+    installPhase = ''
+      mkdir -p $out/share
+      cp $src $out/share/navidrome-musixmatch-plugin.ndp
+    '';
+
+    passthru = { isNavidromePlugin = true; };
   };
 in {
   homelab = {
