@@ -8,10 +8,10 @@ let
       owner = "J0R6IT0";
       repo = "navidrome-lyrics-plugin";
       tag = "v${version}";
-      hash = "sha256-WyobjyadD9IcY6mFYhCmuQgLbnoHpDoiLfINNfKmQM8=";
+      hash = "";
     };
 
-    vendorHash = "sha256-mXes+doBSa5kcfHp1cuzTz30wnyyPN7NLC0iOSL8FDo=";
+    vendorHash = "";
 
     meta = {
       description = "A Navidrome plugin for fetching lyrics from various sources.";
@@ -28,10 +28,10 @@ let
       owner = "Myzel394";
       repo = "navidrome-musixmatch-plugin";
       tag = "v${version}";
-      hash = "sha256-WyobjyadD9IcY6mFYhCmuQgLbnoHpDoiLfINNfKmQM8=";
+      hash = "";
     };
 
-    vendorHash = "sha256-mXes+doBSa5kcfHp1cuzTz30wnyyPN7NLC0iOSL8FDo=";
+    vendorHash = "";
 
     meta = {
       description = "Scrape lyrics (plain & synced) from Musixmatch, the official lyrics provider for Spotify";
@@ -59,7 +59,7 @@ in {
 
   services.navidrome = {
     enable = true;
-    package = unstable.navidrome
+    package = unstable.navidrome;
     group = "music";
     environmentFile = "/var/lib/navidrome/.env";
     plugins = [
