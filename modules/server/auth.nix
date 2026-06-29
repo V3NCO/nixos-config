@@ -1,7 +1,5 @@
 { unstable, inputs, config, ... }:
 {
-  imports = ["${inputs.nixpkgs-unstable}/nixos/modules/services/security/tinyauth.nix"];
-
   homelab.ports = [ 4390 4391 ];
   homelab.services = {
     tinyauth = {
