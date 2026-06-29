@@ -17,7 +17,7 @@
           pname = "syncpronote";
           version = "1.3.0";
           src = ./.;
-          npmDepsHash = "sha256-sQAgK0jDpG/FAs9kdDH8Mczsh9PuYaMStrIZ34csa9U=";
+          npmDepsHash = lib.fakeHash;
           dontNpmBuild = true;
           installPhase = ''
             runHook preInstall
