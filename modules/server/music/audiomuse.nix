@@ -1,5 +1,5 @@
 # Thanks to https://codeberg.org/oricat/nix-smf/src/branch/main/modules/services/audiomuse.nix :3
-{ config, ... }:
+{ config, lib, ... }:
 
 let
   audiomuseImage = "ghcr.io/neptunehub/audiomuse-ai:latest";
@@ -65,7 +65,7 @@ in {
     autoStart = true;
 
     ports = [
-      "${port}:8000"
+      "${lib.toString port}:8000"
     ];
 
     environment = {
