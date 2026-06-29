@@ -41,7 +41,7 @@ in {
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "audiomusedb" ];
+    ensureDatabases = [ "audiomuse" ];
     ensureUsers = [
       {
         name = "audiomuse";
@@ -72,7 +72,7 @@ in {
       SERVICE_TYPE = "flask";
       POSTGRES_USER="audiomuse";
       # Set POSTGRES_PASSWORD in env file;
-      POSTGRES_DB="audiomusedb";
+      POSTGRES_DB="audiomuse";
       POSTGRES_HOST="/run/postgresql";
       POSTGRES_PORT=5432;
       REDIS_URL="unix://${redisServer.unixSocket}";
@@ -105,7 +105,7 @@ in {
       SERVICE_TYPE = "worker";
       POSTGRES_USER="audiomuse";
       # Set POSTGRES_PASSWORD in env file;
-      POSTGRES_DB="audiomusedb";
+      POSTGRES_DB="audiomuse";
       POSTGRES_HOST="/run/postgresql";
       POSTGRES_PORT=5432;
       REDIS_URL="unix://${redisServer.unixSocket}";

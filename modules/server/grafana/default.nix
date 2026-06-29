@@ -22,10 +22,13 @@
 
   services.grafana = {
     enable = true;
-    settings.server = {
-      http_port = 9349;
-      root_url = "https://grafana.v3nco.dev";
-      domain = "grafana.v3nco.dev";
+    settings = {
+      server = {
+        http_port = 9349;
+        root_url = "https://grafana.v3nco.dev";
+        domain = "grafana.v3nco.dev";
+      };
+      security.secret_key = "$__file{/var/lib/grafana/secret}"
     };
 
     provision = {
