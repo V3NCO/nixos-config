@@ -28,7 +28,7 @@
         root_url = "https://grafana.v3nco.dev";
         domain = "grafana.v3nco.dev";
       };
-      security.secret_key = "$__file{/var/lib/grafana/secret}"
+      security.secret_key = "$__file{/var/lib/grafana/secret}";
     };
 
     provision = {
