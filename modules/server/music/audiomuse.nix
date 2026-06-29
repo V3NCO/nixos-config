@@ -5,7 +5,7 @@ let
   audiomuseImage = "ghcr.io/neptunehub/audiomuse-ai:latest";
   dataDir = "/var/lib/audiomuse";
   redisServer = config.services.redis.servers.audiomuse;
-  port = 8328;
+  port = 8000;
 in {
   homelab = {
     ports = [ port ];
@@ -69,9 +69,6 @@ in {
     image = audiomuseImage;
     autoStart = true;
 
-    ports = [
-      "${lib.toString port}:8000"
-    ];
 
     environment = {
       SERVICE_TYPE = "flask";
