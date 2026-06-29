@@ -1,7 +1,7 @@
 {
   description = "A custom package for the syncpronote service.";
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, lib, nixpkgs }:
   let
     supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
