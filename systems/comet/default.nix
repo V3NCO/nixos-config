@@ -45,7 +45,7 @@
     yubikey-touch-detector
     yubioath-flutter
     thunderbird
-    vesktop
+    unstable.vesktop
     slack
     zoom-us
     signal-desktop

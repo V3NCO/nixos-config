@@ -89,7 +89,7 @@
     yubikey-touch-detector
     yubioath-flutter
     thunderbird
-    vesktop
+    unstable.vesktop
     discord
     slack
     zoom-us
