@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, unstable, config, ... }:
 {
   hardware.cpu.intel.npu.enable = true;
 
@@ -38,7 +38,7 @@
 
   services.ollama = {
     enable = true;
-    package = pkgs.ollama-vulkan;
+    package = unstable.ollama-vulkan;
     loadModels = [
       "qwen3:14b"
       "ornith:35b"
