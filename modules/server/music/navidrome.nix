@@ -85,7 +85,8 @@ in {
   };
 
   systemd.services.navidrome.serviceConfig = {
-    BindPaths = [
+    ReadWritePaths = [
+      "/shared"
       "/shared/music"
     ];
   };
