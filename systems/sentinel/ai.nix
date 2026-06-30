@@ -38,7 +38,7 @@
 
   services.ollama = {
     enable = true;
-    package = unstable.ollama-vulkan;$
+    package = unstable.ollama-vulkan;
     environmentVariables = {
       OLLAMA_NUM_PARALLEL = "1";
     };
