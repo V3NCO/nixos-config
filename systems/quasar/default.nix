@@ -123,6 +123,7 @@
     typst
     crosspipe
     picard
+    rsgain
     tagger
     feishin
   ];
