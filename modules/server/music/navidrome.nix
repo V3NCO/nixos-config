@@ -1,4 +1,4 @@
-{ config, pkgs, unstable, ... }:
+{ config, lib, pkgs, unstable, ... }:
 let
   lyrics-navidrome = pkgs.stdenv.mkDerivation {
     pname = "nd-lyrics";
