@@ -18,10 +18,10 @@
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
     # VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
+    ANV_ENABLE_PIPELINE_CACHE = "1";
   };
 
   hardware.enableRedistributableFirmware = true;
-  boot.kernelParams = [ "i915.enable_guc=3" ];
 
   homelab.ports = [ config.services.ollama.port ];
   homelab.services = {
@@ -38,14 +38,22 @@
 
   services.ollama = {
     enable = true;
-    package = unstable.ollama-vulkan;
+    package = unstable.ollama-vulkan;$
+    environmentVariables = {
+      OLLAMA_NUM_PARALLEL = "1";
+    };
     loadModels = [
-      "qwen3:14b"
+      "qwen3.5:35b-a3b"
+      "gemma4:26b"
       "ornith:35b"
-      "deepseek-r1:14b"
-      "qwen2.5:32b-q3_K_M"
-      "qwen2.5-coder:7b"
+      "deepseek-r1:32b"
+      "devstral:24b"
+      "gpt-oss:20b"
       "nomic-embed-text"
+      "llama3.2:3b"
+      "gemma4:e4b"
+      "qwen3.5:9b"
     ];
+    syncModels = true;
   };
 }
