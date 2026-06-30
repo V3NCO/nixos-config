@@ -19,7 +19,6 @@
   ];
 
   system.activationScripts.shared-acl = {
-    deps = [ "pkgs" ]; # Makes pkgs available to the script context
     text = ''
       chown syncthing:music /shared || true
       chmod 2770 /shared || true
