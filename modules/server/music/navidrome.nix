@@ -85,7 +85,12 @@ in {
   };
 
   systemd.services.navidrome.serviceConfig = {
-    BindPaths = [
+    RootDirectory = lib.mkForce "";
+
+    BindReadOnlyPaths = lib.mkForce [ "" ];
+
+    ReadWritePaths = [
+      "/shared"
       "/shared/music"
     ];
   };
