@@ -1,0 +1,95 @@
+directory: /shared/music
+
+library: /var/lib/beets/library.db
+
+import:
+  incremental: no
+  move: yes
+  quiet: no
+  log: /var/lib/beets/missed.log
+  incremental_skip_later: yes
+  quiet_fallback: asis
+  detail: yes
+  duplicate_action: merge
+
+plugins:
+  - chroma
+
+  - spotify
+  - musicbrainz
+  - deezer
+  - discogs
+  - youtube
+  - bandcamp
+
+  - fetchart
+  - embedart
+  - lyrics
+
+  - web
+  - edit
+
+chroma:
+  auto: yes
+
+lyrics:
+    auto: yes
+    dist_thresh: 0.11
+    fallback: null
+    force: no
+    print: no
+    sources: [ lrclib ]
+    synced: yes
+
+musicbraiz:
+  data_source_mismatch_penalty: 0.5
+
+discogs:
+  data_source_mismatch_penalty: 0.4
+
+deezer:
+  data_source_mismatch_penalty: 0.3
+
+youtube:
+  data_source_mismatch_penalty: 0.4
+
+bandcamp:
+  data_source_mismatch_penalty: 0.2
+
+spotify:
+    show_failures: no
+    tiebreak: popularity
+    regex: []
+    search_query_ascii: no
+    client_id:  redacted
+    client_secret: redacted
+    data_source_mismatch_penalty: 0.3
+    search_limit: 5
+
+match:
+  strong_rec_thresh: 0.30
+  distance_weights:
+    data_source: 2.0
+    artist: 4.0
+    album: 3.0
+    media: 1.0
+    mediums: 1.0
+    year: 2.0
+    country: 0.5
+    label: 0.5
+    catalognum: 0.5
+    albumdisambig: 0.5
+    album_id: 5.0
+    tracks: 3.0
+    missing_tracks: 0.9
+    unmatched_tracks: 0.6
+    track_title: 2.5
+    track_artist: 2.0
+    track_index: 1.0
+    track_length: 3.0
+    track_id: 5.0
+    medium: 1.0
+  max_rec:
+    missing_tracks: low
+    unmatched_tracks: medium
+    id: medium
