@@ -76,7 +76,7 @@ in {
       DataFolder = "/var/lib/navidrome";
       LogFile = "/var/lib/navidrome/navidrome.log";
       EnableSharing = true;
-      LyricsPriority = ".lrc,navidrome-musixmatch-plugin,nd-lyrics,.txt,embedded";
+      LyricsPriority = ".lrc,nd-lyrics,navidrome-musixmatch-plugin,.txt,embedded";
       Plugins = {
         Enabled = true;
         AutoReload = true;
