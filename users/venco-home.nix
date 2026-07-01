@@ -3,7 +3,7 @@
 {
   home.username = "venco";
   home.homeDirectory = "/home/venco";
-  home.stateVersion = "26.05";
+  home.stateVersion = "26.11";
   # home.packages = with pkgs; [];
 
   home.file."${config.xdg.configHome}/nixosassets/pfp" = {

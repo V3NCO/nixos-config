@@ -66,12 +66,13 @@
       PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
-
+  services.ratbagd.enable = true;
   environment.systemPackages = with pkgs; [
     (olympus.override { celesteWrapper = "steam-run"; })
     quickemu
     gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
+    piper
     (symlinkJoin {
       name = "android-studio-wrapped";
       paths = [ unstable.android-studio ];
@@ -133,6 +134,6 @@
 
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
   hardware.ledger.enable = true;
 }
