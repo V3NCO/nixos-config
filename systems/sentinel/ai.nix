@@ -23,7 +23,7 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  homelab.ports = [ config.services.ollama.port ];
+  homelab.ports = [ config.services.ollama.port config.services.open-webui.port ];
   homelab.services = {
     ollama = {
       subdomain = "ollama";
@@ -34,10 +34,20 @@
         port = config.services.ollama.port;
       };
     };
+    open-webui = {
+      subdomain = "ai";
+      zone = "v3nco";
+      upstream = {
+        scheme = "http";
+        host = "127.0.0.1";
+        port = config.services.open-webui.port;
+      };
+    };
   };
 
   services.ollama = {
     enable = true;
+    host = "0.0.0.0";
     package = unstable.ollama-vulkan;
     environmentVariables = {
       OLLAMA_NUM_PARALLEL = "1";
@@ -55,5 +65,34 @@
       "qwen3.5:9b"
     ];
     syncModels = true;
+  };
+
+  services.open-webui = {
+    enable = true;
+    port = 38924;
+    host = "0.0.0.0";
+    environmentFile="/var/lib/open-webui/.env";
+    environment = {
+      WEBUI_URL = "https://ai.v3nco.dev";
+      ENABLE_SIGNUP = false;
+      ENABLE_LOGIN_FORM = false;
+      ENABLE_PASSWORD_AUTH = false;
+      ENABLE_CHANNELS = true;
+      ENABLE_USER_WEBHOOKS = true;
+      WEBUI_NAME = "Sentinel Chat";
+      ENABLE_CHAT_RESPONSE_BASE64_IMAGE_URL_CONVERSION = true;
+      ENABLE_OLLAMA_API = true;
+      OLLAMA_BASE_URL = "http://localhost:11434";
+      ENABLE_OPENAI_API = false;
+      ENABLE_WEB_SEARCH = true;
+      WEB_SEARCH_ENGINE = "searxng";
+      AUDIO_TTS_ENGINE="transformers";
+      ENABLE_OAUTH_SIGNUP=true;
+      ENABLE_OAUTH_BACKCHANNEL_LOGOUT=true;
+      OAUTH_CLIENT_ID="5cd8131d-a540-43b5-bfec-36934fc7ad23";
+      OPENID_PROVIDER_URL="https://pid.v3nco.dev/.well-known/openid-configuration";
+      OPENID_REDIRECT_URI="https://ai.v3nco.dev/oauth/oidc/callback";
+      OAUTH_PROVIDER_NAME="Pocket ID";
+    };
   };
 }
