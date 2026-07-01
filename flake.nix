@@ -21,13 +21,12 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Home Manager
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -134,7 +133,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, apple-silicon, ... }@inputs:
+  outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
   {
     nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -235,7 +234,7 @@
       ];
     };
 
-    nixosConfigurations.aphelion = nixpkgs-stable.lib.nixosSystem {
+    nixosConfigurations.aphelion = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./systems/aphelion
@@ -248,7 +247,7 @@
       };
     };
 
-    nixosConfigurations.sentinel = nixpkgs-stable.lib.nixosSystem {
+    nixosConfigurations.sentinel = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       specialArgs = {

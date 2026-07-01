@@ -48,7 +48,7 @@
   programs.gpu-screen-recorder.enable = false;
   programs.nix-ld.enable = true;
   networking.hostName = "stardust";
-  system.stateVersion = "26.11";
+  system.stateVersion = "26.05";
   hardware.ledger.enable = true;
   services.libinput.enable = true;
 
