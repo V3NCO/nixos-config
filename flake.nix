@@ -144,6 +144,11 @@
           android_sdk.accept_license = true;
           permittedInsecurePackages = [ "beekeeper-studio-5.3.4" ];
         };
+        overlays = [
+          (final: _prev: {
+            pnpm_10_29_2 = final.pnpm_10;
+          })
+        ];
       };
 
       specialArgs = {
@@ -151,6 +156,7 @@
         quickshell = inputs.quickshell;
         unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
           config = { allowUnfree = true; android_sdk.accept_license = true; };
+          overlays = [(final: _prev: {pnpm_10_29_2 = final.pnpm_10;})];
         };
       };
 
@@ -182,13 +188,6 @@
               hostname = "quasar";
             };
           };
-        }
-        {
-          nixpkgs.overlays = [
-            (final: _prev: {
-              pnpm_10_29_2 = final.pnpm_10;
-            })
-          ];
         }
       ];
     };
@@ -237,13 +236,6 @@
               hostname = "comet";
             };
           };
-        }
-        {
-          nixpkgs.overlays = [
-            (final: _prev: {
-              pnpm_10_29_2 = final.pnpm_10;
-            })
-          ];
         }
       ];
     };
