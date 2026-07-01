@@ -183,6 +183,13 @@
             };
           };
         }
+        {
+          nixpkgs.overlays = [
+            (final: _prev: {
+              pnpm_10_29_2 = final.pnpm_10;
+            })
+          ];
+        }
       ];
     };
 
@@ -230,6 +237,13 @@
               hostname = "comet";
             };
           };
+        }
+        {
+          nixpkgs.overlays = [
+            (final: _prev: {
+              pnpm_10_29_2 = final.pnpm_10;
+            })
+          ];
         }
       ];
     };
