@@ -7,6 +7,7 @@
     ../../modules/server/immich.nix
     ../../modules/server/vaultwarden.nix
     ../../modules/server/forgejo.nix
+    ../../modules/server/searxng.nix
     ../../modules/server/radicale.nix
     ../../modules/server/auth.nix
     ../../modules/server/paperless-ngx.nix

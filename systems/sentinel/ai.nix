@@ -48,6 +48,7 @@
   services.ollama = {
     enable = true;
     host = "0.0.0.0";
+    port = 11434;
     package = unstable.ollama-vulkan;
     environmentVariables = {
       OLLAMA_NUM_PARALLEL = "1";
@@ -74,6 +75,7 @@
     environmentFile="/var/lib/open-webui/.env";
     environment = {
       WEBUI_URL = "https://ai.v3nco.dev";
+      SEARXNG_QUERY_URL="http://localhost:${config.services.searx.settings.server.port}";
       ENABLE_SIGNUP = "False";
       ENABLE_LOGIN_FORM = "False";
       ENABLE_PASSWORD_AUTH = "False";
@@ -82,7 +84,7 @@
       WEBUI_NAME = "Sentinel Chat";
       ENABLE_CHAT_RESPONSE_BASE64_IMAGE_URL_CONVERSION = "True";
       ENABLE_OLLAMA_API = "True";
-      OLLAMA_BASE_URL = "http://localhost:11434";
+      OLLAMA_BASE_URL = "http://127.0.0.1:11434";
       ENABLE_OPENAI_API = "False";
       ENABLE_WEB_SEARCH = "True";
       WEB_SEARCH_ENGINE = "searxng";
