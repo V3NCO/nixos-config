@@ -75,7 +75,7 @@
     environmentFile="/var/lib/open-webui/.env";
     environment = {
       WEBUI_URL = "https://ai.v3nco.dev";
-      SEARXNG_QUERY_URL="https://search.v3nco.dev/search?q=<query>";
+      SEARXNG_QUERY_URL="http://127.0.0.1:${lib.toString config.services.searx.settings.server.port}/search?q=<query>";
       ENABLE_SIGNUP = "False";
       ENABLE_LOGIN_FORM = "False";
       ENABLE_PASSWORD_AUTH = "False";
