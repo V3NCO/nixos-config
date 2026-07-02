@@ -31,7 +31,7 @@
       botdetection = {
         ip_limit = {
           filter_link_local = true;
-          link_token = true;
+          link_token = false;
         };
 
         ip_lists = {
@@ -84,7 +84,7 @@
         port = 23489;
         bind_address = "127.0.0.1";
         limiter = true;
-        public_instance = true;
+        public_instance = false;
         image_proxy = true;
         method = "GET";
       };
