@@ -88,7 +88,7 @@
         base_url = "https://search.v3nco.dev";
         port = 23489;
         bind_address = "127.0.0.1";
-        limiter = true;
+        limiter = false;
         public_instance = false;
         image_proxy = true;
         method = "GET";
