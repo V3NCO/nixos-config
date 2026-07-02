@@ -29,6 +29,11 @@
       };
 
       botdetection = {
+        trusted_proxies = [
+          "127.0.0.1"
+          "::1"
+        ];
+
         ip_limit = {
           filter_link_local = true;
           link_token = false;
