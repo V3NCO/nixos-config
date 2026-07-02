@@ -33,11 +33,13 @@
           filter_link_local = true;
           link_token = true;
         };
-      };
 
-      ip_whitelist = {
-        "127.0.0.1" = true;
-        "::1" = true;
+        ip_lists = {
+          pass_ip = [
+            "127.0.0.1"
+            "::1"
+          ];
+        };
       };
     };
 
