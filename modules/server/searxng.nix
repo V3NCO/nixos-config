@@ -18,7 +18,7 @@
   services.searx = {
     enable = true;
     redisCreateLocally = true;
-    settingsPath="/var/lib/searx";
+    settingsFile="/var/lib/searx/settings.yml";
     environmentFile = "/var/lib/searx/.env";
 
     # Rate limiting
