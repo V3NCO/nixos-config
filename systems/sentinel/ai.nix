@@ -96,7 +96,7 @@
       OPENID_REDIRECT_URI = "https://ai.v3nco.dev/oauth/oidc/callback";
       OAUTH_PROVIDER_NAME = "Pocket ID";
 
-      BPA_MODEL_ACCESS_CONTROL = "True";
+      BYPASS_MODEL_ACCESS_CONTROL = "True";
       DEFAULT_MODELS = "qwen3.5:35b-a3b,gemma4:26b,deepseek-r1:32b,llama3.2:3b,gpt-oss:20b,devstral:24b,nomic-embed-text,gemma4:e4b,qwen3.5:9b,ornith:35b";
       USER_PERMISSIONS_FEATURES_DIRECT_TOOL_SERVERS="True";
       USER_PERMISSIONS_FEATURES_AUTOMATIONS="True";
