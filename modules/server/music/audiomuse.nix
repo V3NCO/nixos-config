@@ -77,7 +77,7 @@ in {
     image = audiomuseImage;
     autoStart = true;
 
-
+    environmentFiles = ["${dataDir}/.env"];
     environment = {
       SERVICE_TYPE = "flask";
       POSTGRES_USER = "audiomuse";
@@ -105,7 +105,7 @@ in {
   virtualisation.oci-containers.containers.audiomuse-worker = {
     image = audiomuseImage;
     autoStart = true;
-
+    environmentFiles = ["${dataDir}/.env"];
     environment = {
       SERVICE_TYPE = "worker";
       POSTGRES_USER = "audiomuse";
