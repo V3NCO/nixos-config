@@ -46,11 +46,19 @@ in {
       {
         name = "audiomuse";
         ensureDBOwnership = true;
-        ensureClauses.login = true;
+        ensureClauses = {
+          login = true;
+          createrole = true;
+        };
+      }
+      {
+        name = "ai_user";
+        ensureClauses = { login = true; };
       }
     ];
     authentication = ''
-      host all audiomuse 127.0.0.1/32 trust
+      host all audiomuse 127.0.0.1/32 scram-sha-256
+      host all ai_user   127.0.0.1/32 scram-sha-256
     '';
   };
 
