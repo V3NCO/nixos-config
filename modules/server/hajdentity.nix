@@ -11,7 +11,7 @@
 
   services.hajdentity = {
     enable = true;
-    adminEmail = "noreply@v3nco.dev";
+    adminEmail = "hajdentity@esther.tf";
     baseUrl = "https://id.blahaj.engineering/";
     systemId = "HAJ-PROD-MAIN";
     port = 6532;
@@ -34,6 +34,13 @@
       bucket = "hajdentity";
       secure = false;
       region = "garage";
+    };
+
+    mail = {
+      username = "noreply@v3nco.dev";
+      fromAddress = "noreply@v3nco.dev";
+      fromName = "Hajdentity";
+      server = "smtp.purelymail.com";
     };
   };
 
