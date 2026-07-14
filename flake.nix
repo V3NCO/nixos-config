@@ -245,7 +245,6 @@
       modules = [
         ./systems/aphelion
         inputs.nixCats.nixosModules.default
-        inputs.hajdentity.nixosModules.default
       ];
       specialArgs = {
         unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
@@ -267,6 +266,7 @@
       modules = [
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
+        inputs.hajdentity.nixosModules.default
         ({ pkgs, _module, ... }: {
           imports = [ inputs.syncpronote.nixosModules.default ];
           _module.args.syncpronote-pkg = inputs.syncpronote.packages.${pkgs.stdenv.hostPlatform.system}.default;
