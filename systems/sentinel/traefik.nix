@@ -3,6 +3,7 @@ let
   zones = {
     v3nco = { domain = "v3nco.dev"; };
     esther = { domain = "esther.tf"; };
+    blahaj = { domain = "blahaj.engineering"; };
   };
 
   defaults = {
@@ -89,6 +90,7 @@ in
             domains = [
               { main = zones.v3nco.domain; sans = [ "*.${zones.v3nco.domain}" ]; }
               { main = zones.esther.domain; sans = [ "*.${zones.esther.domain}" ]; }
+              { main = zones.blahaj.domain; sans = [ "*.${zones.blahaj.domain}" ]; }
             ];
           };
         };

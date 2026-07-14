@@ -170,7 +170,7 @@
           hajdentity = {
             entryPoints = [ "websecure" ];
             rule = "Host(`id.blahaj.engineering`)";
-            service = "hajdentity";
+            service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
@@ -178,7 +178,7 @@
           sharkey = {
             entryPoints = [ "websecure" ];
             rule = "Host(`social.blahaj.engineering`)";
-            service = "sharkey";
+            service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
@@ -188,14 +188,6 @@
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "http://localhost:7980"; } ];
-          };
-          hajdentity.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "http://localhost:${lib.toString config.services.hajdentity.frontend.port}"; } ];
-          };
-          sharkey.loadBalancer = {
-            serversTransport = "insecureTransport";
-            servers = [ { url = "http://localhost:${lib.toString config.services.sharkey.settings.port}"; } ];
           };
           sentinel-sec.loadBalancer = {
             serversTransport = "insecureTransport";

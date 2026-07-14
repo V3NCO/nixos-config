@@ -1,5 +1,35 @@
 { lib, config, pkgs, ... }:
 {
+  homelab.ports = [
+    config.services.sharkey.settings.port
+    config.services.hajdentity.frontend.port
+    config.services.hajdentity.port
+    3900
+  ];
+
+  homelab.services.hajdentity = {
+    subdomain = "id";
+    zone = "blahaj";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = config.services.hajdentity.frontend.port;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
+  homelab.services.sharkey = {
+    subdomain = "social";
+    zone = "blahaj";
+    upstream = {
+      scheme = "http";
+      host = "127.0.0.1";
+      port = config.services.sharkey.settings.port;
+    };
+    middlewares = [ "security-headers" ];
+  };
+
+
   services.sharkey = {
     enable = true;
     settings = {

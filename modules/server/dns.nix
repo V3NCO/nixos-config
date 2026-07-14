@@ -7,6 +7,7 @@ let
   zones = {
     v3nco = { domain = "v3nco.dev"; };
     esther = { domain = "esther.tf"; };
+    blahaj = { domain = "blahaj.engineering"; };
   };
 
   sentinelHostLabel = "sentinel";
@@ -54,6 +55,7 @@ let
   zoneFiles = {
     v3nco = util.writeZone zones.v3nco.domain (mkZone "v3nco");
     esther = util.writeZone zones.esther.domain (mkZone "esther");
+    blahaj = util.writeZone zones.blahaj.domain (mkZone "blahaj");
   };
 in
 {
@@ -85,7 +87,7 @@ in
           lib.types.attrsOf (lib.types.submodule ({ name, ... }: {
             options = {
               zone = lib.mkOption {
-                type = lib.types.enum [ "v3nco" "esther" ];
+                type = lib.types.enum [ "v3nco" "esther" "blahaj" ];
                 default = "v3nco";
                 description = "Which base domain zone to use.";
               };
@@ -173,6 +175,10 @@ in
           {
             name = zones.esther.domain;
             zonefile = toString zoneFiles.esther;
+          }
+          {
+            name = zones.blahaj.domain;
+            zonefile = toString zoneFiles.blahaj;
           }
         ];
       };
