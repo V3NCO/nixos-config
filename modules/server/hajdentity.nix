@@ -1,13 +1,5 @@
 { lib, config, pkgs, ... }:
 {
-  # Expose internal service ports to your homelab routing
-  homelab.ports = [
-    config.services.sharkey.settings.port
-    config.services.hajdentity.frontend.port
-    config.services.hajdentity.port
-    3900                                     # Garage S3 API
-  ];
-
   services.sharkey = {
     enable = true;
     settings = {
