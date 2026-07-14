@@ -5,7 +5,7 @@
     settings = {
       address = "127.0.0.1";
       port = 3622;
-      url = "https://sharkey.v3nco.dev/";
+      url = "https://social.blahaj.engineering/";
     };
   };
 

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
@@ -191,11 +191,11 @@
           };
           hajdentity.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "http://localhost:${config.services.hajdentity.frontend.port}"; } ];
+            servers = [ { url = "http://localhost:${lib.toString config.services.hajdentity.frontend.port}"; } ];
           };
           sharkey.loadBalancer = {
             serversTransport = "insecureTransport";
-            servers = [ { url = "http://localhost:${config.services.sharkey.settings.port}"; } ];
+            servers = [ { url = "http://localhost:${lib.toString config.services.sharkey.settings.port}"; } ];
           };
           sentinel-sec.loadBalancer = {
             serversTransport = "insecureTransport";
