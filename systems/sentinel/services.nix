@@ -14,7 +14,6 @@
     # ../../modules/server/nextcloud.nix
     ../../modules/server/homebox.nix
     ../../modules/server/syncpronote.nix
-    ../../modules/server/sharkey.nix
     ../../modules/server/grafana
     ../../modules/server/music
   ];

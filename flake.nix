@@ -36,7 +36,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-
+    hajdentity.url = "github:V3NCO/Hajdentity";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
@@ -245,6 +245,7 @@
       modules = [
         ./systems/aphelion
         inputs.nixCats.nixosModules.default
+        inputs.hajdentity.nixosModules.default
       ];
       specialArgs = {
         unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";

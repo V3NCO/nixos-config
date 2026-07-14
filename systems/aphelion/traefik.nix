@@ -166,12 +166,36 @@
               "security-headers"
             ];
           };
+
+          hajdentity = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`id.blahaj.engineering`)";
+            service = "hajdentity";
+            tls.certResolver = "letsencrypt";
+            middlewares = [ "security-headers" ];
+          };
+
+          sharkey = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`social.blahaj.engineering`)";
+            service = "sharkey";
+            tls.certResolver = "letsencrypt";
+            middlewares = [ "security-headers" ];
+          };
         };
 
         services = {
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "http://localhost:7980"; } ];
+          };
+          hajdentity.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "http://localhost:${config.services.hajdentity.frontend.port}"; } ];
+          };
+          sharkey.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "http://localhost:${config.services.sharkey.settings.port}"; } ];
           };
           sentinel-sec.loadBalancer = {
             serversTransport = "insecureTransport";

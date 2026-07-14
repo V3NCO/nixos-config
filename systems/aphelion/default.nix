@@ -13,6 +13,7 @@
     ../../modules/nixos/basic/direnv.nix
     ../../modules/nixos/basic/terminal.nix
     ../../modules/server/tailscale.nix
+    ../../modules/server/hajdentity.nix
     ../../modules/server/fail2ban.nix
     ../../modules/server/wireguardsrv.nix
     ../../modules/server/anubis.nix
