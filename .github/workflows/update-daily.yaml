@@ -57,6 +57,7 @@ jobs:
             silentSDDM
             apple-silicon
             dns
+            hajdentity
           )
 
           # Update each input. `nix flake update --update-input <name>` updates flake.lock
