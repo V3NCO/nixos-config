@@ -51,6 +51,16 @@
   virtualisation.docker = {
     enable = true;
   };
+
+  users.users.nixremote = {
+    isNormalUser = true;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJo8HBvMCQQW1H0DvbkccvF8/HFT1mJZlha0CT5G6Bqh root@aphelion"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIi7uBGTwNdQI47Y41FPMjlCsJfYy7Z6A8UpBbdUxKUK venco@sentinel"
+    ];
+  };
+
+  nix.settings.trusted-users = [ "root" "venco" "nixremote" ];
   services.flatpak.enable = true;
   services.openssh = {
     enable = true;
@@ -59,6 +69,7 @@
       PasswordAuthentication = false;
       AllowUsers = [
         "venco"
+        "nixremote"
         "root"
       ]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
