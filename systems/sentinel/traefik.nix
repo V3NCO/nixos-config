@@ -85,6 +85,11 @@ in
           forwardedHeaders = {
             trustedIPs = [ "127.0.0.1" "100.86.29.63" ];
           };
+          transport.respondingTimeouts = {
+            readTimeout = "0s";
+            writeTimeout = "0s";
+            idleTimeout = "600s";
+          };
           http.tls = {
             certResolver = defaults.tlsCertResolver;
             domains = [

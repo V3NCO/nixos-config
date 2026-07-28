@@ -23,6 +23,11 @@
           address = ":443";
           asDefault = true;
           http.tls = { };
+          transport.respondingTimeouts = {
+            readTimeout = "0s";
+            writeTimeout = "0s";
+            idleTimeout = "600s";
+          };
         };
 
         ssh = {
