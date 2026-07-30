@@ -15,6 +15,7 @@
   ];
   services.printing.enable = true;
 
+  environment.enableAllTerminfo = true;
   boot.blacklistedKernelModules = [ "algif_aead" ];
   # programs.bash.interactiveShellInit = ''eval "$(direnv hook bash)"'';
 }
