@@ -37,7 +37,7 @@
         showCategories = true;
         showIconBackground = false;
         sortByMostUsed = true;
-        terminalCommand = "ghostty";
+        terminalCommand = "kitty";
         viewMode = "list";
       };
       audio = {

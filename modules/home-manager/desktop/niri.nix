@@ -146,7 +146,7 @@
       "Mod+Q".action.close-window = [];
 
       # Apps
-      "Mod+Return".action.spawn = ["ghostty"];
+      "Mod+Return".action.spawn = ["kitty"];
       "Mod+Space".action.spawn-sh =  [ "noctalia msg panel-toggle launcher" ];
       "Mod+S".action.spawn-sh = [ "noctalia msg panel-toggle control-center" ];
       "Mod+V".action.spawn-sh = [ "noctalia msg panel-toggle clipboard" ];
