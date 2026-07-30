@@ -92,6 +92,7 @@ in {
     ReadWritePaths = [
       "/shared"
       "/shared/music"
+      "/shared/vocaloid"
     ];
   };
 
