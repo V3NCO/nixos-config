@@ -105,6 +105,7 @@
     slack
     zoom-us
     signal-desktop
+    beeper
     mattermost-desktop
     spotify
     nnn # terminal file manager
