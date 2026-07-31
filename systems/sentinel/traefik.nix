@@ -67,7 +67,7 @@ in
           address = ":80";
           asDefault = false;
           forwardedHeaders = {
-            trustedIPs = [ "127.0.0.1" "100.86.29.63" ];
+            trustedIPs = [ "127.0.0.1" "100.124.84.34" ];
           };
           http.redirections.entrypoint = {
             to = "websecure";
@@ -83,7 +83,7 @@ in
           address = ":443";
           asDefault = true;
           forwardedHeaders = {
-            trustedIPs = [ "127.0.0.1" "100.86.29.63" ];
+            trustedIPs = [ "127.0.0.1" "100.124.84.34" ];
           };
           transport.respondingTimeouts = {
             readTimeout = "0s";

@@ -44,7 +44,7 @@
           name = "Prometheus Aphelion";
           type = "prometheus";
           access = "proxy";
-          url = "http://100.86.29.63:9090";
+          url = "http://100.124.84.34:9090";
         }
       ];
       dashboards.settings.providers = [
