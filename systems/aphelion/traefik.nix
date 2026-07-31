@@ -1,5 +1,9 @@
-{ config, lib, ... }:
+{ config, ... }:
 {
+  systemd.tmpfiles.rules = [
+    "d /var/cache/traefik 0750 traefik traefik - -"
+  ];
+
   systemd.services.traefik.serviceConfig.EnvironmentFile =
     "${config.services.traefik.dataDir}/cloudflare.env";
 
@@ -8,6 +12,11 @@
 
     staticConfigOptions = {
       global.sendAnonymousUsage = false;
+
+      experimental.plugins.cacheify = {
+        moduleName = "github.com/ciaranj/cacheify";
+        version = "v0.0.1";
+      };
 
       entryPoints = {
         web = {
@@ -169,6 +178,7 @@
             tls.certResolver = "letsencrypt";
             middlewares = [
               "security-headers"
+              "quick-cache"
             ];
           };
 
@@ -177,7 +187,10 @@
             rule = "Host(`id.blahaj.engineering`)";
             service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
+            middlewares = [
+              "security-headers"
+              "long-cache"
+            ];
           };
 
           sharkey = {
@@ -185,7 +198,10 @@
             rule = "Host(`social.blahaj.engineering`)";
             service = "sentinel-sec";
             tls.certResolver = "letsencrypt";
-            middlewares = [ "security-headers" ];
+            middlewares = [
+              "security-headers"
+              "long-cache"
+            ];
           };
         };
 
@@ -201,6 +217,18 @@
         };
 
         middlewares = {
+          quick-cache.plugin.cacheify = {
+            cachePath = "/var/cache/traefik";
+            ttl = 3600;
+            addStatusHeader = true;
+          };
+
+          long-cache.plugin.cacheify = {
+            cachePath = "/var/cache/traefik";
+            ttl = 86400;
+            addStatusHeader = true;
+          };
+
           local-ipwhitelist.ipAllowList.sourceRange = [
             "192.168.0.0/16"
             "10.0.0.0/8"
