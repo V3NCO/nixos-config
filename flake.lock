@@ -398,11 +398,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1785616460,
-        "narHash": "sha256-UM/eQ5slXEnsIAL/Op1zPNiNMBnGKDRYKGjlnG3mGLg=",
+        "lastModified": 1785618697,
+        "narHash": "sha256-I0AjR4wayePHk1y5J/tmnrOJWms0fADO3z4zpenHkbQ=",
         "owner": "V3NCO",
         "repo": "Hajdentity",
-        "rev": "491ea339d4e2cbf14e820c9c7ba78cd47a940f73",
+        "rev": "8f6c5d94cb1899e0665237882d7d8c1a45d620e8",
         "type": "github"
       },
       "original": {
