@@ -103,7 +103,7 @@
     unstable.vesktop
     discord
     slack
-    unstable.sable
+    commet-chat
     zoom-us
     signal-desktop
     beeper
