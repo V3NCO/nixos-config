@@ -17,10 +17,10 @@
     settings = {
       global = {
         port = 38923;
-        server_name = "matrix.blahaj.engineering";
+        server_name = "grid.blahaj.engineering";
         enable_lightning_bolt = false;
         allow_check_for_updates = false;
-        allow_federation = true;
+        allow_federation = false;
         allow_registration = true;
       };
     };

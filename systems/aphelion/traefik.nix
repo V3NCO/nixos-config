@@ -190,7 +190,7 @@
 
           matrix = {
             entryPoints = [ "websecure" ];
-            rule = "Host(`matrix.blahaj.engineering`)";
+            rule = "Host(`grid.blahaj.engineering`)";
             service = "conduit";
             tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
