@@ -47,6 +47,7 @@
     thunderbird
     unstable.vesktop
     slack
+    unstable.sable
     zoom-us
     signal-desktop
     beeper

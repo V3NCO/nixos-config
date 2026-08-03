@@ -103,6 +103,7 @@
     unstable.vesktop
     discord
     slack
+    unstable.sable
     zoom-us
     signal-desktop
     beeper
