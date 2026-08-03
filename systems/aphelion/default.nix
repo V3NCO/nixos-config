@@ -16,6 +16,7 @@
     ../../modules/server/fail2ban.nix
     ../../modules/server/wireguardsrv.nix
     ../../modules/server/anubis.nix
+    ../../modules/server/matrix.nix
     ../../users/venco-server.nix
     ../../modules/server/grafana/aphelion-prometheus.nix
   ];

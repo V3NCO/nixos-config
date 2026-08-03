@@ -187,12 +187,24 @@
             tls.certResolver = "letsencrypt";
             middlewares = [ "security-headers" ];
           };
+
+          matrix = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`matrix.blahaj.engineering`)";
+            service = "conduit";
+            tls.certResolver = "letsencrypt";
+            middlewares = [ "security-headers" ];
+          };
         };
 
         services = {
           anubis.loadBalancer = {
             serversTransport = "insecureTransport";
             servers = [ { url = "http://localhost:7980"; } ];
+          };
+          conduit.loadBalancer = {
+            serversTransport = "insecureTransport";
+            servers = [ { url = "http://localhost:${toString config.services.matrix-conduit.settings.global.port}"; } ];
           };
           sentinel-sec.loadBalancer = {
             serversTransport = "insecureTransport";
