@@ -21,6 +21,7 @@
         enable_lightning_bolt = false;
         allow_check_for_updates = false;
         allow_federation = true;
+        allow_registration = true;
       };
     };
   };
