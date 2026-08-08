@@ -13,104 +13,70 @@
     enable = true;
 
     settings = {
-      appLauncher = {
-        autoPasteClipboard = false;
-        clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
-        clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
-        clipboardWrapText = true;
-        customLaunchPrefix = "";
-        customLaunchPrefixEnabled = false;
-        density = "default";
-        enableClipPreview = true;
-        enableClipboardChips = true;
-        enableClipboardHistory = true;
-        enableClipboardSmartIcons = true;
-        enableSessionSearch = true;
-        enableSettingsSearch = true;
-        enableWindowsSearch = true;
-        iconMode = "tabler";
-        ignoreMouseInput = false;
-        overviewLayer = false;
-        pinnedApps = [ ];
-        position = "center";
-        screenshotAnnotationTool = "";
-        showCategories = true;
-        showIconBackground = false;
-        sortByMostUsed = true;
-        terminalCommand = "kitty";
-        viewMode = "list";
+      accessibility = {
+        high_contrast = false;
+        ui_scale = 1.0;
       };
+
       audio = {
         enable_overdrive = true;
         enable_sounds = true;
-        mprisBlacklist = [ ];
-        preferredPlayer = "";
-        spectrumFrameRate = 30;
-        visualizerType = "linear";
-        volumeFeedback = false;
-        volumeFeedbackSoundFile = "";
-        volumeOverdrive = false;
-        volumeStep = 5;
+        notification_sound = "";
+        sound_volume = 0.5;
+        volume_change_sound = "";
+      };
+
+      backdrop = {
+        blur_intensity = 0.5;
+        enabled = false;
+        tint_intensity = 0.3;
       };
 
       bar = {
-        backgroundOpacity = 0.78;
-        barType = "floating";
-        capsuleColorKey = "none";
-        capsuleOpacity = 1;
-        contentPadding = 2;
-        density = "default";
-        displayMode = "always_visible";
-        enableExclusionZoneInset = true;
-        floating = true;
-        fontScale = 1;
-        hideOnOverview = false;
-        marginHorizontal = 4;
-        marginVertical = 4;
-        middleClickAction = "none";
-        middleClickCommand = "";
-        middleClickFollowMouse = false;
-        mouseWheelAction = "none";
-        mouseWheelWrap = true;
-        outerCorners = true;
-        position = "top";
-        reverseScroll = false;
-        rightClickAction = "controlCenter";
-        rightClickCommand = "";
-        rightClickFollowMouse = true;
-        screenOverrides = [ ];
-        showCapsule = false;
-        showOnWorkspaceSwitch = true;
-        showOutline = false;
-        useSeparateOpacity = true;
-        widgetSpacing = 6;
+        order = [ "widgets" ];
         widgets = {
-          background_opacity = 0.7499999832361937;
-          center = [
-            "clock"
-            "audio_visualizer"
-          ];
+          auto_hide = false;
+          background_opacity = 0.75;
+          border = "outline";
+          border_width = 0.0;
+          capsule = false;
+          capsule_fill = "surface_variant";
+          capsule_opacity = 1.0;
+          capsule_padding = 6.0;
+          capsule_thickness = 0.76;
+          center = [ "clock" "audio_visualizer" ];
+          concave_edge_corners = true;
           contact_shadow = true;
-          end = [
-            "tray"
-            "media"
-            "battery"
-            "notifications"
-            "session"
-          ];
+          enabled = true;
+          end = [ "tray" "media" "battery" "notifications" "session" ];
+          font_weight = 500;
+          hover_highlight = true;
           layer = "top";
           margin_edge = 6;
           margin_ends = 40;
+          margin_opposite_edge = 0;
+          padding = 14;
+          panel_overlap = 1;
+          position = "top";
           radius = 80;
-          start = [
-            "control-center"
-            "recorder"
-            "group:g1"
-            "group:g2"
-          ];
+          radius_bottom_left = 80;
+          radius_bottom_right = 80;
+          radius_top_left = 80;
+          radius_top_right = 80;
+          reserve_space = true;
+          scale = 1.0;
+          shadow = true;
+          show_on_workspace_switch = true;
+          smart_auto_hide = false;
+          start = [ "control-center" "recorder" "group:g1" "group:g2" ];
+          thickness = 34;
+          widget_spacing = 6;
 
           capsule_group = [
             {
+              accordion = false;
+              accordion_direction = "end";
+              enabled = true;
               fill = "surface_variant";
               id = "g1";
               members = [
@@ -121,6 +87,9 @@
               padding = 6.0;
             }
             {
+              accordion = false;
+              accordion_direction = "end";
+              enabled = true;
               fill = "surface_variant";
               id = "g2";
               members = [
@@ -131,414 +100,198 @@
               padding = 10.0;
             }
           ];
-
-          left = [
-            {
-              colorizeDistroLogo = false;
-              colorizeSystemIcon = "primary";
-              customIconPath = "${config.xdg.configHome}/nixosassets/noctalia/venco.svg";
-              enableColorization = true;
-              icon = "noctalia";
-              id = "ControlCenter";
-              useDistroLogo = false;
-            }
-            {
-              displayMode = "onhover";
-              iconColor = "none";
-              id = "Network";
-              textColor = "none";
-            }
-            {
-              displayMode = "onhover";
-              iconColor = "none";
-              id = "Bluetooth";
-              textColor = "none";
-            }
-          ];
-
-          right = [
-            {
-              blacklist = [ ];
-              chevronColor = "none";
-              colorizeIcons = false;
-              drawerEnabled = true;
-              hidePassive = false;
-              id = "Tray";
-              pinned = [ ];
-            }
-            {
-              deviceNativePath = "__default__";
-              displayMode = "graphic-clean";
-              hideIfIdle = false;
-              hideIfNotDetected = true;
-              id = "Battery";
-              showNoctaliaPerformance = false;
-              showPowerProfiles = false;
-            }
-            {
-              clockColor = "none";
-              customFont = "";
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              tooltipFormat = "HH:mm ddd, MMM dd";
-              useCustomFont = false;
-            }
-          ];
         };
+      };
+
+      battery = {
+        warning_threshold = 10;
       };
 
       brightness = {
-        backlightDeviceMappings = [ ];
-        brightnessStep = 5;
-        enableDdcSupport = false;
-        enforceMinimum = false;
+        enable_ddcutil = false;
+        ignore_mmids = [ ];
+        minimum_brightness = 0.0;
+        sync_all_monitors = false;
       };
+
       calendar = {
         enabled = true;
-        cards = [
-          {
-            enabled = true;
-            id = "calendar-header-card";
-          }
-          {
-            enabled = true;
-            id = "calendar-month-card";
-          }
-          {
-            enabled = true;
-            id = "weather-card";
-          }
-        ];
+        refresh_minutes = 15;
       };
-      colorSchemes = {
-        darkMode = true;
-        generationMethod = "tonal-spot";
-        manualSunrise = "09:00";
-        manualSunset = "20:30";
-        monitorForColors = "";
-        predefinedScheme = "Monochrome";
-        schedulingMode = "manual";
-        useWallpaperColors = true;
-      };
-      controlCenter = {
-        diskPath = "/";
-        position = "close_to_bar_button";
-        shortcuts = {
-          left = [
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-            {
-              id = "WallpaperSelector";
-            }
-            {
-              id = "NoctaliaPerformance";
-            }
-            {
-              id = "DarkMode";
-            }
-          ];
-          right = [
-            {
-              id = "Notifications";
-            }
-            {
-              id = "PowerProfile";
-            }
-            {
-              id = "KeepAwake";
-            }
-            {
-              id = "NightLight";
-            }
-            {
-              enableOnStateLogic = false;
-              generalTooltipText = "Restart Noctalia";
-              icon = "restore";
-              id = "CustomButton";
-              onClicked = "killall .quickshell-wrapper && noctalia-shell";
-              onMiddleClicked = "";
-              onRightClicked = "";
-              showExecTooltip = false;
-              stateChecksJson = "[]";
-            }
-          ];
-        };
-        cards = [
-          {
-            enabled = true;
-            id = "profile-card";
-          }
-          {
-            enabled = true;
-            id = "shortcuts-card";
-          }
-          {
-            enabled = true;
-            id = "audio-card";
-          }
-          {
-            enabled = false;
-            id = "brightness-card";
-          }
-          {
-            enabled = true;
-            id = "weather-card";
-          }
-          {
-            enabled = true;
-            id = "media-sysmon-card";
-          }
-        ];
-      };
+
       control_center = {
+        hidden_tabs = [ ];
+        show_shortcut_labels = true;
+        sidebar = "compact";
+        sidebar_section = "compact";
+        width = 700;
+
+        calendar = {
+          event_date_format = "%A %e %B";
+          event_time_format = "%H:%M";
+          show_events_card = true;
+          show_week_numbers = false;
+        };
+
         shortcuts = [
-          {
-            type = "notification";
-          }
-          {
-            type = "caffeine";
-          }
-          {
-            type = "wifi";
-          }
-          {
-            type = "bluetooth";
-          }
-          {
-            type = "dark_mode";
-          }
-          {
-            type = "wallpaper";
-          }
+          { type = "notification"; }
+          { type = "caffeine"; }
+          { type = "wifi"; }
+          { type = "bluetooth"; }
+          { type = "dark_mode"; }
+          { type = "wallpaper"; }
         ];
       };
-      desktopWidgets = {
+
+      desktop_widgets = {
         enabled = true;
-        gridSnap = true;
-        gridSnapScale = true;
-        overviewEnabled = true;
-        monitorWidgets = [
-          {
-            name = "HDMI-A-2";
-            widgets = [
-              {
-                clockColor = "none";
-                clockStyle = "digital";
-                customFont = "";
-                format = "HH:mm\nd MMMM yyyy";
-                id = "Clock";
-                roundedCorners = true;
-                scale = 1.2;
-                showBackground = true;
-                useCustomFont = false;
-                x = 20;
-                y = 60;
-              }
-              {
-                hideMode = "visible";
-                id = "MediaPlayer";
-                roundedCorners = true;
-                scale = 1;
-                showAlbumArt = true;
-                showBackground = true;
-                showButtons = true;
-                showVisualizer = true;
-                visualizerType = "linear";
-                x = 220;
-                y = 60;
-              }
-              {
-                colorName = "primary";
-                height = 72;
-                hideWhenIdle = false;
-                id = "AudioVisualizer";
-                roundedCorners = true;
-                scale = 5;
-                showBackground = false;
-                visualizerType = "linear";
-                width = 375;
-                x = 20;
-                y = 720;
-              }
-              {
-                diskPath = "/";
-                id = "SystemStat";
-                layout = "bottom";
-                roundedCorners = true;
-                scale = 1;
-                showBackground = true;
-                statType = "CPU";
-                x = 20;
-                y = 260;
-              }
-              {
-                id = "Weather";
-                roundedCorners = true;
-                scale = 1;
-                showBackground = true;
-                x = 220;
-                y = 160;
-              }
-            ];
-          }
-        ];
-      };
-      dock = {
-        animationSpeed = 1;
-        backgroundOpacity = 1;
-        colorizeIcons = false;
-        deadOpacity = 0.6;
-        displayMode = "always_visible";
-        dockType = "floating";
-        enabled = false;
-        floatingRatio = 0;
-        groupApps = false;
-        groupClickAction = "cycle";
-        groupContextMenuMode = "extended";
-        groupIndicatorStyle = "dots";
-        inactiveIndicators = false;
-        indicatorColor = "primary";
-        indicatorOpacity = 0.6;
-        indicatorThickness = 3;
-        launcherIcon = "";
-        launcherIconColor = "none";
-        launcherPosition = "end";
-        launcherUseDistroLogo = false;
-        monitors = [ ];
-        onlySameOutput = true;
-        pinnedApps = [ ];
-        pinnedStatic = false;
-        position = "bottom";
-        showDockIndicator = false;
-        showLauncherIcon = false;
-        sitOnFrame = false;
-        size = 0.6;
-      };
-      general = {
-        allowPanelsOnScreenWithoutBar = true;
-        allowPasswordWithFprintd = false;
-        animationDisabled = false;
-        animationSpeed = 1;
-        autoStartAuth = false;
-        avatarImage = "${config.xdg.configHome}/nixosassets/pfp/venco.png";
-        boxRadiusRatio = 1;
-        clockFormat = "hh\nmm";
-        clockStyle = "custom";
-        compactLockScreen = false;
-        dimmerOpacity = 0.05;
-        enableBlurBehind = true;
-        enableLockScreenCountdown = true;
-        enableLockScreenMediaControls = true;
-        enableShadows = true;
-        forceBlackScreenCorners = false;
-        iRadiusRatio = 1;
-        language = "";
-        lockOnSuspend = true;
-        lockScreenAnimations = true;
-        lockScreenBlur = 0.5;
-        lockScreenCountdownDuration = 10000;
-        lockScreenMonitors = [ ];
-        lockScreenTint = 0;
-        passwordChars = true;
-        radiusRatio = 1;
-        reverseScroll = false;
-        scaleRatio = 1;
-        screenRadiusRatio = 1;
-        shadowDirection = "bottom_right";
-        shadowOffsetX = 2;
-        shadowOffsetY = 3;
-        showChangelogOnStartup = true;
-        showHibernateOnLockScreen = false;
-        showScreenCorners = true;
-        showSessionButtonsOnLockScreen = true;
-        telemetryEnabled = false;
-        keybinds = {
-          keyDown = [ "Down" ];
-          keyEnter = [
-            "Return"
-            "Enter"
-          ];
-          keyEscape = [ "Esc" ];
-          keyLeft = [ "Left" ];
-          keyRemove = [ "Del" ];
-          keyRight = [ "Right" ];
-          keyUp = [ "Up" ];
+        schema_version = 2;
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
         };
       };
-      hooks = {
-        colorGeneration = "";
-        darkModeChange = "";
+
+      dock = {
+        active_monitor_only = false;
+        active_opacity = 1.0;
+        active_scale = 1.0;
+        auto_hide = false;
+        background_opacity = 0.88;
+        border = "outline";
+        border_width = 0.0;
+        concave_edge_corners = true;
+        cross_axis_padding = 8;
         enabled = false;
-        performanceModeDisabled = "";
-        performanceModeEnabled = "";
-        screenLock = "";
-        screenUnlock = "";
-        session = "";
-        startup = "";
-        wallpaperChange = "";
+        icon_size = 48;
+        inactive_opacity = 0.85;
+        inactive_scale = 0.85;
+        item_spacing = 6;
+        launcher_custom_image = "";
+        launcher_custom_image_colorize = false;
+        launcher_icon = "grid-dots";
+        launcher_position = "none";
+        layer = "top";
+        magnification = true;
+        magnification_scale = 1.45;
+        main_axis_padding = 16;
+        margin_edge = 0;
+        margin_ends = 0;
+        monitors = [ ];
+        pinned = [ ];
+        position = "bottom";
+        radius = 16;
+        radius_bottom_left = 16;
+        radius_bottom_right = 16;
+        radius_top_left = 16;
+        radius_top_right = 16;
+        reserve_space = true;
+        shadow = true;
+        show_dots = false;
+        show_instance_count = true;
+        show_running = true;
+        smart_auto_hide = false;
       };
+
+      hooks = {
+        battery_charging = [ ];
+        battery_discharging = [ ];
+        battery_percentage_changed = [ ];
+        battery_plugged = [ ];
+        bluetooth_disabled = [ ];
+        bluetooth_enabled = [ ];
+        colors_changed = [ ];
+        logging_out = [ ];
+        power_profile_changed = [ ];
+        rebooting = [ ];
+        session_locked = [ ];
+        session_unlocked = [ ];
+        shutting_down = [ ];
+        started = [ ];
+        theme_mode_changed = [ ];
+        wallpaper_changed = [ ];
+        wifi_disabled = [ ];
+        wifi_enabled = [ ];
+      };
+
+      hot_corners = {
+        delay_ms = 0;
+        enabled = false;
+        bottom_left = { action = "none"; command = ""; };
+        bottom_right = { action = "none"; command = ""; };
+        top_left = { action = "none"; command = ""; };
+        top_right = { action = "none"; command = ""; };
+      };
+
       idle = {
-        behavior_order = [
-          "lock"
-          "screen-off"
-          "lock-and-suspend"
-        ];
-        customCommands = "[]";
-        enabled = true;
-        fadeDuration = 5;
-        lockCommand = "";
-        lockTimeout = 660;
-        resumeLockCommand = "";
-        resumeScreenOffCommand = "";
-        resumeSuspendCommand = "";
-        screenOffCommand = "";
-        screenOffTimeout = 600;
-        suspendCommand = "";
-        suspendTimeout = 1800;
+        behavior_order = [ "lock" "screen-off" "lock-and-suspend" ];
+        pre_action_fade_seconds = 2.0;
+
         behavior = {
           lock = {
             action = "lock";
+            command = "";
             enabled = true;
-            timeout = 600;
+            resume_command = "";
+            timeout = 600.0;
           };
           lock-and-suspend = {
             action = "lock_and_suspend";
+            command = "";
             enabled = true;
-            timeout = 900;
+            resume_command = "";
+            timeout = 900.0;
           };
           screen-off = {
             action = "screen_off";
+            command = "";
             enabled = true;
-            timeout = 660;
+            resume_command = "";
+            timeout = 660.0;
           };
         };
       };
+
+      keybinds = {
+        cancel = [ "Escape" ];
+        copy = [ "Ctrl+c" ];
+        delete = [ "Delete" ];
+        down = [ "Down" ];
+        left = [ "Left" ];
+        right = [ "Right" ];
+        save = [ "Ctrl+s" ];
+        tab_next = [ "Tab" ];
+        tab_previous = [ "Shift+ISO_Left_Tab" ];
+        up = [ "Up" ];
+        validate = [ "Return" "KP_Enter" "space" ];
+      };
+
       location = {
-        analogClockInCalendar = true;
+        address = "";
         auto_locate = true;
-        firstDayOfWeek = -1;
-        hideWeatherCityName = true;
-        hideWeatherTimezone = false;
-        showCalendarEvents = true;
-        showCalendarWeather = true;
-        showWeekNumberInCalendar = true;
-        use12hourFormat = false;
-        useFahrenheit = false;
-        weatherEnabled = true;
-        weatherShowEffects = true;
+        custom_schedule = false;
+        sunrise = "";
+        sunset = "";
       };
+
       lockscreen = {
-        blur_intensity = 0.80;
+        allow_empty_password = false;
+        blur_intensity = 0.8;
+        blurred_desktop = false;
+        enabled = true;
+        fingerprint = true;
+        lock_before_suspend = true;
+        monitors = [ ];
+        tint_intensity = 0.3;
+        wallpaper = "";
       };
+
       lockscreen_widgets = {
         enabled = true;
         schema_version = 2;
         widget_order = [
+          "lockscreen-login-box@eDP-1"
           "lockscreen-login-box@HDMI-A-2"
           "lockscreen-login-box@DP-2"
           "lockscreen-login-box@DP-1"
@@ -555,10 +308,11 @@
         };
         widget = {
           "lockscreen-login-box@DP-1" = {
-            box_height = 0.0;
-            box_width = 0.0;
+            box_height = 196.0;
+            box_width = 810.0;
             cx = 960.0;
             cy = 957.0;
+            enabled = true;
             output = "DP-1";
             rotation = 0.0;
             type = "login_box";
@@ -566,16 +320,25 @@
               background_color = "surface_variant";
               background_opacity = 0.88;
               background_radius = 12.0;
+              center_password_text = false;
               input_opacity = 1.0;
               input_radius = 6.0;
+              layout = "regular";
+              show_caps_lock = true;
+              show_keyboard_layout = true;
               show_login_button = true;
+              show_media = true;
+              show_session_buttons = true;
+              show_unlock_hint = true;
+              show_weather = true;
             };
           };
           "lockscreen-login-box@DP-2" = {
-            box_height = 0.0;
-            box_width = 0.0;
+            box_height = 196.0;
+            box_width = 810.0;
             cx = 960.0;
             cy = 957.0;
+            enabled = true;
             output = "DP-2";
             rotation = 0.0;
             type = "login_box";
@@ -583,16 +346,25 @@
               background_color = "surface_variant";
               background_opacity = 0.88;
               background_radius = 12.0;
+              center_password_text = false;
               input_opacity = 1.0;
               input_radius = 6.0;
+              layout = "regular";
+              show_caps_lock = true;
+              show_keyboard_layout = true;
               show_login_button = true;
+              show_media = true;
+              show_session_buttons = true;
+              show_unlock_hint = true;
+              show_weather = true;
             };
           };
           "lockscreen-login-box@HDMI-A-2" = {
-            box_height = 0.0;
-            box_width = 0.0;
+            box_height = 196.0;
+            box_width = 810.0;
             cx = 960.0;
             cy = 979.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "login_box";
@@ -600,9 +372,43 @@
               background_color = "surface_variant";
               background_opacity = 0.88;
               background_radius = 12.0;
+              center_password_text = false;
               input_opacity = 1.0;
               input_radius = 6.0;
+              layout = "regular";
+              show_caps_lock = true;
+              show_keyboard_layout = true;
               show_login_button = true;
+              show_media = true;
+              show_session_buttons = true;
+              show_unlock_hint = true;
+              show_weather = true;
+            };
+          };
+          "lockscreen-login-box@eDP-1" = {
+            box_height = 196.0;
+            box_width = 810.0;
+            cx = 960.0;
+            cy = 1018.0;
+            enabled = true;
+            output = "eDP-1";
+            rotation = 0.0;
+            type = "login_box";
+            settings = {
+              background_color = "surface_variant";
+              background_opacity = 0.88;
+              background_radius = 12.0;
+              center_password_text = false;
+              input_opacity = 1.0;
+              input_radius = 6.0;
+              layout = "regular";
+              show_caps_lock = true;
+              show_keyboard_layout = true;
+              show_login_button = true;
+              show_media = true;
+              show_session_buttons = true;
+              show_unlock_hint = true;
+              show_weather = true;
             };
           };
           lockscreen-widget-0000000000000001 = {
@@ -610,6 +416,7 @@
             box_width = 512.0;
             cx = 960.0;
             cy = 540.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "clock";
@@ -626,33 +433,40 @@
             box_width = 320.0;
             cx = 860.0;
             cy = 724.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "media_player";
+            settings = { };
           };
           lockscreen-widget-0000000000000003 = {
             box_height = 176.0;
             box_width = 240.0;
             cx = 824.0;
             cy = 348.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "sysmon";
+            settings = { };
           };
           lockscreen-widget-0000000000000006 = {
             box_height = 144.0;
             box_width = 176.0;
             cx = 1128.0;
             cy = 724.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "weather";
+            settings = { };
           };
           lockscreen-widget-0000000000000007 = {
             box_height = 176.0;
             box_width = 240.0;
             cx = 1096.0;
             cy = 348.0;
+            enabled = true;
             output = "HDMI-A-2";
             rotation = 0.0;
             type = "sysmon";
@@ -662,320 +476,431 @@
           };
         };
       };
-      network = {
-        airplaneModeEnabled = false;
-        bluetoothAutoConnect = true;
-        bluetoothDetailsViewMode = "grid";
-        bluetoothHideUnnamedDevices = false;
-        bluetoothRssiPollIntervalMs = 60000;
-        bluetoothRssiPollingEnabled = false;
-        disableDiscoverability = false;
-        networkPanelView = "wifi";
-        wifiDetailsViewMode = "grid";
-        wifiEnabled = true;
-      };
-      nightLight = {
-        autoSchedule = true;
-        dayTemp = "6500";
+
+      nightlight = {
         enabled = false;
-        forced = false;
-        manualSunrise = "06:30";
-        manualSunset = "18:30";
-        nightTemp = "2006";
+        force = false;
+        temperature_day = 6500;
+        temperature_night = 4000;
       };
-      noctaliaPerformance = {
-        disableDesktopWidgets = true;
-        disableWallpaper = true;
-      };
-      notifications = {
-        backgroundOpacity = 0.78;
-        clearDismissed = true;
-        criticalUrgencyDuration = 15;
-        density = "default";
-        enableBatteryToast = true;
-        enableKeyboardLayoutToast = true;
-        enableMarkdown = false;
-        enableMediaToast = false;
-        enabled = true;
-        location = "top_right";
-        lowUrgencyDuration = 3;
+
+      notification = {
+        background_opacity = 0.97;
+        border = true;
+        collapse_on_dismiss = true;
+        enable_daemon = true;
+        history_retention_hours = 0;
+        layer = "top";
+        max_visible = 0;
         monitors = [ ];
-        normalUrgencyDuration = 8;
-        overlayLayer = true;
-        respectExpireTimeout = false;
-        saveToHistory = {
-          critical = true;
-          low = true;
-          normal = true;
-        };
-        sounds = {
-          criticalSoundFile = "";
-          enabled = false;
-          excludedApps = "discord,firefox,chrome,chromium,edge";
-          lowSoundFile = "";
-          normalSoundFile = "";
-          separateSounds = false;
-          volume = 0.5;
-        };
+        offset_x = 20;
+        offset_y = 8;
+        position = "top_right";
+        scale = 1.0;
+        show_actions = true;
+        show_app_name = true;
       };
+
       osd = {
-        autoHideMs = 2000;
-        backgroundOpacity = 1;
+        background_opacity = 0.97;
+        border = true;
         enabled = true;
-        enabledTypes = [
-          0
-          1
-          2
-          3
-        ];
-        location = "top_right";
         monitors = [ ];
-        overlayLayer = true;
+        offset_x = 20;
+        offset_y = 8;
+        orientation = "horizontal";
+        position = "top_center";
+        position_vertical = "top_center";
+        scale = 1.0;
+        kinds = {
+          bluetooth = true;
+          brightness = true;
+          caffeine = true;
+          dnd = true;
+          keyboard_backlight = true;
+          keyboard_layout = true;
+          lock_keys = true;
+          media = true;
+          nightlight = true;
+          power_profile = true;
+          privacy = true;
+          volume = true;
+          volume_input = true;
+          volume_output = true;
+          wifi = true;
+        };
       };
+
       plugins = {
-        autoUpdate = false;
+        auto_update = true;
         enabled = [ "noctalia/screen_recorder" ];
-        notifyUpdates = true;
-      };
-      sessionMenu = {
-        countdownDuration = 10000;
-        enableCountdown = true;
-        largeButtonsLayout = "single-row";
-        largeButtonsStyle = true;
-        position = "center";
-        showHeader = true;
-        showKeybinds = true;
-        powerOptions = [
+        source = [
           {
-            action = "lock";
-            command = "";
-            countdownEnabled = false;
             enabled = true;
-            keybind = "1";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/official-plugins";
+            name = "official";
           }
           {
-            action = "suspend";
-            command = "";
-            countdownEnabled = true;
             enabled = true;
-            keybind = "2";
-          }
-          {
-            action = "hibernate";
-            command = "";
-            countdownEnabled = true;
-            enabled = true;
-            keybind = "3";
-          }
-          {
-            action = "reboot";
-            command = "";
-            countdownEnabled = false;
-            enabled = true;
-            keybind = "4";
-          }
-          {
-            action = "logout";
-            command = "";
-            countdownEnabled = true;
-            enabled = true;
-            keybind = "5";
-          }
-          {
-            action = "shutdown";
-            command = "";
-            countdownEnabled = false;
-            enabled = true;
-            keybind = "6";
-          }
-          {
-            action = "rebootToUefi";
-            command = "";
-            countdownEnabled = true;
-            enabled = true;
-            keybind = "7";
-          }
-          {
-            action = "userspaceReboot";
-            command = "";
-            countdownEnabled = true;
-            enabled = true;
-            keybind = "8";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/community-plugins";
+            name = "community";
           }
         ];
       };
+
       shell = {
         app_icon_color = "primary";
         app_icon_colorize = true;
         avatar_path = "${config.xdg.configHome}/nixosassets/pfp/venco.png";
-        corner_radius_scale = 1.5000000223517418;
+        button_borders = true;
+        card_borders = true;
+        clipboard_auto_paste = "auto";
+        clipboard_confirm_clear_history = true;
+        clipboard_enabled = true;
+        clipboard_history_max_entries = 100;
+        clipboard_image_action_command = "";
+        clipboard_keep_from_closed_apps = true;
+        corner_radius_scale = 1.5;
+        date_format = "%A, %x";
+        disable_mipmaps = false;
+        external_ip_enabled = false;
         font_family = "Google Sans Flex";
+        input_borders = true;
+        launch_apps_as_systemd_services = false;
+        launch_apps_custom_command = "";
         niri_overview_type_to_launch_enabled = true;
         offline_mode = false;
         password_style = "random";
         polkit_agent = true;
+        popup_borders = true;
+        popup_shadows = true;
         screen_time_enabled = true;
         settings_show_advanced = true;
+        settings_window_translucent = false;
+        setup_wizard_enabled = true;
+        shared_gl_context = true;
+        show_location = true;
+        telemetry_enabled = false;
+        time_format = "{:%H:%M}";
+
+        animation = {
+          enabled = true;
+          speed = 1.0;
+        };
+
+        greeter_sync = {
+          auto_sync = false;
+        };
+
+        launcher = {
+          app_grid = false;
+          auto_paste = "auto";
+          categories = true;
+          compact = false;
+          fetch_exchange_rates = true;
+          provider_prefix = "/";
+          show_icons = true;
+          sort_by_usage = true;
+        };
+
+        mpris = {
+          blacklist = [ ];
+        };
+
         panel = {
+          borders = true;
+          clipboard_placement = "floating";
+          clipboard_position = "center";
           control_center_placement = "floating";
-          launcher_compact = true;
+          control_center_position = "auto";
+          floating_layer = "overlay";
+          floating_offset = 8;
+          launcher_placement = "floating";
+          launcher_position = "center";
+          list_item_background = false;
           open_near_click_clipboard = true;
           open_near_click_control_center = true;
+          open_near_click_launcher = false;
+          open_near_click_session = false;
+          open_near_click_wallpaper = false;
+          polkit_placement = "floating";
+          polkit_position = "center";
+          session_placement = "attached";
+          session_position = "auto";
+          shadow = true;
           transparency_mode = "glass";
+          wallpaper_placement = "attached";
+          wallpaper_position = "auto";
         };
+
+        privacy = {
+          cam_filter_regex = "";
+          mic_filter_regex = "";
+          screen_filter_regex = "";
+        };
+
         screen_corners = {
           enabled = true;
+          size = 32;
         };
+
+        screenshot = {
+          confirm_region = false;
+          copy_to_clipboard = true;
+          directory = "";
+          filename_pattern = "";
+          freeze_screen = true;
+          pipe_command = "";
+          pipe_to_command = false;
+          remember_last_region = false;
+          save_to_file = true;
+          show_cursor = false;
+        };
+
+        session = {
+          grid = false;
+          grid_columns = 3;
+          show_shortcuts = true;
+          actions = [
+            {
+              action = "lock";
+              command = "";
+              countdown_seconds = 0.0;
+              enabled = true;
+              glyph = "";
+              label = "";
+              shortcut = "1";
+              variant = "default";
+            }
+            {
+              action = "logout";
+              command = "";
+              countdown_seconds = 0.0;
+              enabled = true;
+              glyph = "";
+              label = "";
+              shortcut = "2";
+              variant = "default";
+            }
+            {
+              action = "lock_and_suspend";
+              command = "";
+              countdown_seconds = 0.0;
+              enabled = true;
+              glyph = "";
+              label = "";
+              shortcut = "3";
+              variant = "default";
+            }
+            {
+              action = "reboot";
+              command = "";
+              countdown_seconds = 0.0;
+              enabled = true;
+              glyph = "";
+              label = "";
+              shortcut = "4";
+              variant = "default";
+            }
+            {
+              action = "shutdown";
+              command = "";
+              countdown_seconds = 0.0;
+              enabled = true;
+              glyph = "";
+              label = "";
+              shortcut = "5";
+              variant = "destructive";
+            }
+          ];
+        };
+
         shadow = {
+          alpha = 0.55;
           direction = "down_right";
         };
       };
-      systemMonitor = {
-        batteryCriticalThreshold = 5;
-        batteryWarningThreshold = 20;
-        cpuCriticalThreshold = 90;
-        cpuWarningThreshold = 80;
-        criticalColor = "";
-        diskAvailCriticalThreshold = 10;
-        diskAvailWarningThreshold = 20;
-        diskCriticalThreshold = 90;
-        diskWarningThreshold = 80;
-        enableDgpuMonitoring = false;
-        externalMonitor = "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
-        gpuCriticalThreshold = 90;
-        gpuWarningThreshold = 80;
-        memCriticalThreshold = 90;
-        memWarningThreshold = 80;
-        swapCriticalThreshold = 90;
-        swapWarningThreshold = 80;
-        tempCriticalThreshold = 90;
-        tempWarningThreshold = 80;
-        useCustomColors = false;
-        warningColor = "";
+
+      storage = {
+        key_file = "";
+        key_source = "secret-service";
       };
-      templates = {
-        activeTemplates = [ ];
-        enableUserTheming = false;
-      };
-      theme = {
-        builtin = "Tokyo-Night";
-        mode = "dark";
-        source = "wallpaper";
-        templates = {
-          builtin_ids = [
-            "gtk3"
-            "gtk4"
-            "kcolorscheme"
-            "qt"
-          ];
+
+      system = {
+        monitor = {
+          cpu_poll_seconds = 2.0;
+          cpu_temp_activity_threshold = 60.0;
+          cpu_temp_critical_threshold = 85.0;
+          cpu_temp_sensor_path = "";
+          cpu_usage_activity_threshold = 50.0;
+          cpu_usage_critical_threshold = 90.0;
+          disk_free_activity_threshold = 80.0;
+          disk_free_critical_threshold = 95.0;
+          disk_free_pct_activity_threshold = 80.0;
+          disk_free_pct_critical_threshold = 95.0;
+          disk_poll_seconds = 10.0;
+          disk_used_activity_threshold = 80.0;
+          disk_used_critical_threshold = 95.0;
+          disk_used_pct_activity_threshold = 80.0;
+          disk_used_pct_critical_threshold = 95.0;
+          enabled = true;
+          gpu_poll_seconds = 5.0;
+          gpu_temp_activity_threshold = 60.0;
+          gpu_temp_critical_threshold = 85.0;
+          gpu_usage_activity_threshold = 50.0;
+          gpu_usage_critical_threshold = 95.0;
+          gpu_vram_activity_threshold = 50.0;
+          gpu_vram_critical_threshold = 90.0;
+          memory_poll_seconds = 2.0;
+          net_rx_activity_threshold = 1.0;
+          net_rx_critical_threshold = 50.0;
+          net_tx_activity_threshold = 1.0;
+          net_tx_critical_threshold = 50.0;
+          network_poll_seconds = 3.0;
+          ram_pct_activity_threshold = 60.0;
+          ram_pct_critical_threshold = 90.0;
+          swap_pct_activity_threshold = 20.0;
+          swap_pct_critical_threshold = 80.0;
         };
       };
-      ui = {
-        boxBorderEnabled = false;
-        fontDefault = "SF Pro Display";
-        fontDefaultScale = 1;
-        fontFixed = "SF Mono";
-        fontFixedScale = 1;
-        panelBackgroundOpacity = 0.93;
-        panelsAttachedToBar = true;
-        scrollbarAlwaysVisible = true;
-        settingsPanelMode = "window";
-        settingsPanelSideBarCardStyle = false;
-        tooltipsEnabled = true;
-        translucentWidgets = true;
+
+      theme = {
+        builtin = "Tokyo-Night";
+        community_palette = "Oxocarbon";
+        custom_palette = "";
+        mode = "dark";
+        pure_black_dark = false;
+        source = "wallpaper";
+        wallpaper_scheme = "m3-content";
+
+        templates = {
+          builtin_ids = [ "gtk3" "gtk4" "kcolorscheme" "qt" ];
+          community_ids = [ ];
+          enable_builtin_templates = true;
+          enable_community_templates = true;
+        };
       };
+
       wallpaper = {
-        automationEnabled = false;
         directory = "/home/venco/Pictures/Wallpapers";
         directory_dark = "/home/venco/Pictures/Wallpapers";
         directory_light = "/home/venco/Pictures/Wallpapers";
-        enableMultiMonitorDirectories = false;
+        edge_smoothness = 0.3;
         enabled = true;
-        favorites = [ ];
-        fillColor = "#000000";
-        fillMode = "crop";
-        hideWallpaperFilenames = false;
-        monitorDirectories = [ ];
-        overviewBlur = 0.4;
-        overviewEnabled = false;
-        overviewTint = 0.6;
-        panelPosition = "follow_bar";
-        randomIntervalSec = 300;
-        setWallpaperOnAllMonitors = true;
-        showHiddenFiles = true;
-        skipStartupTransition = false;
-        solidColor = "#1a1a2e";
-        sortOrder = "name";
-        transitionDuration = 1500;
-        transitionEdgeSmoothness = 0.05;
-        transitionType = [
-          "fade"
-          "disc"
-          "stripes"
-          "wipe"
-          "pixelate"
-          "honeycomb"
-        ];
+        fill_color = "";
+        fill_mode = "crop";
+        per_monitor_directories = false;
+        transition = [ "fade" "wipe" "disc" "stripes" "zoom" "honeycomb" ];
+        transition_duration = 1500.0;
         transition_on_startup = true;
-        useSolidColor = false;
-        useWallhaven = false;
-        viewMode = "single";
-        wallhavenApiKey = "";
-        wallhavenCategories = "111";
-        wallhavenOrder = "desc";
-        wallhavenPurity = "100";
-        wallhavenQuery = "";
-        wallhavenRatios = "";
-        wallhavenResolutionHeight = "";
-        wallhavenResolutionMode = "atleast";
-        wallhavenResolutionWidth = "";
-        wallhavenSorting = "relevance";
-        wallpaperChangeMode = "random";
-        default = {
-          path = "/home/venco/Pictures/Wallpapers/wallhaven-jeeq3q.png";
-        };
-        last = {
-          path = "/home/venco/Pictures/Wallpapers/wallhaven-jeeq3q.png";
-        };
-        monitors = {
-          DP-1 = {
-            path = "/home/venco/Pictures/Wallpapers/wallhaven-jeeq3q.png";
-          };
-          DP-2 = {
-            path = "/home/venco/Pictures/Wallpapers/wallhaven-jeeq3q.png";
-          };
-          HDMI-A-2 = {
-            path = "/home/venco/Pictures/Wallpapers/wallhaven-jeeq3q.png";
-          };
+
+        automation = {
+          enabled = false;
+          interval_seconds = 1800;
+          order = "random";
+          recursive = true;
         };
       };
+
+      weather = {
+        effects = true;
+        enabled = true;
+        refresh_minutes = 30;
+        unit = "metric";
+      };
+
       widget = {
+        active_window = {
+          icon_size = 14.0;
+          max_length = 260.0;
+          min_length = 80.0;
+          title_scroll = "none";
+          type = "active_window";
+        };
         control-center = {
           capsule_padding = 0.0;
           color = "primary";
           custom_image_colorize = true;
           font_weight = 380;
           glyph = "box-multiple-filled";
+          type = "control-center";
+        };
+        cpu = {
+          stat = "cpu_usage";
+          type = "sysmon";
+        };
+        date = {
+          format = "{:%a %d %b}";
+          type = "clock";
+        };
+        input_volume = {
+          device = "input";
+          type = "volume";
+        };
+        keyboard_layout = {
+          hide_when_single_layout = false;
+          type = "keyboard_layout";
+        };
+        lock_keys = {
+          display = "short";
+          hide_when_off = false;
+          show_caps_lock = true;
+          show_num_lock = true;
+          show_scroll_lock = false;
+          type = "lock_keys";
         };
         media = {
+          art_size = 16.0;
           capsule = true;
           hide_when_no_media = true;
+          max_length = 220.0;
+          min_length = 80.0;
           title_scroll = "always";
+          type = "media";
         };
         network = {
           capsule = true;
           show_label = false;
+          type = "network";
+        };
+        network_rx = {
+          stat = "net_rx";
+          type = "sysmon";
+        };
+        network_tx = {
+          stat = "net_tx";
+          type = "sysmon";
+        };
+        output_volume = {
+          device = "output";
+          type = "volume";
+        };
+        ram = {
+          stat = "ram_used";
+          type = "sysmon";
         };
         recorder = {
           type = "noctalia/screen_recorder:recorder";
         };
+        spacer = {
+          interactive = false;
+          type = "spacer";
+        };
+        temp = {
+          stat = "cpu_temp";
+          type = "sysmon";
+        };
         tray = {
           drawer = true;
+          type = "tray";
         };
         workspaces = {
           capsule = true;
           labels_only_when_occupied = true;
           max_label_chars = 3;
+          type = "workspaces";
         };
       };
     };

@@ -82,7 +82,8 @@
     feishin
   ];
 
-  programs.light.enable = true;
+  hardware.acpilight.enable = true;
+  services.fprintd.enable = true;
   programs.nix-ld.enable = true;
   networking.hostName = "comet";
   system.stateVersion = "26.05";
