@@ -300,9 +300,13 @@
           "lockscreen-widget-0000000000000003"
           "lockscreen-widget-0000000000000006"
           "lockscreen-widget-0000000000000007"
+          "lockscreen-widget-0000000000000008"
+          "lockscreen-widget-0000000000000009"
+          "lockscreen-widget-000000000000000a"
+          "lockscreen-widget-000000000000000b"
         ];
         grid = {
-          cell_size = 16;
+          cell_size = 64;
           major_interval = 4;
           visible = true;
         };
@@ -472,6 +476,55 @@
             type = "sysmon";
             settings = {
               stat = "ram_pct";
+            };
+          };
+          lockscreen-widget-0000000000000008 = {
+            box_height = 128.0;
+            box_width = 640.0;
+            cx = 960.0;
+            cy = 600.0;
+            output = "eDP-1";
+            rotation = 0.0;
+            type = "audio_visualizer";
+            settings = {
+              background = true;
+              bands = 32;
+              show_when_idle = true;
+            };
+          };
+          lockscreen-widget-0000000000000009 = {
+            box_height = 128.0;
+            box_width = 208.0;
+            cx = 744.0;
+            cy = 464.0;
+            output = "eDP-1";
+            rotation = 0.0;
+            type = "sysmon";
+            settings = {
+              stat = "cpu_usage";
+              stat2 = "cpu_temp";
+            };
+          };
+          lockscreen-widget-000000000000000a = {
+            box_height = 128.0;
+            box_width = 208.0;
+            cx = 1176.0;
+            cy = 464.0;
+            output = "eDP-1";
+            rotation = 0.0;
+            type = "weather";
+          };
+          lockscreen-widget-000000000000000b = {
+            box_height = 0.0;
+            box_width = 0.0;
+            cx = 960.0;
+            cy = 465.0;
+            output = "eDP-1";
+            rotation = 0.0;
+            type = "sysmon";
+            settings = {
+              stat = "ram_pct";
+              stat2 = "";
             };
           };
         };
