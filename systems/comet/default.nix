@@ -66,6 +66,7 @@
     heroic-unwrapped
     itch
     itch-dl
+    picard-3_0
     affine-bin
     anytype
     ledger-live-desktop

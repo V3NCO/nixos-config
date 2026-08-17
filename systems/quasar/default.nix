@@ -79,7 +79,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (olympus.override { celesteWrapper = "steam-run"; })
+    (olympus.override { celesteWrapper = "steam-run"; }) t
     quickemu
     gpu-screen-recorder
     gpu-screen-recorder-gtk # GUI app
@@ -135,7 +135,7 @@
     via
     typst
     crosspipe
-    picard
+    picard-3_0
     rsgain
     tagger
     feishin
