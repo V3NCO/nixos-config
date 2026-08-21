@@ -665,11 +665,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1787070829,
-        "narHash": "sha256-vXNVDVtvfiQuXthP0NHPFdNvvMTkGpx0UP8oddIWbNk=",
+        "lastModified": 1787135253,
+        "narHash": "sha256-RD2kNWCG+Bjo6h+JVjWVNntZs2GtRoeY2xHjts/FNkA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ae2bc1419c3f345984c2629e72e7a631820fa4d",
+        "rev": "ffb3c9b700e759be2ef13237c9d8f953b32a1e46",
         "type": "github"
       },
       "original": {
@@ -839,11 +839,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1787182736,
-        "narHash": "sha256-SVGz15XX8CED7PiPAg9eR0WnqZtJw+/7hwN1BKbfmQ4=",
+        "lastModified": 1787272040,
+        "narHash": "sha256-YZxcF28MvmXOVt1sq0lXddgYVIj/5exDh0vztl/vIvw=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "21a272f10ca157d11fa7acc75c2bc0a7cfd7eb23",
+        "rev": "791e557417ceeba0e57562af2ddcbd3d8b93f62a",
         "type": "github"
       },
       "original": {
@@ -962,11 +962,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786864924,
-        "narHash": "sha256-9nqIJWuSlAwy4Vs98N9ffoVeU2dmsWcAJ7/DyIDihqM=",
+        "lastModified": 1787224109,
+        "narHash": "sha256-stV8Dxkrry6AbK8unyEjLNeDZcQtNE1TCgmjc8hdcxw=",
         "ref": "refs/heads/master",
-        "rev": "532a0606cafb05851a203e65be22c9a057447ee2",
-        "revCount": 844,
+        "rev": "9f807554e106f6b0670e60ead82b63f3c0c2ac26",
+        "revCount": 845,
         "type": "git",
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       },
@@ -1320,11 +1320,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1787160391,
-        "narHash": "sha256-5dRTU55IlWABqnWiXDgtzrc3wT54nPoZwDQ91VOY4mE=",
+        "lastModified": 1787264895,
+        "narHash": "sha256-aj43Fhlstf8zrkQ/zPRxGCVtyb/lrEcBdUCCZ4UTZ18=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "228a12a50971a115caa1c87b7de3d87b08e35275",
+        "rev": "09ea94b39f36fbee3361aaf47c2d8f3e4e123eaa",
         "type": "github"
       },
       "original": {
