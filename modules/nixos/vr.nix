@@ -13,14 +13,10 @@
 
   programs.steam.package = lib.mkDefault (
     pkgs.steam.override (prev: {
-      extraArgs = "-pipewire";
       extraEnv = {
         PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES = "1";
-        XR_RUNTIME_JSON = "$HOME/.local/share/Steam/steamapps/common/SteamVR/steamxr_linux64.json";
+        PRESSURE_VESSEL_FILESYSTEMS_RW = "$XDG_RUNTIME_DIR/wivrn/comp_ipc";
       } // (prev.extraEnv or {});
-      extraProfile = ''
-        export QT_QPA_PLATFORM=xcb
-      '';
     })
   );
 }

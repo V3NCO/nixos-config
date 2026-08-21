@@ -4,7 +4,7 @@
     enable = true;
     extraCompatPackages = [pkgs.proton-ge-bin];
     protontricks.enable = true;
-    extest.enable = false;
+    extest.enable = true;
     remotePlay.openFirewall = true;
     gamescopeSession.enable = true;
   };
