@@ -34,6 +34,8 @@ jobs:
             nixpkgs
             nixpkgs-unstable
             home-manager
+            plasma-manager
+            hajdentity
             nixCats
             nix-jetbrains-plugins
             # Not using hyprland for the time being so let's save ressources/build time
@@ -50,14 +52,14 @@ jobs:
             zen-browser
             apple-fonts
             niri-flake
-            niri-wm
             elephant
             awww
             walker
-            silentSDDM
             apple-silicon
+            silentSDDM
+            noctalia
             dns
-            hajdentity
+            streamcontroller
           )
 
           # Update each input. `nix flake update --update-input <name>` updates flake.lock

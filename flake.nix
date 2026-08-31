@@ -124,10 +124,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    asahi-firmware = {
-      url="/etc/nixos/firmware";
-      flake = false;
-    };
+    # asahi-firmware = {
+    #   url="/etc/nixos/firmware";
+    #   flake = false;
+    # };
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
@@ -173,7 +173,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             sharedModules = [
-              inputs.streamcontroller.homeManagerModules.default
+              inputs.streamcontroller.homeModules.default
               inputs.plasma-manager.homeModules.plasma-manager
             ];
             users = {
