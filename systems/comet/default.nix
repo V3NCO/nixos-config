@@ -39,6 +39,8 @@
     })
     python313
     python313Packages.pip
+    go
+    rustup
     tor-browser
     yubikey-personalization
     yubikey-manager

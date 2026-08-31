@@ -128,10 +128,6 @@
       url="/etc/nixos/firmware";
       flake = false;
     };
-    syncpronote = {
-      url = "./repos/syncpronote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
@@ -274,10 +270,6 @@
         ./systems/sentinel
         inputs.nixCats.nixosModules.default
         inputs.hajdentity.nixosModules.default
-        ({ pkgs, _module, ... }: {
-          imports = [ inputs.syncpronote.nixosModules.default ];
-          _module.args.syncpronote-pkg = inputs.syncpronote.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        })
       ];
     };
 
