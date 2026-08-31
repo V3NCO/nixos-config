@@ -82,6 +82,29 @@
         open-floating = true;
       }
       {
+        matches = [
+          {
+            app-id="steam";
+            title = ''^notificationtoasts_\d+_desktop$'';
+          }
+        ];
+        default-floating-position = {
+          x=0;
+          y=0;
+          relative-to="bottom-right";
+        };
+        open-focused = false;
+        border.enable = false;
+        focus-ring.enable = false;
+        geometry-corner-radius = {
+          bottom-left = 0.0;
+          bottom-right = 0.0;
+          top-left = 0.0;
+          top-right = 0.0;
+        };
+        clip-to-geometry = true;
+      }
+      {
         geometry-corner-radius = {
           top-right = 12.0;
           top-left = 12.0;
