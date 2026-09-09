@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, unstable, ... }:
 {
   homelab.services.immich = {
     subdomain = "immich";
@@ -15,6 +15,7 @@
   services.immich = {
     enable = true;
     host = "127.0.0.1";
+    package = unstable.immich;
     port = 2283;
     settings = {
       backup = {
