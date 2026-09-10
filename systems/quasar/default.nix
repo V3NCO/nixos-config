@@ -122,6 +122,7 @@
     virt-manager
     krita
     heroic-unwrapped
+    lutris
     itch
     itch-dl
     affine-bin

@@ -66,6 +66,7 @@
     virt-manager
     krita
     heroic-unwrapped
+    lutris
     itch
     itch-dl
     picard-3_0
