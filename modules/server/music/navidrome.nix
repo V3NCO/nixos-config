@@ -2,11 +2,11 @@
 let
   lyrics-navidrome = pkgs.stdenv.mkDerivation {
     pname = "nd-lyrics";
-    version = "6.1.3";
+    version = "8.0.0";
 
     src = pkgs.fetchurl {
-      url = "https://github.com/J0R6IT0/navidrome-lyrics-plugin/releases/download/v6.1.3/nd-lyrics.ndp";
-      hash = "sha256-U54KfULuMBDkJYzn4nuV8oKdaqJU20MMhnDv43rB9dY=";
+      url = "https://github.com/J0R6IT0/navidrome-lyrics-plugin/releases/download/v8.0.0/nd-lyrics.ndp";
+      hash = "sha256-7vfUje9U8LtlAzuBudaVkSxka34aYFjK3W1pvlBuUog=";
     };
 
     dontUnpack = true;
@@ -21,11 +21,11 @@ let
 
   musixmatch-navidrome = pkgs.stdenv.mkDerivation {
     pname = "navidrome-musixmatch-plugin";
-    version = "0.2.1";
+    version = "0.4.0";
 
     src = pkgs.fetchurl {
-      url = "https://github.com/Myzel394/navidrome-musixmatch-plugin/releases/download/v0.2.1/navidrome-musixmatch-plugin.ndp";
-      hash = "sha256-g6tlWbvfKMSNLqnnc33Mk93/tpYd3Hrfccd2i6bJ988=";
+      url = "https://github.com/Myzel394/navidrome-musixmatch-plugin/releases/download/v0.4.0/navidrome-musixmatch-plugin.ndp";
+      hash = "sha256-2w8sbpMKxx1SE3xWiU91QbkPn8Fx5CtBOvEM+okfLKI=";
     };
 
     dontUnpack = true;
@@ -62,7 +62,6 @@ in {
     environmentFile = "/var/lib/navidrome/.env";
     plugins = [
       unstable.navidromePlugins.listenbrainz-daily-playlist
-      unstable.navidromePlugins.apple-music
       unstable.navidromePlugins.audiomuseai
       lyrics-navidrome
       musixmatch-navidrome
