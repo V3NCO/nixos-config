@@ -108,7 +108,7 @@
     commet-chat
     zoom-us
     signal-desktop
-    beeper
+    unstable.beeper
     mattermost-desktop
     spotify
     nnn # terminal file manager
