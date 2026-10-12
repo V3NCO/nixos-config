@@ -9,6 +9,7 @@
     ../../modules/nixos/basic/networking.nix
     ../../modules/nixos/basic/bluetooth.nix
     ../../modules/nixos/desktop
+    ../../modules/nixos/gayming.nix
     ../../modules/nixos/printing.nix
     ../../modules/nixos/power.nix
     ../../modules/nixos/ssh.nix
@@ -109,7 +110,7 @@
     zoom-us
     signal-desktop
     unstable.beeper
-    mattermost-desktop
+    unstable.bambu-studio
     spotify
     nnn # terminal file manager
     nodejs_24
@@ -144,8 +145,8 @@
     feishin
   ];
 
-  networking.firewall.allowedTCPPorts = [ 8000 ];
-  networking.firewall.allowedUDPPorts = [ 8000 ];
+  networking.firewall.allowedTCPPorts = [ 8000 2021 ];
+  networking.firewall.allowedUDPPorts = [ 8000 2021 ];
 
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";
