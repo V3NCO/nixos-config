@@ -109,7 +109,7 @@
     commet-chat
     zoom-us
     signal-desktop
-    unstable.beeper
+    beeper
     spotify
     nnn # terminal file manager
     nodejs_24

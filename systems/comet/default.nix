@@ -52,7 +52,7 @@
     commet-chat
     zoom-us
     signal-desktop
-    unstable.beeper
+    beeper
     mattermost-desktop
     spotify
     nnn # terminal file manager
