@@ -110,7 +110,6 @@
     zoom-us
     signal-desktop
     unstable.beeper
-    unstable.bambu-studio
     spotify
     nnn # terminal file manager
     nodejs_24
@@ -139,14 +138,14 @@
     via
     typst
     crosspipe
-    picard-3_0
+    unstable.picard
     rsgain
     tagger
     feishin
   ];
 
-  networking.firewall.allowedTCPPorts = [ 8000 2021 ];
-  networking.firewall.allowedUDPPorts = [ 8000 2021 ];
+  networking.firewall.allowedTCPPorts = [ 8000 ];
+  networking.firewall.allowedUDPPorts = [ 8000 ];
 
   programs.nix-ld.enable = true;
   networking.hostName = "quasar";

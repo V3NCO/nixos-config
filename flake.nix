@@ -131,11 +131,7 @@
   };
 
   outputs = { self, nixpkgs, apple-silicon, ... }@inputs:
-  let
-    overlay-picard = final: prev: {
-      picard-3_0 = final.callPackage ./pkgs/picard-3_0 { };
-    };
-  in {
+  {
     nixosConfigurations.quasar = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -163,7 +159,6 @@
 
       modules = [
         ./systems/quasar
-        ({ ... }: { nixpkgs.overlays = [ overlay-picard ]; })
         inputs.nixCats.nixosModules.default
         inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager
@@ -214,7 +209,6 @@
       };
       modules = [
         ./systems/comet
-        ({ ... }: { nixpkgs.overlays = [ overlay-picard ]; })
         inputs.nixCats.nixosModules.default
         inputs.niri-flake.nixosModules.niri
         inputs.home-manager.nixosModules.home-manager

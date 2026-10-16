@@ -69,7 +69,7 @@
     lutris
     itch
     itch-dl
-    picard-3_0
+    unstable.picard
     affine-bin
     anytype
     ledger-live-desktop
