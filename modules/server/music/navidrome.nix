@@ -61,8 +61,8 @@ in {
     group = "music";
     environmentFile = "/var/lib/navidrome/.env";
     plugins = [
-      unstable.navidromePlugins.listenbrainz-daily-playlist
-      unstable.navidromePlugins.audiomuseai
+      unstable.pkgsCross.wasi32.navidromePlugins.listenbrainz-daily-playlist
+      unstable.pkgsCross.wasi32.navidromePlugins.audiomuseai
       lyrics-navidrome
       musixmatch-navidrome
     ];
