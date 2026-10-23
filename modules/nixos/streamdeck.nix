@@ -1,13 +1,7 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [ inputs.streamcontroller.nixosModules.default ];
-
-  programs.streamcontroller = {
+  programs.streamdeck-ui = {
     enable = true;
-    autostart = true;
+    autoStart = true;
   };
-
-  environment.systemPackages = [
-    inputs.streamcontroller.packages.${pkgs.stdenv.hostPlatform.system}.streamcontroller-cli
-  ];
 }

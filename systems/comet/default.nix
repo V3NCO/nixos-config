@@ -83,6 +83,7 @@
     via
     typst
     crosspipe
+    easyeffects
     feishin
   ];
 

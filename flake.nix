@@ -174,7 +174,6 @@
             users = {
               venco = {
                 imports = [
-                  ./modules/home-manager/streamdeck
                   ./users/venco-home.nix
                 ];
               };

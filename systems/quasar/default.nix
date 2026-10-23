@@ -104,7 +104,11 @@
     yubioath-flutter
     thunderbird
     unstable.vesktop
-    discord
+    (unstable.discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+      withTTS = true;
+    })
     slack
     commet-chat
     zoom-us
@@ -138,6 +142,7 @@
     via
     typst
     crosspipe
+    easyeffects
     unstable.picard
     rsgain
     tagger
