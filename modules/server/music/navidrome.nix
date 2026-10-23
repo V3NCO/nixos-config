@@ -1,43 +1,5 @@
-{ config, lib, pkgs, unstable, ... }:
-let
-  lyrics-navidrome = pkgs.stdenv.mkDerivation {
-    pname = "nd-lyrics";
-    version = "8.0.0";
-
-    src = pkgs.fetchurl {
-      url = "https://github.com/J0R6IT0/navidrome-lyrics-plugin/releases/download/v8.0.0/nd-lyrics.ndp";
-      hash = "sha256-7vfUje9U8LtlAzuBudaVkSxka34aYFjK3W1pvlBuUog=";
-    };
-
-    dontUnpack = true;
-
-    installPhase = ''
-      mkdir -p $out/share
-      cp $src $out/share/nd-lyrics.ndp
-    '';
-
-    passthru = { isNavidromePlugin = true; };
-  };
-
-  musixmatch-navidrome = pkgs.stdenv.mkDerivation {
-    pname = "navidrome-musixmatch-plugin";
-    version = "0.4.0";
-
-    src = pkgs.fetchurl {
-      url = "https://github.com/Myzel394/navidrome-musixmatch-plugin/releases/download/v0.4.0/navidrome-musixmatch-plugin.ndp";
-      hash = "sha256-2w8sbpMKxx1SE3xWiU91QbkPn8Fx5CtBOvEM+okfLKI=";
-    };
-
-    dontUnpack = true;
-
-    installPhase = ''
-      mkdir -p $out/share
-      cp $src $out/share/navidrome-musixmatch-plugin.ndp
-    '';
-
-    passthru = { isNavidromePlugin = true; };
-  };
-in {
+{ config, lib, unstable, ... }:
+{
   homelab = {
     ports = [ config.services.navidrome.settings.Port ];
     services.navidrome = {
@@ -63,8 +25,7 @@ in {
     plugins = [
       unstable.pkgsCross.wasi32.navidromePlugins.listenbrainz-daily-playlist
       unstable.pkgsCross.wasi32.navidromePlugins.audiomuseai
-      lyrics-navidrome
-      musixmatch-navidrome
+      unstable.pkgsCross.wasi32.navidromePlugins.lyrics-plugin
     ];
     settings = {
       Address = "127.0.0.1";
@@ -75,7 +36,7 @@ in {
       DataFolder = "/var/lib/navidrome";
       LogFile = "/var/lib/navidrome/navidrome.log";
       EnableSharing = true;
-      LyricsPriority = ".lrc,nd-lyrics,navidrome-musixmatch-plugin,.txt,embedded";
+      LyricsPriority = ".ttml,.elrc,.lrc,nd-lyrics,.txt,embedded";
       Plugins = {
         Enabled = true;
         AutoReload = true;
