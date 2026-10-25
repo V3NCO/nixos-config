@@ -19,14 +19,13 @@
 
   services.navidrome = {
     enable = true;
-    package = unstable.navidrome;
+    package = unstable.navidrome.withPlugins (p: [
+      p.audiomuseai
+      p.listenbrainz-daily-playlist
+      p.lyrics-plugin
+    ]);
     group = "music";
     environmentFile = "/var/lib/navidrome/.env";
-    plugins = [
-      unstable.pkgsCross.wasi32.navidromePlugins.listenbrainz-daily-playlist
-      unstable.pkgsCross.wasi32.navidromePlugins.audiomuseai
-      unstable.pkgsCross.wasi32.navidromePlugins.lyrics-plugin
-    ];
     settings = {
       Address = "127.0.0.1";
       Agents = "audiomuseai,listenbrainz,lastfm,deezer";
