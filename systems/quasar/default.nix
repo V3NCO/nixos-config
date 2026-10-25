@@ -133,7 +133,25 @@
     anytype
     ledger-live-desktop
     osu-lazer-bin
-    prismlauncher
+    (prismlauncher.override {
+      additionalPrograms = [ ffmpeg ];
+      additionalLibs = [
+        pkgs.libxtst
+        pkgs.libx11
+        pkgs.libxext
+        pkgs.libxkbcommon
+        pkgs.libxt
+        pkgs.libxinerama
+      ];
+      jdks = [
+        graalvmPackages.graalvm-ce
+        zulu8
+        zulu17
+        zulu
+      ];
+    })
+    pkgs.waywall
+    pkgs.jdk
     owmods-cli
     owmods-gui
     ryubing
