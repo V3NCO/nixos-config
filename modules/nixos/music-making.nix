@@ -11,5 +11,9 @@
     dexed
     zynaddsubfx
     geonkick
+
+    yabridge
+    yabridgectl
+    bitwig-studio
   ];
 }
