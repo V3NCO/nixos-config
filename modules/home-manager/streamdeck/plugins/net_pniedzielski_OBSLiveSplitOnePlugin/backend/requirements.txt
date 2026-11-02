@@ -1,3 +1,0 @@
-loguru==0.7.2
-obsws_python==1.7.0
-streamcontroller-plugin-tools>=2.0.1
