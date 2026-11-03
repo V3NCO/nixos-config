@@ -75,7 +75,7 @@
       hyprshot
       inotify-tools
       wakatime-cli
-      yaak
+      unstable.yaak
       lazygit
       hunspell
       hunspellDicts.en_US
