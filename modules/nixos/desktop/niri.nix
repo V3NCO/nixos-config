@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, unstable, ... }:
 {
   nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
 
@@ -13,7 +13,7 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
+    package = unstable.niri;
   };
 
   systemd.user.services.niri-flake-polkit.enable = false;

@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
     inputs.noctalia.homeModules.default
@@ -11,7 +11,7 @@
 
   programs.noctalia = {
     enable = true;
-
+    package = pkgs.noctalia;
     settings = {
       accessibility = {
         high_contrast = false;
