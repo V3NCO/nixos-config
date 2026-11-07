@@ -110,7 +110,6 @@ in {
     autoStart = true;
     environmentFiles = [ "${dataDir}/.env" ];
     environment = {
-      DATABASE_URL = "postgres://obico@127.0.0.1:5432/obico";
       REDIS_URL = "redis://127.0.0.1:6377/0";
       INTERNAL_MEDIA_HOST = "http://127.0.0.1:${toString port}";
       ML_API_HOST = "http://127.0.0.1:${toString mlPort}";
