@@ -2,7 +2,7 @@
 {
   networking = {
     networkmanager.enable = lib.mkForce false;
-    wireless = true;
+    wireless.enable = true;
 
     defaultGateway = {
       address = "192.168.0.254";
