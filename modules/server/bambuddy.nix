@@ -113,7 +113,7 @@ in {
       INTERNAL_MEDIA_HOST = "http://127.0.0.1:${toString port}";
       ML_API_HOST = "http://127.0.0.1:${toString mlPort}";
     };
-    command = [ "sh" "-c" "celery -A config worker --beat -l info -c 2 -Q realtime,celery" ];
+    cmd = [ "sh" "-c" "celery -A config worker --beat -l info -c 2 -Q realtime,celery" ];
     extraOptions = [ "--network=host" "--user=975:975" ];
   };
 
