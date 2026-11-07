@@ -22,6 +22,9 @@
   };
 
   hardware.enableRedistributableFirmware = true;
+  boot.kernelParams = [ "i915.enable_guc=3" ];
+  users.users.venco.extraGroups = [ "video" "render" ];
+  users.users.root.extraGroups = [ "video" "render" ];
 
   homelab.ports = [ config.services.ollama.port config.services.open-webui.port ];
   homelab.services = {
