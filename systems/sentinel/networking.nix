@@ -2,8 +2,10 @@
 {
   networking = {
     networkmanager.enable = lib.mkForce false;
-    iwd = {
+    wireless = {
       enable = true;
+      userControlled = true;
+      iwd.enable = true;
     };
 
     defaultGateway = {
