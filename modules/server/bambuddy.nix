@@ -91,7 +91,7 @@ in {
     autoStart = true;
     environmentFiles = [ "${dataDir}/.env" ];
     environment = {
-      REDIS_URL = "redis://127.0.0.1:6379/0";
+      REDIS_URL = "redis://127.0.0.1:6377/0";
       ML_API_GPU_PROVIDER = "OpenVINOExecutionProvider";
       ML_API_OPENVINO_DEVICE = "GPU";
     };
