@@ -49,7 +49,7 @@ in {
 
   services.redis.servers.obico = {
     enable = true;
-    port = 6379;
+    port = 6377;
     bind = "127.0.0.1";
     settings = { maxmemory = "256mb"; maxmemory-policy = "allkeys-lru"; };
   };
@@ -77,7 +77,7 @@ in {
     environmentFiles = [ "${dataDir}/.env" ];
     environment = {
       DATABASE_URL = "postgres://obico@127.0.0.1:5432/obico";
-      REDIS_URL = "redis://127.0.0.1:6379/0";
+      REDIS_URL = "redis://127.0.0.1:6377/0";
       INTERNAL_MEDIA_HOST = "http://127.0.0.1:${toString port}";
       ML_API_HOST = "http://127.0.0.1:${toString mlPort}";
       SITE_USES_HTTPS = "True";
@@ -110,7 +110,7 @@ in {
     environmentFiles = [ "${dataDir}/.env" ];
     environment = {
       DATABASE_URL = "postgres://obico@127.0.0.1:5432/obico";
-      REDIS_URL = "redis://127.0.0.1:6379/0";
+      REDIS_URL = "redis://127.0.0.1:6377/0";
       INTERNAL_MEDIA_HOST = "http://127.0.0.1:${toString port}";
       ML_API_HOST = "http://127.0.0.1:${toString mlPort}";
     };
