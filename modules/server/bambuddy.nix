@@ -81,7 +81,10 @@ in {
       ML_API_HOST = "http://127.0.0.1:${toString mlPort}";
       SITE_USES_HTTPS = "True";
     };
-    volumes = [ "${dataDir}/media:/app/media:Z" ];
+    volumes = [
+      "${dataDir}/media:/app/media:Z"
+      "${dataDir}/static_build:/app/static_build:Z"
+    ];
     cmd = [ "gunicorn" "config.wsgi:application" "--bind" "0.0.0.0:3334" ];
     extraOptions = [ "--network=host" "--user=975:975" ];
   };
