@@ -83,6 +83,7 @@ in {
       SITE_USES_HTTPS = "True";
     };
     volumes = [ "${dataDir}/media:/app/media:Z" ];
+    cmd = [ "gunicorn" "config.wsgi:application" "--bind" "0.0.0.0:3334" ];
     extraOptions = [ "--network=host" "--user=975:975" ];
   };
 
