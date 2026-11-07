@@ -11,7 +11,7 @@ let
     owner = "gabe565";
     repo = "obico-server";
     rev = "df8190ef7500459599ebf398c3d1f653754792fd";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    hash = "sha256-Zic4evehylXQIQZZ5+yMhQshAxCfsD6r741PEstyz44=";
   };
 in {
   homelab = {
