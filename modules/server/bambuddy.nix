@@ -99,8 +99,8 @@ in {
     extraOptions = [
       "--network=host"
       "--user=975:975"
-      "--device=card0"
-      "--device=renderD128"
+      "--device=/dev/dri/card0:/dev/dri/card0"
+      "--device=/dev/dri/renderD128:/dev/dri/renderD128"
     ];
   };
 
