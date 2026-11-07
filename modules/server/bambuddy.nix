@@ -58,6 +58,7 @@ in {
     description = "Build Obico Intel OpenVINO ML Image";
     wantedBy = [ "multi-user.target" ];
     before = [ "podman-obico-ml.service" ];
+    path = [ pkgs.podman ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
