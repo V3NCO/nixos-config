@@ -150,7 +150,7 @@ in {
       environmentFiles = [ "/var/lib/bambuddy/.env" ];
       environment = {
         TZ = "Europe/Paris";
-        PORT = "${bamPort}";
+        PORT = lib.toString bamPort;
         PUID = "975";
         PGID = "975";
         DEBUG = "false";
