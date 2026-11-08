@@ -123,4 +123,28 @@ in {
   systemd.services."podman-obico-web".after = [ "postgresql.service" "redis-obico.service" ];
   systemd.services."podman-obico-ml".after = [ "redis-obico.service" "podman-build-obico-intel.service" ];
   systemd.services."podman-obico-tasks".after = [ "postgresql.service" "redis-obico.service" "podman-obico-web.service" ];
+
+  system.activationScripts.bambuddy-dirs = ''
+    mkdir -p /var/lib/bambuddy
+    chown 975:975 /var/lib/bambuddy
+  '';
+
+  virtualisation.oci-containers.containers.bambuddy = {
+      image = "maziggy/bambuddy:latest";
+      autoStart = true;
+      environmentFiles = [ "/var/lib/bambuddy/.env" ];
+      environment = {
+        TZ = "Europe/Paris";
+        PUID = "975";
+        PGID = "975";
+        DEBUG = "false";
+        LOG_LEVEL = "INFO";
+      };
+      volumes = [
+        "/var/lib/bambuddy:/app/data:Z"
+      ];
+      extraOptions = [
+        "--network=host"
+      ];
+    };
 }
