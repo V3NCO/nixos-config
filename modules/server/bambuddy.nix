@@ -6,6 +6,7 @@ let
   dataDir = "/var/lib/obico";
   port = 3334;
   mlPort = 3333;
+  bamPort = 7890;
 
   obicoSrc = pkgs.fetchFromGitHub {
     owner = "gabe565";
@@ -15,11 +16,18 @@ let
   };
 in {
   homelab = {
-    ports = [ port ];
+    ports = [ port mlPort bamPort ];
     services.obico = {
       subdomain = "obico";
       zone = "v3nco";
       upstream = { scheme = "http"; host = "127.0.0.1"; port = port; };
+      middlewares = [ "security-headers" ];
+    };
+
+    services.bambuddy = {
+      subdomain = "bambuddy";
+      zone = "v3nco";
+      upstream = { scheme = "http"; host = "127.0.0.1"; port = bamPort; };
       middlewares = [ "security-headers" ];
     };
   };
@@ -38,12 +46,19 @@ in {
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "obico" ];
-    ensureUsers = [{
-      name = "obico";
-      ensureDBOwnership = true;
-      ensureClauses = { login = true; createrole = true; };
-    }];
+    ensureDatabases = [ "obico" "bambuddy" ];
+    ensureUsers = [
+      {
+        name = "obico";
+        ensureDBOwnership = true;
+        ensureClauses = { login = true; createrole = true; };
+      }
+      {
+        name = "bambuddy";
+        ensureDBOwnership = true;
+        ensureClauses = { login = true; createrole = true; };
+      }
+    ];
     authentication = "host all obico 127.0.0.1/32 scram-sha-256";
   };
 
@@ -135,6 +150,7 @@ in {
       environmentFiles = [ "/var/lib/bambuddy/.env" ];
       environment = {
         TZ = "Europe/Paris";
+        PORT = "${bamPort}";
         PUID = "975";
         PGID = "975";
         DEBUG = "false";
