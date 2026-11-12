@@ -119,10 +119,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    streamcontroller = {
-      url = "github:Daaboulex/streamcontroller-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
 
     # asahi-firmware = {
     #   url="/etc/nixos/firmware";
@@ -168,7 +165,6 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             sharedModules = [
-              inputs.streamcontroller.homeModules.default
               inputs.plasma-manager.homeModules.plasma-manager
             ];
             users = {

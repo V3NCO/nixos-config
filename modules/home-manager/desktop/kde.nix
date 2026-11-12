@@ -46,7 +46,6 @@
             config = {
               General = {
                 disabledStatusNotifiers = [
-                  "com.core447.StreamController.TrayIcon"
                   "chrome_status_icon_1"
                   "blueman"
                 ];
