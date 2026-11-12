@@ -23,7 +23,7 @@
     ../../modules/nixos/steam.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
-    ../../modules/nixos/streamdeck.nix #yes this is useless, but i know im eventaually gonna try to figure out how my stream deck is configured again
+    ../../modules/nixos/streamdeck.nix
     #../../modules/nixos/cider.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../modules/nixos/fonts
