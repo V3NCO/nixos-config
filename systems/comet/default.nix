@@ -23,7 +23,6 @@
     ./keyboard.nix
   ];
 
-  programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
 
   services.flatpak.enable = true;
   environment.systemPackages = with pkgs; [

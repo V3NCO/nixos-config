@@ -2,7 +2,6 @@
 {
   imports = [
     ../../../systems/${hostname}/niri.nix
-    # ../quickshell
     ../noctalia
   ];
 
@@ -50,7 +49,6 @@
 
     spawn-at-startup = [
       { argv = ["xwayland-satellite"]; }
-      { argv = ["awww-daemon"]; }
       { argv = ["noctalia"]; }
       { argv = ["gnome-keyring-daemon" "--start" "--components=secrets"]; }
     ];

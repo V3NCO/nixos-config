@@ -1,4 +1,4 @@
-{ unstable, pkgs, ... }:
+{ inputs, unstable, pkgs, ... }:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -29,9 +29,14 @@
     ../../modules/nixos/fonts
     ../../modules/nixos/vr.nix
     ./keyboard.nix
+    inputs.gsr-ui-nix.nixosModules.default
   ];
 
-  programs.gpu-screen-recorder.enable = true; # For promptless recording on both CLI and GU
+  programs.gpu-screen-recorder = {
+    package = inputs.gsr-ui-nix.packages.${pkgs.stdenv.hostPlatform.system}.gpu-screen-recorder;
+    enable = true;
+    ui.enable = true;
+  };
 
 
   programs.virt-manager.enable = true;
@@ -82,8 +87,6 @@
   environment.systemPackages = with pkgs; [
     (olympus.override { celesteWrapper = "steam-run"; }) t
     quickemu
-    gpu-screen-recorder
-    gpu-screen-recorder-gtk # GUI app
     (symlinkJoin {
       name = "android-studio-wrapped";
       paths = [ unstable.android-studio ];

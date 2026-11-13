@@ -55,10 +55,6 @@
     #   url = "github:horriblename/hyprgrass";
     #   inputs.hyprland.follows = "hyprland";
     # };
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Lets start having fun with versions
     hm-unstable = {
@@ -66,21 +62,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell-blur = {
-      url = "github:bbedward/quickshell/ext-bg-effect";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    qml-niri = {
-      url = "github:imiric/qml-niri/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
-    };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -91,13 +72,6 @@
 
 
     niri-flake.url = "github:sodiboo/niri-flake";
-    elephant.url = "github:abenz1267/elephant";
-    awww.url = "git+https://codeberg.org/LGFae/awww";
-
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.elephant.follows = "elephant";
-    };
 
     apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon/release-25.11";
@@ -119,7 +93,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
+    gsr-ui-nix = {
+      url = "github:rPlakama/gsr-ui-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # asahi-firmware = {
     #   url="/etc/nixos/firmware";
@@ -302,7 +279,6 @@
             };
             extraSpecialArgs = {
               inherit inputs;
-              quickshell = inputs.quickshell;
               hostname = "stardust";
             };
           };

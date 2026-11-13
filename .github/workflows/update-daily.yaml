@@ -38,23 +38,10 @@ jobs:
             hajdentity
             nixCats
             nix-jetbrains-plugins
-            # Not using hyprland for the time being so let's save ressources/build time
-            # hyprland
-            # hyprland-plugins
-            # hyprgrass
-            # caelestia-shell
             hm-unstable
-            quickshell
-            quickshell-blur
-            noctalia
-            noctalia-qs
-            qml-niri
             zen-browser
             apple-fonts
             niri-flake
-            elephant
-            awww
-            walker
             apple-silicon
             silentSDDM
             noctalia

@@ -24,7 +24,6 @@
     ../modules/home-manager/vr.nix
     ../modules/home-manager/desktop/niri.nix
     # ../modules/home-manager/direnv.nix
-    # ../modules/home-manager/quickshell
     # ../modules/home-manager/vicinae.nix
     ../modules/home-manager/desktop/gnome.nix
     ../modules/home-manager/desktop/kde.nix
