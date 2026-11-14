@@ -124,7 +124,6 @@
 
       specialArgs = {
         inherit inputs;
-        quickshell = inputs.quickshell;
         unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
           config = { allowUnfree = true; android_sdk.accept_license = true; };
           overlays = [(final: _prev: {pnpm_10_29_2 = final.pnpm_10;})];
@@ -153,7 +152,10 @@
             };
             extraSpecialArgs = {
               inherit inputs;
-              quickshell = inputs.quickshell;
+              unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+                config = { allowUnfree = true; android_sdk.accept_license = true; };
+                overlays = [(final: _prev: {pnpm_10_29_2 = final.pnpm_10;})];
+              };
               hostname = "quasar";
             };
           };
@@ -174,7 +176,6 @@
 
       specialArgs = {
         inherit inputs;
-        quickshell = inputs.quickshell;
         unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
           config = { allowUnfree = true; android_sdk.accept_license = true; };
         };
@@ -201,7 +202,9 @@
             };
             extraSpecialArgs = {
               inherit inputs;
-              quickshell = inputs.quickshell;
+              unstable = import inputs.nixpkgs-unstable { system = "x86_64-linux";
+                config = { allowUnfree = true; android_sdk.accept_license = true; };
+              };
               hostname = "comet";
             };
           };
@@ -251,7 +254,6 @@
 
       specialArgs = {
         inherit inputs;
-        quickshell = inputs.quickshell;
         unstable = import inputs.nixpkgs-unstable { system = "aarch64-linux";
           config = { allowUnfree = true; android_sdk.accept_license = true; };
         };
