@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, inputs, ... }:
 let
   customBitwigJar = pkgs.requireFile {
     name = "bitwig.jar";
@@ -24,9 +24,14 @@ let
   });
 in
 {
+  imports = [inputs.musnix.nixosModules.musnix];
+
+  musnix = {
+    enable = true;
+    rtcqs.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
-    zrythm
-    openutau
     distrho-ports
     zam-plugins
     lsp-plugins
@@ -35,9 +40,14 @@ in
     dexed
     zynaddsubfx
     geonkick
+    calf
+    dragonfly-reverb
+    guitarix
 
     yabridge
     yabridgectl
     customBitwig
+    zrythm
+    openutau
   ];
 }

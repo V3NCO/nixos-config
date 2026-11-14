@@ -46,6 +46,7 @@ jobs:
             silentSDDM
             noctalia
             dns
+            musnix
           )
 
           # Update each input. `nix flake update --update-input <name>` updates flake.lock
