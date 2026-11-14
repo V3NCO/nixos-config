@@ -82,6 +82,7 @@ in
 
   services.slskd = {
     enable = true;
+    package = unstable.slskd;
     openFirewall = true;
     group = "music";
     environmentFile = "/var/lib/slskd/.env";
