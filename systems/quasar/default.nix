@@ -21,6 +21,7 @@
     ../../modules/nixos/editors
     ../../modules/nixos/browsers
     ../../modules/nixos/steam.nix
+    ../../modules/nixos/localsend.nix
     ../../modules/server/fail2ban.nix
     ../../modules/nixos/flipperzero.nix
     ../../modules/nixos/streamdeck.nix

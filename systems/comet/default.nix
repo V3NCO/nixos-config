@@ -14,6 +14,7 @@
     ../../modules/nixos/xserver.nix
     ../../modules/nixos/polkit.nix
     ../../modules/nixos/drawing_tablets.nix
+    ../../modules/nixos/localsend.nix
     ../../modules/nixos/desktop/nvidia.nix
     ../../modules/nixos/browsers
     ../../modules/nixos/editors
